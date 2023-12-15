@@ -39,7 +39,7 @@
           <div>
             <button class="footer_contact_email">
               <p class="mb-2 text-white">
-                <a href=""><img src="../images/qr_hotel.png" alt="" width="200px" height="200px"></a>
+                <a href=""><img src="../Assets/images/qr_hotel.png" alt="" width="200px" height="200px"></a>
               </p>
             </button>
           </div>

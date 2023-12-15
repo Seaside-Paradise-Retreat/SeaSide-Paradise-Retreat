@@ -12,10 +12,7 @@
     width: 100%;
     z-index: 1;
     top:0px
-
 }
-
-
 .nav_text_menu{
     color: #f9f5f7;
     font-size: 20px;
@@ -24,11 +21,9 @@
     line-height: normal;
     text-decoration: none;
 }
-
 .nav_text_menu:hover{
     color: #0052FE;
 }
-
 .nav>.nav_text{
     font-family: 'Roboto', sans-serif;
     font-size: larger;
@@ -45,44 +40,33 @@
     width: 334px;
     padding: 5px;
 }
-
 #search{
     background-color: #C0F2F9;
     border: none;
 }
-
-
 .nav_button_sign_in, .nav_button_register {
     background-color: #C0F2F9;
     border: none;
     margin: 0 5px;
     margin-left: 10px;
 }
-
-
 .nav_text_search {
     position: relative;
   }
-  
-  #nav_input_search {
+#nav_input_search {
     padding-left: 40px; 
   }
-  
-  #nav_search_icon {
+#nav_search_icon {
     color: #C0F2F9;
     position: absolute;
     left: 300px; /* Điều chỉnh vị trí của biểu tượng search */
     top: 50%; 
     transform: translateY(-50%); /* Để chính xác canh giữa */
     z-index: 1; /* Đảm bảo biểu tượng nằm trên cùng */
-
   }
-
 .nav-link{
     margin-right:100px ;
 }
-
-
 .nav-text-signin{
     background-color: black;
     color: white;
@@ -99,20 +83,11 @@
     width: 200px;
     height: 180px;
 }
-
 .about-us__our_rooms{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-#avata{
+#avatar{
     margin-right: 40px;
-}
-
-
-.fa-solid.fa-magnifying-glass {
-    position: relative;
-    left: -20%;
-    bottom: 5px;
 }

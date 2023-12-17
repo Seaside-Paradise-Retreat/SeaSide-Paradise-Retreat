@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../public/css/header.css">
-    <link rel="stylesheet" href="../../public/css/footer.css">
-    <link rel="stylesheet" href="../../public/css/register.css">
+    <link rel="stylesheet" href="../../../public/css/header.css">
+    <link rel="stylesheet" href="../../../public/css/footer.css">
+    <link rel="stylesheet" href="../../../public/css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -14,7 +14,7 @@
 <body>
 <div class="navbar">
       <div class="logo nav_text">
-        <a href="home.php"><img src="../Assets/images/logo_hotel.png" id="logo_nav" alt="logo"  width="50px" height="50px" > </a>
+        <a href="home.php"><img src="../../Assets/images/logo_hotel.png" id="logo_nav" alt="logo"  width="50px" height="50px" > </a>
       </div>
       <div class="nav_text"><a  class="nav_text_menu" href="">HOME</a></div>
       <div class="nav_text"><a  class="nav_text_menu" href="">ABOUTS US</a></div>

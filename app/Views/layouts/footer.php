@@ -1,55 +1,59 @@
 <div class="row container-fluid footer" id="footer">
         <!-- cột 1 -->
         <div class="contact-item col-md-4 col-lg-4 d-flex flex-column">
-            <a class="mx-auto text-center" href="#" id="footer_text_contact"><h4>CONTACT US</h4></a>
-            <div class="mx-4 mt-4">
+        <p class="mx-auto text-center"> <a href="#" id="footer_text_contact"><h4>Contact us</h4></a> </p>
+            <div class="mx-4 mt-1">
                 <button class="footer_button_contact">
-                <p class="mb-3 text-white fs-4"><i class="fa fa-map-marker-alt me-3"></i>Son Tra, Da Nang, Viet Nam</p>
+                <p class="mb-3 text-white "><i class="fa fa-map-marker-alt me-3"></i>Son Tra, Da Nang, Viet Nam</p>
                 </button>
             </div>
             <div class="mx-4 mt-4">
                 <button class="footer_button_contact"> 
-                <p class="mb-3 text-white fs-4"><i class="fa fa-phone-alt me-3"></i>+09876543321</p>
+                <p class="mb-3 text-white "><i class="fa fa-phone-alt me-3"></i>+09876543321</p>
                 </button>
             </div>
             <div class="mx-4 mt-4">
                 <button class="footer_button_contact"> 
-                <p class="mb-2 text-white fs-4"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <p class="mb-2 text-white "><i class="fa fa-envelope me-3"></i>info@example.com</p>
                 </button>
             </div>
         </div>
 
         <!-- cột 2 -->
         <div class="col-md-4 col-lg-4 mx-auto text-center">
+        <p class="mx-auto text-center"><h4 class="text-white">Payment partners</h4></p>
         <div class="d-flex flex-column justify-content-center align-items-center">
-            <div class="mt-5">
-            <a class="nav_text_footer text-white fs-4" href="hotel_home_page.html">Home</a>
+            <div class="mt-1">
+                <img class="image_footer" src="../Assets/images/onepay.png"   alt="">
+                <img class="image_footer" src="../Assets/images/momo.png"   alt="">
+                <img class="image_footer"src="../Assets/images/vietcombank.jpg"  alt="">
             </div>
-            <div class="mt-5">
-            <a class="nav_text_footer text-white fs-4" href="hotel_about_us_page.html">About us</a>
-            </div>
-            <div class="mt-5">
-            <a class="nav_text_footer text-white fs-4" href="hotel_rooms_page.html">Rooms</a>
+            <div class="mt-3">
+                <img class="image_footer" src="../Assets/images/vnpay.jpg"   alt="">
+                <img class="image_footer" src="../Assets/images/visa.png"   alt="">
+                <img class="image_footer"src="../Assets/images/bidv.jpg"  alt="">
             </div>
         </div>
         </div>
 
         <!-- cột 3 -->
-        <div class="col-md-4 col-lg-4 mx-auto text-center" >
-          <div>
-            <button class="footer_contact_email">
-              <p class="mb-2 text-white">
-                <a href=""><img src="../Assets/images/qr_hotel.png" alt="" width="200px" height="200px"></a>
-              </p>
-            </button>
-          </div>
-          
-          <div class="mt-4 ms-auto ml-5">
-            <a class="btn-social mx-4" href="#"><i class="fab fa-twitter fa-2x text-white"></i></a>
-            <a class="btn-social mx-4" href="#"><i class="fab fa-facebook-f fa-2x text-white"></i></a>
-            <a class="btn-social mx-4" href="#"><i class="fab fa-youtube fa-2x text-white"></i></a>
-            <a class="btn-social mx-4" href="#"><i class="fab fa-instagram fa-2x text-white"></i></a>
-          </div>
+        <div class="col-md-4 col-lg-4 mx-auto text-center" >       
+        <p class="mx-auto text-center"><h4 class="text-white">Follow us</h4></p>
+            <div class="mx-4 mt-4">
+                <button class="footer_button_contact"> 
+                <p class="mb-3 text-white "><i class="fab fa-facebook-f me-3"></i>Facebook</p>
+                </button>
+            </div>   
+            <div class="mx-4 mt-4">
+                <button class="footer_button_contact"> 
+                <p class="mb-3 text-white "><i class="fab fa-youtube me-3"></i>Youtube</p>
+                </button>
+            </div>   
+            <div class="mx-4 mt-4">
+                <button class="footer_button_contact"> 
+                <p class="mb-3 text-white "><i class="fab fa-instagram me-3"></i>Instagram</p>
+                </button>
+            </div>   
         </div>
     </div>
 

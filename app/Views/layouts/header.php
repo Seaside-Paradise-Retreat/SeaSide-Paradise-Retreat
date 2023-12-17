@@ -16,9 +16,9 @@
       <div class="logo nav_text">
         <a href="home.php"><img src="../Assets/images/logo_hotel.png" id="logo_nav" alt="logo"  width="50px" height="50px" > </a>
       </div>
-      <div class="nav_text"><a  class="nav_text_menu" href="hotel_home_page.html">HOME</a></div>
-      <div class="nav_text"><a  class="nav_text_menu" href="hotel_about_us_page.html">ABOUTS US</a></div>
-      <div class="nav_text"><a  class="nav_text_menu" href="hotel_rooms_page.html">ROOMS</a></div>
+      <div class="nav_text"><a  class="nav_text_menu" href="">HOME</a></div>
+      <div class="nav_text"><a  class="nav_text_menu" href="">ABOUTS US</a></div>
+      <div class="nav_text"><a  class="nav_text_menu" href="">ROOMS</a></div>
       <div class="nav_text nav_text_search">
         <input type="text" name="nav_input" id="nav_input_search" style="outline: none; padding-left:20px; " placeholder="Search" >
         <button><i id="nav_search_icon" class="fa-solid fa-magnifying-glass"></i></button>   

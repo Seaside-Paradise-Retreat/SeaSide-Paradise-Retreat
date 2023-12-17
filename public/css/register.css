@@ -14,8 +14,9 @@
     border: 1px solid blue;
     margin-bottom: 15px;
 }
+
 #forgot_password{
-    padding-left: 300px;
+    /* padding-left: 300px; */
     font-size: 15px; 
     color: #0052FE;
 }
@@ -91,6 +92,11 @@
 .auth-form__or{
     margin-top: 25px;
 }
+
+/* .btn:hover{
+    background-color:#0052FE;
+    
+} */
 .btn.btn--with-icon{
     margin-top: 10px;
     border: 1px solid #0052FE  ;
@@ -109,7 +115,6 @@
     background-color: #0052FE;
     font-weight: 600;
     border: none;
-    color: #0052FE;
 }
 .auth-form__control{
     display: flex;
@@ -122,4 +127,14 @@
     align-items: center;
     margin-top:20px ;
     margin-top: 9px 
+}
+.forgot_password{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 35px;
+}
+.button_register{
+    background-color: white;
+    border: none;
+    color: #0052FE;
 }

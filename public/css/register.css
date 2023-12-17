@@ -14,10 +14,6 @@
     border: 1px solid blue;
     margin-bottom: 15px;
 }
-/* .auth-form_swith:hover{
-    border: none; 
-    color: #9EEAF7;
-} */
 #forgot_password{
     padding-left: 300px;
     font-size: 15px; 
@@ -95,11 +91,6 @@
 .auth-form__or{
     margin-top: 25px;
 }
-
-/* .btn:hover{
-    background-color:#0052FE;
-    
-} */
 .btn.btn--with-icon{
     margin-top: 10px;
     border: 1px solid #0052FE  ;

@@ -11,12 +11,12 @@
                 </div>
                 <div class="mb-3">
                   <div class="auth-form__group login">
-                    <input id="loginEmail" type="email" class="auth-form__input" placeholder="Email" >
+                    <input name="email" id="loginEmail" type="email" class="auth-form__input" placeholder="Email" >
                   </div>
                 </div>
                 <div class="mb-3">
                   <div class="auth-form__group login">
-                    <input id="loginPassord" type="password" class="auth-form__input" placeholder="Password" >
+                    <input name="password" id="loginPassord" type="password" class="auth-form__input" placeholder="Password" >
                   </div>
                   <div class="mb-3 forgot_password">
                     <button type="button" class="button_register" id="loginToRegister" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</button>

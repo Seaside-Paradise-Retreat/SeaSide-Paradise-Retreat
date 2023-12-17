@@ -21,9 +21,7 @@
       <div class="nav_text"><a  class="nav_text_menu" href="hotel_rooms_page.html">ROOMS</a></div>
       <div class="nav_text nav_text_search">
         <input type="text" name="nav_input" id="nav_input_search" style="outline: none; padding-left:20px; " placeholder="Search" >
-        <button  id="search">
-          <i id="nav_search_icon" class="fa-solid fa-magnifying-glass"></i> 
-        </button>   
+        <button><i id="nav_search_icon" class="fa-solid fa-magnifying-glass"></i></button>   
       </div>
   
       <div class="nav_log nav_text">

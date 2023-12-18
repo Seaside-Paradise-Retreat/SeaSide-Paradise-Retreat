@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../../public/css/show.css">
+<link rel="stylesheet" href="../../../public/css/detail_room.css">
     <div class="row details_room">
         <div class="picture">
             <img class="img1 detail_img" id="img1" src="../../Assets/images/room01.jpg" alt="Hình ảnh phòng 1">

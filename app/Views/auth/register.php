@@ -8,7 +8,6 @@
               <form>
                 <div class="auth-form__header">
                   <h4 class="auth-form__heading">Register</h4>
-                  <button type="button" class="auth-form_swith" data-bs-toggle="modal" id="registerToLogin" data-bs-target="#loginModal" data-bs-dismiss="modal">Sign in</button>
                 </div>
                 <div class="mb-3">
                   <div class="auth-form__group">
@@ -52,16 +51,19 @@
                     <a id="auth-form__policy-link" href="#">Privacy policy</a>
                   </p>
                 </div>
-<div class="auth-form__control">
-                  <button class="btn-control" id="registrationForm" >Continue</button>
+                <div class="auth-form__control">
+                    <button class="btn-control" id="registrationForm" >Continue</button>
+                </div>
+                <div class="auth-form__aside">
+                  <button type="button" class="auth-form_swith"  data-bs-toggle="modal" id="registerToLogin" data-bs-target="#loginModal" data-bs-dismiss="modal">Do you already have an account? Sign in</button>
                 </div>
                 <div class="auth-form__or login">
                   <div>
-                    <hr>
+                    <hr style="color:blue;width:170px">
                   </div>
-                  <div><span><i>OR</i></span></div>
+                  <div><span><i style="padding: 0 20px;" >OR</i></span></div>
                   <div>
-                    <hr>
+                    <hr style="color:blue;width:170px">
                   </div>
                 </div>
                 <!-- <hr> -->

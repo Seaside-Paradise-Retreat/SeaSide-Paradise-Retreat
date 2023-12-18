@@ -55,6 +55,8 @@
   }
 
 #nav_search_icon {
+    border: none;
+    background-color: white;
     color: #C0F2F9;
     position: absolute;
     left: 300px; /* Điều chỉnh vị trí của biểu tượng search */

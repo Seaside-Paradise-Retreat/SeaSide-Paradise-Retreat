@@ -4,10 +4,11 @@
     font-family: 'Roboto', sans-serif;   
 }
 .navbar{
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     z-index: 1;
     top:0px

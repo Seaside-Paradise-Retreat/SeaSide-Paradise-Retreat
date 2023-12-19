@@ -1,0 +1,52 @@
+.rating {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+.img-fluid{
+    border-radius: 20px;
+}
+.rating span {
+    color: #ffca08;
+}
+
+.rating::before {
+    content: "★";
+    margin-right: 5px;
+    color: #ddd;
+    font-size: 30px;
+}
+.btn_card_booking{
+    padding: 0px 10px;
+    border-radius: 10px;
+    background-color: #3A8CED;
+    border: none;
+    color: white;
+    font-size: 15PX;
+}
+.listroom{
+    position: relative;
+}
+.btn-card-navigation-previous ,.btn-card-navigation-next{
+    position: absolute;
+    font-size: 24px;
+    background-color: transparent;
+    border: 1px solid #3568A4;
+    padding: 5px 15px;
+    border-radius: 50%;
+    color: #3568A4;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+.btn-card-navigation-previous{
+    left: -60px;
+    top: 335px;
+}
+.btn-card-navigation-next{
+    left: 1165px;
+    top: 335px;
+}
+  .btn-card-navigation:hover {
+    color: #ff0000;
+  }
+

@@ -4,17 +4,17 @@
     font-family: 'Roboto', sans-serif;   
 }
 .navbar{
-    background-color: #C0F2F9;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     z-index: 1;
     top:0px
 }
 .nav_text_menu{
-    color: #f9f5f7;
+    color: #5FBDFF;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -27,7 +27,8 @@
 .nav>.nav_text{
     font-family: 'Roboto', sans-serif;
     font-size: larger;
-    color: white;
+    color: #5FBDFF;
+    /* color: white; */
 }
 .nav_log.nav_text{
     display: flex;
@@ -39,13 +40,13 @@
     border-radius: 10px;
     width: 334px;
     padding: 5px;
+    background-color: white;
+    border: 1px solid #5FBDFF;
+    padding-left: 40px; 
 }
-#search{
-    background-color: #C0F2F9;
-    border: none;
-}
+
 .nav_button_sign_in, .nav_button_register {
-    background-color: #C0F2F9;
+    background-color: white;
     border: none;
     margin: 0 5px;
     margin-left: 10px;
@@ -53,10 +54,10 @@
 .nav_text_search {
     position: relative;
   }
-#nav_input_search {
-    padding-left: 40px; 
-  }
+
 #nav_search_icon {
+    border: none;
+    background-color: white;
     color: #C0F2F9;
     position: absolute;
     left: 300px; /* Điều chỉnh vị trí của biểu tượng search */
@@ -68,7 +69,7 @@
     margin-right:100px ;
 }
 .nav-text-signin{
-    background-color: black;
+    /* background-color: black; */
     color: white;
     border: none;
 }
@@ -82,11 +83,6 @@
     padding: 10px;
     width: 200px;
     height: 180px;
-}
-.about-us__our_rooms{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 #avatar{
     margin-right: 40px;

@@ -37,6 +37,14 @@ CREATE TABLE `Convenients` (
     FOREIGN KEY (`room_id`) REFERENCES `Rooms` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE 'Favorite' (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_room INT,
+  id_user INT,
+  FOREIGN KEY (id_room) REFERENCES Rooms(id),
+  FOREIGN KEY (id_user) REFERENCES Users(id)
+);
+
 CREATE TABLE 'Booking' (
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_room INT,

@@ -24,14 +24,14 @@
         <p class="mx-auto text-center"><h4 class="text-white">Payment partners</h4></p>
         <div class="d-flex flex-column justify-content-center align-items-center">
             <div class="mt-1">
-                <img class="image_footer" src="../Assets/images/onepay.png"   alt="">
-                <img class="image_footer" src="../Assets/images/momo.png"   alt="">
-                <img class="image_footer"src="../Assets/images/vietcombank.jpg"  alt="">
+                <img class="image_footer" src="../../../public/images/onepay.png"   alt="logo onepay">
+                <img class="image_footer" src="../../../public/images/momo.png"   alt="logo momo app">
+                <img class="image_footer" src="../../../public/images/vietcombank.jpg"  alt="logo vietcombank">
             </div>
             <div class="mt-3">
-                <img class="image_footer" src="../Assets/images/vnpay.jpg"   alt="">
-                <img class="image_footer" src="../Assets/images/visa.png"   alt="">
-                <img class="image_footer"src="../Assets/images/bidv.jpg"  alt="">
+                <img class="image_footer" src="../../../public/images/vnpay.jpg"   alt="logo vnpay">
+                <img class="image_footer" src="../../../public/images/visa.png"   alt="logo visa">
+                <img class="image_footer" src="../../../public/images/bidv.jpg"  alt="logo bidv bank">
             </div>
         </div>
         </div>

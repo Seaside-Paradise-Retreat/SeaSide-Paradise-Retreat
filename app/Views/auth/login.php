@@ -5,7 +5,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="../../../app/Models/signin/signin.model.php" method="post">
                 <div class="auth-form__header">
                   <h4 class="auth-form__heading">Sign in</h4>
                 </div>
@@ -24,7 +24,7 @@
                   </div>
                 </div>
                 <div class="auth-form__control">
-                  <button class="btn-control" id="loginToRegister" >Sign in</button>
+                  <button type="submit" class="btn-control" id="loginToRegister" >Sign in</button>
                 </div>
                 <div class="auth-form__or login">
                     <div>

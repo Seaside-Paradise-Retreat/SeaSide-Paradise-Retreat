@@ -28,20 +28,20 @@
   
   @keyframes image-animation {
     0%, 20% {
-      background-image: url('../../app/Assets/images/hotel1.jpg');
+      background-image: url('../../../public/images/hotel1.jpg');
       background-size: cover;
     }
     20%, 40% {
-      background-image: url('../../app/Assets/images/hotel2.jpg');
+      background-image: url('../../../public/images/hotel2.jpg');
     }
     40%, 60% {
-      background-image: url('../../app/Assets/images/hotel3.jpg');
+      background-image: url('../../../public/images/hotel3.jpg');
     }
     60%, 80% {
-      background-image: url('../../app/Assets/images/hotel4.jpg');
+      background-image: url('../../../public/images/hotel4.jpg');
     }
     80%, 100% {
-      background-image: url('../../app/Assets/images/hotel5.jpg');
+      background-image: url('../../../public/images/hotel5.jpg');
     }
   }
   

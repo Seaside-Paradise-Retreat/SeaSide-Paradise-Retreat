@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../../../public/css/contact.css">
-<div class="row container-body bg-light">
+<div class="row container-body">
             <h1 class="title-contact">Contact</h1>
             <p class="paragrap-contact">We are always ready to receive all comments and answer your requests.
                 Please contact us immediately</p>

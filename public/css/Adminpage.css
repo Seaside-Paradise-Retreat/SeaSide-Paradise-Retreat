@@ -118,3 +118,13 @@
     margin-top: 30px;
     color: var(--WHITE, #FFF);
 }
+.tableOfBooking {
+    width: 100%;
+    margin: 20px;
+    border-collapse: collapse;
+}
+.tableOfBooking th, .tableOfBooking td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+}

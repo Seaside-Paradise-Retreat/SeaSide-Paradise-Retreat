@@ -31,7 +31,6 @@
 </head>
 <body>
     <div class="User">
- 
         <h1 class="title" style="text-align: center;">USER</h1>
         <button type="button" id="createUser">Create +</button>
         <br>

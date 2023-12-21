@@ -1,0 +1,130 @@
+.modal__body{
+    display: flex;
+}
+.auth-form__heading{
+    font-size: 30px;
+    font-weight: 300;
+    color: #9EEAF7  ;
+}
+.auth-form_swith{
+    border: none; 
+    background-color: white;
+}
+.auth-form_swith:hover{
+    border: none; 
+    color: #9EEAF7;
+}
+#forgot_password{
+    padding-left: 300px;
+    font-size: 15px; 
+    color: #0052FE;
+}
+.nav-text-signin{
+    color: white;
+    background-color: black;
+    border: none;
+}
+.auth-form__input{
+    padding: 8px;
+    width: 100%;
+    width: 400px;
+    margin-bottom:8px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #C0F2F9  ;
+}
+.auth-form__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#checkboxaccep{
+    font-size: 12px;
+}
+.auth-form__swith{
+    font-size: 20px;
+    cursor: pointer;
+}
+.auth-form__group.login{
+    margin-top: 40px;
+}
+.auth-form__group>input{
+    margin-left: 30px;
+    border-color: #C0F2F9;
+} 
+.btn-primary.login{
+    margin-bottom: 30px;
+}   
+.date-gender{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#auth-form__date , #auth-form__gender{
+    width: 80%;
+
+}
+#auth-form__date{
+    margin-left: 30px;
+}
+
+#auth-form__gender{
+    margin-left: 100px;
+    margin-right: 36px;
+
+}
+#auth-form__policy-link{
+    font-size: small;
+    text-decoration: underline;
+}
+.auth-form__aside{
+    text-align:center;
+}
+.auth-form__or{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth-form__or hr{
+    width: 100px;
+}
+.auth-form__or{
+    margin-top: 25px;
+}
+
+.auth-form__social{
+    margin-top: 9px 
+}
+.btn:hover{
+    background-color:#C0F2F9;
+    
+}
+.btn.btn--with-icon{
+    margin-top: 10px;
+    border: 1px solid #C0F2F9  ;
+}
+.btn--with-icon , .btn-control{       
+    padding:8px ;
+    min-width:400px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    font-weight: 1000;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+.btn-control{
+    background-color: #C0F2F9;
+}
+.auth-form__control{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth-form__social{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px ;
+}

@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;   
+    font-family: 'Roboto', sans-serif;  
 }
 
 
@@ -88,43 +88,69 @@
 }
 
 /* Main menu styles */
-.main_menu {
+.container{
     display: grid;
     grid-template-columns: 20% 80%;
     flex-shrink: 0;
     border-left: 1px solid var(--Gray, #9F9B9B);
-    
+   
 }
-
 .main_menu_left {
     display: flex;
     flex-direction: column;
     background: #3568A4;
     align-items: center;
     height:2080px;
-    
 }
 
-#user, #room, #booking{
-    border:none;
+.item button{
+    display: flex;
+    border: none;
     outline: none;
     background: none;
-    display: flex;
     width: 228px;
     height: 79px;
     font-size: 40px;
     align-items: center;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    color: var(--WHITE, #FFF);
+    color:#FFF;
+    margin:20px;
 }
-.tableOfBooking {
+
+.tabcontent{
+    max-width: 100%;
+    margin: 20px;
+    display:none;
+    
+}
+
+.active {
+    display: block;
+}
+#createUser, #createRoom{
+    text-align: center;
+    border-radius: 20px;
+    width: 154px;
+    height: 52px;
+    font-size: 25px;
+    margin: 20px;
+}
+#createUser:hover, #createRoom:hover{
+    background-color: var(--blue2, #C0F2F9);
+}
+.table {
     width: 100%;
     margin: 20px;
     border-collapse: collapse;
+    
 }
-.tableOfBooking th, .tableOfBooking td {
+.table th, .table td {
     border: 1px solid #dddddd;
     padding: 8px;
     text-align: center;
+}
+.table th {
+    background-color: #f2f2f2;
+}
+.table tbody tr:hover {
+    background-color: #e6f7ff;
 }

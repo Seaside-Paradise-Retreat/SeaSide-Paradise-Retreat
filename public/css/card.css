@@ -3,9 +3,6 @@
     align-items: center;
     font-size: 24px;
 }
-.img-fluid{
-    border-radius: 20px;
-}
 .rating span {
     color: #ffca08;
 }
@@ -46,7 +43,10 @@
     left: 1335px;
     top: 335px;
 }
-  .btn-card-navigation:hover {
-    color: #ff0000;
-  }
+#img-card-room{
+    border-radius: 20px;
+}
+#description{
+    height: 130px;
+}
 

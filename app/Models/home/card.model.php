@@ -2,7 +2,10 @@
     function getRooms(){
         global $connection;
         try {
-            $query = "SELECT * FROM rooms";
+            $query = "SELECT r.name, r.rating, d.image_url, r.price, r.description, c.convenient
+            FROM Rooms r
+            INNER JOIN Detail_room d ON r.id = d.id_room
+            INNER JOIN Convenients c ON r.id = c.id_room";
             $statement = $connection->prepare($query);
             $statement->execute();
             $rooms =  $statement->fetchAll();
@@ -11,4 +14,20 @@
             }
         return $rooms;
     }
+
+    // function convenient() : array {
+    //     global $connection;
+    //     try {
+    //         $query = "SELECT image_url
+    //         FROM Detail_room
+    //         GROUP BY id_room;";
+    //         $statement = $connection->prepare($query);
+    //         $statement->execute();
+    //         $image_urls =  $statement->fetchAll();
+    //         } catch (PDOException $e) {
+    //         echo "Error: " . $e->getMessage();
+    //         }
+    //     return $image_urls;
+    // }
+
 ?>

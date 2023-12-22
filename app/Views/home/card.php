@@ -11,9 +11,7 @@
               <div class="room-item">
                 <div class="position-relative">
                   <a href="hotel_rooms_page.html">
-                    <?php foreach($detail_room as $img):?>
-                    <img class="img-fluid" src="<?php echo $img['image_url']?>" alt="">
-                    <?php endforeach?>
+                  <img id="img-card-room" src="<?php echo $room['image_url']?>" height="238px" alt="">
                   </a>
                   <i class="fas fa-heart position-absolute bottom-0 end-0 m-3 " style="font-size: 24px;color:white;"></i>
                 </div>
@@ -24,7 +22,7 @@
                     <i class="fa-solid fa-star" style="color: #3A8CED;"></i><?php echo $room['rating']?>
                     </div>
                   </div>
-                  <p><?php echo $room['description'] ?></p>
+                  <p id="description"><?php echo $room['description'] ?></p>
                   <div class="d-flex mb-3">
                     <small class="border-end me-3 pe-3"><i class="fa fa-bed text-secondary me-2">
                       </i>Bed</small>
@@ -35,7 +33,7 @@
                   </div>
 
                   <div class="d-flex justify-content-between mt-4">
-                    <h4 style="color: #3568A4;">$50/night</h4>
+                    <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
                     <input type="button" class="btn_card_booking" name="booking"  value="Booking now">
                   </div>
                 </div>

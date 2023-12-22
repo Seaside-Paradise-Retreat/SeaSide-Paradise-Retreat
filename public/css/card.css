@@ -49,4 +49,10 @@
 #description{
     height: 130px;
 }
+.room-item {
+    transition: transform 0.3s ease;
+}
 
+.room-item:hover {
+    transform: translateY(-10px);
+}

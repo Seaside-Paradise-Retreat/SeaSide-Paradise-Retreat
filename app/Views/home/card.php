@@ -7,7 +7,7 @@
         </div>
     </div>
 <?php foreach($rooms as $room): ?>
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6 room-item">
               <div class="room-item">
                 <div class="position-relative">
                   <a href="hotel_rooms_page.html">

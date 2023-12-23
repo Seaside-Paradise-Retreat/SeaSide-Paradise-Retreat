@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="../../../public/css/detail_room.css">
     <div class="row details_room">
         <div class="picture">
-            <img class="img1 detail_img" id="img1" src="../../Assets/images/room01.jpg" alt="Hình ảnh phòng 1">
-            <img class="img2 detail_img" id="img2" src="../../Assets/images/roomDetail1.1.jpg" alt="Hình ảnh phòng 2">
-            <img class="img3 detail_img" id="img3" src="../../Assets/images/roomDetail1.2.jpg" alt="Hình ảnh phòng 3">
-            <img class="img4 detail_img" id="img4" src="../../Assets/images/roomDetail1.3.jpg" alt="Hình ảnh phòng 4">
-            <img class="img5 detail_img" id="img5" src="../../Assets/images/roomDetail1.4.jpg" alt="Hình ảnh phòng 5">                         
+            <img class="img1 detail_img" id="img1" src="../../../public/images/room01.jpg" alt="Hình ảnh phòng 1">
+            <img class="img2 detail_img" id="img2" src="../../../public/images/roomDetail1.1.jpg" alt="Hình ảnh phòng 2">
+            <img class="img3 detail_img" id="img3" src="../../../public/images/roomDetail1.2.jpg" alt="Hình ảnh phòng 3">
+            <img class="img4 detail_img" id="img4" src="../../../public/images/roomDetail1.3.jpg" alt="Hình ảnh phòng 4">
+            <img class="img5 detail_img" id="img5" src="../../../public/images/roomDetail1.4.jpg" alt="Hình ảnh phòng 5">                         
         </div>
 
         <div class="row content">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="col-lg-3 my-2 mx-2 pt-2 icon__room">
-                        <img src="../../Assets/images/icon_lvroom.png" alt="" style="width: 34px;height: 25px;">
+                        <img src="../../../public/images/icon_lvroom.png" alt="" style="width: 34px;height: 25px;">
                         <p id="type3">1 Livingroom</p>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                 <div class="col-lg-5 comment-cus">
                     <div class="row">
                         <div class="col-lg-2 col-3 ">
-                            <img id="avata1" class="avata__review" src="../../Assets/images/person01.jpg" alt="">  
+                            <img id="avata1" class="avata__review" src="../../../public/images/person01.jpg" alt="">  
                         </div>
                         <div class="col-lg-4 col-6">
                             <h5>jondoberman</h5>
@@ -87,7 +87,7 @@
                 <div class="col-lg-5 comment-cus">
                     <div class="row">
                         <div class="col-lg-2 col-3">
-                            <img id="avata1" class="avata__review" src="../../Assets/images/person02.jpg" alt="">  
+                            <img id="avata1" class="avata__review" src="../../../public/images/person02.jpg" alt="">  
                         </div>
                         <div class="col-lg-4 col-6">
                             <h5>jondoberman</h5>
@@ -102,7 +102,7 @@
                 <div class="col-lg-5 comment-cus">
                     <div class="row">
                         <div class="col-lg-2 col-3">
-                            <img id="avata1" class="avata__review" src="../../Assets/images/person03.jpg" alt="">  
+                            <img id="avata1" class="avata__review" src="../../../public/images/person03.jpg" alt="">  
                         </div>
                         <div class="col-lg-4 col-6">
                             <h5>jondoberman</h5>
@@ -117,7 +117,7 @@
                 <div class="col-lg-5 comment-cus">
                     <div class="row">
                         <div class="col-lg-2 col-3 ">
-                            <img id="avata1" class="avata__review" src="../../Assets/images/person04.jpg" alt="">  
+                            <img id="avata1" class="avata__review" src="../../../public/images/person04.jpg" alt="">  
                         </div>
                         <div class="col-lg-4 col-6">
                             <h5>jondoberman</h5>

@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;  
+}
+
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    padding-left: 50px;
+    background-color: var(--white-color);
+    
+}
+
+#logo_hotel {
+    width: 100px;
+    height: 100px;
+}
+
+/* Search styles */
+.search {
+    display: flex;
+    justify-content: space-around;
+    width: 400px; /* Adjust width as needed */
+    height: 40px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: 1px solid var(--bulue1, #5FBDFF);
+    background: var(--WHITE, #FFF);
+}
+
+#search {
+    border: none;
+    outline: none;
+    
+}
+
+#buttonsearch {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+#iconsearch {
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+}
+
+/* Profile styles */
+.profile_user {
+    display: flex;
+    padding-right: 50px;
+}
+
+/* Menu styles */
+.menu {
+    margin-left: 10px;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border: 1px solid var(--BLUE, #9EEAF7);
+    background: var(--WHITE, #FFF);
+    
+    
+}
+
+#profile, #logout{
+    border:none;
+    background: none;
+    outline: none;
+    font-size: 20px;
+}
+.has-sub-menu:hover .sub-menu {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+/* Main menu styles */
+.container{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    flex-shrink: 0;
+    border-left: 1px solid var(--Gray, #9F9B9B);
+   
+}
+.main_menu_left {
+    display: flex;
+    flex-direction: column;
+    background: #3568A4;
+    align-items: center;
+    height:2080px;
+}
+
+.item button{
+    display: flex;
+    border: none;
+    outline: none;
+    background: none;
+    width: 228px;
+    height: 79px;
+    font-size: 40px;
+    align-items: center;
+    color:#FFF;
+    margin:20px;
+}
+
+.tabcontent{
+    max-width: 100%;
+    margin: 20px;
+    display:none;
+    
+}
+
+.active {
+    display: block;
+}
+#createUser, #createRoom{
+    text-align: center;
+    border-radius: 20px;
+    width: 154px;
+    height: 52px;
+    font-size: 25px;
+    margin: 20px;
+}
+#createUser:hover, #createRoom:hover{
+    background-color: var(--blue2, #C0F2F9);
+}
+.table {
+    width: 100%;
+    margin: 20px;
+    border-collapse: collapse;
+    
+}
+.table th, .table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+}
+.table th {
+    background-color: #f2f2f2;
+}
+.table tbody tr:hover {
+    background-color: #e6f7ff;
+}

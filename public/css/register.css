@@ -1,0 +1,140 @@
+.modal__body{
+    display: flex;
+}
+.auth-form__heading{
+    font-size: 30px;
+    font-weight: 300;
+    color: #9EEAF7  ;
+}
+.auth-form_swith{
+    background-color: white;
+    padding:8px ;
+    min-width:400px;
+    border-radius: 6px;
+    border: 1px solid blue;
+    margin-bottom: 15px;
+}
+
+#forgot_password{
+    /* padding-left: 300px; */
+    font-size: 15px; 
+    color: #0052FE;
+}
+.nav-text-signin{
+    color: white;
+    background-color: black;
+    border: none;
+}
+.auth-form__input{
+    padding: 8px;
+    width: 100%;
+    width: 400px;
+    margin-bottom:8px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #0052FE  ;
+}
+.auth-form__header{
+    text-align: center;
+}
+#checkboxaccep{
+    font-size: 12px;
+}
+.auth-form__swith{
+    font-size: 20px;
+    cursor: pointer;
+}
+.auth-form__group.login{
+    margin-top: 40px;
+}
+.auth-form__group>input{
+    margin-left: 30px;
+    border-color: #0052FE;
+} 
+.btn-primary.login{
+    margin-bottom: 30px;
+}   
+.date-gender{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#auth-form__date , #auth-form__gender{
+    width: 80%;
+
+}
+#auth-form__date{
+    margin-left: 30px;
+}
+
+#auth-form__gender{
+    margin-left: 100px;
+    margin-right: 36px;
+
+}
+#auth-form__policy-link{
+    font-size: small;
+    text-decoration: underline;
+}
+.auth-form__aside{
+    text-align:center;
+}
+
+.auth-form__or{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth-form__or hr{
+    width: 100px;
+}
+.auth-form__or{
+    margin-top: 25px;
+}
+
+/* .btn:hover{
+    background-color:#0052FE;
+    
+} */
+.btn.btn--with-icon{
+    margin-top: 10px;
+    border: 1px solid #0052FE  ;
+    --bs-btn-hover-border-color: none;
+}
+.btn--with-icon , .btn-control{        
+    padding:8px ;
+    min-width:400px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 1000;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+.btn-control{
+    background-color: #0052FE;
+    font-weight: 600;
+    border: none;
+}
+.auth-form__control{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth-form__social{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px ;
+    margin-top: 9px 
+}
+.forgot_password{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 35px;
+}
+.button_register{
+    background-color: white;
+    border: none;
+    color: #0052FE;
+}

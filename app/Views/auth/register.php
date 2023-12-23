@@ -5,7 +5,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="../../Models/register.model.php" method="post">
                 <div class="auth-form__header">
                   <h4 class="auth-form__heading">Register</h4>
                 </div>
@@ -22,7 +22,7 @@
                 <div class="mb-3">
                   <div class="auth-form__group date-gender">
                     <div class="auth-form__date">
-                      <input type="date" id="auth-form__date" class="auth-form__input " placeholder="Date of birth" required>
+                      <input type="date" name="date" id="auth-form__date" class="auth-form__input " placeholder="Date of birth" required>
                     </div>
                     <select name="gender" id="auth-form__gender" class="auth-form__input" required>
                       <option disabled >Gender</option>

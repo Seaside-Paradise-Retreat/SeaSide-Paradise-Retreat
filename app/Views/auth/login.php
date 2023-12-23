@@ -5,18 +5,25 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="../../Models/login.model.php" method="post">
                 <div class="auth-form__header">
                   <h4 class="auth-form__heading">Sign in</h4>
                 </div>
                 <div class="mb-3">
                   <div class="auth-form__group login">
-                    <input name="email" id="loginEmail" type="email" class="auth-form__input" placeholder="Email" >
+                    <input name="email" id="loginEmail" type="email" class="auth-form__input" placeholder="Email" required >
                   </div>
                 </div>
                 <div class="mb-3">
                   <div class="auth-form__group login">
-                    <input name="password" id="loginPassord" type="password" class="auth-form__input" placeholder="Password" >
+                    <input name="password" id="loginPassord" type="password" class="auth-form__input" placeholder="Password"  required>
+                  </div>
+                  <div  class="auth-form__group login">
+                  <select name="rule" id="rule" class="auth-form__group login">
+                    <option value="rule">Rule</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                  </select>
                   </div>
                   <div class="mb-3 forgot_password">
                     <button type="button" class="button_register" id="loginToRegister" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</button>

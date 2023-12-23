@@ -29,7 +29,6 @@
     padding: 8px;
     width: 100%;
     width: 400px;
-    margin-bottom:8px;
     border-radius: 5px;
     outline: none;
     border: 1px solid #0052FE  ;
@@ -45,12 +44,26 @@
     cursor: pointer;
 }
 .auth-form__group.login{
-    margin-top: 40px;
+    margin-bottom: 10px;
 }
 .auth-form__group>input{
     margin-left: 30px;
     border-color: #0052FE;
 } 
+#rule{
+    padding: 8px;
+    margin-left: 30px;
+    width: 100%;
+    width: 400px;
+    margin-top: 3px;
+    margin-bottom:10x;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #0052FE 
+}
+#rule option{
+    font-size: smaller;
+}
 .btn-primary.login{
     margin-bottom: 30px;
 }   
@@ -93,10 +106,6 @@
     margin-top: 25px;
 }
 
-/* .btn:hover{
-    background-color:#0052FE;
-    
-} */
 .btn.btn--with-icon{
     margin-top: 10px;
     border: 1px solid #0052FE  ;

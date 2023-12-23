@@ -1,0 +1,64 @@
+.title-modal{
+    text-align: center;
+}
+.button_cancel{
+    background-color: aqua;
+}
+.contents{
+    padding-top: 18px;
+    margin-left: 200px;
+}
+
+.content_profile-usernames-about{
+    margin-top: 30px;
+    border:1px solid #FF3FA4;
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #EC9999;
+    border-radius: 10px;
+}
+.edit-avata-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.content_profile-username-email-password{
+    display: grid;
+}
+
+
+.profile-back-edit{
+    text-align: end;
+}
+
+.profile-back-edit button{
+    border: none;
+    padding: 6px;
+    width: 30%;
+    border-radius: 7px;
+}
+
+
+/* Modal-edit */
+.modal-title{
+    text-align: center;
+}
+.modal-save{
+    background-color: #eeeeee;
+    border: 1px solid #FF2966;
+    color: black;
+    font-weight: bold;
+}
+.modal-save:hover{
+    background-color: #FF2966;
+}
+
+#modal-edit{
+    text-align: center;
+}
+
+

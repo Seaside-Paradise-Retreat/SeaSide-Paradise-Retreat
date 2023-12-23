@@ -6,7 +6,7 @@
 </div>
 
 <?php foreach ($booked_rooms_information as $room) :?>
-<?php if($room['available']) :?>
+<?php if($room['availability']) :?>
 <div class="card-room-booking-history row container">
     <div class="col-md-2"></div>
     <?php 

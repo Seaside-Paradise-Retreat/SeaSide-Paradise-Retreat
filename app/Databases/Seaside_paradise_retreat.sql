@@ -1,14 +1,15 @@
   -- creat database with name Seaside_paradise_retreat
-  CREATE TABLE `Users` (
-      `id` int(11) NOT NULL  AUTO_INCREMENT PRIMARY KEY,
-      `name` varchar(100) NOT NULL,
-      `avatar` varchar(500) NOT NULL,
-      `password` varchar(500) NOT NULL,
-      `phone` varchar(11) NOT NULL,
-      `email` varchar(50) NOT NULL,
-      `age` int(11) NOT NULL,
-      `gender` varchar(10) NOT NULL
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `Users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(100) NOT NULL,
+  `avatar` varchar(500) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `age` int(11) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `rule` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
   CREATE TABLE `Rooms` (
       `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -236,13 +237,13 @@
   (20, 'Air conditioning, Television, 2 bed, 1 bath, wifi');
 
 
-INSERT INTO Users (name, avatar, password, phone, email, age, gender)
+INSERT INTO Users (name, avatar, password, phone, email, age, gender, rule)
 VALUES 
-    ('Dương Thị Hồng Lam', 'public/avatar_lam.png', 'duonglam123', '1234567890', 'duonglam.@gmail.com', 30, 'Female'),
-    ('Trần Đức Hùng', 'public/avatar_hung.png', 'tranhung123', '0987654321', 'tranhung.smith@gmail.com', 25, 'Male'),
-    ('Phạm Thị Hỉ', 'public/avatar_hi.png', 'phamhi123', '9876543210', 'phamhi@gmail.com', 35, 'Female'),
-    ('Nguyễn Thị Linh', 'public/avatar_linh.png', 'nguyenlinh123', '0123456789', 'nguyenlinh@gmail.com', 28, 'Female'),
-    ('Hồ Thị Ngân', 'public/avatar_ngan.png', 'hongan123', '5678901234', 'hongan@gmail.com', 32, 'Female');
+    ('Dương Thị Hồng Lam', 'public/avatar_lam.png', 'duonglam123', '1234567890', 'duonglam.@gmail.com', 30, 'Female','admin'),
+    ('Trần Đức Hùng', 'public/avatar_hung.png', 'tranhung123', '0987654321', 'tranhung.smith@gmail.com', 25, 'Male','admin'),
+    ('Phạm Thị Hỉ', 'public/avatar_hi.png', 'phamhi123', '9876543210', 'phamhi@gmail.com', 35, 'Female','user'),
+    ('Nguyễn Thị Linh', 'public/avatar_linh.png', 'nguyenlinh123', '0123456789', 'nguyenlinh@gmail.com', 28, 'Female','user'),
+    ('Hồ Thị Ngân', 'public/avatar_ngan.png', 'hongan123', '5678901234', 'hongan@gmail.com', 32, 'Female','user');
 
 INSERT INTO Favorite (id_room, id_user)
 VALUES 

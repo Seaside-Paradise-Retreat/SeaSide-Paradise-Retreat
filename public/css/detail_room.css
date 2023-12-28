@@ -1,259 +1,170 @@
 :root {
-    --blue:#3A8CED;
-    --blue1:#15c3ee;
-    --white: #ffffff;
-    --black: black ;
-    --red:#ff0022;
-    --pink:#d400ff;
-    --yellow:#e9f905;
-    --green: #04ff00;
-  }
-body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
+  --blue: #3A8CED;
+  --blue1: #15c3ee;
+  --white: #ffffff;
+  --black: black;
+  --red: #ff0022;
+  --pink: #d400ff;
+  --yellow: #e9f905;
+  --green: #04ff00;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .details_room{
-    margin: 20px 10px;
-    margin-top: 100px;
+  margin: 20px 10px;
+  margin-top: 100px;
 }
+
 .picture{
-    display: grid;
-    grid-template-columns: repeat(4,1fr) ;
-    grid-template-rows: repeat(2,1fr);
-    grid-template-areas:
-    "right right left-top1 left-top2 " 
-    "right right left-bottom1 left-bottom2 ";
-    grid-row-gap:20px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr) ;
+  grid-template-rows: repeat(2,1fr);
+  grid-template-areas:
+  "right right left-top1 left-top2 " 
+  "right right left-bottom1 left-bottom2 ";
+  grid-row-gap:20px;
+  grid-column-gap:20px ;
 }
-#img1{
-    height: 95%;
-    width: 95%;
-    border-radius: 5px;
+#img0,#img1,#img2,#img3,#img4{
+  height: 100%;
+  width: 100%;
+  /* border: solid 1px var(--blue); */
+  border-radius: 15px;
 }
-#img2, #img3, #img4, #img5{
-    height: 90%;
-    width: 90%;
-    border-radius: 5px;
-}
-.img1{
+.images-0{
     grid-area: right;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
-.img2{
-    grid-area: left-top1;
+.image-1{
+  grid-area: left-top1;
 }
-.img3{
-    grid-area: left-top2;
-    border-top-right-radius: 15px;
+.image-2{
+  grid-area: left-top2;
+  border-top-right-radius: 15px;
 }
-.img4{
-    grid-area: left-bottom1;
+.image-3{
+  grid-area: left-bottom1;
 }
-.img5{
-    grid-area: left-bottom2;
-    border-bottom-right-radius: 15px;
+.image-4{
+  grid-area: left-bottom2;
+  border-bottom-right-radius: 15px;
 }
-
-.content-text{
-    margin-top: 10px;
-    justify-content: space-between;
-    align-items: center;
-}
-.context__icon{
-    text-align: end;
-    align-items: center;
-   font-size: 36px;
-
-}
-#icon_share_detail{
-    cursor: pointer;
-    font-size: 36px !important;
-}
-#icon_heart_detail{
-    cursor: pointer;
-    padding-right: 20px;
-    font-size: 36px;
-}
-#name_room_detail{
-    font-family: 'Roboto' ;
-    font-weight: bold;
-    font-size: 32px;
-    margin-bottom: 0;
-}
-#price_room_detail{
-    font-family: 'Roboto' ;
-    font-weight: bold;
-    color:var(--blue);
-    font-size: larger; 
+.content-text {
+  margin-top: 0px;
+  height: 120px;
 }
 
-
-/* row 2 of row */
-.content-icon{
-    text-align: center;
-    
-}
-.icon__room{
-    box-shadow: 0 4px 8px 0 var(--black);
-    border-radius:10px;
-    background-color:var(--blue);
-}
-.icon__room i{
-    color: var(--black) !important;
-}
-.content-description{
-    margin-top: 50px;
-}
-.content-review{
-    margin-top: 50px;
-}
-.avata__review{
-    width: 50px;
-    height: 50px;
-    border-radius: 999px;
-}
-.content_comment-detail{
-    margin-top: 20px;
+.context__icon {
+  text-align: end;
+  align-items: center;
+  font-size: 36px;
 }
 
-/* hieuj ứng button */
-.button_booking {
-    position:relative;
-    padding: 0.6em 0.9em;
-    font-size: 1em;
-    box-shadow: 0 0 5px var(--blue), 0 0 25px var(--blue1);
-    background-color: transparent;
-    border: 0.2em solid;
-    /* border-color: #ff0022 #04ff00 #0051ff #d400ff; */
-    border-radius: 1.5em;
-    margin: 5px 10px;
-    color:var(--blue);
-    font-weight: bolder;
-    cursor: pointer;
-    transition: transform 0.2s ease, border-radius 0.2s ease, color 0.2s ease,
-      border-shadow 0.2s ease, border-style 0.2s ease;
-  }
-  
-  
-  
-  .button_booking:hover {
-    transform: scale(1.3);
-    border-radius: 1.5em;
-    animation: btn-animation 0.4s 0.2s linear infinite;
-    color: #020d0e;
-    
-  }
-  
-  @keyframes btn-animation {
-    0% {
-      border-color: var(--red) var(--green) var(--blue) var(--pink);
-      transform: rotate(5deg) scale(1.3);
-    }
-  
-    25% {
-      border-color: var(--red) var(--yellow) var(--blue1) var(--pink);
-      transform: rotate(-5deg) scale(1.3);
-    }
-  
-    50% {
-      border-color: var(--pink) var(--red) var(--yellow) var(--blue1);
-      transform: rotate(5deg) scale(1.3);
-    }
-  
-    75% {
-      border-color: var(--blue1) var(--pink) var(--red) var(--yellow);
-      transform: rotate(-5deg) scale(1.3);
-    }
-  
-    100% {
-      border-color: var(--yellow) var(--blue1) var(--pink) var(--red);
-      transform: rotate(5deg) scale(1.3);
-    }
-  }
-/* cmt customer */
+#icon_share_detail {
+  cursor: pointer;
+  font-size: 36px !important;
+}
+
+#icon_heart_detail {
+  cursor: pointer;
+  padding-right: 20px;
+  font-size: 36px;
+}
 .comment-cus{
-    border-radius: 12px;
-    margin: 12px;
-    padding-top: 12px;
-    box-shadow: 1px 5px 4px var(--blue);
+  border-radius: 12px;
+  margin: 12px;
+  padding-top: 12px;
+  box-shadow: 1px 5px 4px var(--blue);
 }
-#avata{
-    display: none;
-    margin-right: 40px;
-}
-
-.col-md-6.col-lg-4 {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.section-title.text-white.text-uppercase.mb-4 {
-    width: 268px;
-    height: 48px;
-    color: var(--pink) !important;
-    font-size: xx-large;
+#name_room_detail {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 0;
 }
 
-#favorite-icon {
-    user-select: none;
-    position: relative;
-    right: 40px;
-    cursor: pointer;
-    color: var(--red);
+#price_room_detail {
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: var(--blue);
+  font-size: larger;
 }
 
-/* responsive */
-@media screen and (max-width: 415px) {
-    .picture {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5, 1fr);
-        grid-template-areas:
-          "center1"
-          "center2"
-          "center3"
-          "center4"
-          "center5";
-      }
-    
-      .img1 {
-        grid-area: center1;
-      }
-    
-      .img2 {
-        grid-area: center2;
-      }
-    
-      .img3 {
-        grid-area: center3;
-
-      }
-    
-      .img4 {
-        grid-area:center4;
-      }
-    
-      .img5 {
-        grid-area: center5;
-      }
-    .detail_img{
-        border-radius: 15px !important;
-    }
-    #booking-btn{
-        text-align: center;
-    }
-    .button_booking{
-        position:inherit;
-    }  
+.content-icon {
+  text-align: center;
 }
 
-#addbag{
-    position: relative;
-    top: -30px;
-    left: 40px;
-    font-size: 48px !important;
-    color: var(--red);
-    cursor: pointer;
+.icon__room {
+  box-shadow: 0 4px 8px 0 var(--black);
+  border-radius: 10px;
+  background-color: var(--blue);
+}
+
+.icon__room i {
+  color: var(--black) !important;
+}
+
+.content-description {
+  margin-top: 50px;
+}
+
+.content-review {
+  margin-top: 50px;
+}
+
+.avata__review {
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+}
+
+.content_comment-detail {
+  margin-top: 20px;
+}
+.row{
+  display: flex;
+  flex-wrap: nowrap;
+}
+.button_booking {
+  position: relative;
+  padding: 0.6em 0.9em;
+  font-size: 1em;
+  box-shadow: 0 0 5px var(--blue), 0 0 25px var(--blue1);
+  background-color: transparent;
+  border: 0.2em solid;
+  border-radius: 1.5em;
+  margin: 5px 10px;
+  color: var(--blue);
+  font-weight: bolder;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-radius 0.2s ease, color 0.2s ease, border-shadow 0.2s ease, border-style 0.2s ease;
+}
+
+.button_booking{
+  position: relative;
+  padding: 0.6em 0.9em;
+  font-size: 1em;
+  box-shadow: 0 0 5px var(--blue), 0 0 25px var(--blue1);
+  background-color: transparent;
+  border: 0.2em solid;
+  border-radius: 1.5em;
+  margin: 5px 10px;
+  color: var(--blue);
+  font-weight: bolder;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-radius 0.2s ease, color 0.2s ease, border-shadow 0.2s ease, border-style 0.2s ease;
+}
+
+.button_booking:hover {
+  transform: scale(1.05);
+  border-radius: 1.8em;
+  color: var(--blue1);
+  box-shadow: 0 0 10px var(--blue1), 0 0 40px var(--blue1);
+  border-style: double;
 }

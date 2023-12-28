@@ -26,12 +26,12 @@
                   </select>
                   </div>
                   <div class="mb-3 forgot_password">
-                    <button type="button" class="button_register" id="loginToRegister" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</button>
+                    <button type="button" class="button_register" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</button>
                     <a href="#" id="forgot_password">Forgot password</a>
                   </div>
                 </div>
                 <div class="auth-form__control">
-                  <button class="btn-control" id="loginToRegister" >Sign in</button>
+                  <button class="btn-control">Sign in</button>
                 </div>
                 <div class="auth-form__or login">
                     <div>

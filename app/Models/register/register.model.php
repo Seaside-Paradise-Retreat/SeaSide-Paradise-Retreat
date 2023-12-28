@@ -1,15 +1,13 @@
-<?php 
-   session_start();
-?>
+
 <?php 
 require ("./app/Databases/database.php");
 ?>
 <?php 
     function validateUsername($userName) {
-        global $connection;
+        global $connection; 
         $userName = trim($userName);
         if(empty($userName)) {
-            $user_error = "Please enter UserName";
+            return "Please enter UserName";
         }
         if (strlen($userName) < 4 || strlen($userName) > 25) {
             return "Your name must be at least 4 characters";
@@ -19,12 +17,10 @@ require ("./app/Databases/database.php");
         $statament->bindParam(":username", $userName);
         $statament->execute();
         $user=$statament->fetch(PDO::FETCH_ASSOC);
-      
         if (!empty($user) ) {
-            $user_error = "Username already exists";
+            return "Username already exists";
         }
-
-        return $user_error;
+        return;
     }
 
     function validateEmail($email) {
@@ -42,7 +38,7 @@ require ("./app/Databases/database.php");
             $statament->execute();
             $email=$statament->fetch(PDO::FETCH_ASSOC);
             if (!empty($email)) {
-                return "Email dose exit";
+                return "Email does exit";
             }
             return;
         }
@@ -58,7 +54,7 @@ require ("./app/Databases/database.php");
         $statament->execute();
         $phonedata=$statament->fetch(PDO::FETCH_ASSOC);
         if (!empty($phonedata)) {
-            return "Phone dose exit";
+            return "Phone does exit";
         }
         return;
     }

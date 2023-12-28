@@ -12,7 +12,7 @@
   
       <div class="nav_log nav_text">
         <div class="nav_log_text" id="sign">
-          <button type="button" class="nav_text_menu nav_button_sign_in " id="showModal" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@mdo" >SIGN IN</button>
+          <button type="button"  class="nav_text_menu nav_button_sign_in " id="showModal" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@mdo">SIGN IN</button>
         </div>
         <div class="nav_log_text" id="register">
           <button type="button" class="nav_text_menu nav_button_register" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-whatever="@mdo">REGISTER</button>

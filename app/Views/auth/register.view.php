@@ -1,4 +1,4 @@
-<div class="modal fade form-auth" id="registerModal">
+<div class="modal fade form-auth" data-backdrop="static" id="registerModal">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -53,6 +53,7 @@
                 <div class="auth-form__aside">
                   <p id="checkboxaccep" class="auth-form__inform"><input type="checkbox" name="checkboxaccep"> We will call or text you to confirm the phone number.
                     <a id="auth-form__policy-link" href="#">Privacy policy</a>
+                    <small class="form-text text-danger"> <?php echo $terms_error; ?></small>
                   </p>
                 </div>
                 <div class="auth-form__control">

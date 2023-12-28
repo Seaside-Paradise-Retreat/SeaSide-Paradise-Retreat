@@ -45,9 +45,6 @@ require ("./app/Databases/database.php");
     function validatePhone($phoneNumber) {
         global $connection;
         $phone = preg_replace("/[^0-9]/", "", $phoneNumber);
-        if (strlen($phone) < 11 || strlen($phone) > 9) {
-            return "Your phone must be at least 4 characters";
-        }
         $query = "SELECT phone FROM users WHERE phone = :phone";
         $statament = $connection->prepare($query);
         $statament->bindParam(":phone", $phone);

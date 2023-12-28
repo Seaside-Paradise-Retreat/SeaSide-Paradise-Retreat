@@ -3,6 +3,7 @@
 require ("./app/Models/home/card.model.php");
 require ("./app/Models/home/detailroom.model.php");
 require ("./app/Models/register/register.model.php");
+require ("./app/Models/login/login.model.php");
 $rooms= getRooms();
 ?>
 <?php
@@ -51,6 +52,7 @@ $rooms= getRooms();
         }
         if(isset($_POST["password"])){
             $password =$_POST["password"];
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         }
         if(isset($_POST["confirmpassword"])){
             $confirmpassword = htmlspecialchars($_POST["confirmpassword"]);
@@ -58,19 +60,31 @@ $rooms= getRooms();
                 $confirmpassword_error = "Password incorrect";
             }
         }
-        if(!isset($_POST["checkboxaccep"])){
-            $terms_error = "You must accept the Terms of Service";
-        }
-        if (empty($user_error) &&  empty($email_error) && empty($phone_error) && !empty($_POST['terms'])) {
+        // if(!isset($_POST["checkboxaccep"])){
+        //     $terms_error = "You must accept the Terms of Service";
+        // }
+
+        if (empty($user_error) &&  empty($email_error) && empty($phone_error)) {
             $result = registerUser($userName, $password, $phone, $email, $date, $gender);
+            print_r($result);
             if (!empty($result)) {
                 echo '<script>alert("Register Successful and you need to log in again");</script>';
-                header('Location: /');
         }else{
             echo '<script>alert("Error");</script>';
         }}
     }
+    
 
+?>
+
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['rule'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $rule = $_POST['rule'];
+        login($email,$password,$rule);
+    }
+      
 ?>
 <?php
 require "app/views/home/home.view.php";

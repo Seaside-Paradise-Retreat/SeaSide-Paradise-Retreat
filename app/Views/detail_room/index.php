@@ -1,6 +1,6 @@
 <?php 
-    require_once("../layouts/header.php"); 
-    require_once("../layouts/navbar.php");  
-    require_once 'detail_room.php';
-    require_once("../layouts/footer.php");  
+    require("app/Views/layouts/header.php"); 
+    require("app/Views/layouts/navbar.php");  
+    require ('detail_room.php');
+    require("app/Views/layouts/footer.php");  
 ?>

@@ -11,7 +11,7 @@
                 <?php foreach($detailRoom as $imageIndex => $image): ?>
                   <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
                   <!-- Trong vòng lặp foreach -->
-                    <a href="/app/Views/detail_room/index.php?id_room=<?php echo $room['id']; ?>">
+                    <a href="/detail_room?id_room=<?php echo $room['id']; ?>">
                       <img id="img-card-room" src="<?php echo $image['image_url']?>" height="238px" alt="">
                     </a>
                     <div class="heart-container position-absolute bottom-0 end-0 m-3" title="Like">

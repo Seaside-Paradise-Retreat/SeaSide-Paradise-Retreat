@@ -1,18 +1,4 @@
-<link rel="stylesheet" href="../../../public/css/detail_room.css">
-<?php 
-    require_once ("../../Databases/database.php");
-    require_once ("../../Models/home/card.model.php");
-    require_once ("../../Models/home/detailroom.model.php");
-
-// Kiểm tra xem có tham số "id_room" được truyền trong URL không
-    if (isset($_GET['id_room'])) {
-        $roomId = $_GET['id_room'];
-        $images = getRoomImages($roomId);
-        $rooms = getRooms();
-        $room = $rooms[$roomId];
-    }
-?>
-
+<link rel="stylesheet" href="public/css/detail_room.css">
 <!-- Hiển thị hình ảnh tương ứng với id phòng -->
 <div class="row details_room">
 <div class="picture"> 
@@ -20,25 +6,22 @@
         $index = 0; 
         foreach ($images as $image) {?>
                 <?php if ($index === 0) { ?>
-                    <!-- <div class="border picture1"> -->
-                        <img class="img detail_img images-<?php echo $index; ?>" id="img0" src="../../../<?php echo $image['image_url']; ?>">
-                    <!-- </div> -->
+                        <img class="img detail_img images-<?php echo $index; ?>" id="img0" src="<?php echo $image['image_url']; ?>">
                 <?php }
                 elseif ($index === 1 || $index === 2) { ?>
-                    <!-- <div class="row1"> -->
                         <?php if ($index === 1) { ?>
-                            <img class="img detail_img image-1" id="img1" src="../../../<?php echo $image['image_url']; ?>">
+                            <img class="img detail_img image-1" id="img1" src="<?php echo $image['image_url']; ?>">
                         <?php } elseif ($index === 2) { ?>
-                            <img class="img detail_img image-2" id="img2" src="../../../<?php echo $image['image_url']; ?>">
+                            <img class="img detail_img image-2" id="img2" src="<?php echo $image['image_url']; ?>">
                         <?php } ?>
                     <!-- </div> -->
                 <?php }
                 elseif ($index === 3 || $index === 4) { ?>
                     <!-- <div class="border row2"> -->
                         <?php if ($index === 3) { ?>
-                            <img class="img detail_img image-3" id="img3" src="../../../<?php echo $image['image_url']; ?>">
+                            <img class="img detail_img image-3" id="img3" src="<?php echo $image['image_url']; ?>">
                         <?php } elseif ($index === 4) { ?>
-                            <img class="img detail_img image-4" id="img4" src="../../../<?php echo $image['image_url']; ?>">
+                            <img class="img detail_img image-4" id="img4" src="<?php echo $image['image_url']; ?>">
                         <?php } ?>
                     <!-- </div> -->
                 <?php } ?>
@@ -74,7 +57,7 @@
                     <p id="type2">1 Bathroom</p>
                 </div>
                 <div class="col-lg-3 my-2 mx-2 pt-2 icon__room">
-                    <img src="../../../public/images/icon_lvroom.png" alt="" style="width: 34px;height: 25px;">
+                    <img src="public/images/icon_lvroom.png" alt="" style="width: 34px;height: 25px;">
                     <p id="type3">1 Livingroom</p>
                 </div>
             </div>
@@ -109,7 +92,7 @@
                 <div class="col-lg-5 comment-cus m-4">
                     <div class="row">
                         <div class="col-lg-2 col-3">
-                            <img id="avata1" class="avata__review" src="../../../public/images/person01.jpg" alt="">
+                            <img id="avata1" class="avata__review" src="public/images/person01.jpg" alt="">
                         </div>
                         <div class="col-lg-4 col-6">
                             <h5>jondoberman</h5>
@@ -123,7 +106,7 @@
                 <div class="col-lg-5 comment-cus m-4">
                     <div class="row">
                         <div class="col-lg-2 col-3">
-                            <img id="avata1" class="avata__review" src="../../../public/images/person01.jpg" alt="">
+                            <img id="avata1" class="avata__review" src="public/images/person01.jpg" alt="">
                         </div>
                         <div class="col-lg-4 col-6">
                             <h5>jondoberman</h5>
@@ -137,7 +120,7 @@
                 <div class="col-lg-5 comment-cus m-4">
                     <div class="row">
                         <div class="col-lg-2 col-3">
-                            <img id="avata1" class="avata__review" src="../../../public/images/person01.jpg" alt="">
+                            <img id="avata1" class="avata__review" src="public/images/person01.jpg" alt="">
                         </div>
                         <div class="col-lg-4 col-6">
                             <h5>jondoberman</h5>

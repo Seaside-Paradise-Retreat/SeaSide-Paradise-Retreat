@@ -75,7 +75,7 @@
     border-radius: 20px;
     transition: all 0.3s;
     cursor: pointer;
-    background: white;
+    background: #3A8CED;
 }
 .btn_card_booking:hover{
 background: #315cfd;

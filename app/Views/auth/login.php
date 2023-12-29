@@ -5,7 +5,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="" method="post">
+              <form action="" method="post" id="loginModel">
                 <div class="auth-form__header">
                   <h4 class="auth-form__heading">Sign in</h4>
                 </div>

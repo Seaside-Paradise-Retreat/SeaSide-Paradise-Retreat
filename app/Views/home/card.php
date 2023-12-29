@@ -67,14 +67,41 @@
                     <small><i class="fa fa-wifi text-secondary me-2">
                       </i>Wifi</small>
                   </div>
-
                   <div class="d-flex justify-content-between mt-4">
-                    <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
-                    <input type="button" class="btn_card_booking" name="booking"  value="Booking now">
+                  <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
+                  <?php if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :?>
+                    <a href="/booking_room"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
+                    <?php else: ?>
+                      <a href=""><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
+                      <script>
+                          $(document).ready(function() {
+                            // Sử dụng Ajax để kiểm tra phiên làm việc PHP
+                            $.ajax({
+                              url: 'kiem_tra_phien_lam_viec.php',
+                              type: 'GET',
+                              success: function(response) {
+                                if (response === 'authenticated') {
+                                  // Nếu phiên làm việc PHP tồn tại, bật modal
+                                  $('#loginModel').modal('show');
+                                }
+                              }
+                            });
+                          });
+                    </script>
+                  <?php endif ?>
                   </div>
                   </div>
+
         </div>
       </div>
     <?php endforeach; ?>
   </div>
 </div>
+
+<!-- <script>
+  if(!empty($_SESSION['email']) || !empty($_SESSION['password']) ) {
+  $(document).ready(function() {
+      $('#loginModel').modal('show');
+    }
+  );}
+</script> -->

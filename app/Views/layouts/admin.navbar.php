@@ -11,24 +11,13 @@
 
 <body>
     <div class="navbar">
-        <a href="../admin/Adminpage_html.php" style="text-decoration: none;">
+        <a href="/admin" style="text-decoration: none;">
             <img id="logo_hotel" src="../../../public/images/logo_hotel.png" alt="logo_hotel">
         </a>
-        <div class="search">
-            <input type="text" id="search" name="input_search" placeholder="Search">
-            <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
-        </div>
+        
         <div class="profile_user">
-            <i class="fas fa-user-circle" style="font-size: 35px;"></i>
-            <div class="menu">
-                <div class="has-sub-menu">
-                    <i class="fas fa-caret-down" style="font-size: 35px;"></i>
-                    <div class="sub-menu">
-                        <button type="button" id="profile">Profile</button>
-                        <button type="button" id="logout">Log Out</button>
-                    </div>
-                </div>
-            </div>
+            <button id="profile"><i class="fas fa-user-circle" style="font-size: 40px; padding-right:10px"></i></button>
+            <button id="logout"><i class="fas fa-sign-out-alt" style="font-size: 40px;"></i></button>
         </div>
     </div>
 </body>

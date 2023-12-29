@@ -18,13 +18,6 @@
                   <div class="auth-form__group login">
                     <input name="password" id="loginPassord" type="password" class="auth-form__input" placeholder="Password"  required>
                   </div>
-                  <div  class="auth-form__group login">
-                  <select name="rule" id="rule" class="auth-form__group login">
-                    <option value="rule">Rule</option>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                  </select>
-                  </div>
                   <div class="mb-3 forgot_password">
                     <button type="button" class="button_register" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</button>
                     <a href="#" id="forgot_password">Forgot password</a>

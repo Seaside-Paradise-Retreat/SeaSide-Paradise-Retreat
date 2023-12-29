@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2023 at 06:46 AM
+-- Generation Time: Dec 24, 2023 at 07:26 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -345,13 +345,13 @@ INSERT INTO `rooms` (`id`, `name`, `type`, `price`, `availability`, `description
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `avatar` varchar(500) NOT NULL,
+  `avatar` varchar(500) NOT NULL DEFAULT 'public/avatar.png',
   `password` varchar(500) NOT NULL,
   `phone` varchar(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `age` int(11) NOT NULL,
   `gender` varchar(10) NOT NULL,
-  `rule` varchar(20) NOT NULL
+  `rule` varchar(20) DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

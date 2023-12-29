@@ -125,7 +125,7 @@ html, body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 50px;
     line-height: 50px;
 }
 .ItemBooking{
@@ -169,11 +169,10 @@ html, body {
     justify-content: space-around;
     margin-top: 30px;
 }
-.form_create{
+.form_action{
     border:1px solid #9EEAF7;
     width: 500px;
     height: 800px;
-    margin-bottom: 150px;
     flex-shrink: 0;
     padding:20px;
     border-radius: 10px;

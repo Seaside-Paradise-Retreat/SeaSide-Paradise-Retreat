@@ -32,8 +32,8 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
             </button>
         </div>
     </div>
-    <div id="Modal_create_user" class="main_menu_right">
-        <form  class="form_create" action="#" method="post">
+    <div id="Modal" class="main_menu_right">
+        <form  class="form_action" action="#" method="post">
             <div class="form_title">
                 <h2 id="title">CREATE USER</h2>
                 <a href="/admin"><i class="fas fa-times" ></i></a>

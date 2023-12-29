@@ -66,8 +66,8 @@
                 <tbody>
 
                     <?php
+                    require(__DIR__ . '/../../../Models/admin.model.php');
 
-                    require_once(__DIR__ . '/../../../Databases/database.php');
                     $bookings = selectBookingRoom();
                     $rooms = selectRoom();
                     $users = selectAllUser();
@@ -158,7 +158,7 @@
                     <input type="text" id="search" name="input_search" placeholder="Search">
                     <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
                 </div>
-                <button type="button" id="createRoom">Create +</button>
+                <a href="/admin/Room/create"><button type="button" id="createRoom">Create +</button></a>
             </div>
             
             <br>
@@ -178,7 +178,7 @@
                 <tbody>
                     <?php
 
-                    require_once(__DIR__ . '/../../../Databases/database.php');
+                    require_once(__DIR__ . '/../../../Models/admin.model.php');
                     $rooms = selectRoom();
 
                     if ($rooms) {
@@ -193,8 +193,8 @@
                                 <td><?php echo $room['description']; ?></td>
                                 <td><?php echo $room['rating']; ?></td>
                                 <td>
-                                    <button type="button" id="button_edit"><i class="fas fa-cog"></i></button>
-                                    <button type="button" id="button_delete"><i class="fas fa-trash"></i></button>
+                                    <a href="/admin/Room/edit?id=<?=$room['id']?>"><button type="button" id="button_edit"><i class="fas fa-cog"></i></button></a>
+                                    <a href="/admin/Room/delete?id=<?=$room['id']?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
                                 </td>
                             </tr>
                     <?php
@@ -210,9 +210,7 @@
         <div id="userTab" class="tabcontent">
             <h1 class="title" style="text-align: center; margin-bottom: 50px; ">USER</h1>
             <div class="ItemUser">  
-                
                 <div class="search">
-                   
                     <input type="text" id="search" name="input_search" placeholder="Search">
                     <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
                 </div>
@@ -240,7 +238,7 @@
                     <!-- Add table rows with user data here -->
                     <?php
 
-                    require_once(__DIR__ . '/../../../Databases/database.php');
+                    require_once(__DIR__ . '/../../../Models/admin.model.php');
                     $users = selectAllUser();
 
                     if ($users) {
@@ -258,7 +256,7 @@
                                 <td><?php echo $user['gender']; ?></td>
                                 <td>
                                     <a href="admin/User/edit?id=<?=$user['id']?>"><button type="button" id="button_edit"><i class="fas fa-cog"></i></button></a>
-                                    <button type="button" id="button_delete"><i class="fas fa-trash"></i></button>
+                                    <a href="admin/User/delete?id=<?=$user['id']?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
                                 </td>
                             </tr>
                     <?php

@@ -6,8 +6,13 @@ $routes = [
     '/contact' => 'Controllers/contact/contact.controller.php',
     '/admin' => 'app/Controllers/admin/admin.controller.php',
     '/admin/User/create' => 'app/Controllers/admin/User/admin.createuser.controller.php',
-    '/admin/User/edit' => 'app/Controllers/admin/User/admin.edit.user.controller.php'
-
+    '/admin/User/edit' => 'app/Controllers/admin/User/admin.edit.user.controller.php',
+    '/admin/User/delete' => 'app/Controllers/admin/User/admin.delete.user.controller.php',
+    '/admin/Room/create' => 'app/Controllers/admin/Room/admin.create.room.controller.php',
+    '/admin/Room/edit' => 'app/Controllers/admin/Room/admin.edit.room.controller.php',
+    '/admin/Room/delete' => 'app/Controllers/admin/Room/admin.delete.room.controller.php',
+    '/admin/Booking/edit' => 'app/Controllers/admin/Booking/admin.edit.booking.controller.php',
+    '/admin/Booking/delete' => 'app/Controllers/admin/Booking/admin.delete.booking.controller.php',
 ];
 
 if (array_key_exists($uri, $routes)) {

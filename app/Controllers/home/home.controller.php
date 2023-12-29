@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
             if ($dataUser['rule'] == 'user') {
                 echo '<script>alert("Login Successful");</script>';
                 header("Location: /user");
-            } else if ($user['rule']  == 'admin') {
+            } else if ($dataUser['rule']  == 'admin') {
                 echo '<script>alert("Login Successful");</script>';
                 header("Location: /admin");
             }

@@ -1,7 +1,8 @@
 
 <?php 
-    include("../layouts/admin.navbar.php") ;
-    require("../admin/User/Admin.ShowView.php");
+    include(__DIR__ . "/../layouts/admin.navbar.php");
+    include(__DIR__ . "/../../Databases/database.php");
+    require(__DIR__ . "/../admin/User/Admin.ShowView.php");
 ?>
     
     

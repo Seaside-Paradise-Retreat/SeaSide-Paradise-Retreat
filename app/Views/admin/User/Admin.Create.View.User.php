@@ -3,43 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit_User</title>
+    <title>Create User</title>
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
 <?php 
-require(__DIR__ . "/../../../Databases/database.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    if (!empty($_POST['name']) and !empty($_POST['password']) and !empty($_POST['phone']) and !empty($_POST['email']) and !empty($_POST['age']) and !empty($_POST['gender'])) {
-       
-        $stt = db() -> prepare("Insert into users(name, password, phone, email, age, gender) values(:name, :password, :phone, :email, :age, :gender)");
-        $stt->execute([
-        ':name' => $_POST['name'],
-        ':password' =>  $_POST['password'],
-        ':phone' =>  $_POST['phone'],
-        ':email' =>  $_POST['email'],
-        ':age' =>  $_POST['age'],
-        ':gender' =>  $_POST['gender']
-    ]);
-        
-    header('location: /admin/User/edit');
-    }
-}
-$id = $_GET["id"] ? $_GET["id"] : null;
-if (isset($id)):
-
-   $statement = db()->prepare('select * from users where id = :id');
-   $statement->execute([':id' => $id]);
-   $user = $statement->fetch();
-
-endif;
-
 include(__DIR__ . "/.././../layouts/admin.navbar.php");
-?>
-
-  
+ ?>
 <div class="container">
     <div class="main_menu_left">
         <div class="item">
@@ -61,44 +32,43 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
             </button>
         </div>
     </div>
-    
     <div id="Modal_create_user" class="main_menu_right">
         <form  class="form_create" action="#" method="post">
             <div class="form_title">
-                <h2 id="title">EDIT USER</h2>
+                <h2 id="title">CREATE USER</h2>
                 <a href="/admin"><i class="fas fa-times" ></i></a>
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="<?=$user['name'];?>">
+                <input type="text" class="form-control" id="name" placeholder="Name" name="name">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" class="form-control" placeholder="Password" name="password" value="<?=$user['password'];?>" >
+                <input type="password" id="password" class="form-control" placeholder="Password" name="password">
             </div>
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
-                <input type="number" id="phone" class="form-control" placeholder="Phone Number" name="phone" value="<?=$user['phone']; ?>">
+                <input type="number" id="phone" class="form-control" placeholder="Phone Number" name="phone">
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" class="form-control" placeholder="Email" name="email" value="<?=$user['email']; ?>">
+                <input type="email" id="email" class="form-control" placeholder="Email" name="email">
             </div>
             <div class="form-group">
                 <label for="age">Age:</label>
-                <input type="number" id="age" class="form-control" placeholder="Age" name="age" value="<?=$user['age'];?>">
+                <input type="number" id="age" class="form-control" placeholder="Age" name="age">
             </div>
             <div class="form-group">
                 <label for="gender">Gender:</label>
-                <input type="text" id="gender" class="form-control" placeholder="Gender" name="gender" value="<?=$user['gender']; ?>">
+                <input type="text" id="gender" class="form-control" placeholder="Gender" name="gender">
             </div>
             <div class="button">
-                <button type="submit" class="button_create">EDIT</button>
+                <button type="submit" class="button_create" class="btn btn-primary btn-block">CREATE</button>
             </div>
         </form>
     </div>
-</div>
 
+</div>
 </body>
 </html>

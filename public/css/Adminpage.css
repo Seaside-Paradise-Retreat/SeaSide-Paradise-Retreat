@@ -2,15 +2,20 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;  
+    
+   
 }
 
+html, body {
+    height: 100%;
+}
 
 /* Navbar styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
+    padding: 20px;
     padding-left: 50px;
     background-color: var(--white-color);
     
@@ -22,58 +27,14 @@
 }
 
 /* Search styles */
-.search {
-    display: flex;
-    justify-content: space-around;
-    width: 400px; /* Adjust width as needed */
-    height: 40px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    border: 1px solid var(--bulue1, #5FBDFF);
-    background: var(--WHITE, #FFF);
-}
-
-#search {
-    border: none;
-    outline: none;
-    
-}
-
-#buttonsearch {
-    border: none;
-    outline: none;
-    background: none;
-}
-
-#iconsearch {
-    width: 20px;
-    height: 20px;
-    font-size: 16px;
-}
 
 /* Profile styles */
 .profile_user {
     display: flex;
     padding-right: 50px;
+
 }
 
-/* Menu styles */
-.menu {
-    margin-left: 10px;
-}
-
-.sub-menu {
-    display: none;
-    position: absolute;
-    width: 100px;
-    height: 80px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border: 1px solid var(--BLUE, #9EEAF7);
-    background: var(--WHITE, #FFF);
-    
-    
-}
 
 #profile, #logout{
     border:none;
@@ -81,11 +42,7 @@
     outline: none;
     font-size: 20px;
 }
-.has-sub-menu:hover .sub-menu {
-    display: flex;
-    flex-direction: column;
-    text-align: start;
-}
+
 
 /* Main menu styles */
 .container{
@@ -93,6 +50,7 @@
     grid-template-columns: 20% 80%;
     flex-shrink: 0;
     border-left: 1px solid var(--Gray, #9F9B9B);
+    height: 100%;
    
 }
 .main_menu_left {
@@ -100,9 +58,11 @@
     flex-direction: column;
     background: #3568A4;
     align-items: center;
-    height:2080px;
+    
 }
-
+.item{
+    width: 100%;
+}
 .item button{
     display: flex;
     border: none;
@@ -116,7 +76,9 @@
     margin:20px;
 }
 
-
+.item:hover{
+    background-color: #0052FE;
+}
 
 .tabcontent{
     max-width: 100%;
@@ -130,11 +92,13 @@
 }
 #createUser, #createRoom{
     text-align: center;
-    border-radius: 20px;
+    
     width: 154px;
-    height: 52px;
+    height: 40px;
     font-size: 25px;
-    margin: 20px;
+    background: var(--WHITE, #FFF);
+    border-radius: 20px;
+    border: 1px solid var(--bulue1, #5FBDFF);
 }
 #createUser:hover, #createRoom:hover{
     background-color: var(--blue2, #C0F2F9);
@@ -155,4 +119,111 @@
 }
 .table tbody tr:hover {
     background-color: #e6f7ff;
+}
+
+.main_menu_right{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    line-height: 50px;
+}
+.ItemBooking{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.search {
+    display: flex;
+    justify-content: space-around;
+    width: 400px; /* Adjust width as needed */
+    height: 40px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: 1px solid var(--bulue1, #5FBDFF);
+    background: var(--WHITE, #FFF);
+    
+}
+
+#search {
+    border: none;
+    outline: none;
+    
+}
+
+#buttonsearch {
+    border: none;
+    outline: none;
+    background: none;
+}
+
+#iconsearch {
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+}
+
+.ItemRoom, .ItemUser{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+.form_create{
+    border:1px solid #9EEAF7;
+    width: 500px;
+    height: 800px;
+    margin-bottom: 150px;
+    flex-shrink: 0;
+    padding:20px;
+    border-radius: 10px;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.form-group label{
+    color: #9EEAF7;
+    font-size: 25px;
+    font-style: normal;
+    
+}
+
+.form-group input{
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 20px;
+    border: 1px solid #0052FE;
+}
+.button{
+    display:flex;
+    justify-content: center;
+}
+.button_create{
+    margin-top: 50px;
+    width: 30%;
+    height: 50px;
+    background-color: #3498db; /* Change color as needed */
+    color: #fff; /* Change color as needed */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+ 
+}
+#button_edit, #button_delete{
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 25px;
+}
+
+.form_title{
+    display: flex;
+    justify-content: space-between;
+}
+.form_title i{
+    font-size: 30px;
 }

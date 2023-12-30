@@ -1,5 +1,8 @@
 <?php 
-    require_once '../layouts/header.php';
-    require_once 'detail_room.php';
-    require_once '../layouts/footer.php';
+    require("app/Views/layouts/header.php"); 
+    require("app/Views/layouts/navbar.php");  
+    require("app/Views/auth/register.view.php");
+    require("app/Views/auth/login.php");
+    require ('detail_room.php');
+    require("app/Views/layouts/footer.php");  
 ?>

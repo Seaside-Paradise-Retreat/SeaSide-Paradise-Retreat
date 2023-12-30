@@ -1,12 +1,12 @@
 <?php
 
-$host = "localhost";
-$database = "Seaside_paradise_retreat";
+$host = "127.0.0.1";
+$database = "seaside_paradise_retreat";
 $username = "root";
-$password = "mysql";
+$password = "";
 
 try{
-    $db =new PDO("mysql:host=$host;dbname=$database", $username, $password); //$dsn: Database source name
+    $db =new PDO("mysql:host=$host; dbname=$database", $username, $password); //$dsn: Database source name
     $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
 } catch (PDOException $e){

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row g-4 ml-2 mb-5 listroom" id="pp">
-    <?php foreach($rooms as $index => $room): ?>
+    <?php foreach($rooms as $room):?>
       <div class="col-lg-4 col-md-6 room-item">
         <div class="room-item">
           <div class="position-relative">

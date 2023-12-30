@@ -78,13 +78,28 @@ $rooms= getRooms();
 ?>
 
 <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['rule'])){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $rule = $_POST['rule'];
-        login($email,$password,$rule);
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $user = array(
+        'email' => $email,
+        'password' => $password
+    );
+    
+    $dataUser = getUser($user);
+    if ($dataUser) {
+        if ($password == $dataUser['password']) {
+            if ($dataUser['rule'] == 'user') {
+                echo '<script>alert("Login Successful");</script>';
+                header("Location: /user");
+            } else if ($dataUser['rule']  == 'admin') {
+                echo '<script>alert("Login Successful");</script>';
+                header("Location: /admin");
+            }
+        }
     }
-      
+}
+
 ?>
 <?php
 require "app/views/home/home.view.php";

@@ -16,6 +16,7 @@ $routes = [
     '/' => 'app/Controllers/home/home.controller.php',
     '/about' => 'app/Controllers/about/about.controller.php',
     '/detail_room' => 'app/Controllers/detail_room/detail_room.controller.php',
+    '/account' => 'app/Controllers/account/account.controller.php',
 ];
 
 if (array_key_exists($uri, $routes)) {

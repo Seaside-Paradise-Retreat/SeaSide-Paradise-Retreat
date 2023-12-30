@@ -13,31 +13,21 @@
                 <div class="input--group row">
                     <div class="check-date  col-6 ">
                         <label for="" class="label">Check in</label>
-                        <input type="date" name="" class="input__check-date" id="datepicker1">
+                        <input type="datetime-local" name="" class="input__check-date" id="datepicker1">
                     </div>
                     <div class="check-date col-6">
                         <label for="" class="label">Check out</label>
-                        <input type="date" name="" class="input__check-date"id="datepicker2">
+                        <input type="datetime-local" name="" class="input__check-date"id="datepicker2">
                     </div>
                 </div>
-                <div class="input--group">
-                    <input type="text" class="input-request" id="SpecialR_Request" placeholder="Special Request">
+                <div class="text_input">
+                    <textarea id="message" name="message" rows="4" cols="65">Message</textarea> 
                 </div>
-                <div>
-                    <button type="button" class="button" id="update_money" onclick="calculateDateDifference()">SAVE</button>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="button" id="update_money">SAVE</button>
+                    <button id="Revervation_required" type="button" class="button">Booking</button>
                 </div>
                 <hr>
-            </div>
-            <div class="general-standard">
-                <p class="title-small">General standards</p>
-                <p>We ask all guests to remember a few simple rules to be a great guest.</p>
-                <ul>
-                    <li>Comply with house rules</li>
-                    <li>Maintain the house as if it were your home</li>
-                </ul>
-            </div>
-            <div>
-                <button id="Revervation_required" type="button" class="button" onclick="payment()">Revervation required</button>
             </div>
         </div>
         <div class="col"></div>

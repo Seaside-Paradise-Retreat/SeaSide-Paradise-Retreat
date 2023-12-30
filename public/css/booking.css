@@ -2,7 +2,9 @@
     /* background-color: beige; */
     margin-top: 120px;
 }
-
+#title-booking-room{
+    align-items: center;
+}
   .infor {
     margin-bottom: 20px;
   }

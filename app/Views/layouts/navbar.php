@@ -2,7 +2,7 @@
       <div class="logo nav_text">
         <a href="home.php"><img src="public/images/logo_hotel.png" id="logo_nav" alt="logo"  width="50px" height="50px" > </a>
       </div>
-      <div class="nav_text"><a  class="nav_text_menu" href="">HOME</a></div>
+      <div class="nav_text"><a class="nav_text_menu" style="<?= urlIs('/') ? 'color: blue;' : '' ?>" href="/">HOME</a></div>
       <div class="nav_text"><a  class="nav_text_menu" href="">ABOUTS US</a></div>
       <div class="nav_text"><a  class="nav_text_menu" href="">ROOMS</a></div>
       <div class="nav_text nav_text_search">

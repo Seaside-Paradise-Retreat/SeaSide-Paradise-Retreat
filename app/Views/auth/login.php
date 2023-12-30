@@ -5,7 +5,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="" method="post" id="loginModel">
+              <form action="" method="post" id="loginModal">
                 <div class="auth-form__header">
                   <h4 class="auth-form__heading">Sign in</h4>
                 </div>
@@ -50,3 +50,14 @@
           </div>
         </div>
       </div>
+<script type="text/javascript">
+    $(function(){
+        //instantiate your content as modal
+        $('#loginModal').modal({
+            //modal options here, like keyboard: false for e.g.
+        });
+
+        //show the modal when dom is ready
+        $('#loginModal').modal('show');
+    });
+</script>

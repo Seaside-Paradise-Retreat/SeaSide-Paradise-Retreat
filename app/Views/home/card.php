@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row g-4 ml-2 mb-5 listroom" id="pp">
-    <?php foreach($rooms as $index => $room): ?>
+    <?php foreach($rooms as $index => $room): //trong room này sẽ là đầy đủ thông tin của 1 phòng bao gồm id, name, images_url, convenient?> 
       <div class="col-lg-4 col-md-6 room-item">
         <div class="room-item">
           <div class="position-relative">
             <div id="imageCarousel<?php echo $index; ?>" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
-                <?php $detailRoom = getRoomImages($room['id']) ?>
+                <?php $detailRoom = getRoomImages($room['id']) ?> 
                 <?php $active = true; ?>
                 <?php foreach($detailRoom as $imageIndex => $image): ?>
                   <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
@@ -70,27 +70,12 @@
                   <div class="d-flex justify-content-between mt-4">
                   <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
                   <?php if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :?>
-                    <a href="/booking_room"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
+                    <a href="/booking_room?id_room=<?=$room['id']?>"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
                     <?php else: ?>
                       <a href=""><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
-                      <script>
-                          $(document).ready(function() {
-                            // Sử dụng Ajax để kiểm tra phiên làm việc PHP
-                            $.ajax({
-                              url: 'kiem_tra_phien_lam_viec.php',
-                              type: 'GET',
-                              success: function(response) {
-                                if (response === 'authenticated') {
-                                  // Nếu phiên làm việc PHP tồn tại, bật modal
-                                  $('#loginModel').modal('show');
-                                }
-                              }
-                            });
-                          });
-                    </script>
                   <?php endif ?>
                   </div>
-                  </div>
+          </div>
 
         </div>
       </div>

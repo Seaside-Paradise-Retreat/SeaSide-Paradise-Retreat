@@ -50,14 +50,18 @@
           </div>
         </div>
       </div>
-<script type="text/javascript">
-    $(function(){
-        //instantiate your content as modal
-        $('#loginModal').modal({
-            //modal options here, like keyboard: false for e.g.
-        });
+      <?php
 
-        //show the modal when dom is ready
-        $('#loginModal').modal('show');
-    });
-</script>
+        
+  // Xử lý và kiểm tra các giá trị trong PHP
+  if(empty($_SESSION['email']) || empty($_SESSION['password'])) {
+    //
+    echo '<script type="text/javascript">
+      $(function(){
+          $("#loginModal").modal({
+          });
+          $("#loginModal").modal("show");
+      });
+    </script>';
+  }
+?>

@@ -3,8 +3,8 @@
         <a href="home.php"><img src="public/images/logo_hotel.png" id="logo_nav" alt="logo"  width="50px" height="50px" > </a>
       </div>
       <div class="nav_text"><a class="nav_text_menu" style="<?= urlIs('/') ? 'color: blue;' : '' ?>" href="/">HOME</a></div>
-      <div class="nav_text"><a  class="nav_text_menu" href="">ABOUTS US</a></div>
-      <div class="nav_text"><a  class="nav_text_menu" href="">ROOMS</a></div>
+      <div class="nav_text"><a  class="nav_text_menu" style="<?= urlIs('/about') ? 'color: blue;' : '' ?>" href="/about">ABOUTS US</a></div>
+      <div class="nav_text"><a  class="nav_text_menu" style="<?= urlIs('/room') ? 'color: blue;' : '' ?>" href="/room">ROOMS</a></div>
       <div class="nav_text nav_text_search">
         <input type="text" name="nav_input" id="nav_input_search" style="outline: none; padding-left:20px; " placeholder="Search" >
         <button id="nav_search_icon"><i class="fa-solid fa-magnifying-glass"></i></button>   
@@ -24,7 +24,8 @@
           <img id="nav-avatar" src="public/images/avatar.jpg" alt="avatar" height="150px" width="auto">
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="" style="color: #0052FE;" id="Favorite" >Favorite</a></li>
+          <li><a class="dropdown-item" href="" style="color: #0052FE;" id="favorite" >Favorite</a></li>
+          <li><a class="dropdown-item" href="/booking_history" style="color: #0052FE;" id="booking_history" >Booking history</a></li>
           <li><a class="dropdown-item" href="" style="color: #0052FE;">Account</a></li>
           <li><a class="dropdown-item" href="/logout" style="color: #0052FE;" id="logout">Log out</a></li>
         </ul>

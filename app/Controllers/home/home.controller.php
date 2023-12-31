@@ -87,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
             if ($dataUser['role'] == 'user') {
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
+                $_SESSION['id'] = $dataUser['id'];
                 echo '<script>alert("Login Successful");</script>';
             } else if ($dataUser['role']  == 'admin') {
                 echo '<script>alert("Login Successful");</script>';
@@ -96,12 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
     }
 }
 //Log out
-
-
-
-
 ?>
 <?php
 require "app/views/home/home.view.php";
-
 ?>
+

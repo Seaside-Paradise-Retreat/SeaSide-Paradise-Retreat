@@ -5,6 +5,7 @@ $routes = [
     '/about' => 'app/Controllers/about/about.controller.php',
     '/detail_room' => 'app/Controllers/detail_room/detail_room.controller.php',
     '/booking_room' => 'app/Controllers/booking/booking.controller.php',
+    '/booking_history' => 'app/Controllers/booking/booking_history.controller.php',
     '/logout' => 'app/Controllers/logout/logout.controller.php',
 ];
 

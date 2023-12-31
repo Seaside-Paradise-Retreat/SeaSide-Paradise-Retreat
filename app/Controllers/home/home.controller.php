@@ -88,6 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
                 $_SESSION['id'] = $dataUser['id'];
+                $_SESSION['name'] = $dataUser['name'];
+                $_SESSION['phone'] = $dataUser['phone'];
                 echo '<script>alert("Login Successful");</script>';
             } else if ($dataUser['role']  == 'admin') {
                 echo '<script>alert("Login Successful");</script>';

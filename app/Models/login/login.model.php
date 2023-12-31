@@ -4,7 +4,7 @@ require ("./app/Databases/database.php");
 <?php 
 function getUser($email) {
     global $connection;
-    $query = "SELECT id,password, role FROM users WHERE email = :email";
+    $query = "SELECT id,password,phone,name, role FROM users WHERE email = :email";
     $statement = $connection->prepare($query);
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->execute();

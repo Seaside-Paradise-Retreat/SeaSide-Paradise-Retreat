@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name']) and !empty($_POST['type']) and !empty($_POST['price']) and !empty($_POST['availability']) and !empty($_POST['description']) and !empty($_POST['rating'])) {
 
         // Insert into rooms table
-        $insertRoomStatement = db()->prepare("INSERT INTO rooms (name, type, price, availability, description, rating) VALUES (:name, :type, :price, :availability, :description, :rating)");
+        $insertRoomStatement = $connection->prepare("INSERT INTO rooms (name, type, price, availability, description, rating) VALUES (:name, :type, :price, :availability, :description, :rating)");
         $insertRoomStatement->execute([
             ':name' => $_POST['name'],
             ':type' => $_POST['type'],
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':rating' => $_POST['rating'],
         ]);
 
-        $statement = db()->prepare("SELECT id FROM rooms ORDER BY id DESC LIMIT 1");
+        $statement = $connection->prepare("SELECT id FROM rooms ORDER BY id DESC LIMIT 1");
 
         $statement->execute();
         $newlyInsertedRoom = $statement->fetch(PDO::FETCH_ASSOC);
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $image_urls = array_map('trim', $image_urls);
                     
                     foreach ($image_urls as $image_url) {
-                        $insertDetailStatement = db()->prepare("INSERT INTO detail_room (id_room, image_url) VALUES (:roomId, :image_url)");
+                        $insertDetailStatement = $connection->prepare("INSERT INTO detail_room (id_room, image_url) VALUES (:roomId, :image_url)");
                         $insertDetailStatement->execute([
                             ':roomId' => $roomId,
                             ':image_url' => $image_url
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
 
                 if (!empty($_POST['convenient'])) {
-                    $statement = db() -> prepare("INSERT INTO convenients(id_room, convenient) VALUES (:roomId, :convenient)");
+                    $statement = $connection -> prepare("INSERT INTO convenients(id_room, convenient) VALUES (:roomId, :convenient)");
                     $statement ->execute([
                         ':roomId' => $roomId,
                         ':convenient' => $_POST['convenient']

@@ -5,7 +5,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="" method="post">
+              <form action="" method="post" id="loginModal">
                 <div class="auth-form__header">
                   <h4 class="auth-form__heading">Sign in</h4>
                 </div>
@@ -50,3 +50,18 @@
           </div>
         </div>
       </div>
+      <?php
+
+        
+  // Xử lý và kiểm tra các giá trị trong PHP
+  if(empty($_SESSION['email']) || empty($_SESSION['password'])) {
+    //
+    echo '<script type="text/javascript">
+      $(function(){
+          $("#loginModal").modal({
+          });
+          $("#loginModal").modal("show");
+      });
+    </script>';
+  }
+?>

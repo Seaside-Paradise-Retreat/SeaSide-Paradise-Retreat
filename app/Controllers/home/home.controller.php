@@ -19,7 +19,7 @@ $rooms= getRooms();
     $phone_error = "";
     $terms_error = "";
     $confirmpassword_error = "";
-
+// Register
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST["name"])) {
             $user_error = validateUsername($_POST["name"]);
@@ -66,7 +66,6 @@ $rooms= getRooms();
 
         if (empty($user_error) &&  empty($email_error) && empty($phone_error)) {
             $result = registerUser($userName, $password, $phone, $email, $date, $gender);
-            print_r($result);
             if (!empty($result)) {
                 echo '<script>alert("Register Successful and you need to log in again");</script>';
         }else{
@@ -78,30 +77,33 @@ $rooms= getRooms();
 ?>
 
 <?php
+//Login
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $user = array(
-        'email' => $email,
-        'password' => $password
-    );
-    
-    $dataUser = getUser($user);
+    $dataUser = getUser($email);
     if ($dataUser) {
         if ($password == $dataUser['password']) {
             if ($dataUser['role'] == 'user') {
+                $_SESSION['email'] = $email;
+                $_SESSION['password'] = $password;
+                $_SESSION['id'] = $dataUser['id'];
+                $_SESSION['name'] = $dataUser['name'];
+                $_SESSION['phone'] = $dataUser['phone'];
                 echo '<script>alert("Login Successful");</script>';
-                header("Location: /");
             } else if ($dataUser['role']  == 'admin') {
                 echo '<script>alert("Login Successful");</script>';
                 header("Location: /admin");
             }
         }
+        else{
+            echo '<script>alert("Error");</script>';
+        }
     }
 }
-
+//Log out
 ?>
 <?php
 require "app/views/home/home.view.php";
-
 ?>
+

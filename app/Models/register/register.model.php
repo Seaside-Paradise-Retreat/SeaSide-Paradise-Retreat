@@ -13,7 +13,7 @@ require ("./app/Databases/database.php");
             return "Your name must be at least 4 characters";
         }
         $query = "SELECT name FROM users WHERE name = :username";
-        $statament=db()->prepare($query);
+        $statament=$connection->prepare($query);
         $statament->bindParam(":username", $userName);
         $statament->execute();
         $user=$statament->fetch(PDO::FETCH_ASSOC);
@@ -33,7 +33,7 @@ require ("./app/Databases/database.php");
                 return  "Email must contain '@'";
             }
             $query = "SELECT email FROM users WHERE email = :email";
-            $statament=db()->prepare($query);
+            $statament=$connection->prepare($query);
             $statament->bindParam(":email", $email);
             $statament->execute();
             $email=$statament->fetch(PDO::FETCH_ASSOC);
@@ -46,7 +46,7 @@ require ("./app/Databases/database.php");
         global $connection;
         $phone = preg_replace("/[^0-9]/", "", $phoneNumber);
         $query = "SELECT phone FROM users WHERE phone = :phone";
-        $statament = db() ->prepare($query);
+        $statament = $connection ->prepare($query);
         $statament->bindParam(":phone", $phone);
         $statament->execute();
         $phonedata=$statament->fetch(PDO::FETCH_ASSOC);
@@ -72,7 +72,7 @@ require ("./app/Databases/database.php");
         global $connection;
         try {
             $query = "INSERT INTO users (name, email, password, phone, age, gender) VALUES (:username, :email, :password ,:phone, :age, :gender)";
-            $statament = db()->prepare($query);
+            $statament = $connection->prepare($query);
             $statament->bindParam(":username", $userName, PDO::PARAM_STR);
             $statament->bindParam(":email", $email, PDO::PARAM_STR);
             $statament->bindParam(":password", $password);
@@ -80,7 +80,6 @@ require ("./app/Databases/database.php");
             $statament->bindParam(":age", $date, PDO::PARAM_INT);
             $statament->bindParam(":gender", $gender, PDO::PARAM_STR);
             $result = $statament->execute();
-            return $result;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false;

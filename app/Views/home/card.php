@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row g-4 ml-2 mb-5 listroom" id="pp">
-    <?php foreach($rooms as $index => $room): ?>
+    <?php foreach($rooms as $index => $room): //trong room này sẽ là đầy đủ thông tin của 1 phòng bao gồm id, name, images_url, convenient?> 
       <div class="col-lg-4 col-md-6 room-item">
         <div class="room-item">
           <div class="position-relative">
             <div id="imageCarousel<?php echo $index; ?>" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
-                <?php $detailRoom = getRoomImages($room['id']) ?>
+                <?php $detailRoom = getRoomImages($room['id']) ?> 
                 <?php $active = true; ?>
                 <?php foreach($detailRoom as $imageIndex => $image): ?>
                   <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
@@ -67,14 +67,26 @@
                     <small><i class="fa fa-wifi text-secondary me-2">
                       </i>Wifi</small>
                   </div>
-
                   <div class="d-flex justify-content-between mt-4">
-                    <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
-                    <input type="button" class="btn_card_booking" name="booking"  value="Booking now">
+                  <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
+                  <?php if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :?>
+                    <a href="/booking_room?id_room=<?=$room['id']?>"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
+                    <?php else: ?>
+                      <a href=""><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
+                  <?php endif ?>
                   </div>
-                  </div>
+          </div>
+
         </div>
       </div>
     <?php endforeach; ?>
   </div>
 </div>
+
+<!-- <script>
+  if(!empty($_SESSION['email']) || !empty($_SESSION['password']) ) {
+  $(document).ready(function() {
+      $('#loginModel').modal('show');
+    }
+  );}
+</script> -->

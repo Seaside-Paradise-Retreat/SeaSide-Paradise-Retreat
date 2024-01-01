@@ -85,5 +85,15 @@
     height: 180px;
 }
 #avatar{
-    margin-right: 40px;
+    margin-left: 50px;
 }
+#nav-avatar {
+    height: 50px;
+    border-radius: 50%;
+}
+.navbar .dropdown-menu {
+    display: none;
+  }
+  .navbar .dropdown-toggle::after {
+    display: none;
+  }

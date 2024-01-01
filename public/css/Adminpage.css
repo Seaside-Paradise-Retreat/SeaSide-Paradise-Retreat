@@ -172,7 +172,7 @@ html, body {
 .form_action{
     border:1px solid #9EEAF7;
     width: 500px;
-    height: 800px;
+    height: 1000px;
     flex-shrink: 0;
     padding:20px;
     border-radius: 10px;
@@ -211,6 +211,16 @@ html, body {
     cursor: pointer;
     font-size: 25px;
  
+}
+
+.button_addimage{
+    width: 30%;
+    height:50px;
+    background-color: #3498db;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-left: 20px;
 }
 #button_edit, #button_delete{
     border: none;

@@ -89,10 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
     $dataUser = getUser($user);
     if ($dataUser) {
         if ($password == $dataUser['password']) {
-            if ($dataUser['rule'] == 'user') {
+            if ($dataUser['role'] == 'user') {
                 echo '<script>alert("Login Successful");</script>';
-                header("Location: /user");
-            } else if ($dataUser['rule']  == 'admin') {
+                header("Location: /");
+            } else if ($dataUser['role']  == 'admin') {
                 echo '<script>alert("Login Successful");</script>';
                 header("Location: /admin");
             }

@@ -63,6 +63,15 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
                 <label for="rating">Rating:</label>
                 <input type="number" id="rating" class="form-control" placeholder="Rating" name="rating" min="1" max="5">
             </div>
+            <div class="form-group">
+                <label for="convenient">Convenient:</label>
+                <input type="text" id="convenient" class="form-control" placeholder="Convenient" name="convenient">
+            </div>
+            <div class="form-group">
+                <label for="image_url">Image:</label>
+                <input type="text" id="image_url" class="form-control" placeholder="Image" name="image_url[]">    
+            </div>
+            
             <div class="button">
                 <button type="submit" class="button_create" class="btn btn-primary btn-block">CREATE</button>
             </div>

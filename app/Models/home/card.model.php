@@ -1,6 +1,5 @@
 <?php 
     function getRooms(){
-        global $connection;
         try {
             $query = "SELECT r.id, r.name, r.rating, d.image_url, r.price, r.description, c.convenient
             FROM Rooms r
@@ -10,7 +9,7 @@
             GROUP BY id_room
             ) d ON r.id = d.id_room
             INNER JOIN Convenients c ON r.id = c.id_room;";
-            $statement = $connection->prepare($query);
+            $statement = db()->prepare($query);
             $statement->execute();
             $rooms =  $statement->fetchAll();
             } catch (PDOException $e) {

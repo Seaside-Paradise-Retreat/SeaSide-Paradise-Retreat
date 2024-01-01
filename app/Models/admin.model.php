@@ -81,6 +81,21 @@ function createRoom($name, $type, $price, $availability, $description, $rating){
     }
     header('location: /admin');
 }
+
+function insertIntoDetailRoom($roomId, $imageUrl)
+{
+    try {
+        $statement = db()->prepare("INSERT INTO detail_room (id_room, image_url) VALUES (:roomId, :imageUrl)");
+        $statement->execute([
+            ':roomId' => $roomId,
+            ':imageUrl' => $imageUrl,
+        ]);
+    } catch (PDOException $e) {
+        // Log or handle the exception as needed
+        error_log("Error inserting into detail_room: " . $e->getMessage());
+    }
+    header('location: /admin');
+}
 function updateRoom($name, $type, $price, $availability, $description, $rating, int $id):bool
 {
     

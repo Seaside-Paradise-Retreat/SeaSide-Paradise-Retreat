@@ -67,4 +67,9 @@
     margin-bottom: 10px;
   }
   
-  
+#sum{
+  text-align:right;
+  border: none;
+  text-decoration: none;
+  outline: none;
+}

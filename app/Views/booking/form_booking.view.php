@@ -9,7 +9,7 @@
                 <div class="infor">
                     <div class="input--group row">
                         <label for="" class="label">Email</label>
-                        <input type="text" id="in" name="email" placeholder="Email" class="name-booking" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>">
+                        <input type="text" id="in" name="email" placeholder="Email" class="name-booking" value="<?php echo isset($_SESSION['email']) ? $_SESSION['name'] : ''; ?>">
                     </div>
                     <div class="input--group row">
                         <div class="check-date  col-6 ">
@@ -65,7 +65,7 @@
                     <hr>
                     <div class="div-total-price d-flex justify-content-between align-content-center ">
                         <p class="title-small">Total (USD)</p>
-                        <p class="price" id = "sum">$0</p>
+                        <input type="text" name="total_price" id="sum" readonly>$
                     </div>
                 </div>
             </div>
@@ -106,37 +106,39 @@
             var total = (pricePerNight * diffDays) + cleaningFee + tax;
 
             // Gán kết quả vào phần tử có id = sum
-            sumElement.textContent = total;
+            sumElement.value = total;
             nightsElement.textContent = nights;
             totalroomElement.textContent = totalroom ;
         }
     }
 </script>
-
-<?php  
-//    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password']))
-?>
 <?php 
     function booking($room,$user,$chech_in_date, $check_out_date){
         global $connection;
         $query = "INSERT INTO booking (id_room,id_user,check_in_date, check_out_date)  VALUE(:id_room, :id_user,:check_in_date, :check_out_date)";
         $statement = $connection->prepare($query);
-        $statement->bindParam(':id_room', $room, PDO::PARAM_INT);
-        $statement->bindParam(':id_user', $user, PDO::PARAM_INT);
+        $statement->bindParam(':id_room', $user, PDO::PARAM_INT);
+        $statement->bindParam(':id_user', $room, PDO::PARAM_INT);
         $statement->bindParam(':check_in_date', $chech_in_date);
         $statement->bindParam(':check_out_date', $check_out_date);
         $statement->execute();
-        $booking = $statement->fetch(PDO::FETCH_ASSOC);
-        return $booking;
+        $booking = $statement->fetch(PDO::FETCH_ASSOC);     
+        $id_booking = $connection->lastInsertId();
+        return $id_booking;
     }
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['check_in']) && !empty($_POST['check_out'])) {
             $date_check_in = $_POST['check_in'];
             $date_check_out = $_POST['check_out'];
             $user = $_SESSION['id'];
+            $date = date('Y-m-d H:i:s');
+            $total = $_POST['total_price'];
             $booking = booking($roomId,$user,$date_check_in,$date_check_out);
+            echo "<script>alert('" . "Booking successful" . "');</script>"; 
+            echo "<script>console.log(". $booking. ");</script>";
             // header("Location:/");
-            echo "<script>alert('" . "Booking successful" . "');</script>";  
-            header("Location: /");
+            $bill = bill($roomId,$date,$total);
+            $booking_history = add_room_to_history($booking,$user,$bill); 
+            // header("Location: /");
             exit();
         }else{
             echo "<script>alert('" . "Booking Unsuccessful" . "');</script>"; 

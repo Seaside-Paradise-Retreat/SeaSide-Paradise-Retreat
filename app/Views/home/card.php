@@ -70,7 +70,7 @@
                   <div class="d-flex justify-content-between mt-4">
                   <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
                   <?php if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :?>
-                    <a href="/booking_room?id_room=<?=$room['id']?>"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
+                    <a href="/booking_room?id_room=<?php echo $room['id']; ?>"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
                     <?php else: ?>
                       <a href=""><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
                   <?php endif ?>
@@ -82,11 +82,3 @@
     <?php endforeach; ?>
   </div>
 </div>
-
-<!-- <script>
-  if(!empty($_SESSION['email']) || !empty($_SESSION['password']) ) {
-  $(document).ready(function() {
-      $('#loginModel').modal('show');
-    }
-  );}
-</script> -->

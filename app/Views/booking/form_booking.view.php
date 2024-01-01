@@ -8,8 +8,8 @@
             <div class="left-content col-lg-6 col-12">
                 <div class="infor">
                     <div class="input--group row">
-                        <label for="" class="label">Email</label>
-                        <input type="text" id="in" name="email" placeholder="Email" class="name-booking" value="<?php echo isset($_SESSION['email']) ? $_SESSION['name'] : ''; ?>">
+                        <label for="" class="label">Name</label>
+                        <input type="text" id="in" name="name" placeholder="name" class="name-booking" value="<?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''; ?>">
                     </div>
                     <div class="input--group row">
                         <div class="check-date  col-6 ">

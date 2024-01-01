@@ -11,7 +11,6 @@ function getUser($email) {
     $user = $statement->fetch(PDO::FETCH_ASSOC);
     print_r($user);
     return $user;
-
 }
 // $email = "example@example.com";
 // $user = getUser($email);

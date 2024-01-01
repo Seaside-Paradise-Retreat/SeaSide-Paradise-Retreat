@@ -1,9 +1,8 @@
 <?php session_start()?>
 <?php
-    require_once ("app/Models/detail/detail.model.php");
-    require_once ("app/Models/home/detailroom.model.php");
     require ("app/Models/home/card.model.php");
     require ("app/Models/home/detailroom.model.php");
+    require ("app/Models/detail/detail.model.php");
     require ("app/Models/register/register.model.php");
     require ("app/Models/login/login.model.php");
     if (isset($_GET['id_room'])) {
@@ -13,7 +12,6 @@
         // $room = $rooms[$roomId];
     }
 ?>
-
 <?php
     $userName = "";
     $phone = "";    

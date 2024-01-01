@@ -5,6 +5,13 @@ require ("./app/Models/home/detailroom.model.php");
 require ("./app/Models/register/register.model.php");
 require ("./app/Models/login/login.model.php");
 $rooms= getRooms();
+
+echo "<script>console.log('" .count($rooms). "');</script>";
+$rooms = getRooms();
+echo "Rooms: " . count($rooms) . " rows<br>";
+echo "<pre>";
+print_r($rooms);
+echo "</pre>";
 ?>
 <?php
     $userName = "";
@@ -69,7 +76,7 @@ $rooms= getRooms();
             if (!empty($result)) {
                 echo '<script>alert("Register Successful and you need to log in again");</script>';
         }else{
-            echo '<script>alert("Error");</script>';
+            echo '<script>alert("Register Error");</script>';
         }}
     }
     

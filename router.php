@@ -1,7 +1,7 @@
 <?php
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $routes = [
-    '/' => 'app/Controllers/home/index.controller.php',
+    '/' => 'app/Controllers/home/home.controller.php',
     '/about' => 'Controllers/about/about.controller.php',
     '/contact' => 'Controllers/contact/contact.controller.php',
     '/admin' => 'app/Controllers/admin/admin.controller.php',

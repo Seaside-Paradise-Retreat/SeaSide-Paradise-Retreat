@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="../../../public/css/detail_room.css">
-
+<link rel="stylesheet" href="public/css/detail_room.css">
 <!-- Hiển thị hình ảnh tương ứng với id phòng -->
 <div class="row details_room">
 <div class="picture"> 

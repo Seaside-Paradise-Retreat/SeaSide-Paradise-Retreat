@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="public/css/booking_history.css">
-
 <div class="body--content container">
     <div class="title">     
         <h3 id="title-booking-history-room">BOOKING ROOM</h3>
@@ -7,8 +6,6 @@
 </div>
 <?php     
     foreach ($booked_rooms_information as $room) :
-        echo "<script>console.log(" . json_encode($booked_rooms_information) . ");</script>";
-        echo "<script>console.log(" . json_encode($room) . ");</script>";
 ?>
 <div class="card-room-booking-history row container">
     <div class="col-md-2"></div>

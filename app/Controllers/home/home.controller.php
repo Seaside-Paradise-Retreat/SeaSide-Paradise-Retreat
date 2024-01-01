@@ -96,6 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
                 header("Location: /admin");
             }
         }
+        else{
+            echo '<script>alert("Error");</script>';
+        }
     }
 }
 //Log out

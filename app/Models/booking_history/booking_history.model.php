@@ -1,6 +1,5 @@
 <?php require ("./app/Databases/database.php"); ?>
 <?php 
-
 function add_room_to_history($id_booking,$id_user,$id_bill){
     global $connection;
     $query = "INSERT INTO booking_history  (id_booking, id_user, id_bill)  VALUE (:id_booking,:id_user,:id_bill) ";
@@ -12,9 +11,6 @@ function add_room_to_history($id_booking,$id_user,$id_bill){
     $results = $statement->fetchAll();
     return $results;
 }
-
-
-
 function get_user_booking_info($user_id)
 {
     global $connection;
@@ -29,9 +25,6 @@ function get_user_booking_info($user_id)
     $statement->bindParam(':user_id', $user_id);
     $statement->execute();
     $results = $statement->fetchAll();
-
     return $results;
 }
-?>
-
 ?>

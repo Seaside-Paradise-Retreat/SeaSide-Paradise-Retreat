@@ -8,8 +8,6 @@ function add_room_to_history($id_booking,$id_user,$id_bill){
     $statement->bindParam(':id_user', $id_user);
     $statement->bindParam(':id_bill', $id_bill);
     $statement->execute();
-    $results = $statement->fetchAll();
-    return $results;
 }
 function get_user_booking_info($user_id)
 {
@@ -26,5 +24,11 @@ function get_user_booking_info($user_id)
     $statement->execute();
     $results = $statement->fetchAll();
     return $results;
+}
+function cancel_booking($id_booking_history){
+    global $connection;
+    $statement = $connection->prepare("delete from booking_history where id = :id");
+    $statement->bindParam(':id',$id_booking_history);
+    $statement->execute();
 }
 ?>

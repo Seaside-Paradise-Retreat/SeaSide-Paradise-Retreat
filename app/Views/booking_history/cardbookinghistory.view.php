@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="public/css/booking_history.css">
 <div class="body--content container">
     <div class="title">     
-        <h3 id="title-booking-history-room">BOOKING ROOM</h3>
+        <h3 id="title-booking-history-room">BOOKING HISTORY ROOM</h3>
     </div>
 </div>
 <?php     
@@ -35,7 +35,8 @@
         </div>
         <div class="row">
             <h4 class="col-md-6" style="color: #3568A4;">Total: <?php echo $room['total_price'] ?></h4>
-            <a class="col-md-6" href=""><input type="button" class="btn_card_cancel" name="booking"  value="cancel"></a>
+            <!-- <input type="submit" class="btn_card_cancel btn-primary" data-bs-toggle="modal" data-bs-target="#cancelmodal" name="cancel" value="Cancel"> -->
+            <a href="/cancel?id=?<?php echo $room['room_id'] ?>"><input type="submit" class="btn_card_cancel btn-primary" data-bs-toggle="modal" data-bs-target="#cancelmodal" name="cancel" value="Cancel"></a>
         </div>
         <p id="booking_date">Book date: <?php echo $room['date']  ?></p>
     </div> 

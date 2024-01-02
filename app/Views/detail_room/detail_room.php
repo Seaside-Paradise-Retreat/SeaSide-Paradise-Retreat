@@ -132,6 +132,11 @@
         </div>
     <?php } ?>
     <div class="col-lg-3 col-12" id="booking-btn">
-            <a href="#" id="book1"><button id="booking_now" class="button_booking">BOOKING NOW</button></a>
+            <!-- <a href="#" id="book1"><button id="booking_now" class="button_booking">BOOKING NOW</button></a> -->
+            <?php if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :?>
+                    <a href="/booking_room?id_room=<?php echo $rooms['id']; ?>"><input id="booking_now" type="button" class="button_booking" name="booking"  value="Booking now"></a>
+                    <?php else: ?>
+                      <a href=""><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
+            <?php endif ?>
     </div>
 </div>

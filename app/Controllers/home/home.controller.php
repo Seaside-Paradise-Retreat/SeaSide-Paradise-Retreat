@@ -52,7 +52,8 @@ $rooms= getRooms();
         }
         if(isset($_POST["password"])){
             $password =$_POST["password"];
-            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+            // $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+            $Encodepassword = md5($password);
         }
         if(isset($_POST["confirmpassword"])){
             $confirmpassword = htmlspecialchars($_POST["confirmpassword"]);
@@ -60,12 +61,12 @@ $rooms= getRooms();
                 $confirmpassword_error = "Password incorrect";
             }
         }
-        // if(!isset($_POST["checkboxaccep"])){
-        //     $terms_error = "You must accept the Terms of Service";
-        // }
+        if(!isset($_POST["checkboxaccep"])){
+            $terms_error = "You must accept the Terms of Service";
+        }
 
-        if (empty($user_error) &&  empty($email_error) && empty($phone_error)) {
-            $result = registerUser($userName, $password, $phone, $email, $date, $gender);
+        if (empty($user_error) &&  empty($email_error) && empty($phone_error) && isset($_POST["checkboxaccep"])) {
+            $result = registerUser($userName, $Encodepassword, $phone, $email, $date, $gender);
             if (!empty($result)) {
                 echo '<script>alert("Register Successful and you need to log in again");</script>';
         }else{
@@ -83,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
     $password = $_POST['password'];
     $dataUser = getUser($email);
     if ($dataUser) {
-        if ($password == $dataUser['password']) {
+        if (md5($password) == $dataUser['password']) {
             if ($dataUser['role'] == 'user') {
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;

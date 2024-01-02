@@ -1,8 +1,9 @@
 <?php
 require(__DIR__."../../Databases/database.php");
 function createNewUser($name, $password, $phone, $email, $age, $gender){
+    global $connection;
     try{
-        $stt = db() -> prepare("Insert into users(name, password, phone, email, age, gender) values(:name, :password, :phone, :email, :age, :gender)");
+        $stt = $connection -> prepare("Insert into users(name, password, phone, email, age, gender) values(:name, :password, :phone, :email, :age, :gender)");
         $stt -> bindParam(':name',$name);
         $stt -> bindParam(':password', $password);
         $stt -> bindParam(':phone', $phone);
@@ -22,8 +23,9 @@ function createNewUser($name, $password, $phone, $email, $age, $gender){
 
 function updateUser($name, $password, $phone, $email, $age, $gender, int $id):bool
 {
+global $connection;
     
-    $statement = db()->prepare("update  users set name = :name, password = :password, phone = :phone, email = :email, age = :age, gender = :gender where id = :id");
+    $statement = $connection->prepare("update  users set name = :name, password = :password, phone = :phone, email = :email, age = :age, gender = :gender where id = :id");
     $statement->execute([
         ':name' => $name,
         ':password' => $password,
@@ -40,13 +42,17 @@ function updateUser($name, $password, $phone, $email, $age, $gender, int $id):bo
 
 function deleteUser(int $id) : bool
 {
-    $statement = db()->prepare("delete from users where id = :id");
+    global $connection;
+
+    $statement = $connection->prepare("delete from users where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
 function selectAllUser(){
+    global $connection;
+
     try{
-        $stt = db() -> query("Select * from users");
+        $stt = $connection -> query("Select * from users");
         $stt ->execute();
         return $stt -> fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e){
@@ -54,8 +60,10 @@ function selectAllUser(){
     }
 }
 function selectRoom(){
+    global $connection;
+
     try{
-        $stt = db() -> query("Select * from rooms");
+        $stt = $connection -> query("Select * from rooms");
         $stt -> execute();
         return $stt ->fetchAll(PDO::FETCH_ASSOC);
     } catch(PDOException $e){
@@ -64,8 +72,10 @@ function selectRoom(){
 }
 
 function createRoom($name, $type, $price, $availability, $description, $rating){
+    global $connection;
+
     try{
-        $stt = db() -> prepare("Insert into rooms(name, type, price, availability, description, rating) values(:name, :type, :price, :availability, :description, :rating)");
+        $stt = $connection -> prepare("Insert into rooms(name, type, price, availability, description, rating) values(:name, :type, :price, :availability, :description, :rating)");
         $stt -> bindParam(':name',$name);
         $stt -> bindParam(':type', $type);
         $stt -> bindParam(':price', $price);
@@ -83,8 +93,9 @@ function createRoom($name, $type, $price, $availability, $description, $rating){
 }
 function updateRoom($name, $type, $price, $availability, $description, $rating, int $id):bool
 {
-    
-    $statement = db()->prepare("update rooms set name = :name, type = :type, price = :price, availability = :availability, description = :description, rating = :rating where id = :id");
+    global $connection;
+
+    $statement = $connection->prepare("update rooms set name = :name, type = :type, price = :price, availability = :availability, description = :description, rating = :rating where id = :id");
     $statement->execute([
         ':name' => $name,
         ':type' => $type,
@@ -99,13 +110,16 @@ function updateRoom($name, $type, $price, $availability, $description, $rating, 
     return $statement->rowCount() > 0;
 }
 function deleteRoom(int $id) : bool
-{
-    $statement = db()->prepare("delete from rooms where id = :id");
+{   
+    global $connection;
+
+    $statement = $connection->prepare("delete from rooms where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
 function findRoomById($roomId) {
     global $rooms;
+    
 
     foreach ($rooms as $room) {
         if ($room['id'] == $roomId) {
@@ -125,8 +139,10 @@ function findUserById($userId){
     return null;
 }
 function selectBookingRoom(){
+    global $connection;
+
     try{
-        $stt = db() -> prepare("Select * from booking");
+        $stt = $connection -> prepare("Select * from booking");
         $stt -> execute();
         return $stt -> fetchAll(PDO::FETCH_ASSOC);
 

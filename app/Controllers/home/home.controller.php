@@ -42,12 +42,12 @@ $rooms= getRooms();
                 $_SESSION['phone'] = $phone;
             }
         }
-        if(isset($_POST["date"])){
+        if(!empty($_POST["date"])){
             $date =$_POST["date"];
             $age = getAge($date);
             $_SESSION['age'] = $age;
         }
-        if(isset($_POST["gender"])){
+        if(!empty($_POST["gender"])){
             $gender =$_POST["gender"];
         }
         if(isset($_POST["password"])){
@@ -69,6 +69,7 @@ $rooms= getRooms();
             $result = registerUser($userName, $Encodepassword, $phone, $email, $date, $gender);
             if (!empty($result)) {
                 echo '<script>alert("Register Successful and you need to log in again");</script>';
+                $registerSuccessfull = true;
         }else{
             echo '<script>alert("Register Error");</script>';
         }}
@@ -79,12 +80,13 @@ $rooms= getRooms();
 
 <?php
 //Login
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $dataUser = getUser($email);
     if ($dataUser) {
-        if (md5($password) == $dataUser['password']) {
+        if (($password) == $dataUser['password']) {
             if ($dataUser['role'] == 'user') {
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;

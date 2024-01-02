@@ -18,10 +18,11 @@ function get_user_booking_info($user_id)
                 INNER JOIN booking ON booking_history.id_booking = booking.id
                 INNER JOIN bill ON booking_history.id_bill = bill.id
                 INNER JOIN rooms ON booking.id_room = rooms.id
-                WHERE users.id = :user_id";
+                WHERE users.id = :user_id
+                GROUP BY rooms.id";
     $statement = $connection->prepare($query);
     $statement->bindParam(':user_id', $user_id);
-    $statement->execute();
+    $statement->execute();  
     $results = $statement->fetchAll();
     return $results;
 }

@@ -6,6 +6,10 @@
 </div>
 <?php     
     foreach ($booked_rooms_information as $room) :
+        // echo "Rooms: " . count($room) . " rows<br>";
+        // echo "<pre>";
+        // print_r($room);
+        // echo "</pre>";
 ?>
 <div class="card-room-booking-history row container">
     <div class="col-md-2"></div>

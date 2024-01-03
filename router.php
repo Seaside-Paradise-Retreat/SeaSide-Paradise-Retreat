@@ -19,6 +19,7 @@ $routes = [
     '/booking_room' => 'app/Controllers/booking/booking.controller.php',
     '/booking_history' => 'app/Controllers/booking/booking_history.controller.php',
     '/cancel' => 'app/Controllers/booking/cancel.controller.php',
+    '/edit' => 'app/Controllers/booking/cancel.controller.php',
     '/logout' => 'app/Controllers/logout/logout.controller.php',
 ];
 

@@ -4,9 +4,9 @@
         <h3 id="title-booking-history-room">BOOKING HISTORY ROOM</h3>
     </div>
 </div>
-<?php     
-    foreach ($booked_rooms_information as $room) :
-?>
+
+<?php foreach ($booked_rooms_information as $room) :?>
+<?php if($room['available']) :?>
 <div class="card-room-booking-history row container">
     <div class="col-md-2"></div>
     <?php 
@@ -35,11 +35,13 @@
         </div>
         <div class="row">
             <h4 class="col-md-6" style="color: #3568A4;">Total: <?php echo $room['total_price'] ?></h4>
-            <input type="submit" class="btn_card_cancel btn-primary" data-bs-toggle="modal" data-bs-target="#cancelmodal" name="cancel" value="Cancel">
-            <?php echo "<script>console.log (" . $room['id'] . ")</script>"?>
-            <a href="/cancel?id=<?php echo $room['id'] ?>"><input type="submit" onclick="cancel()" class="btn_card_cancel btn-primary"  value="Cancel"></a>
         </div>
+        <div class="">
+        <a href="/edit?id=<?php echo $room['id'] ?>"><input type="submit" class="btn_card_cancel btn-primary" value="Edit"></a>
+            <a href="/cancel?id=<?php echo $room['id'] ?>"><input type="submit" onclick="cancel()" class="btn_card_cancel btn-primary" value="Cancel"></a>
+        </div>      
         <p id="booking_date">Book date: <?php echo $room['date']  ?></p>
     </div> 
 </div>
+<?php endif?>
 <?php endforeach ?>

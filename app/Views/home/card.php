@@ -34,7 +34,7 @@
           <div class="mt-2">
                   <div class="d-flex justify-content-between  mb-1">
                     <h5 class="mb-0"><?php echo $room['name']?></h5>
-                    <a href="/?id_room=<?php echo $room['id']; ?>"><i class="fas fa-heart" id="like_favourite" ></i></a>
+                    <a href="/favorite#id_room=<?php echo $room['id']; ?>"><i class="fas fa-heart" id="like_favourite <?php echo $room['id']; ?> " ></i></a>
                     <div id="ratingContainer">
                     <i class="fa-solid fa-star" style="color: #3A8CED;"></i><?php echo $room['rating']?>
                     </div>
@@ -51,7 +51,10 @@
                   </div>
                   <div class="d-flex justify-content-between mt-4">
                   <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
-                  <?php if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :?>
+                  <?php
+                    // if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :
+                      if(!empty($_SESSION['isLogin']) && $_SESSION['isLogin']):
+                    ?>
                     <a href="/booking_room?id_room=<?php echo $room['id']; ?>"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
                     <?php else: ?>
                       <a href=""><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>

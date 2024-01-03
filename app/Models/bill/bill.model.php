@@ -10,7 +10,6 @@ require ("./app/Databases/database.php");
         $statement->bindValue(":date", date("Y-m-d H:i:s"));
         $statement->bindParam(':total_price',$total_price);
         $statement->execute();
-        $bill = $statement->fetch(PDO::FETCH_ASSOC);
         $id_bill = $connection->lastInsertId();
         return $id_bill;
     }

@@ -2,7 +2,7 @@
     session_start();
 ?>
 <?php 
-    if (!empty($_SESSION['email']) && !empty($_SESSION['password'])) {
+    if ($_SESSION['isLogin']) {
         // Xoá các biến session
         session_unset();    
         session_destroy();

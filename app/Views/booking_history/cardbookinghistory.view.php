@@ -6,10 +6,6 @@
 </div>
 <?php     
     foreach ($booked_rooms_information as $room) :
-        // echo "Rooms: " . count($room) . " rows<br>";
-        // echo "<pre>";
-        // print_r($room);
-        // echo "</pre>";
 ?>
 <div class="card-room-booking-history row container">
     <div class="col-md-2"></div>
@@ -39,8 +35,9 @@
         </div>
         <div class="row">
             <h4 class="col-md-6" style="color: #3568A4;">Total: <?php echo $room['total_price'] ?></h4>
-            <!-- <input type="submit" class="btn_card_cancel btn-primary" data-bs-toggle="modal" data-bs-target="#cancelmodal" name="cancel" value="Cancel"> -->
-            <a href="/cancel?id=?<?php echo $room['room_id'] ?>"><input type="submit" class="btn_card_cancel btn-primary" data-bs-toggle="modal" data-bs-target="#cancelmodal" name="cancel" value="Cancel"></a>
+            <input type="submit" class="btn_card_cancel btn-primary" data-bs-toggle="modal" data-bs-target="#cancelmodal" name="cancel" value="Cancel">
+            <?php echo "<script>console.log (" . $room['id'] . ")</script>"?>
+            <a href="/cancel?id=<?php echo $room['id'] ?>"><input type="submit" onclick="cancel()" class="btn_card_cancel btn-primary"  value="Cancel"></a>
         </div>
         <p id="booking_date">Book date: <?php echo $room['date']  ?></p>
     </div> 

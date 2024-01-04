@@ -34,9 +34,13 @@
           <div class="mt-2">
                   <div class="d-flex justify-content-between  mb-1">
                     <h5 class="mb-0"><?php echo $room['name']?></h5>
-                    <a href="/favorite#id_room=<?php echo $room['id']; ?>"><i class="fas fa-heart" id="like_favourite <?php echo $room['id']; ?> " ></i></a>
                     <div id="ratingContainer">
-                    <i class="fa-solid fa-star" style="color: #3A8CED;"></i><?php echo $room['rating']?>
+                    <a href="/favorite?id_room=<?php echo $room['id']; ?>">
+                        <button  class="favorite-button" onclick="toggleFavorite(this)" >
+                          <i class="fas fa-heart"  id="like_room<?php echo $room['id']?>" ></i>
+                        </button>
+                    </a>
+                      <i class="fa-solid fa-star" style="color: #3A8CED;"></i><?php echo $room['rating']?>
                     </div>
                   </div>
                   <p class="convenient"><?php echo $room['convenient']?></p>
@@ -66,4 +70,10 @@
       </div>
     <?php endforeach; ?>
   </div>
+<script>
+  function toggleFavorite(button) {
+  button.classList.toggle('favorite');
+}
+</script>
 </div>
+

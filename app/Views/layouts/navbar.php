@@ -26,7 +26,7 @@
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="" style="color: #0052FE;" id="favorite" >Favorite</a></li>
           <li><a class="dropdown-item" href="/booking_history" style="color: #0052FE;" id="booking_history" >Booking history</a></li>
-          <li><a class="dropdown-item" href="" style="color: #0052FE;">Account</a></li>
+          <li><a class="dropdown-item" href="/account" style="color: #0052FE;">Account</a></li>
           <li><a class="dropdown-item" href="/logout" style="color: #0052FE;" id="logout">Log out</a></li>
         </ul>
       </div>

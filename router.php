@@ -22,6 +22,9 @@ $routes = [
     '/cancel' => 'app/Controllers/booking/cancel.controller.php',
     '/edit' => 'app/Controllers/booking/cancel.controller.php',
     '/logout' => 'app/Controllers/logout/logout.controller.php',
+    '/account' => 'app/Controllers/account/account.controller.php',
+    '/profile' => 'app/Controllers/profile/profile.controller.php',
+    '/profile/edit' => 'app/Controllers/profile/edit.profile.controller.php',
 ];
 
 if (array_key_exists($uri, $routes)) {

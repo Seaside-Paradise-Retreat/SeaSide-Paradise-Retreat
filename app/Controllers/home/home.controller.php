@@ -94,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
                 $_SESSION['password'] = $password;
                 $_SESSION['id'] = $dataUser['id'];
                 $_SESSION['name'] = $dataUser['name'];
+                $_SESSION['avatar'] = $dataUser['avatar'];
                 $_SESSION['phone'] = $dataUser['phone'];
                 $_SESSION['isLogin'] = true;    
                 echo '<script>alert("Login Successful");</script>';
@@ -122,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
 // }
 
 ?>
+
 <?php
 require "app/views/home/home.view.php";
 ?>
-

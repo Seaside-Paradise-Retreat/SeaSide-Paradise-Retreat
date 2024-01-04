@@ -18,10 +18,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['name
 // </script>";
 ?>
 
- 
 <?php
-require 'app/Views/layouts/navbar.php';
 require 'app/Views/layouts/header.php';
+require 'app/Views/layouts/navbar.php';
 ?>
 <link rel="stylesheet" href="public/css/profile.css">
 <!-- body -->

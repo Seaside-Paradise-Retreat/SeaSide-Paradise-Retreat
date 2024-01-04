@@ -25,6 +25,7 @@ $routes = [
     '/account' => 'app/Controllers/account/account.controller.php',
     '/account/change_password' => 'app/Controllers/account/change_password.controller.php',
     '/profile' => 'app/Controllers/profile/profile.controller.php',
+    '/favorite' => 'app/Controllers/favorite/favorite.controller.php',
     '/profile/edit' => 'app/Controllers/profile/edit.profile.controller.php',
 ];
 

@@ -4,9 +4,9 @@
         <h3 id="title-booking-history-room">BOOKING HISTORY ROOM</h3>
     </div>
 </div>
-<?php     
-    foreach ($booked_rooms_information as $room) :
-?>
+
+<?php foreach ($booked_rooms_information as $room) :?>
+<?php if($room['availability']) :?>
 <div class="card-room-booking-history row container">
     <div class="col-md-2"></div>
     <?php 
@@ -33,12 +33,49 @@
             <small><i class="fa fa-wifi text-secondary me-2">
                 </i>Wifi</small>
         </div>
-        <div class="row">
+        <div>
             <h4 class="col-md-6" style="color: #3568A4;">Total: <?php echo $room['total_price'] ?></h4>
-            <!-- <input type="submit" class="btn_card_cancel btn-primary" data-bs-toggle="modal" data-bs-target="#cancelmodal" name="cancel" value="Cancel"> -->
-            <a href="/cancel?id=?<?php echo $room['room_id'] ?>"><input type="submit" class="btn_card_cancel btn-primary" data-bs-toggle="modal" data-bs-target="#cancelmodal" name="cancel" value="Cancel"></a>
-        </div>
+            <input type="submit" onclick="submitContactForm()" id="requestButton" class="btn_card_cancel btn-primary" value="Request Update booking">
+        </div>    
         <p id="booking_date">Book date: <?php echo $room['date']  ?></p>
     </div> 
 </div>
+<?php endif?>
 <?php endforeach ?>
+
+
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function(){
+       emailjs.init("Go7__wfcQuNzv_yXH"); //use your USER ID
+    })();
+
+    function submitContactForm() { 
+        var name = '<?php echo $_SESSION["name"]; ?>';
+        var emailAddress = '<?php echo $_SESSION["email"]; ?>';
+        var phone = '<?php echo $_SESSION["phone"]; ?>';
+        var nameroom = '<?php echo $room["room_name"]; ?>';
+        var date = '<?php echo $room["date"]; ?>';
+        if (name == "" || emailAddress == "" || phone == "") {
+            alert("Please re-enter");
+            return;
+        }
+      
+        var templateParams = {
+            fullName: name,
+            phoneNumber: phone,
+            email: emailAddress,
+            name_room : nameroom,
+            datebooked : date
+        };
+
+        emailjs.send('service_ub3qy08', 'template_cq8m0w3', templateParams) //use your Service ID and Template ID
+            .then(function(response) {
+                alert("Email has been sent");
+                btn.style.backgroundColor = "gray"; // Restore the default background color
+                btn.innerHTML = "The request is being processed"
+            }, function(error) {
+                alert("Email has not been sent");
+            });
+    }
+</script>

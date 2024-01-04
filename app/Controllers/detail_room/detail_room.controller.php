@@ -2,17 +2,17 @@
 <?php
     require ("app/Models/home/card.model.php");
     require ("app/Models/home/detailroom.model.php");
+    require ("app/Models/detail/detail.model.php");
     require ("app/Models/register/register.model.php");
     require ("app/Models/login/login.model.php");
     require "app/Models/admin.model.php";
     if (isset($_GET['id_room'])) {
         $roomId = $_GET['id_room'];
         $images = getRoomImages($roomId);
-        $rooms = getRooms();
-        $room = findRoomById($roomId);
+        $rooms = getRoomId($roomId);
+        // $room = $rooms[$roomId];
     }
 ?>
-
 <?php
     $userName = "";
     $phone = "";    

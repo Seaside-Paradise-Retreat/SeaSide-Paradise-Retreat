@@ -2,9 +2,7 @@
     session_start();
 ?>
 <?php 
-    // echo "<script>console.log(" .$_SESSION['email'].  ")</script>";
-    // echo "<script>console.log(" .$_SESSION['password']. ")</script>";
-    if (true) {
+    if ($_SESSION['isLogin']) {
         // Xoá các biến session
         session_unset();    
         session_destroy();

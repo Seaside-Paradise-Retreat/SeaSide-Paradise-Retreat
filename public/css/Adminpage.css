@@ -1,14 +1,9 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;  
-    
-   
+    font-family: 'Roboto', sans-serif;   
 }
 
-html, body {
-    height: 100%;
-}
 
 /* Navbar styles */
 .navbar {
@@ -242,7 +237,13 @@ html, body {
 
 .form_title{
     display: flex;
-    justify-content: space-between;
+    width: 228px;
+    height: 79px;
+    font-size: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    color: var(--WHITE, #FFF);
 }
 .form_title i{
     font-size: 30px;

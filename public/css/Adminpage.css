@@ -58,6 +58,7 @@ html, body {
     flex-direction: column;
     background: #3568A4;
     align-items: center;
+    border-radius: 5px;
     
 }
 .item{
@@ -84,6 +85,7 @@ html, body {
     max-width: 100%;
     margin: 20px;
     display:none;
+    overflow:auto;
     
 }
 
@@ -105,8 +107,9 @@ html, body {
 }
 .table {
     width: 100%;
-    margin: 20px;
+    margin: 10px;
     border-collapse: collapse;
+    font-size: 20px;
     
 }
 .table th, .table td {
@@ -128,6 +131,7 @@ html, body {
     margin-top: 50px;
     line-height: 50px;
 }
+
 .ItemBooking{
     display: flex;
     justify-content: center;
@@ -172,7 +176,6 @@ html, body {
 .form_action{
     border:1px solid #9EEAF7;
     width: 500px;
-    height: 1000px;
     flex-shrink: 0;
     padding:20px;
     border-radius: 10px;
@@ -227,6 +230,14 @@ html, body {
     outline: none;
     background: none;
     font-size: 25px;
+}
+
+#button_edit{
+    color: #3498db;
+
+}
+#button_delete{
+    color:red;
 }
 
 .form_title{

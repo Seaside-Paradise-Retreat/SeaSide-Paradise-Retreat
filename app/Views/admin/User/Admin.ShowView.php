@@ -24,24 +24,24 @@
             <div class="item">
                 <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
                     <i class="fas fa-user" style="padding-right:30px"></i>
-                    <h5 class="title">User</h5>
+                    <h5 class="titles">User</h5>
                 </button>
             </div>
             <div class="item">
                 <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
                     <i class="fas fa-list-ul" style="padding-right:30px"></i>
-                    <h5 class="title">Room</h5>
+                    <h5 class="titles">Room</h5>
                 </button>
             </div>
             <div class="item">
                 <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
                     <i class="fas fa-list-ul" style="padding-right:30px"></i>
-                    <h5 class="title">Booking</h5>
+                    <h5 class="titles">Booking</h5>
                 </button>
             </div>
         </div>
         <div id="bookingTab" class="tabcontent active">
-            
+
             <h1 class="title" style="text-align: center; margin-bottom:50px">BOOKING</h1>
             <div class="ItemBooking">
                 <div class="search">
@@ -49,7 +49,6 @@
                     <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
                 </div>
             </div>
-            
             <table class="table">
                 <thead>
                     <tr>
@@ -60,6 +59,7 @@
                         <th>Check in</th>
                         <th>Check out</th>
                         <th>Price</th>
+                        <th>Availability</th>
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -120,7 +120,8 @@
                                 </td>
                                 <td><?php echo $book['check_in_date']; ?></td>
                                 <td><?php echo $book['check_out_date']; ?></td>
-                                <td> <?php
+                                <td> 
+                                    <?php
 
                                         $roomId = $book['id_room'];
                                         // Find the room in the $rooms array
@@ -133,34 +134,38 @@
                                             echo "Room not found";
                                         }
 
-                                        ?></td>
+                                    ?>
+                                </td>
+                                <td><?php echo $book['availability']; ?></td>
 
                                 <td>
-                                    <button type="button" id="button_edit"><i class="fas fa-cog"></i></button>
-                                    <button type="button" id="button_delete"><i class="fas fa-trash"></i></button>
+                                    <a href="/admin/Booking/edit?id=<?= $book['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
+                                    <a href="/admin/Booking/delete?id=<?= $book['id'] ?>"></a><button type="button" id="button_delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
-                    <?php
+                        <?php
+                            }
+                        } else {
+                            echo "<p>No booking found. </p>";
                         }
-                    } else {
-                        echo "<p>No booking found. </p>";
-                    }
-                    ?>
+                        ?>
 
                 </tbody>
             </table>
         </div>
+            
+        
         <div id="roomTab" class="tabcontent">
-           
+
             <h1 class="title" style="text-align: center; margin-bottom:50px">ROOM</h1>
-            <div class="ItemRoom"> 
+            <div class="ItemRoom">
                 <div class="search">
                     <input type="text" id="search" name="input_search" placeholder="Search">
                     <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
                 </div>
                 <a href="/admin/Room/create"><button type="button" id="createRoom">Create +</button></a>
             </div>
-            
+
             <br>
             <table class="table">
                 <thead>
@@ -192,9 +197,10 @@
                                 <td><?php echo $room['availability']; ?></td>
                                 <td><?php echo $room['description']; ?></td>
                                 <td><?php echo $room['rating']; ?></td>
+                             
                                 <td>
-                                    <a href="/admin/Room/edit?id=<?=$room['id']?>"><button type="button" id="button_edit"><i class="fas fa-cog"></i></button></a>
-                                    <a href="/admin/Room/delete?id=<?=$room['id']?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
+                                    <a href="/admin/Room/edit?id=<?= $room['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
+                                    <a href="/admin/Room/delete?id=<?= $room['id'] ?>"><button type="button" onclick="deleteRoom(roomId)" id="button_delete"><i class="fas fa-trash"></i></button></a>
                                 </td>
                             </tr>
                     <?php
@@ -209,16 +215,15 @@
         </div>
         <div id="userTab" class="tabcontent">
             <h1 class="title" style="text-align: center; margin-bottom: 50px; ">USER</h1>
-            <div class="ItemUser">  
+            <div class="ItemUser">
                 <div class="search">
                     <input type="text" id="search" name="input_search" placeholder="Search">
                     <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
                 </div>
                 <a href="admin/User/create"><button type="button" id="createUser">Create +</button></a>
             </div>
-        
-     
             <br>
+            
             <table class="table">
                 <thead>
                     <tr>
@@ -230,7 +235,7 @@
                         <th>Email</th>
                         <th>Age</th>
                         <th>Gender</th>
-            
+                        <th>Availability</th>
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -249,14 +254,15 @@
                                 <td><?php echo $user['id']; ?></td>
                                 <td><?php echo $user['name']; ?></td>
                                 <td><?php echo $user['avatar']; ?></td>
-                                <td><?php echo $user['password']; ?></td>
+                                <td><?php echo password_hash($user['password'], PASSWORD_DEFAULT); ?></td>
                                 <td><?php echo $user['phone']; ?></td>
                                 <td><?php echo $user['email']; ?></td>
                                 <td><?php echo $user['age']; ?></td>
                                 <td><?php echo $user['gender']; ?></td>
+                                <td><?php echo $user['availability']; ?></td>
                                 <td>
-                                    <a href="admin/User/edit?id=<?=$user['id']?>"><button type="button" id="button_edit"><i class="fas fa-cog"></i></button></a>
-                                    <a href="admin/User/delete?id=<?=$user['id']?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
+                                    <a href="admin/User/edit?id=<?= $user['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
+                                    <a href="admin/User/delete?id=<?= $user['id'] ?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
                                 </td>
                             </tr>
                     <?php
@@ -267,6 +273,7 @@
                     ?>
                 </tbody>
             </table>
+
         </div>
     </div>
 
@@ -279,6 +286,16 @@
 
             var activeTab = document.getElementById(type);
             activeTab.classList.add("active");
+        }
+
+        function deleteRoom(roomId) {
+            let text = "Do you want to delete that room?\n Either OK or Cancel.";
+            if (confirm(text) === true) {
+                let deleteUrl = `admin/Room/delete?id=${roomId}`;
+                window.location.href = deleteUrl;
+            } else {
+                alert("Delete Canceled");
+            }
         }
     </script>
 </body>

@@ -50,7 +50,10 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
                 <label for="phone">Phone Number:</label>
                 <input type="number" id="phone" class="form-control" placeholder="Phone Number" name="phone">
             </div>
-
+            <div class="form-group">
+                <label for="availability">Availability :</label>
+                <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability">
+            </div>
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" class="form-control" placeholder="Email" name="email">

@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
 
             if (!empty($roomId)) {
-                if (!empty($_POST['image_url']) && is_array($_POST['image_url'])) {
+                if (isset($_POST['image_url']) && !empty($_POST['image_url'])) {
                     $image_urls = explode(" ",$_POST['image_url']);
                     $image_urls = array_map('trim', $image_urls);
-                    
+                   
                     foreach ($image_urls as $image_url) {
                         $insertDetailStatement = $connection->prepare("INSERT INTO detail_room (id_room, image_url) VALUES (:roomId, :image_url)");
                         $insertDetailStatement->execute([

@@ -69,7 +69,7 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
             </div>
             <div class="form-group">
                 <label for="image_url">Image:</label>
-                <input type="text" id="image_url" class="form-control" placeholder="Image" name="image_url[]">    
+                <input type="text" id="image_url" class="form-control" placeholder="Image" name="image_url">    
             </div>
             
             <div class="button">

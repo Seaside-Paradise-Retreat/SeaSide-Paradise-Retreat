@@ -4,11 +4,12 @@
     require ("app/Models/home/detailroom.model.php");
     require ("app/Models/register/register.model.php");
     require ("app/Models/login/login.model.php");
+    require "app/Models/admin.model.php";
     if (isset($_GET['id_room'])) {
         $roomId = $_GET['id_room'];
         $images = getRoomImages($roomId);
         $rooms = getRooms();
-        $room = $rooms[$roomId];
+        $room = findRoomById($roomId);
     }
 ?>
 

@@ -1,5 +1,6 @@
 <?php 
     // session_start() 
+   
 ?>
 <link rel="stylesheet" href="public/css/detail_room.css">
 <!-- Hiển thị hình ảnh tương ứng với id phòng -->
@@ -36,7 +37,10 @@
 
 
 <div class="row content ">
-    <?php if ($room) { ?>
+
+    <?php 
+    if (!empty($room)) { ?>
+        
         <div class="col-lg-9 col-12">
             <div class="row content-text">
                 <div class="col-lg-4 col-6 content__text">

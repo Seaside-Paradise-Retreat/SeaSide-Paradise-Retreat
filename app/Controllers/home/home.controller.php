@@ -4,6 +4,7 @@ require ("./app/Models/home/card.model.php");
 require ("./app/Models/home/detailroom.model.php");
 require ("./app/Models/register/register.model.php");
 require ("./app/Models/login/login.model.php");
+require ("app/Models/favorite/favorite.model.php");
 $rooms= getRooms();
 ?>
 <?php
@@ -107,7 +108,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
     }
 }
 }
-//Log out
+
+// add favorite
+// if (isset($_GET['id_room'])) {
+//     $roomId = $_GET['id_room'];
+//     $images = getRoomImages($roomId);
+//     $rooms = getRooms();
+//     // $room= getRoomId($roomId);
+//     $id_user = $_SESSION['id'];
+//     $favorite_room = add_favourite($roomId,$id_user);
+//     $favorite_rooms = get_list_favorite($id_user);
+//     echo "<script>console.log('" . $roomId. "')</script>";
+// }
+
 ?>
 <?php
 require "app/views/home/home.view.php";

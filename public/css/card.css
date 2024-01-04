@@ -6,9 +6,6 @@
 .img-fluid{
     border-radius: 20px;
 }
-.rating span {
-    color: #ffca08;
-}
 
 .rating::before {
     content: "★";
@@ -49,6 +46,10 @@
   .btn-card-navigation:hover {
     color: #ff0000;
   }
+.heart-button{
+  color: #3A8CED;
+  width: 100px !important;
+}
 
 
 .rating {
@@ -134,8 +135,19 @@ font-size: 1em;}
     }
   }
 
-  #like_favourite{
+  .favorite-button {
+    background-color: transparent;
+    border: none;
+    color: black;
+    cursor: pointer;
+  }
+  .fa-lg {
     font-size: 24px;
-    color: #5FBDFF !important;
+  }
+  .favorite-button .fa-heart {
+    color: gray;
   }
   
+  .favorite-button.favorite .fa-heart {
+    color: red;
+  }

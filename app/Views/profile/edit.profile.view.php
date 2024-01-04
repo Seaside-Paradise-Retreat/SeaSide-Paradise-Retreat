@@ -44,12 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<?php 
-// echo $_POST['avatar'];
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>" ;
-?>
+
 
 <div><a href="/profile"><img src="../../../public/images/back.png" style="width:50px; margin-left: 200px;margin-top: 100px"></a></div>
 <div class="container">
@@ -87,15 +82,6 @@ echo "</pre>" ;
         </div>
     </div>
 </div>
-
-
-
-<?php 
-echo "CỦA POST";
-echo "<pre>";
-print_r($_POST);
-echo "</pre>" ?>
-
 
 <?php
   //require 'app/Views/layouts/footer.php';

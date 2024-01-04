@@ -26,7 +26,6 @@ require 'app/Views/layouts/navbar.php';
 <!-- body -->
 <div class="contents ">
     <h1 class="tilte-form">Hi <?php echo $_SESSION['name']; ?></h1>
-    <p class="" id="profile-date">July 2023</p>
     <div class="row content_profile-usernames">
         <div class="col-lg-4 content_profile-usernames-about">
             <!--Avatar-->
@@ -39,7 +38,7 @@ require 'app/Views/layouts/navbar.php';
             </div> -->
             <h4 class="m-4">Identify Verification</h4>
             <p style="padding-left: 30px; padding-right:30px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure cum veritatis quaerat ut reprehenderit architecto ipsa quos similique eveniet voluptates. Iste facere cumque, voluptatibus cum ut aut ipsam similique eaque?</p>
-            <h3 id="profile-user-name" style="padding-left: 30px;">User Name</h3>
+            <h3 id="profile-user-name" style="padding-left: 30px;"><?php echo $_SESSION['name']; ?></h3>
             <p style="padding-left: 30px;">
                 <i class="fa-solid fa-check"></i>Email confirmed
             </p>

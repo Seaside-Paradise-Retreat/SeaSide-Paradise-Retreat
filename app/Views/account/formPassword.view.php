@@ -37,12 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $updateStatement->bindParam(':id', $userId);
             $updateStatement->execute();
 
-            echo '<script>alert("Mật khẩu đã được thay đổi!");</script>';
+            echo '<script>alert("Password has been changed!");</script>';
+            header("Location:/profile");
         } else {
-            echo '<script>alert("Mật khẩu mới và xác nhận mật khẩu không khớp!");</script>';
+            echo '<script>alert("New password and confirm password do not match!");</script>';
         }
     } else {
-        echo '<script>alert("Mật khẩu hiện tại không đúng!");</script>';
+        echo '<script>alert("Current password is incorrect!");</script>';
     }
 }
 ?>
@@ -50,24 +51,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="stylesheet" href="../../../public/css/formPassword.css">
 <form action="" method="post" class="password-form">
     <div class="form-group">
-        <label for="current_password">Mật khẩu hiện tại:</label>
+        <label for="current_password">Current password:</label>
         <input type="password" id="current_password" name="current_password" required>
     </div>
     <div class="form-group">
-        <label for="new_password">Mật khẩu mới:</label>
+        <label for="new_password">New password</label>
         <input type="password" id="new_password" name="new_password" required>
     </div>
 
     <div class="form-group">
-        <label for="confirm_new_password">Xác nhận mật khẩu mới:</label>
+        <label for="confirm_new_password">Confirm new password</label>
         <input type="password" id="confirm_new_password" name="confirm_new_password" required>
     </div>
 
     <div class="form-group">
         <input type="submit" value="Đổi mật khẩu">
     </div>
-    <div class="form-group">
-        <input type="submit" value="Back to Account">
-        <a href="/account">Back to Account</a>
-    </div>
+
 </form>

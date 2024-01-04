@@ -1,5 +1,6 @@
 <?php session_start() ?>
 <?php
+$booking = "null";
     require "app/Models/home/card.model.php";
     require "app/Models/home/detailroom.model.php";
     require "app/Models/bill/bill.model.php";
@@ -32,10 +33,10 @@
             $date = date('Y-m-d H:i:s');
             $total = $_POST['total_price'];
             $booking = booking($roomId,$user,$date_check_in,$date_check_out,$note);
-            // echo "<script>console.log(". $booking. ");</script>";
+            echo "<script>console.log(". $booking. ");</script>";
             if($booking){
                 $bill = bill($booking,$date,$total);
-                // $booking_history = add_room_to_history($booking,$user,$bill); 
+                header("Location:/bill?id=$booking");
                 echo "<script>alert('" . "Booking successful" . "');</script>"; 
             }
         }else{

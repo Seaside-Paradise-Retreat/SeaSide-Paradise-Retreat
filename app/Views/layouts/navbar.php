@@ -10,14 +10,18 @@
         <button id="nav_search_icon"><i class="fa-solid fa-magnifying-glass"></i></button>   
       </div>
       <div class="nav_log nav_text">
-        <?php if(empty($_SESSION['email']) || empty($_SESSION['password']) )  :?>
+        <?php 
+        if(empty($_SESSION['email']) || empty($_SESSION['password']) )  :
+        ?>
         <div class="nav_log_text" id="sign">
           <button type="button"  class="nav_text_menu nav_button_sign_in " id="showModal" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@mdo">SIGN IN</button>
         </div>
         <div class="nav_log_text" id="register">
           <button type="button" class="nav_text_menu nav_button_register" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-whatever="@mdo">REGISTER</button>
         </div>
-        <?php else: ?>
+        <?php 
+          else:
+           ?>
           </div>
         <div class="nav_log nav_text nav-item dropdown" id="avata">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -30,6 +34,8 @@
           <li><a class="dropdown-item" href="/logout" style="color: #0052FE;" id="logout">Log out</a></li>
         </ul>
       </div>
-        <?php endif ?>
+        <?php 
+        endif 
+        ?>
       </div>
 </div>

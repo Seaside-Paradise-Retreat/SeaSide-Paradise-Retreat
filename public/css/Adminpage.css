@@ -1,14 +1,9 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;  
-    
-   
+    font-family: 'Roboto', sans-serif;   
 }
 
-html, body {
-    height: 100%;
-}
 
 /* Navbar styles */
 .navbar {
@@ -216,13 +211,28 @@ html, body {
     border: none;
     outline: none;
     background: none;
-    font-size: 25px;
-}
-
-.form_title{
     display: flex;
-    justify-content: space-between;
+    width: 228px;
+    height: 79px;
+    font-size: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    color: var(--WHITE, #FFF);
 }
-.form_title i{
-    font-size: 30px;
+.tableOfBooking {
+    width: 100%;
+    margin: 20px;
+    border-collapse: collapse;
+}
+.tableOfBooking th, .tableOfBooking td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+}
+.table th {
+    background-color: #f2f2f2;
+}
+.table tbody tr:hover {
+    background-color: #e6f7ff;
 }

@@ -20,7 +20,6 @@
     justify-content: center;
     align-items: center;
     animation: image-animation 15s infinite;
-    background-image: url('image.jpg');
     background-size: cover;
     background-position: center;
     z-index: -1; /* Đưa hình ảnh xuống phía sau */

@@ -14,15 +14,15 @@
                     <div class="input--group row">
                         <div class="check-date  col-6 ">
                             <label for="" class="label">Check in</label>
-                            <input type="datetime-local" name="check_in" class="input__check-date" id="check_in" value="<?php echo '' ?>" >
+                            <input type="datetime-local" name="check_in" class="input__check-date"  id="check_in" required>
                         </div>
                         <div class="check-date col-6">
                             <label for="" class="label">Check out</label>
-                            <input type="datetime-local" name="check_out" class="input__check-date"id="check_out">
+                            <input type="datetime-local" name="check_out" class="input__check-date"id="check_out" required>
                         </div>
                     </div>
                     <div class="text_input">
-                        <textarea id="message" name="message" rows="4" cols="66">Message</textarea> 
+                        <textarea id="message" name="message" rows="4" cols="66" required></textarea> 
                     </div>
                     <div class="d-flex justify-content-between">
                         <a href="/"><button type="button" class="button">Back</button></a>
@@ -112,35 +112,4 @@
         }
     }
 </script>
-<?php 
-    function booking($room,$user,$chech_in_date, $check_out_date){
-        global $connection;
-        $query = "INSERT INTO booking (id_room,id_user,check_in_date, check_out_date)  VALUE(:id_room, :id_user,:check_in_date, :check_out_date)";
-        $statement = $connection->prepare($query);
-        $statement->bindParam(':id_room', $room, PDO::PARAM_INT);
-        $statement->bindParam(':id_user', $user, PDO::PARAM_INT);
-        $statement->bindParam(':check_in_date', $chech_in_date);
-        $statement->bindParam(':check_out_date', $check_out_date);
-        $statement->execute();
-        $booking = $statement->fetch(PDO::FETCH_ASSOC);     
-        $id_booking = $connection->lastInsertId();
-        return $id_booking;
-    }
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['check_in']) && !empty($_POST['check_out'])) {
-            $date_check_in = $_POST['check_in'];
-            $date_check_out = $_POST['check_out'];
-            $user = $_SESSION['id'];
-            $date = date('Y-m-d H:i:s');
-            $total = $_POST['total_price'];
-            $booking = booking($roomId,$user,$date_check_in,$date_check_out);
-            echo "<script>alert('" . "Booking successful" . "');</script>"; 
-            echo "<script>console.log(". $booking. ");</script>";
-            // header("Location:/");
-            $bill = bill($roomId,$date,$total);
-            $booking_history = add_room_to_history($booking,$user,$bill); 
-            // header("Location: /");
-            exit();
-        }else{
-            echo "<script>alert('" . "Booking Unsuccessful" . "');</script>"; 
-        }
-?>
+

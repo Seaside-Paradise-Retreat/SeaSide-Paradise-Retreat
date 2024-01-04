@@ -1,0 +1,28 @@
+.title > #title-booking-history-room{
+    color: #9EEAF7;
+    margin-top: 70px;
+    font-size: 80px;
+    text-align: center;
+}
+.card-room-booking-history {
+    margin-bottom: 40px;
+}
+#image-room{
+    width: 400px;
+    border-radius: 20px;
+}
+.btn_card_cancel{
+    background-color: #9EEAF7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn_card_cancel{
+    width: 220px !important;
+}
+#booking_date{
+    font-weight: 600;
+}

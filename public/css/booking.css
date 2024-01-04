@@ -1,0 +1,75 @@
+.body--content{
+    /* background-color: beige; */
+    margin-top: 120px;
+    margin-bottom: 50px;
+}
+
+#image_room{
+    width: 500px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title h3{
+  color: #9EEAF7;
+  font-size: 80px;
+}
+  .infor {
+    margin-bottom: 20px;
+  }
+  #in.name-booking{
+    margin-left: 10px;
+    width: 550px !important;
+  }
+
+  #in.name-booking,
+  .input__check-date#check_in,
+  .input__check-date#check_out {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .check-date.col-6 {
+    float: left;
+    width: 50%;
+    padding-right: 10px;
+  }
+  
+  .button {
+    background-color: #9EEAF7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .button:hover {
+    background-color: #3568A4;
+  }
+  
+  .general-standard {
+    margin-top: 20px;
+  }
+  
+  .title-small {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+#sum{
+  text-align:right;
+  border: none;
+  text-decoration: none;
+  outline: none;
+}

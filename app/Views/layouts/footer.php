@@ -26,12 +26,12 @@
             <div class="mt-1">
                 <img class="image_footer" src="public/images/onepay.png"   alt="">
                 <img class="image_footer" src="public/images/momo.png"   alt="">
-                <img class="image_footer" src="public/images/vietcombank.jpg"  alt="">
+                <img class="image_footer" src="public/images/vietcombank.jpg"  alt="">  
             </div>
             <div class="mt-3">
-                <img class="image_footer" src="public/images/vnpay.jpg"   alt="">
-                <img class="image_footer" src="public/images/visa.png"   alt="">
-                <img class="image_footer" src="public/images/bidv.jpg"  alt="">
+                <img class="image_footer" src="../../../public/images/vnpay.jpg"   alt="logo vnpay">
+                <img class="image_footer" src="../../../public/images/visa.png"   alt="logo visa">
+                <img class="image_footer" src="../../../public/images/bidv.jpg"  alt="logo bidv bank">
             </div>
         </div>
         </div>

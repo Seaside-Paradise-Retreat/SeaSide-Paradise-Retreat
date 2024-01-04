@@ -10,12 +10,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['name
 }
 ?>
 <?php 
-// echo "<script>
-//     console.log('Avatar:', '{$_SESSION['avatar']}');
-//     console.log('Name:', '{$_SESSION['name']}');
-//     console.log('Email:', '{$_SESSION['email']}');
-//     console.log('ID:', '{$_SESSION['id']}');
-// </script>";
+echo "<script>
+    console.log('Avatar:', '{$_SESSION['avatar']}');
+    console.log('Name:', '{$_SESSION['name']}');
+    console.log('Email:', '{$_SESSION['email']}');
+    console.log('ID:', '{$_SESSION['id']}');
+</script>";
 ?>
 
 <?php
@@ -31,7 +31,7 @@ require 'app/Views/layouts/navbar.php';
         <div class="col-lg-4 content_profile-usernames-about">
             <!--Avatar-->
             <div class="edit-avata-user">
-                <img id="avata-user" src="<?php echo $_SESSION['avatar']; ?>" alt="avatar">
+                <img id="avata-user" name="avatar" src="<?php echo $_SESSION['avatar']; ?>" alt="avatar">
             </div>
             <!--Upload avatar-->
             <!-- <div class="edit-avata-user">

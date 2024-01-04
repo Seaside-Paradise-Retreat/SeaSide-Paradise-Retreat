@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //Login
 
 if(!$registersuccessfull){
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])&& !empty($_POST['avatar'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $dataUser = getUser($email);
@@ -93,8 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
                 $_SESSION['password'] = $password;
                 $_SESSION['id'] = $dataUser['id'];
                 $_SESSION['name'] = $dataUser['name'];
-                $_SESSION['name'] = $dataUser['name'];
                 $_SESSION['avatar'] = $dataUser['avatar'];
+                $_SESSION['phone'] = $dataUser['phone'];
                 $_SESSION['isLogin'] = true;    
                 echo '<script>alert("Login Successful");</script>';
             } else if ($dataUser['role']  == 'admin') {
@@ -110,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
 }
 //Log out
 ?>
+
 <?php
 require "app/views/home/home.view.php";
 ?>

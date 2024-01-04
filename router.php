@@ -23,6 +23,7 @@ $routes = [
     '/edit' => 'app/Controllers/booking/cancel.controller.php',
     '/logout' => 'app/Controllers/logout/logout.controller.php',
     '/account' => 'app/Controllers/account/account.controller.php',
+    '/account/change_password' => 'app/Controllers/account/change_password.controller.php',
     '/profile' => 'app/Controllers/profile/profile.controller.php',
     '/profile/edit' => 'app/Controllers/profile/edit.profile.controller.php',
 ];

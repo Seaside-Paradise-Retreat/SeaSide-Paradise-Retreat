@@ -4,6 +4,14 @@
 require 'app/Views/layouts/navbar.php';
 require 'app/Views/layouts/header.php';
  ?>
+ <?php 
+echo "<script>
+    console.log('Avatar:', '{$_SESSION['avatar']}');
+    console.log('Name:', '{$_SESSION['name']}');
+    console.log('Email:', '{$_SESSION['email']}');
+    console.log('ID:', '{$_SESSION['id']}');
+</script>";
+?>
  <link rel="stylesheet" href="public/css/account.css">
 <div class="row profile-home-page">
         <div class="row-name">

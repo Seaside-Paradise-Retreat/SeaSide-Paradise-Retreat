@@ -14,9 +14,6 @@
                     <a href="/detail_room?id_room=<?php echo $room['id']; ?>">
                       <img id="img-card-room" src="<?php echo $image['image_url']?>" height="238px" alt="">
                     </a>
-                    <div class="heart-container position-absolute bottom-10 end-0 m-3" title="Like">
-                      
-                    </div>
                   </div>
                   <?php $active = false; ?>
                 <?php endforeach; ?>
@@ -40,7 +37,7 @@
                           <i class="fas fa-heart"  id="like_room<?php echo $room['id']?>" ></i>
                         </button>
                     </a>
-                      <i class="fa-solid fa-star" style="color: #3A8CED;"></i><?php echo $room['rating']?>
+                      <i class="fa-solid fa-star" style="color: #3A8CED; font-size:22px"></i><?php echo $room['rating']?>
                     </div>
                   </div>
                   <p class="convenient"><?php echo $room['convenient']?></p>

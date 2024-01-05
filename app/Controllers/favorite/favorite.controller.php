@@ -6,13 +6,22 @@
 
 <?php  
     if (isset($_GET['id_room'])) {
+        $isAdd = true; //phòng chưa được thêm vào yêu thích
         $roomId = $_GET['id_room'];
         $room= getRoomId($roomId);
         $id_user = $_SESSION['id'];
-        $favorite_room = add_favourite($roomId,$id_user);
-        if($favorite_room){
-            header("Location:/#like_room$roomId");
+        $favorite_rooms = get_list_favorite($id_user) ;
+        echo "<script>console.log('" ."id room trên url" . $roomId. "')</script>";
+        foreach ($favorite_rooms as $favorite_room) {
+            if($favorite_room['id'] == $roomId){
+               $isAdd = false;
+               break;
+            }
         }
-        echo "<script>console.log('" . $roomId. "')</script>";
+        if ($isAdd) {
+            $favorite_room = add_favourite($roomId, $id_user);
+        }
+        header("Location: /#like_room$roomId");
+
     }
 ?>

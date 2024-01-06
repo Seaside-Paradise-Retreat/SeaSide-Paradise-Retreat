@@ -1,5 +1,7 @@
 <?php
 require(__DIR__."../../Databases/database.php");
+
+
 // function validateUsername($name) {
 //     $name = trim($name);
 //     if (empty($name)) {

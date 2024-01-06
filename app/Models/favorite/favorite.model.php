@@ -38,4 +38,17 @@ require ("./app/Databases/database.php");
             $statement->bindParam(':id',$id_favorite);
             $statement->execute();
         }       
+
+    function isAdded($id_room, $id_user)
+    {
+        $isAdded = false; // if = false: phòng chưa được thêm vào yêu thích
+        $favorite_rooms = get_list_favorite($id_user);
+        foreach ($favorite_rooms as $favorite_room) {
+            if ($favorite_room['id'] == $id_room) {
+                $isAdded = true;
+                break;
+            }
+        }
+        return $isAdded;
+    }
 ?>

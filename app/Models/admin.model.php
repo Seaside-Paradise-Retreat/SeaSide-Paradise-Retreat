@@ -1,6 +1,7 @@
 <?php
 require(__DIR__."../../Databases/database.php");
 
+
 // function validateUsername($name) {
 //     $name = trim($name);
 //     if (empty($name)) {
@@ -78,6 +79,7 @@ require(__DIR__."../../Databases/database.php");
 // function validateAge($age){
 
 // }
+
 function createNewUser($name, $password, $phone, $email, $age, $gender,$availability){
     global $connection;
     try{
@@ -99,12 +101,12 @@ function createNewUser($name, $password, $phone, $email, $age, $gender,$availabi
 }
 
 
-function updateUser($name, $phone, $email, $age, $gender,  $availability ,int $id):bool
+function updateUser($name, $availability, $phone, $email, $age, $gender, int $id):bool
 
 {
     global $connection;
     
-    $statement = $connection->prepare("UPDATE  users SET name = :name, phone = :phone, email = :email, age = :age, gender = :gender, availability = :availability where id = :id");
+    $statement = $connection->prepare("update  users set name = :name, availability = :availability, phone = :phone, email = :email, age = :age, gender = :gender where id = :id");
     $statement->execute([
         ':name' => $name,
         ':phone' => $phone,
@@ -113,12 +115,9 @@ function updateUser($name, $phone, $email, $age, $gender,  $availability ,int $i
         ':gender' => $gender,
         ':availability' => $availability,
         ':id' => $id
-
     ]);
-
     return $statement->rowCount() > 0;
 }
-
 function deleteUser(int $id) : bool
 {
     global $connection;

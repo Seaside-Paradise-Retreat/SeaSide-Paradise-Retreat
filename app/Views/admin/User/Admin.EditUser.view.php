@@ -109,4 +109,8 @@
     <?php endif ?>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> e713722949a15582be1dca8b1912a8e67f2679f4

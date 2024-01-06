@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row g-4 ml-2 mb-5 listroom" id="pp">
-    <?php foreach($rooms as $index => $room): //trong room này sẽ là đầy đủ thông tin của 1 phòng bao gồm id, name, images_url, convenient?> 
+    <?php foreach($rooms as $index => $room): //trong room này sẽ là đầy đủ thông tin của 1 phòng bao gồm id, name, images_url, convenient?>
+      <?php if($room['availability'] == 1) : ?>
       <div class="col-lg-4 col-md-6 room-item">
         <div class="room-item">
           <div class="position-relative">
@@ -65,12 +66,13 @@
 
         </div>
       </div>
+      <?php endif ?>
     <?php endforeach; ?>
   </div>
-<script>
+<!-- <script>
   function toggleFavorite(button) {
   button.classList.toggle('favorite');
 }
-</script>
+</script> -->
 </div>
 

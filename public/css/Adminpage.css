@@ -55,7 +55,11 @@
     flex-direction: column;
     background: #3568A4;
     align-items: center;
+<<<<<<< HEAD
     border-radius: 10px;
+=======
+    border-radius: 5px;
+>>>>>>> e713722949a15582be1dca8b1912a8e67f2679f4
     
 }
 .item{
@@ -259,4 +263,8 @@
 .full-text {
     white-space: normal; 
     max-width: none;     
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e713722949a15582be1dca8b1912a8e67f2679f4

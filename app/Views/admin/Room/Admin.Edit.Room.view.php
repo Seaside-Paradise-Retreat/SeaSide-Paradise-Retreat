@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-
 <body>
     <?php
 
@@ -51,8 +49,11 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
         $statement->execute([':id' => $id]);
         $room = $statement->fetch();
 
+if (isset($id)) :
+    $statement = $connection->prepare('SELECT * FROM rooms WHERE id = :id');
+    $statement->execute([':id' => $id]);
+    $room = $statement->fetch();
 ?>
-
         <div class="container">
             <div class="main_menu_left">
 
@@ -73,34 +74,33 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
 
 
 
-        <a href="/admin" style="text-decoration: none;">
-            <div class="item">
-                <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
-                    <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                    <h5 class="title">Booking</h5>
-                </button>
+                <div class="item">
+                    <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
+                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                        <h5 class="title">Booking</h5>
+                    </button>
+                </div>
+
             </div>
-        </a>
-    </div>
-    
-    <div id="Modal" class="main_menu_right">
-        <form  class="form_action" action="#" method="post">
-            <div class="form_title">
-                <h2 id="title">EDIT ROOM</h2>
-                <a href="/admin"><i class="fas fa-times" ></i></a>
-            </div>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="<?=$room['name'];?>">
-            </div>
-            <div class="form-group">
-                <label for="type">Type:</label>
-                <input type="text" id="type" class="form-control" placeholder="Type" name="type" value="<?=$room['type'];?>">
-            </div>
-            <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="number" id="price" class="form-control" placeholder="Price" name="price" value="<?=$room['price'];?>">
-            </div>
+
+            <div id="Modal" class="main_menu_right">
+                <form class="form_action" action="#" method="post">
+                    <div class="form_title">
+                        <h4 id="title">EDIT ROOM</h4>
+                        <a href="/admin"><i class="fas fa-times"></i></a>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="<?= $room['name']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <input type="text" id="type" class="form-control" placeholder="Type" name="type" value="<?= $room['type']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" class="form-control" placeholder="Price" name="price" value="<?= $room['price']; ?>">
+                    </div>
 
                     <div class="form-group">
                         <label for="availability">Availability:</label>
@@ -122,5 +122,4 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
         </div>
     <?php endif ?>
 </body>
-
 </html>

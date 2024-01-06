@@ -13,6 +13,8 @@ if (isset($_GET['id_room'])) {
     $isAdded = isAdded($roomId, $id_user);
     if (!($isAdded)) {
         $favorite_room = add_favourite($roomId, $id_user);
+    }else{
+        un_favorite($roomId,$id_user);
     }
     header("Location: /#like_room$roomId");
 }

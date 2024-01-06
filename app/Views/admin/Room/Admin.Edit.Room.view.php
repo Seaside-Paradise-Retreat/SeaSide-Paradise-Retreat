@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
+
 <body>
     <?php
 
@@ -42,18 +44,14 @@ else {
 }
 
 include(__DIR__ . "/.././../layouts/admin.navbar.php");
-    $id = $_GET["id"] ? $_GET["id"] : null;
-    if (isset($id)):
-   
-        $statement = $connection->prepare('select * from rooms where id = :id');
-        $statement->execute([':id' => $id]);
-        $room = $statement->fetch();
+$id = $_GET["id"] ?? null;
 
 if (isset($id)) :
     $statement = $connection->prepare('SELECT * FROM rooms WHERE id = :id');
     $statement->execute([':id' => $id]);
     $room = $statement->fetch();
 ?>
+
         <div class="container">
             <div class="main_menu_left">
 
@@ -122,4 +120,5 @@ if (isset($id)) :
         </div>
     <?php endif ?>
 </body>
+
 </html>

@@ -1,14 +1,9 @@
 <?php
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $routes = [
-<<<<<<< HEAD
     '/' => 'app/Controllers/home/home.controller.php',
-    '/about' => 'Controllers/about/about.controller.php',
-=======
-    '/' => 'app/Controllers/home/index.controller.php',
     '/about' => 'app/Controllers/about/about.controller.php',
     '/room' => 'app/Controllers/room/room.controller.php',
->>>>>>> e713722949a15582be1dca8b1912a8e67f2679f4
     '/contact' => 'Controllers/contact/contact.controller.php',
     '/admin' => 'app/Controllers/admin/admin.controller.php',
     '/admin/User/create' => 'app/Controllers/admin/User/admin.createuser.controller.php',

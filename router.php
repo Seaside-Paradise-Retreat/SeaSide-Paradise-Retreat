@@ -2,7 +2,8 @@
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $routes = [
     '/' => 'app/Controllers/home/index.controller.php',
-    '/about' => 'Controllers/about/about.controller.php',
+    '/about' => 'app/Controllers/about/about.controller.php',
+    '/room' => 'app/Controllers/room/room.controller.php',
     '/contact' => 'Controllers/contact/contact.controller.php',
     '/admin' => 'app/Controllers/admin/admin.controller.php',
     '/admin/User/create' => 'app/Controllers/admin/User/admin.createuser.controller.php',
@@ -27,7 +28,6 @@ $routes = [
     '/profile' => 'app/Controllers/profile/profile.controller.php',
     '/favorite' => 'app/Controllers/favorite/favorite.controller.php',
     '/list_favorite' => 'app/Controllers/favorite/list_favorite.controller.php',
-    '/profile/edit' => 'app/Controllers/profile/edit.profile.controller.php',
 ];
 
 if (array_key_exists($uri, $routes)) {

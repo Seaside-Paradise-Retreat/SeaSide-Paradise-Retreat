@@ -71,7 +71,7 @@ if ($id) :
             <div id="Modal" class="main_menu_right">
                 <form class="form_action" action="#" method="post">
                     <div class="form_title">
-                        <h2 id="title">EDIT BOOKING</h2>
+                        <h4 id="title">EDIT BOOKING</h4>
                         <a href="/admin"><i class="fas fa-times"></i></a>
                     </div>
                     <div class="form-group">

@@ -140,7 +140,7 @@
 
                                 <td>
                                     <a href="/admin/Booking/edit?id=<?= $book['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
-                                    <a href="/admin/Booking/delete?id=<?= $book['id'] ?>"></a><button type="button" id="button_delete"><i class="fas fa-trash"></i></button>
+                                    <a href="/admin/Booking/delete?id=<?= $book['id'] ?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
                                 </td>
                             </tr>
                         <?php
@@ -195,9 +195,8 @@
                                 <td><?php echo $room['type']; ?></td>
                                 <td><?php echo $room['price']; ?></td>
                                 <td><?php echo $room['availability']; ?></td>
-                                <td><?php echo $room['description']; ?></td>
+                                <td class="ellipsis" onclick="showFullText(this)" > <?php echo $room['description'];  ?></td>
                                 <td><?php echo $room['rating']; ?></td>
-                             
                                 <td>
                                     <a href="/admin/Room/edit?id=<?= $room['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
                                     <a href="/admin/Room/delete?id=<?= $room['id'] ?>"><button type="button" onclick="deleteRoom(roomId)" id="button_delete"><i class="fas fa-trash"></i></button></a>
@@ -254,7 +253,7 @@
                                 <td><?php echo $user['id']; ?></td>
                                 <td><?php echo $user['name']; ?></td>
                                 <td><?php echo $user['avatar']; ?></td>
-                                <td><?php echo password_hash($user['password'], PASSWORD_DEFAULT); ?></td>
+                                <td class="ellipsis" onclick="showFullText(this)"><?php echo password_hash($user['password'], PASSWORD_DEFAULT); ?></td>
                                 <td><?php echo $user['phone']; ?></td>
                                 <td><?php echo $user['email']; ?></td>
                                 <td><?php echo $user['age']; ?></td>
@@ -287,7 +286,9 @@
             var activeTab = document.getElementById(type);
             activeTab.classList.add("active");
         }
-
+        function showFullText(element) {
+            element.classList.toggle('full-text');
+        }
         function deleteRoom(roomId) {
             let text = "Do you want to delete that room?\n Either OK or Cancel.";
             if (confirm(text) === true) {

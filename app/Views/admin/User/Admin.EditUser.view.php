@@ -22,23 +22,24 @@
             !empty($_POST['email']) &&
             !empty($_POST['age']) &&
             !empty($_POST['gender']) &&
-            !empty($_POST['availability'])&&
+            isset($_POST['availability'])&&
             !empty($_GET["id"])
     ) {
-            $statement = $connection->prepare("update users set name = :name, phone = :phone, email = :email, age = :age, gender = :gender, availability = :availability where id = :id");
+            
+            $statement = $connection->prepare("UPDATE users SET name = :name, phone = :phone, email = :email, age = :age, gender = :gender, availability = :availability where id = :id");
             $statement->execute([
                 ':name' => $_POST['name'],
                 ':phone' =>  $_POST['phone'],
                 ':email' =>  $_POST['email'],
                 ':age' =>  $_POST['age'],
                 ':gender' =>  $_POST['gender'],
-                ':availability' =>  $_POST['availability'],
+                ':availability' =>  (int)$_POST['availability'],
                 ':id' => $_GET["id"]
             ]);
+            
             header('location: /admin');
         }
     }
-
     include(__DIR__ . "/.././../layouts/admin.navbar.php");
     $id = $_GET["id"] ? $_GET["id"] : null;
     if (isset($id)) :
@@ -47,40 +48,31 @@
         $user = $statement->fetch();
 
     ?>
-
         <div class="container">
             <div class="main_menu_left">
-
                 <div class="item">
                     <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
                         <i class="fas fa-user" style="padding-right:20px"></i>
                         <h5 class="title">User</h5>
                     </button>
                 </div>
-
-
                 <div class="item">
                     <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
                         <i class="fas fa-list-ul" style="padding-right:20px"></i>
                         <h5 class="title">Room</h5>
                     </button>
                 </div>
-
-
-
                 <div class="item">
                     <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
                         <i class="fas fa-list-ul" style="padding-right:20px"></i>
                         <h5 class="title">Booking</h5>
                     </button>
                 </div>
-
             </div>
-
             <div id="Modal" class="main_menu_right">
                 <form class="form_action" method="post">
                     <div class="form_title">
-                        <h2 id="title">EDIT USER</h2>
+                        <h4 id="title">EDIT USER</h4>
                         <a href="/admin"><i class="fas fa-times"></i></a>
                     </div>
                     <div class="form-group">
@@ -98,7 +90,7 @@
                     </div>
                     <div class="form-group">
                         <label for="age">Age:</label>
-                        <input type="number" id="age" class="form-control" placeholder="Age" name="age" value="<?= $user['age']; ?>">
+                        <input type="number" id="age" class="form-control" placeholder="Age" name="age" value="<?= $user['age']; ?>" >
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender:</label>
@@ -106,7 +98,7 @@
                     </div>
                     <div class="form-group">
                         <label for="availability">Availability</label>
-                        <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability" value="<?= $user['availability']; ?>" min="0" max="1">
+                        <input type="text" id="availability" class="form-control" placeholder="Availability" name="availability" value="<?= $user['availability'];?>" >
                     </div>
                     <div class="button">
                         <button type="submit" class="button_create">EDIT</button>

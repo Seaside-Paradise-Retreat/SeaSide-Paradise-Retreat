@@ -16,7 +16,14 @@ require(__DIR__ . '/../../../Databases/database.php'); // Ensure this line is un
 require(__DIR__ . '/../../../Models/admin.model.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['name']) && !empty($_POST['type']) && !empty($_POST['price']) && !empty($_POST['availability']) && !empty($_POST['description']) && !empty($_POST['rating']) && !empty($_GET["id"])) {
+    if (!empty($_POST['name']) && 
+        !empty($_POST['type']) && 
+        !empty($_POST['price']) && 
+        isset($_POST['availability']) && 
+        !empty($_POST['description']) && 
+        !empty($_POST['rating']) && 
+        !empty($_GET["id"])
+    ) {
         $statement = $connection->prepare("UPDATE rooms SET name = :name, type = :type, price = :price, availability = :availability, description = :description, rating = :rating WHERE id = :id");
         $statement->execute([
             ':name' => $_POST['name'],
@@ -77,7 +84,7 @@ if (isset($id)) :
             <div id="Modal" class="main_menu_right">
                 <form class="form_action" action="#" method="post">
                     <div class="form_title">
-                        <h2 id="title">EDIT ROOM</h2>
+                        <h4 id="title">EDIT ROOM</h4>
                         <a href="/admin"><i class="fas fa-times"></i></a>
                     </div>
                     <div class="form-group">

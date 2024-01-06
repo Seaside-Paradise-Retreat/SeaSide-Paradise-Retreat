@@ -15,7 +15,9 @@
     background-color: var(--white-color);
     
 }
-
+.form_title>#title{
+    color: black;
+}
 #logo_hotel {
     width: 100px;
     height: 100px;
@@ -81,7 +83,6 @@
     margin: 20px;
     display:none;
     overflow:auto;
-    
 }
 
 .active {
@@ -89,7 +90,6 @@
 }
 #createUser, #createRoom{
     text-align: center;
-    
     width: 154px;
     height: 40px;
     font-size: 25px;
@@ -125,6 +125,7 @@
     justify-content: center;
     margin-top: 50px;
     line-height: 50px;
+    
 }
 
 .ItemBooking{
@@ -236,15 +237,25 @@
 }
 
 .form_title{
-    display: flex;
-    width: 228px;
-    height: 79px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
     font-size: 40px;
     align-items: center;
     margin-bottom: 30px;
     margin-top: 30px;
     color: var(--WHITE, #FFF);
 }
-.form_title i{
-    font-size: 30px;
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+    cursor: pointer; 
+}
+
+.full-text {
+    white-space: normal; 
+    max-width: none;     
 }

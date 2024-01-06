@@ -48,7 +48,6 @@
   }
 .heart-button{
   color: #3A8CED;
-  width: 100px !important;
 }
 
 
@@ -102,39 +101,6 @@ font-size: 1em;}
 .room-item:hover {
     transform: translateY(-10px);
 }
-
-  @keyframes keyframes-svg-filled {
-    0% {
-      transform: scale(0);
-    }
-  
-    25% {
-      transform: scale(1.2);
-    }
-  
-    50% {
-      transform: scale(1);
-      filter: brightness(1.5);
-    }
-  }
-  
-  @keyframes keyframes-svg-celebrate {
-    0% {
-      transform: scale(0);
-    }
-  
-    50% {
-      opacity: 1;
-      filter: brightness(1.5);
-    }
-  
-    100% {
-      transform: scale(1.4);
-      opacity: 0;
-      display: none;
-    }
-  }
-
   .favorite-button {
     background-color: transparent;
     border: none;
@@ -147,7 +113,18 @@ font-size: 1em;}
   .favorite-button .fa-heart {
     color: gray;
   }
+  .heart-container {
+    width: 40px;
+    height: 40px;
+  }
   
-  .favorite-button.favorite .fa-heart {
-    color: red;
+  .favorite-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .favorite-button i {
+    font-size: 24px; 
   }

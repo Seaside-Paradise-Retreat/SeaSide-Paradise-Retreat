@@ -109,19 +109,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
     }
 }
 }
-
-// add favorite
-// if (isset($_GET['id_room'])) {
-//     $roomId = $_GET['id_room'];
-//     $images = getRoomImages($roomId);
-//     $rooms = getRooms();
-//     // $room= getRoomId($roomId);
-//     $id_user = $_SESSION['id'];
-//     $favorite_room = add_favourite($roomId,$id_user);
-//     $favorite_rooms = get_list_favorite($id_user);
-//     echo "<script>console.log('" . $roomId. "')</script>";
-// }
-
 ?>
 
 <?php

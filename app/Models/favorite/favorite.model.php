@@ -13,7 +13,9 @@ require ("./app/Databases/database.php");
         return $id_favorite;
     }
 
-    function get_list_favorite($id_user)
+    function get_list_favorite($id_user) 
+    // trong này seclect ra có phàn tử là id của phòng đã được thêm vào yêu thích
+    //1 Duluxe Deluxe 50.00 1 Deluxe Rooms are luxurious and spacious hotel acco... 4
     {
     global $connection;
     $query = "SELECT r.*
@@ -23,9 +25,12 @@ require ("./app/Databases/database.php");
     $statement = $connection->prepare($query);
     $statement->bindParam(':id_user', $id_user);
     $statement->execute();  
-    $results = $statement->fetchAll();
+    $results = $statement->fetchAll();      
     return $results;
     }   
+
+// lấy $favorite_room_id từ function trên (sử dụng hàm function getRoomId($roomId) đã được đinh nghĩa ở model detail)
+
 
     function un_favorite($id_favorite){
             global $connection;

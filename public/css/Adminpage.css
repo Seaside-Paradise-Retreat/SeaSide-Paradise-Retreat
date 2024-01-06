@@ -15,7 +15,9 @@
     background-color: var(--white-color);
     
 }
-
+.form_title>#title{
+    color: black;
+}
 #logo_hotel {
     width: 100px;
     height: 100px;
@@ -53,6 +55,7 @@
     flex-direction: column;
     background: #3568A4;
     align-items: center;
+    border-radius: 5px;
     
 }
 .item{
@@ -79,7 +82,7 @@
     max-width: 100%;
     margin: 20px;
     display:none;
-    
+    overflow:auto;
 }
 
 .active {
@@ -87,7 +90,6 @@
 }
 #createUser, #createRoom{
     text-align: center;
-    
     width: 154px;
     height: 40px;
     font-size: 25px;
@@ -100,8 +102,9 @@
 }
 .table {
     width: 100%;
-    margin: 20px;
+    margin: 10px;
     border-collapse: collapse;
+    font-size: 20px;
     
 }
 .table th, .table td {
@@ -122,7 +125,9 @@
     justify-content: center;
     margin-top: 50px;
     line-height: 50px;
+    
 }
+
 .ItemBooking{
     display: flex;
     justify-content: center;
@@ -167,7 +172,6 @@
 .form_action{
     border:1px solid #9EEAF7;
     width: 500px;
-    height: 800px;
     flex-shrink: 0;
     padding:20px;
     border-radius: 10px;
@@ -207,32 +211,51 @@
     font-size: 25px;
  
 }
+
+.button_addimage{
+    width: 30%;
+    height:50px;
+    background-color: #3498db;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
 #button_edit, #button_delete{
     border: none;
     outline: none;
     background: none;
-    display: flex;
-    width: 228px;
-    height: 79px;
+    font-size: 25px;
+}
+
+#button_edit{
+    color: #3498db;
+
+}
+#button_delete{
+    color:red;
+}
+
+.form_title{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
     font-size: 40px;
     align-items: center;
     margin-bottom: 30px;
     margin-top: 30px;
     color: var(--WHITE, #FFF);
 }
-.tableOfBooking {
-    width: 100%;
-    margin: 20px;
-    border-collapse: collapse;
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+    cursor: pointer; 
 }
-.tableOfBooking th, .tableOfBooking td {
-    border: 1px solid #dddddd;
-    padding: 8px;
-    text-align: center;
-}
-.table th {
-    background-color: #f2f2f2;
-}
-.table tbody tr:hover {
-    background-color: #e6f7ff;
+
+.full-text {
+    white-space: normal; 
+    max-width: none;     
 }

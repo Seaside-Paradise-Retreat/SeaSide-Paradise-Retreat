@@ -7,7 +7,11 @@
         session_unset();    
         session_destroy();
         header("Location: /");
-exit();
+        
+        // echo "<script>window.location.replace(window.location.hostname)</script>";
+        // echo "<script>window.location.reload()</script>";
+    exit();
     }
+
     
 ?>

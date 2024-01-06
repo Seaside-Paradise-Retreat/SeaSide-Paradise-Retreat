@@ -45,7 +45,7 @@ require ("./app/Databases/database.php");
         global $connection;
         $phone = preg_replace("/[^0-9]/", "", $phoneNumber);
         $query = "SELECT phone FROM users WHERE phone = :phone";
-        $statament = $connection->prepare($query);
+        $statament = $connection ->prepare($query);
         $statament->bindParam(":phone", $phone);
         $statament->execute();
         $phonedata=$statament->fetch(PDO::FETCH_ASSOC);

@@ -17,9 +17,8 @@
         
         <div class="profile_user">
             <button id="profile"><i class="fas fa-user-circle" style="font-size: 40px; padding-right:10px"></i></button>
-            <button id="logout"><i class="fas fa-sign-out-alt" style="font-size: 40px;"></i></button>
+            <a href="/logout"><button id="logout"><i class="fas fa-sign-out-alt" style="font-size: 40px;"></i></button></a>
         </div>
     </div>
 </body>
-
 </html>

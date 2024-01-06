@@ -28,6 +28,7 @@ $routes = [
     '/profile' => 'app/Controllers/profile/profile.controller.php',
     '/favorite' => 'app/Controllers/favorite/favorite.controller.php',
     '/list_favorite' => 'app/Controllers/favorite/list_favorite.controller.php',
+    '/profile/edit' => 'app/Controllers/profile/edit.profile.controller.php',
 ];
 
 if (array_key_exists($uri, $routes)) {

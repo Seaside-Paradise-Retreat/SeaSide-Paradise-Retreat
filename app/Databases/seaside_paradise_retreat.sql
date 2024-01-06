@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2023 at 07:26 AM
+-- Generation Time: Jan 06, 2024 at 02:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `bill` (
   `id` int(11) NOT NULL,
   `id_booking` int(11) NOT NULL,
-  `date` date DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   `total_price` decimal(10,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,11 +39,13 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`id`, `id_booking`, `date`, `total_price`) VALUES
-(1, 1, '2023-01-03', '50'),
-(2, 2, '2023-02-15', '100'),
-(3, 3, '2023-03-25', '120'),
-(4, 4, '2023-04-07', '200'),
-(5, 5, '2023-05-20', '50');
+(3, 3, '2023-03-25 00:00:00', '120'),
+(4, 4, '2023-04-07 00:00:00', '200'),
+(5, 5, '2023-05-20 00:00:00', '50'),
+(6, 15, '2024-01-06 02:29:29', '2013'),
+(7, 16, '2024-01-06 05:23:51', '7013'),
+(8, 17, '2024-01-06 05:26:18', '733'),
+(9, 18, '2024-01-06 09:58:01', '405');
 
 -- --------------------------------------------------------
 
@@ -55,44 +57,31 @@ CREATE TABLE `booking` (
   `id` int(11) NOT NULL,
   `id_room` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `check_in_date` date DEFAULT NULL,
-  `check_out_date` date DEFAULT NULL
+  `check_in_date` datetime DEFAULT NULL,
+  `check_out_date` datetime DEFAULT NULL,
+  `note` varchar(500) DEFAULT NULL,
+  `availability` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `id_room`, `id_user`, `check_in_date`, `check_out_date`) VALUES
-(1, 1, 1, '2023-01-01', '2023-01-03'),
-(2, 2, 2, '2023-02-10', '2023-02-15'),
-(3, 3, 3, '2023-03-20', '2023-03-25'),
-(4, 4, 4, '2023-04-05', '2023-04-07'),
-(5, 1, 2, '2023-05-15', '2023-05-20');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `booking_history`
---
-
-CREATE TABLE `booking_history` (
-  `id` int(11) NOT NULL,
-  `id_booking` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_bill` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `booking_history`
---
-
-INSERT INTO `booking_history` (`id`, `id_booking`, `id_user`, `id_bill`) VALUES
-(1, 1, 1, 1),
-(2, 2, 2, 2),
-(3, 3, 3, 3),
-(4, 4, 4, 4),
-(5, 5, 2, 5);
+INSERT INTO `booking` (`id`, `id_room`, `id_user`, `check_in_date`, `check_out_date`, `note`, `availability`) VALUES
+(3, 3, 3, '2023-03-20 00:00:00', '2023-03-25 00:00:00', 'I will come on the weekend', 0),
+(4, 4, 4, '2023-04-05 00:00:00', '2023-04-07 00:00:00', 'I will come on Monday', 1),
+(5, 4, 4, '2023-04-05 00:00:00', '2023-04-07 00:00:00', 'I will come on Monday', 1),
+(8, 1, 3, '2024-01-05 00:00:00', '2024-01-07 00:00:00', 'I will come to hotel soon', 1),
+(9, 3, 4, '2024-01-06 00:00:00', '2024-01-08 12:00:00', 'Oke', 1),
+(10, 4, 6, '2024-01-07 00:00:00', '2024-01-09 12:00:00', 'It is Oke', 1),
+(11, 5, 8, '2024-01-08 00:00:00', '2024-01-10 12:00:00', 'Oke', 1),
+(12, 6, 10, '2024-01-10 00:00:00', '2024-01-12 12:00:00', 'I will come to hotel soon', 1),
+(13, 7, 11, '2024-01-06 00:00:00', '2024-01-08 12:00:00', 'Oke', 1),
+(14, 5, 12, '2024-01-09 00:00:00', '2024-01-10 12:00:00', 'Oke', 1),
+(15, 1, 20, '2024-01-06 09:29:00', '2024-01-08 09:29:00', 'I will come to early', 1),
+(16, 4, 20, '2024-01-06 11:23:00', '2024-02-10 11:23:00', '7 triệu à mắc thế', 0),
+(17, 5, 20, '2024-01-18 11:26:00', '2024-01-26 11:26:00', 'ww', 1),
+(18, 20, 20, '2024-01-06 15:00:00', '2024-01-12 15:57:00', '111ew', 0);
 
 -- --------------------------------------------------------
 
@@ -101,42 +90,49 @@ INSERT INTO `booking_history` (`id`, `id_booking`, `id_user`, `id_bill`) VALUES
 --
 
 CREATE TABLE `convenients` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_room` int(11) NOT NULL,
-  `convenient` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_room`) REFERENCES rooms(id)
+  `convenient` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `convenients` (`id_room`, `convenient`) VALUES
-(1, 'Air conditioning, Television, 2 bed, 1 bath, wifi'),
-(2, 'Television, 3 bed, 1 bath, wifi'),
-(3, 'Television, 3 bed, 1 bath, wifi'),
-(4, 'Mini fridge'),
-(5, 'Air conditioning, Television, 1 bed, 1 bath, wifi'),
-(6, 'Balcony,Air conditioning, Television, 1 bed, 1 bath, wifi'),
-(7, 'Television, 2 bed, 1 bath, wifi'),
-(8, 'Air conditioning, Television, 2 bed, 1 bath, wifi'),
-(9, 'Air conditioning, Television, 4 bed, 2 bath, wifi'),
-(10, 'Air conditioning, Television, 3 bed, 1 bath, wifi'),
-(11, 'Air conditioning, 2 bed, 1 bath, wifi'),
-(12, 'Television, 3 bed, 1 bath, wifi'),
-(13, 'Balcony, Television, 3 bed, 1 bath, wifi'),
-(14, 'Air conditioning, Television, 3 bed, 1 bath, wifi'),
-(15, 'Air conditioning, Television, 3 bed, 1 bath, wifi'),
-(16, 'Balcony, Television, 3 bed, 1 bath, wifi'),
-(17, 'Air conditioning, Television, 4 bed, 1 bath, wifi'),
-(18, 'Air conditioning, Television, 3 bed, 1 bath, wifi'),
-(19, 'Air conditioning, Television, 6 bed, 1 bath, wifi'),
-(20, 'Air conditioning, Television, 2 bed, 1 bath, wifi');
+--
+-- Dumping data for table `convenients`
+--
 
+INSERT INTO `convenients` (`id`, `id_room`, `convenient`) VALUES
+(1, 1, 'Air conditioning, Television, 2 bed, 1 bath, wifi'),
+(2, 2, 'Television, 3 bed, 1 bath, wifi'),
+(3, 3, 'Television, 3 bed, 1 bath, wifi'),
+(4, 4, 'Mini fridge'),
+(5, 5, 'Air conditioning, Television, 1 bed, 1 bath, wifi'),
+(6, 6, 'Balcony,Air conditioning, Television, 1 bed, 1 bath, wifi'),
+(7, 7, 'Television, 2 bed, 1 bath, wifi'),
+(8, 8, 'Air conditioning, Television, 2 bed, 1 bath, wifi'),
+(9, 9, 'Air conditioning, Television, 4 bed, 2 bath, wifi'),
+(10, 10, 'Air conditioning, Television, 3 bed, 1 bath, wifi'),
+(11, 11, 'Air conditioning, 2 bed, 1 bath, wifi'),
+(12, 12, 'Television, 3 bed, 1 bath, wifi'),
+(13, 13, 'Balcony, Television, 3 bed, 1 bath, wifi'),
+(14, 14, 'Air conditioning, Television, 3 bed, 1 bath, wifi'),
+(15, 15, 'Air conditioning, Television, 3 bed, 1 bath, wifi'),
+(16, 16, 'Balcony, Television, 3 bed, 1 bath, wifi'),
+(17, 17, 'Air conditioning, Television, 4 bed, 1 bath, wifi'),
+(18, 18, 'Air conditioning, Television, 3 bed, 1 bath, wifi'),
+(19, 19, 'Air conditioning, Television, 6 bed, 1 bath, wifi'),
+(20, 20, 'Air conditioning, Television, 2 bed, 1 bath, wifi'),
+(26, 31, '2 Bed, 1 Bath, wifi'),
+(27, 32, '1bed 5 bed');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_room`
+--
 
 CREATE TABLE `detail_room` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_room` int(11) NOT NULL,
-  `image_url` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_room`) REFERENCES rooms(id)
+  `image_url` varchar(15000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -224,34 +220,47 @@ INSERT INTO `detail_room` (`id`, `id_room`, `image_url`) VALUES
 (78, 16, 'public/images/honeymoon_suite_room3.png'),
 (79, 16, 'public/images/honeymoon_suite_room4.png'),
 (80, 16, 'public/images/honeymoon_suite_room5.png'),
-(81, 18, 'public/images/artistic_lounge_retreat_room1.png'),
-(82, 18, 'public/images/artistic_lounge_retreat_room2.png'),
-(83, 18, 'public/images/artistic_lounge_retreat_room3.png'),
-(84, 18, 'public/images/artistic_lounge_retreat_room4.png'),
-(85, 18, 'public/images/artistic_lounge_retreat_room5.png'),
-(86, 19, 'public/images/chic_lounge_oasis_room1.png'),
-(87, 19, 'public/images/chic_lounge_oasis_room2.png'),
-(88, 19, 'public/images/chic_lounge_oasis_room3.png'),
-(89, 19, 'public/images/chic_lounge_oasis_room4.png'),
-(90, 19, 'public/images/chic_lounge_oasis_room5.png'),
-(91, 20, 'public/images/honeymoon_suite_room1.png'),
-(92, 20, 'public/images/honeymoon_suite_room2.png'),
-(93, 20, 'public/images/honeymoon_suite_room3.png'),
-(94, 20, 'public/images/honeymoon_suite_room4.png'),
-(95, 20, 'public/images/honeymoon_suite_room5.png');
+(81, 17, 'public/images/glamorous_den_room1.png'),
+(82, 17, 'public/images/glamorous_den_room2.png'),
+(83, 17, 'public/images/glamorous_den_room3.png'),
+(84, 17, 'public/images/glamorous_den_room4.png'),
+(85, 17, 'public/images/glamorous_den_room5.png'),
+(86, 18, 'public/images/artistic_lounge_retreat_room1.png'),
+(87, 18, 'public/images/artistic_lounge_retreat_room2.png'),
+(88, 18, 'public/images/artistic_lounge_retreat_room3.png'),
+(89, 18, 'public/images/artistic_lounge_retreat_room4.png'),
+(90, 18, 'public/images/artistic_lounge_retreat_room5.png'),
+(91, 19, 'public/images/chic_lounge_oasis_room1.png'),
+(92, 19, 'public/images/chic_lounge_oasis_room2.png'),
+(93, 19, 'public/images/chic_lounge_oasis_room3.png'),
+(94, 19, 'public/images/chic_lounge_oasis_room4.png'),
+(95, 19, 'public/images/chic_lounge_oasis_room5.png'),
+(96, 20, 'public/images/honeymoon_suite_room1.png'),
+(97, 20, 'public/images/honeymoon_suite_room2.png'),
+(98, 20, 'public/images/honeymoon_suite_room3.png'),
+(99, 20, 'public/images/honeymoon_suite_room4.png'),
+(100, 20, 'public/images/honeymoon_suite_room5.png'),
+(122, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640'),
+(123, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640'),
+(124, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640'),
+(125, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640'),
+(126, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640'),
+(127, 32, 'https://s.net.vn/Ry2u'),
+(128, 32, 'https://s.net.vn/Ry2u'),
+(129, 32, 'https://s.net.vn/Ry2u'),
+(130, 32, 'https://s.net.vn/Ry2u'),
+(131, 32, 'https://s.net.vn/Ry2u');
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `favorite`
+--
 
-CREATE TABLE `booking` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `favorite` (
+  `id` int(11) NOT NULL,
   `id_room` int(11) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `check_in_date` datetime DEFAULT NULL,
-  `check_out_date` datetime DEFAULT NULL,
-  `note` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_room`) REFERENCES rooms(id),
-  FOREIGN KEY (`id_user`) REFERENCES users(id)
+  `id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -259,11 +268,13 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 1),
 (4, 2, 3),
-(5, 1, 4);
+(5, 1, 4),
+(6, 4, 20),
+(7, 6, 20),
+(8, 5, 20),
+(9, 1, 20),
+(10, 7, NULL);
 
 -- --------------------------------------------------------
 
@@ -273,23 +284,22 @@ INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
 
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
-  `id_room` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `rating` int(11) NOT NULL,
-  `content` varchar(255) DEFAULT NULL,
-  `date` date DEFAULT NULL
+  `id_user` int(10) NOT NULL,
+  `id_room` int(10) NOT NULL,
+  `rating` int(1) NOT NULL,
+  `content` mediumtext NOT NULL,
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `feedback`
 --
 
-INSERT INTO `feedback` (`id`, `id_room`, `id_user`, `rating`, `content`, `date`) VALUES
-(1, 1, 1, 5, 'Great experience!', '2023-01-04'),
-(2, 2, 2, 4, 'Nice place to stay.', '2023-02-16'),
-(3, 3, 3, 3, 'Average service.', '2023-03-26'),
-(4, 4, 4, 2, 'Disappointing experience.', '2023-04-08'),
-(5, 1, 2, 4, 'Good value for money.', '2023-05-21');
+INSERT INTO `feedback` (`id`, `id_user`, `id_room`, `rating`, `content`, `date`) VALUES
+(6, 2, 20, 5, 'This room is truly commendable! Not only is it clean and comfortable, but it also offers a very cozy and airy space. From bright colors to smart design, everything is arranged harmoniously and creates a wonderful living space.', '2023-02-15 00:00:00'),
+(7, 10, 8, 5, 'This room is truly commendable! Not only is it clean and comfortable, but it also offers a very cozy and airy space. From bright colors to smart design, everything is arranged harmoniously and creates a wonderful living space.', '2023-02-15 00:00:00'),
+(8, 11, 2, 5, 'This room is truly commendable! Not only is it clean and comfortable, but it also offers a very cozy and airy space. From bright colors to smart design, everything is arranged harmoniously and creates a wonderful living space.', '2023-02-15 00:00:00'),
+(9, 12, 20, 5, 'This room is truly commendable! Not only is it clean and comfortable, but it also offers a very cozy and airy space. From bright colors to smart design, everything is arranged harmoniously and creates a wonderful living space.', '2023-02-15 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -297,13 +307,14 @@ INSERT INTO `feedback` (`id`, `id_room`, `id_user`, `rating`, `content`, `date`)
 -- Table structure for table `rooms`
 --
 
-CREATE TABLE `favorite` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_room` int(11) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_room`) REFERENCES rooms(id),
-  FOREIGN KEY (`id_user`) REFERENCES users(id)
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `availability` tinyint(1) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `rating` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -311,8 +322,8 @@ CREATE TABLE `favorite` (
 --
 
 INSERT INTO `rooms` (`id`, `name`, `type`, `price`, `availability`, `description`, `rating`) VALUES
-(1, 'Duluxe', 'Deluxe', '50.00', 1, 'Deluxe Rooms are luxurious and spacious hotel accommodations, featuring modern amenities and stunning city views. Bringing visitors memorable and enjoyable experiences', 4),
-(2, 'Chic Lounge Oasis', 'Deluxe', '100.00', 0, 'Premium service along with a wide range of amenities will bring you the experience of the most fulfilling vacation.The 24-hour reception desk is always ready to serve you from check-in to check-out or any requests.', 5),
+(1, 'Duluxey', 'Deluxe', '1000.00', 1, 'Deluxe Rooms are luxurious and spacious hotel accommodations, featuring modern amenities and stunning city views. Bringing visitors memorable and enjoyable experiences', 5),
+(2, 'Chic Lounge Oasis', 'Deluxe', '100.00', 1, 'Premium service along with a wide range of amenities will bring you the experience of the most fulfilling vacation.The 24-hour reception desk is always ready to serve you from check-in to check-out or any requests.', 5),
 (3, 'The Prestige Parlor', 'Family room', '120.00', 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication.', 5),
 (4, 'Paradise of Rest', 'Family room', '200.00', 1, 'Paradise of Rest is a living room designed to create a wonderful space of relaxation and rest. It brings a feeling of peace, comfort and convenience, helping you find relaxation and refresh your spirit.', 5),
 (5, 'Peaceful Room', 'Family room', '90.00', 1, 'Peaceful Living Room: This living room creates a peaceful and relaxing space. Soft colors, dim lights and comfortable furniture can be used to create an airy and relaxing space.', 5),
@@ -330,7 +341,12 @@ INSERT INTO `rooms` (`id`, `name`, `type`, `price`, `availability`, `description
 (17, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
 (18, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
 (19, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(20, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5);
+(20, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(21, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(22, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(23, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(31, 'Livotel Hotel Kaset Nawamin Bangkok', 'Hotel small', '1200000.00', 1, 'Livotel Hotel Kaset Nawamin Bangkok là một khách sạn nằm trong khu vực an ninh, toạ lạc tại Sena Nikhom.  khách sạn sở hữu vị trí đắc địa cách sân bay Sân bay quốc tế Don Mueang (DMK) 8,54 km.  khách sạn nằm cách Ratchadaphisek MRT Station 4,66 km.  Không chỉ sở hữu vị trí đắc địa, Livotel Hotel Kaset Nawamin Bangkok còn là một trong những khách sạn nằm cách Wat Mahathat chưa đầy 13,67 km và Wat Yan Nawa chưa đầy 15,53 km.', 5),
+(32, 'Dexululuuu', 'family', '21000000.00', 1, 'Phòng đẹp đó', 4);
 
 -- --------------------------------------------------------
 
@@ -347,19 +363,28 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `age` int(11) NOT NULL,
   `gender` varchar(10) NOT NULL,
-  `rule` varchar(20) DEFAULT 'user'
+  `role` varchar(20) DEFAULT 'user',
+  `availability` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `avatar`, `password`, `phone`, `email`, `age`, `gender`, `rule`) VALUES
-(1, 'Dương Thị Hồng Lam', 'public/avatar_lam.png', 'duonglam123', '1234567890', 'duonglam.@gmail.com', 30, 'Female', 'admin'),
-(2, 'Trần Đức Hùng', 'public/avatar_hung.png', 'tranhung123', '0987654321', 'tranhung.smith@gmail.com', 25, 'Male', 'admin'),
-(3, 'Phạm Thị Hỉ', 'public/avatar_hi.png', 'phamhi123', '9876543210', 'phamhi@gmail.com', 35, 'Female', 'user'),
-(4, 'Nguyễn Thị Linh', 'public/avatar_linh.png', 'nguyenlinh123', '0123456789', 'nguyenlinh@gmail.com', 28, 'Female', 'user'),
-(5, 'Hồ Thị Ngân', 'public/avatar_ngan.png', 'hongan123', '5678901234', 'hongan@gmail.com', 32, 'Female', 'user');
+INSERT INTO `users` (`id`, `name`, `avatar`, `password`, `phone`, `email`, `age`, `gender`, `role`, `availability`) VALUES
+(3, 'Thanh Vân Tran', 'public/avatar_hi.png', 'phamhi123', '9876543210', 'phamhi@gmail.com', 30, 'Female', 'user', 0),
+(4, 'Thanh Vân Tran', 'public/avatar_linh.png', 'nguyenlinh123', '0123456789', 'nguyenlinh@gmail.com', 28, 'Female', 'user', 0),
+(6, 'Thanh Vân Tran', 'public/avatar.png', '22446688', '0382870032', 'hung.tran25@student.passerellesnumeriques.org', 21, 'Male', 'user', 1),
+(8, 'Hoàng Hữu Hùng', 'public/avatar.png', '2233445566', '0987664544', 'hunghoang2003@gmail.com', 20, 'Male', 'user', 1),
+(10, 'lam Hồng', 'public/avatar.png', '$2y$10$s1V4e9E10VWhClhKULP9oOVLAWd5QqOlX5ICcNefELVvuiXnu5V6O', '0987664544', 'lamlo2003@gmail.com', 19, 'Female', 'user', 1),
+(11, 'Hồ Ngân', 'public/avatar.png', '$2y$10$/zKmqGD2OGA5fOYEIBu/2.E83BENzGjcZA4QbQs.xBm1SHWLc2ZTy', '098735151', 'nganho@gmail.com', 20, 'Nu', 'user', 1),
+(12, 'lam Hồng', 'public/avatar.png', '$2y$10$oL/6SejZmkUJJP.6VDNO.ecyeQ9FhpEjO4bW..8AbzcauawvHzBHW', '0987664544', 'lamlo2003@gmail.com', 23, 'Nữ', 'user', 1),
+(13, 'lam Hồng', 'public/avatar.png', '$2y$10$u6/ovGykcjEsgbiAoRWOqOLOnChMnKgN.N/NlB0vFmprr48mdQKNq', '0987664444', 'lamlo2003@gmail.com', 23, 'Nữ', 'user', 1),
+(15, 'Trần Đức Hùng', 'public/avatar.png', '$2y$10$uIqZNloxjgQHWO.SsFRFO.cZ5SUGBJ..n55QacbsqAaq1wcY6WPhy', '0905753333', 'seasideparadiseretreat@gmail.com', 20, 'Male', 'admin', 1),
+(16, 'Dương Thị Hồng Lam', 'public/avatar.png', '$2y$10$ZknsRfQ.4h5xmoKFJyB0C.BvZM5BDjElvoWhkSixp6SoI3srMvwj.', '0987654444', 'lam.duong2004@gmail.com', 20, 'Nữ', 'admin', 1),
+(17, 'Phạm Thị Hỉ', 'public/avatar.png', '$2y$10$RaeEiobq4D2JLUSAqYD46eLv98.cb.nZZgACIkaCNZKvSYBjB111u', '0987645555', 'hi.pham2004@gmail.com', 20, 'Nữ', 'admin', 1),
+(20, 'Duong Hong Lam', 'https://s.net.vn/6cmi', '$2y$10$Lm7uBb7t1N3wCvtNr3jEl.aJJip9Xrq3zEb7um/cE76D/nJDe97TG', '0347645305', 'lamhong@gmail.com', 17, 'Nu', 'user', 1),
+(21, 'Huỳnh Đức', 'public/avatar.png', '$2y$10$4Q5KSXpcglbzDqtoVZbNieWOR0Duif.MFptqQxbPf04b567Bp0S4.', '0387879999', 'duc@gmail.com', 19, 'male', 'user', 1);
 
 --
 -- Indexes for dumped tables
@@ -378,14 +403,6 @@ ALTER TABLE `bill`
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_room` (`id_room`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `booking_history`
---
-ALTER TABLE `booking_history`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_bill` (`id_bill`),
   ADD KEY `id_user` (`id_user`);
 
 --
@@ -414,9 +431,7 @@ ALTER TABLE `favorite`
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_room` (`id_room`),
-  ADD KEY `id_user` (`id_user`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `rooms`
@@ -438,55 +453,49 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `booking_history`
---
-ALTER TABLE `booking_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `convenients`
 --
 ALTER TABLE `convenients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `detail_room`
 --
 ALTER TABLE `detail_room`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
@@ -506,23 +515,16 @@ ALTER TABLE `booking`
   ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `booking_history`
---
-ALTER TABLE `booking_history`
-  ADD CONSTRAINT `booking_history_ibfk_1` FOREIGN KEY (`id_bill`) REFERENCES `bill` (`id`),
-  ADD CONSTRAINT `booking_history_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
 -- Constraints for table `convenients`
 --
 ALTER TABLE `convenients`
-  ADD CONSTRAINT `convenients_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `convenients_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`);
 
 --
 -- Constraints for table `detail_room`
 --
 ALTER TABLE `detail_room`
-  ADD CONSTRAINT `detail_room_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `detail_room_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`);
 
 --
 -- Constraints for table `favorite`
@@ -530,13 +532,6 @@ ALTER TABLE `detail_room`
 ALTER TABLE `favorite`
   ADD CONSTRAINT `favorite_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`),
   ADD CONSTRAINT `favorite_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`),
-  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

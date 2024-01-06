@@ -5,6 +5,7 @@
     require ("app/Models/detail/detail.model.php");
     require ("app/Models/register/register.model.php");
     require ("app/Models/login/login.model.php");
+    require "app/Models/admin.model.php";
     if (isset($_GET['id_room'])) {
         $roomId = $_GET['id_room'];
         $images = getRoomImages($roomId);

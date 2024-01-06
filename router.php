@@ -1,7 +1,7 @@
 <?php
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $routes = [
-    '/' => 'app/Controllers/home/index.controller.php',
+    '/' => 'app/Controllers/home/home.controller.php',
     '/about' => 'Controllers/about/about.controller.php',
     '/contact' => 'Controllers/contact/contact.controller.php',
     '/admin' => 'app/Controllers/admin/admin.controller.php',
@@ -13,7 +13,7 @@ $routes = [
     '/admin/Room/delete' => 'app/Controllers/admin/Room/admin.delete.room.controller.php',
     '/admin/Booking/edit' => 'app/Controllers/admin/Booking/admin.edit.booking.controller.php',
     '/admin/Booking/delete' => 'app/Controllers/admin/Booking/admin.delete.booking.controller.php',
-    '/' => 'app/Controllers/home/home.controller.php',
+    '/home' => 'app/Controllers/home/home.controller.php',
     '/about' => 'app/Controllers/about/about.controller.php',
     '/detail_room' => 'app/Controllers/detail_room/detail_room.controller.php',
     '/booking_room' => 'app/Controllers/booking/booking.controller.php',

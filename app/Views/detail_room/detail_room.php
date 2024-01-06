@@ -27,8 +27,6 @@
     } ?>
     </div>
 </div>
-
-
 <div class="row content ">
     <?php if (!empty($rooms)) { ?>
         <div class="col-lg-9 col-12">

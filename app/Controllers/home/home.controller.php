@@ -6,6 +6,7 @@ require ("./app/Models/register/register.model.php");
 require ("./app/Models/login/login.model.php");
 require ("app/Models/favorite/favorite.model.php");
 $rooms= getRooms();
+$room = "";
 ?>
 <?php
     $userName = "";

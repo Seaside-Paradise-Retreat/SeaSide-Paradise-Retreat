@@ -6,6 +6,7 @@ $booking = "null";
     require "app/Models/bill/bill.model.php";
     require "app/Models/detail/detail.model.php";
     require "app/Models/booking_history/booking_history.model.php";
+    require "app/Models/admin.model.php";
     if (isset($_GET['id_room'])) {
         $roomId = $_GET['id_room'];
         $images = getRoomImages($roomId);

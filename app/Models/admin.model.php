@@ -1,5 +1,85 @@
 <?php
 require(__DIR__."../../Databases/database.php");
+
+
+// function validateUsername($name) {
+//     $name = trim($name);
+//     if (empty($name)) {
+//         return false; // Please enter UserName
+//     } elseif (strlen($name) < 4 || strlen($name) > 25) {
+//         return false; // Your name must be at least 4 characters
+//     }
+
+//     return true; // Valid username
+// }
+
+// function validateEmail($email, $connection) {
+//     $email = trim($email);
+
+//     if (empty($email)) {
+//         return false; // Please enter an email
+//     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+//         return false; // Email must contain '@'
+//     }
+
+//     $query = "SELECT email FROM users WHERE email = :email";
+//     $statement = $connection->prepare($query);
+//     $statement->bindParam(":email", $email);
+//     $statement->execute();
+//     $existingEmail = $statement->fetch(PDO::FETCH_ASSOC);
+
+//     if (!empty($existingEmail)) {
+//         return false; // Email already exists
+//     }
+
+//     return true; // Valid email
+// }
+
+// function validatePassword($password) {
+//     if (empty($password)) {
+//         return false; // Password is required
+//     } elseif (strlen($password) < 8) {
+//         return false; // Password must be at least 8 characters long
+//     } elseif (!preg_match('/[A-Z]/', $password)) {
+//         return false; // Password must contain at least one uppercase letter
+//     } elseif (!preg_match('/[a-z]/', $password)) {
+//         return false; // Password must contain at least one lowercase letter
+//     } elseif (!preg_match('/[0-9]/', $password)) {
+//         return false; // Password must contain at least one digit
+//     } elseif (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $password)) {
+//         return false; // Password must contain at least one special character
+//     }
+
+//     return true; // Valid password
+// }
+
+// function validatePhone($phoneNumber) {
+//     $phone = preg_replace("/[^0-9]/", "", $phoneNumber);
+//     if (empty($phoneNumber)) {
+//         return false; // Please enter phone number
+//     } elseif (strlen($phone) !== 10) {
+//         return false; // Invalid phone number format
+//     }
+
+//     return true; // Valid phone number
+// }
+
+// function validateAvailability($availability) {
+//     if (empty($availability)) {
+//         return false; // Please enter availability
+//     } elseif (preg_match('/^[01]$/', $availability)) {
+//         return true; // Valid availability
+//     } else {
+//         return false; // Availability should be either '0' or '1'
+//     }
+
+
+// }
+
+// function validateAge($age){
+
+// }
+
 function createNewUser($name, $password, $phone, $email, $age, $gender,$availability){
     global $connection;
     try{
@@ -19,28 +99,21 @@ function createNewUser($name, $password, $phone, $email, $age, $gender,$availabi
     }
     header('location: /admin');
 }
-
-
-function updateUser($name, $availability, $phone, $email, $age, $gender, int $id):bool
-
+function updateUser($name, $phone, $email, $age, $gender,  $availability ,int $id):bool
 {
     global $connection;
-    
-    $statement = $connection->prepare("update  users set name = :name, availability = :availability, phone = :phone, email = :email, age = :age, gender = :gender where id = :id");
+    $statement = $connection->prepare("UPDATE  users SET name = :name, phone = :phone, email = :email, age = :age, gender = :gender, availability = :availability where id = :id");
     $statement->execute([
         ':name' => $name,
-        ':availability' => $availability,
         ':phone' => $phone,
         ':email' => $email,
         ':age' => $age,
         ':gender' => $gender,
+        ':availability' => $availability,
         ':id' => $id
-
     ]);
-
     return $statement->rowCount() > 0;
 }
-
 function deleteUser(int $id) : bool
 {
     global $connection;

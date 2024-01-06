@@ -1,6 +1,3 @@
-<?php 
-    // session_start() 
-?>
 <link rel="stylesheet" href="public/css/detail_room.css">
 <!-- Hiển thị hình ảnh tương ứng với id phòng -->
 <div class="row details_room">
@@ -17,16 +14,13 @@
                         <?php } elseif ($index === 2) { ?>
                             <img class="img detail_img image-2" id="img2" src="<?php echo $image['image_url']; ?>">
                         <?php } ?>
-                    <!-- </div> -->
                 <?php }
                 elseif ($index === 3 || $index === 4) { ?>
-                    <!-- <div class="border row2"> -->
                         <?php if ($index === 3) { ?>
                             <img class="img detail_img image-3" id="img3" src="<?php echo $image['image_url']; ?>">
                         <?php } elseif ($index === 4) { ?>
                             <img class="img detail_img image-4" id="img4" src="<?php echo $image['image_url']; ?>">
                         <?php } ?>
-                    <!-- </div> -->
                 <?php } ?>
                 <?php $index++; ?>
         <?php }
@@ -36,15 +30,15 @@
 
 
 <div class="row content ">
-    <?php if ($room) { ?>
+    <?php if (!empty($rooms)) { ?>
         <div class="col-lg-9 col-12">
             <div class="row content-text">
                 <div class="col-lg-4 col-6 content__text">
-                    <p id="name_room_detail"><?php echo $room['name']; ?></p>
-                    <p id="price_room_detail"><?php echo $room['price']; ?></p>
+                    <p id="name_room_detail"><?php echo $rooms['name']; ?></p>
+                    <p id="price_room_detail"><?php echo $rooms['price']; ?></p>
                 </div>
                 <div class="col-lg-4 col-6 context__icon">
-                    <i id="icon_heart_detail" class="fa-regular fa-heart"></i>
+                <a href="/favorite?id_room=<?php echo $rooms['id']; ?>"><i id="icon_heart_detail" class="fa-regular fa-heart"></i></a> 
                     <i id="icon_share_detail" class="fa-solid fa-share"></i>
                     <div id="addbag"></div>
                 </div>
@@ -67,7 +61,7 @@
             <div class="row content-description">
                 <div class="col-lg-9">
                     <h4>Room Description</h4>
-                    <p><?php echo $room['description']; ?></p>
+                    <p><?php echo $rooms['description']; ?></p>
                 </div>
             </div>
             <!-- Đánh giá trung bình -->
@@ -82,12 +76,12 @@
                 <div class="col-lg-1 col-6 text-end">
                     <div class="d-flex justify-content-end">
                         <i class="fa-solid fa-star pe-2" style="color: #3A8CED"></i>
-                        <h4><?php echo $room['rating']?></h4>
+                        <h4><?php echo $rooms['rating']?></h4>
                     </div>
-                    <p id="convenient"><?php echo $room['rating']?></p>
-                    <p id="clean"><?php echo $room['rating']?></p>
-                    <p id="staff"><?php echo $room['rating']?></p>
-                    <p id="quality"><?php echo $room['rating']?></p>
+                    <p id="convenient"><?php echo $rooms['rating']?></p>
+                    <p id="clean"><?php echo $rooms['rating']?></p>
+                    <p id="staff"><?php echo $rooms['rating']?></p>
+                    <p id="quality"><?php echo $rooms['rating']?></p>
                 </div>
             </div>
             <!-- Chi tiết đánh giá -->
@@ -103,7 +97,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p><?php echo $room['description']; ?></p>
+                        <p><?php echo $rooms['description']; ?></p>
                     </div>
                 </div>
                 <div class="col-lg-5 comment-cus m-4">
@@ -117,7 +111,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p><?php echo $room['description']; ?></p>
+                        <p><?php echo $rooms['description']; ?></p>
                     </div>
                 </div>
                 <div class="col-lg-5 comment-cus m-4">
@@ -131,13 +125,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p><?php echo $room['description']; ?></p>
+                        <p><?php echo $rooms['description']; ?></p>
                     </div>
                 </div>
             </div>
         </div>
     <?php } ?>
     <div class="col-lg-3 col-12" id="booking-btn">
-            <a href="#" id="book1"><button id="booking_now" class="button_booking">BOOKING NOW</button></a>
+            <!-- <a href="#" id="book1"><button id="booking_now" class="button_booking">BOOKING NOW</button></a> -->
+            <?php if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :?>
+                    <a href="/booking_room?id_room=<?php echo $rooms['id']; ?>"><input id="booking_now" type="button" class="button_booking" name="booking"  value="Booking now"></a>
+                    <?php else: ?>
+                      <a href=""><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
+            <?php endif ?>
     </div>
 </div>

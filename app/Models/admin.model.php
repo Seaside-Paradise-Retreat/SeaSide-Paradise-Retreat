@@ -1,16 +1,16 @@
 <?php
 require(__DIR__."../../Databases/database.php");
-function createNewUser($name, $password, $phone, $email, $age, $gender){
+function createNewUser($name, $password, $phone, $email, $age, $gender,$availability){
     global $connection;
     try{
-        $stt = $connection -> prepare("Insert into users(name, password, phone, email, age, gender) values(:name, :password, :phone, :email, :age, :gender)");
+        $stt = $connection -> prepare("Insert into users(name, password, phone, email, age, gender, availability) values(:name, :password, :phone, :email, :age, :gender, :availability)");
         $stt -> bindParam(':name',$name);
         $stt -> bindParam(':password', $password);
         $stt -> bindParam(':phone', $phone);
         $stt -> bindParam(':email', $email);
         $stt -> bindParam(':age', $age);
         $stt -> bindParam(':gender', $gender);
-        
+        $stt -> bindParam(':availability', $availability);
         $stt -> execute();
         echo "Create new user record successfull!";
 
@@ -21,14 +21,15 @@ function createNewUser($name, $password, $phone, $email, $age, $gender){
 }
 
 
-function updateUser($name, $password, $phone, $email, $age, $gender, int $id):bool
+function updateUser($name, $availability, $phone, $email, $age, $gender, int $id):bool
+
 {
-global $connection;
+    global $connection;
     
-    $statement = $connection->prepare("update  users set name = :name, password = :password, phone = :phone, email = :email, age = :age, gender = :gender where id = :id");
+    $statement = $connection->prepare("update  users set name = :name, availability = :availability, phone = :phone, email = :email, age = :age, gender = :gender where id = :id");
     $statement->execute([
         ':name' => $name,
-        ':password' => $password,
+        ':availability' => $availability,
         ':phone' => $phone,
         ':email' => $email,
         ':age' => $age,
@@ -43,14 +44,12 @@ global $connection;
 function deleteUser(int $id) : bool
 {
     global $connection;
-
-    $statement = $connection->prepare("delete from users where id = :id");
+    $statement = $connection->prepare("UPDATE users SET availability = 0 WHERE id = :id");
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
 function selectAllUser(){
     global $connection;
-
     try{
         $stt = $connection -> query("Select * from users");
         $stt ->execute();
@@ -61,7 +60,6 @@ function selectAllUser(){
 }
 function selectRoom(){
     global $connection;
-
     try{
         $stt = $connection -> query("Select * from rooms");
         $stt -> execute();
@@ -73,7 +71,6 @@ function selectRoom(){
 
 function createRoom($name, $type, $price, $availability, $description, $rating){
     global $connection;
-
     try{
         $stt = $connection -> prepare("Insert into rooms(name, type, price, availability, description, rating) values(:name, :type, :price, :availability, :description, :rating)");
         $stt -> bindParam(':name',$name);
@@ -91,29 +88,42 @@ function createRoom($name, $type, $price, $availability, $description, $rating){
     }
     header('location: /admin');
 }
+
+function insertIntoDetailRoom($roomId, $imageUrl)
+{
+    global $connection;
+    try {
+        $statement = $connection->prepare("INSERT INTO detail_room (id_room, image_url) VALUES (:roomId, :imageUrl)");
+        $statement->execute([
+            ':roomId' => $roomId,
+            ':imageUrl' => $imageUrl,
+        ]);
+    } catch (PDOException $e) {
+        // Log or handle the exception as needed
+        error_log("Error inserting into detail_room: " . $e->getMessage());
+    }
+    header('location: /admin');
+}
 function updateRoom($name, $type, $price, $availability, $description, $rating, int $id):bool
 {
     global $connection;
-
-    $statement = $connection->prepare("update rooms set name = :name, type = :type, price = :price, availability = :availability, description = :description, rating = :rating where id = :id");
-    $statement->execute([
-        ':name' => $name,
-        ':type' => $type,
-        ':price' => $price,
-        ':availability' => $availability,
-        ':description' => $description,
-        ':rating' => $rating,
-        ':id' => $id
-
-    ]);
+    $statement = $connection->prepare("UPDATE rooms SET name = :name, type = :type, price = :price, availability = :availability, description = :description, rating = :rating WHERE id = :id");
+        $statement->execute([
+            ':name' => $name,
+            ':type' =>  $type,
+            ':price' =>  $price,
+            ':availability' =>  $availability,
+            ':description' =>  $description,
+            ':rating' =>  $rating,
+            ':id' => $id
+        ]);
 
     return $statement->rowCount() > 0;
 }
 function deleteRoom(int $id) : bool
-{   
+{
     global $connection;
-
-    $statement = $connection->prepare("delete from rooms where id = :id");
+    $statement = $connection->prepare("UPDATE rooms SET availability = 0 WHERE id = :id");
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
@@ -142,6 +152,7 @@ function selectBookingRoom(){
     global $connection;
 
     try{
+        global $connection;
         $stt = $connection -> prepare("Select * from booking");
         $stt -> execute();
         return $stt -> fetchAll(PDO::FETCH_ASSOC);
@@ -149,4 +160,29 @@ function selectBookingRoom(){
     } catch(PDOException $e){
         echo "Error: " .$e ->getMessage();
     }
+}
+
+function updateBooking($id_room, $check_in_date, $check_out_date, $availability){
+    global $connection;
+    try {
+        $statement = $connection->prepare("UPDATE booking SET id_room = :id_room, check_in_date = :check_in_date, check_out_date = :check_out_date, availability = :availability WHERE id = :id");
+        $statement->execute([
+            ':id_room' => $id_room,
+            ':check_in_date' => $check_in_date,
+            ':check_out_date' => $check_out_date,
+            ':availability' => $availability,
+            ':id' => $_GET["id"]
+        ]);
+    } catch (PDOException $e) {
+        // Handle the exception (display an error message or log it)
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+function deleteBooking(int $id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("UPDATE booking SET availability = 0 WHERE id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
 }

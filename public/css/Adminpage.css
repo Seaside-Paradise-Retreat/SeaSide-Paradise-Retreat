@@ -1,14 +1,9 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;  
-    
-   
+    font-family: 'Roboto', sans-serif;   
 }
 
-html, body {
-    height: 100%;
-}
 
 /* Navbar styles */
 .navbar {
@@ -20,7 +15,9 @@ html, body {
     background-color: var(--white-color);
     
 }
-
+.form_title>#title{
+    color: black;
+}
 #logo_hotel {
     width: 100px;
     height: 100px;
@@ -58,6 +55,7 @@ html, body {
     flex-direction: column;
     background: #3568A4;
     align-items: center;
+    border-radius: 5px;
     
 }
 .item{
@@ -84,7 +82,7 @@ html, body {
     max-width: 100%;
     margin: 20px;
     display:none;
-    
+    overflow:auto;
 }
 
 .active {
@@ -92,7 +90,6 @@ html, body {
 }
 #createUser, #createRoom{
     text-align: center;
-    
     width: 154px;
     height: 40px;
     font-size: 25px;
@@ -105,17 +102,19 @@ html, body {
 }
 .table {
     width: 100%;
-    margin: 20px;
+    margin: 10px;
     border-collapse: collapse;
+    font-size: 20px;
     
 }
+
 .table th, .table td {
     border: 1px solid #dddddd;
     padding: 8px;
     text-align: center;
 }
 .table th {
-    background-color: #f2f2f2;
+    background-color: #5FBDFF;
 }
 .table tbody tr:hover {
     background-color: #e6f7ff;
@@ -127,7 +126,9 @@ html, body {
     justify-content: center;
     margin-top: 50px;
     line-height: 50px;
+    
 }
+
 .ItemBooking{
     display: flex;
     justify-content: center;
@@ -172,7 +173,6 @@ html, body {
 .form_action{
     border:1px solid #9EEAF7;
     width: 500px;
-    height: 800px;
     flex-shrink: 0;
     padding:20px;
     border-radius: 10px;
@@ -212,6 +212,16 @@ html, body {
     font-size: 25px;
  
 }
+
+.button_addimage{
+    width: 30%;
+    height:50px;
+    background-color: #3498db;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
 #button_edit, #button_delete{
     border: none;
     outline: none;
@@ -219,10 +229,34 @@ html, body {
     font-size: 25px;
 }
 
-.form_title{
-    display: flex;
-    justify-content: space-between;
+#button_edit{
+    color: #3498db;
+
 }
-.form_title i{
-    font-size: 30px;
+#button_delete{
+    color:red;
+}
+
+.form_title{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    font-size: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    color: var(--WHITE, #FFF);
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+    cursor: pointer; 
+}
+
+.full-text {
+    white-space: normal; 
+    max-width: none;     
 }

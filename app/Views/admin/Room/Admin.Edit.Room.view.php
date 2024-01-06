@@ -16,7 +16,7 @@ require(__DIR__ . '/../../../Models/admin.model.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!empty($_POST['name']) and !empty($_POST['type']) and !empty($_POST['price']) and !empty($_POST['availability']) and !empty($_POST['description']) and !empty($_POST['rating']) and !empty($_GET["id"]) ) {
-        $statement = db()->prepare("update rooms set name = :name, type = :type, price = :price, availability = :availability, description = :description, rating = :rating where id = :id");
+        $statement = $connection->prepare("update rooms set name = :name, type = :type, price = :price, availability = :availability, description = :description, rating = :rating where id = :id");
         $statement->execute([
             ':name' => $_POST['name'],
             ':type' =>  $_POST['type'],
@@ -37,7 +37,7 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
     $id = $_GET["id"] ? $_GET["id"] : null;
     if (isset($id)):
    
-        $statement = db()->prepare('select * from rooms where id = :id');
+        $statement = $connection->prepare('select * from rooms where id = :id');
         $statement->execute([':id' => $id]);
         $room = $statement->fetch();
 
@@ -75,7 +75,7 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
     <div id="Modal" class="main_menu_right">
         <form  class="form_action" action="#" method="post">
             <div class="form_title">
-                <h2 id="title">EDIT ROOM</h2>
+                <h4 id="title">EDIT ROOM</h4>
                 <a href="/admin"><i class="fas fa-times" ></i></a>
             </div>
             <div class="form-group">

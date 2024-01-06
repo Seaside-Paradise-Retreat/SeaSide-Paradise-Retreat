@@ -1,4 +1,3 @@
-
 <?php 
 require ("./app/Databases/database.php");
 ?>
@@ -80,6 +79,7 @@ require ("./app/Databases/database.php");
             $statament->bindParam(":age", $date, PDO::PARAM_INT);
             $statament->bindParam(":gender", $gender, PDO::PARAM_STR);
             $result = $statament->execute();
+            return $result;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false;

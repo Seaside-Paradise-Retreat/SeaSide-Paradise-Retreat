@@ -1,114 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit_User</title>
+    <title>Edit_Booking</title>
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-<body>
-<?php 
 
-// require(__DIR__ . '/../../../Databases/database.php');
+<body>
+<?php
+
+require(__DIR__ . '/../../../Databases/database.php');
 require(__DIR__ . '/../../../Models/admin.model.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    if (!empty($_POST['name']) and !empty($_POST['type']) and !empty($_POST['price']) and !empty($_POST['availability']) and !empty($_POST['description']) and !empty($_POST['rating']) and !empty($_GET["id"]) ) {
-        $statement = db()->prepare("update rooms set name = :name, type = :type, price = :price, availability = :availability, description = :description, rating = :rating where id = :id");
+    if (!empty($_POST['id_room']) && !empty($_POST['check_in_date']) && !empty($_POST['check_out_date']) && isset($_POST['availability']) && !empty($_GET["id"])) {
+        $statement = $connection->prepare("UPDATE booking SET id_room = :id_room, check_in_date = :check_in_date, check_out_date = :check_out_date, availability = :availability WHERE id = :id");
         $statement->execute([
-            ':name' => $_POST['name'],
-            ':type' =>  $_POST['type'],
-            ':price' =>  $_POST['price'],
-            ':availability' =>  $_POST['availability'],
-            ':description' =>  $_POST['description'],
-            ':rating' =>  $_POST['rating'],
+            ':id_room' => $_POST['id_room'],
+            ':check_in_date' => $_POST['check_in_date'],
+            ':check_out_date' => $_POST['check_out_date'],
+            ':availability' => $_POST['availability'],
             ':id' => $_GET["id"]
         ]);
-        
-        
+
         header('location: /admin');
         
     }
 }
 
 include(__DIR__ . "/.././../layouts/admin.navbar.php");
-    $id = $_GET["id"] ? $_GET["id"] : null;
-    if (isset($id)):
-   
-        $statement = db()->prepare('select * from rooms where id = :id');
-        $statement->execute([':id' => $id]);
-        $room = $statement->fetch();
+$id = $_GET["id"] ?? null; // Use the null coalescing operator for default value
+if ($id) :
+    $statement = $connection->prepare('SELECT * FROM booking WHERE id = :id');
+    $statement->execute([':id' => $id]);
+    $book = $statement->fetch();
+    ?>
 
-?>
+        <div class="container">
+            <div class="main_menu_left">
 
-<div class="container">
-    <div class="main_menu_left">
-    <a href="/admin" style="text-decoration: none;">
-            <div class="item">
-                <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
-                    <i class="fas fa-user" style="padding-right:20px"></i>
-                    <h5 class="title">User</h5>
-                </button>
-            </div>
-        </a>
-        <a href="/admin" style="text-decoration: none;">
-            <div class="item">
-                <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
-                    <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                    <h5 class="title">Room</h5>
-                </button>
-            </div>
-        </a>
+                <div class="item">
+                    <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
+                        <i class="fas fa-user" style="padding-right:20px"></i>
+                        <h5 class="title">User</h5>
+                    </button>
+                </div>
 
-        <a href="/admin" style="text-decoration: none;">
-            <div class="item">
-                <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
-                    <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                    <h5 class="title">Booking</h5>
-                </button>
-            </div>
-        </a>
-    </div>
-    
-    <div id="Modal" class="main_menu_right">
-        <form  class="form_action" action="#" method="post">
-            <div class="form_title">
-                <h2 id="title">EDIT BOOKING</h2>
-                <a href="/admin"><i class="fas fa-times" ></i></a>
-            </div>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="<?=$room['name'];?>">
-            </div>
-            <div class="form-group">
-                <label for="type">Type:</label>
-                <input type="text" id="type" class="form-control" placeholder="Type" name="type" value="<?=$room['type'];?>">
-            </div>
-            <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="number" id="price" class="form-control" placeholder="Price" name="price" value="<?=$room['price'];?>">
+
+                <div class="item">
+                    <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
+                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                        <h5 class="title">Room</h5>
+                    </button>
+                </div>
+
+
+
+                <div class="item">
+                    <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
+                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                        <h5 class="title">Booking</h5>
+                    </button>
+                </div>
+
             </div>
 
-            <div class="form-group">
-                <label for="availability">Availability:</label>
-                <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability" min="0" max="1" value="<?=$room['availability'];?>">
+            <div id="Modal" class="main_menu_right">
+                <form class="form_action" action="#" method="post">
+                    <div class="form_title">
+                        <h4 id="title">EDIT BOOKING</h4>
+                        <a href="/admin"><i class="fas fa-times"></i></a>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_room">Id Room</label>
+                        <input type="number" class="form-control" id="id_room" placeholder="Id Room" name="id_room" value="<?= $book['id_room']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="check_in">Check In</label>
+                        <input type="datetime-local" id="check_in" class="form-control" placeholder="Check In" name="check_in_date" value="<?= $book['check_in_date']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="check_out">Check Out</label>
+                        <input type="datetime-local" id="check_out" class="form-control" placeholder="Check Out" name="check_out_date" value="<?= $book['check_out_date']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="availability">Availability</label>
+                        <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability" value="<?= $book['availability']; ?>" min="0" max="1">
+                    </div>
+                    <div class="button">
+                        <button type="submit" class="button_create" >EDIT</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <input type="text" id="description" class="form-control" placeholder="Description" name="description" value="<?=$room['description'];?>">
-            </div>
-            <div class="form-group">
-                <label for="rating">Rating:</label>
-                <input type="number" id="rating" class="form-control" placeholder="Rating" name="rating" min="1" max="5" value="<?=$room['rating'];?>">
-            </div>
-            <div class="button">
-                <button type="submit" class="button_create" class="btn btn-primary btn-block">EDIT</button>
-            </div>
-        </form>
-    </div>
-</div>
-<?php endif ?>
+        </div>
+    <?php endif ?>
 </body>
+
 </html>

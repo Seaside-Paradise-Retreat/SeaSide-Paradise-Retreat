@@ -2,7 +2,7 @@
     function getRooms(){
         global $connection;
         try {
-            $query = "SELECT r.id, r.name, r.rating, d.image_url, r.price, r.description, c.convenient
+            $query = "SELECT r.id,r.availability, r.name, r.rating, d.image_url, r.price, r.description, c.convenient
             FROM Rooms r
             INNER JOIN (
             SELECT id_room, MIN(image_url) AS image_url

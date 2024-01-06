@@ -47,7 +47,8 @@
 <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script type="text/javascript">
     (function(){
-       emailjs.init("Go7__wfcQuNzv_yXH"); //use your USER ID
+    //    emailjs.init("Go7__wfcQuNzv_yXH"); //use your USER ID
+           emailjs.init("iKBLtTA0WO64DZb28"); //use your USER ID
     })();
 
     function submitContactForm() { 
@@ -69,7 +70,7 @@
             datebooked : date
         };
 
-        emailjs.send('service_ub3qy08', 'template_cq8m0w3', templateParams) //use your Service ID and Template ID
+        emailjs.send('service_6ctah1c', 'template_4ql7sg8', templateParams) //use your Service ID and Template ID
             .then(function(response) {
                 alert("Email has been sent");
                 btn.style.backgroundColor = "gray"; // Restore the default background color

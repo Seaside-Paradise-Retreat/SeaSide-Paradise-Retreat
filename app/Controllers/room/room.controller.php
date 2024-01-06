@@ -6,7 +6,6 @@ require ("./app/Models/register/register.model.php");
 require ("./app/Models/login/login.model.php");
 require ("app/Models/favorite/favorite.model.php");
 $rooms= getRooms();
-$room = "";
 ?>
 <?php
     $userName = "";
@@ -112,6 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
 }
 ?>
 
-<?php
-require "app/views/home/home.view.php";
+<?php 
+    require ("app/Views/room/room.view.php") ;
 ?>

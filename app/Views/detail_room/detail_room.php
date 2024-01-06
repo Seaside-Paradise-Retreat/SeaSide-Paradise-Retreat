@@ -36,7 +36,7 @@
                     <p id="price_room_detail"><?php echo $rooms['price']; ?></p>
                 </div>
                 <div class="col-lg-4 col-6 context__icon">
-                    <i id="icon_heart_detail" class="fa-regular fa-heart"></i>
+                <a href="/favorite?id_room=<?php echo $rooms['id']; ?>"><i id="icon_heart_detail" class="fa-regular fa-heart"></i></a> 
                     <i id="icon_share_detail" class="fa-solid fa-share"></i>
                     <div id="addbag"></div>
                 </div>

@@ -60,9 +60,8 @@
                       </i>Wifi</small>
                   </div>
                   <div class="d-flex justify-content-between mt-4">
-                  <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
+                  <h4 style="color: #3568A4;"><?php echo $room['price']?> VND</h4>
                   <?php
-                    // if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :
                       if(!empty($_SESSION['isLogin']) && $_SESSION['isLogin']):
                     ?>
                     <a href="/booking_room?id_room=<?php echo $room['id']; ?>"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
@@ -71,16 +70,10 @@
                   <?php endif ?>
                   </div>
           </div>
-
         </div>
       </div>
       <?php endif ?>
     <?php endforeach; ?>
   </div>
-<!-- <script>
-  function toggleFavorite(button) {
-  button.classList.toggle('favorite');
-}
-</script> -->
 </div>
 

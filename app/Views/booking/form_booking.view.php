@@ -56,16 +56,16 @@
                                 <p>Tax</p>
                             </div>
                             <div class="col-5 text-end">
-                                <p id="totalroom">$0</p>
-                                <p>$3</p>
-                                <p>$10</p>
+                                <p id="totalroom">0VND</p>
+                                <p>3VND</p>
+                                <p>10VND</p>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="div-total-price d-flex justify-content-between align-content-center ">
-                        <p class="title-small">Total (USD)</p>
-                        <input type="text" name="total_price" id="sum" readonly>$
+                        <p class="title-small">Total (VND)</p>
+                        <input type="text" name="total_price" id="sum" readonly>VND
                     </div>
                 </div>
             </div>

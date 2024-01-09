@@ -273,11 +273,13 @@ INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
 
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
-  `id_room` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_room` int(11)  DEFAULT NULL,
+  `id_user` int(11)  DEFAULT NULL,
   `rating` int(11) NOT NULL,
   `content` varchar(255) DEFAULT NULL,
   `date` date DEFAULT NULL
+  FOREIGN KEY (`id_room`) REFERENCES rooms(id),
+  FOREIGN KEY (`id_user`) REFERENCES users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

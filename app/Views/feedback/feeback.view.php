@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Đánh giá phòng khách sạn</title>
@@ -71,55 +71,5 @@
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Đánh giá phòng khách sạn</h1>
-    <div class="rating-container">
-      <span class="rating-stars">&#9733;</span>
-      <span class="rating-stars">&#9733;</span>
-      <span class="rating-stars">&#9733;</span>
-      <span class="rating-stars">&#9733;</span>
-      <span class="rating-stars">&#9733;</span>
-    </div>
-    <textarea id="review" placeholder="Nhận xét về phòng khách sạn"></textarea>
-    <button id="submit-btn">Gửi đánh giá</button>
-  </div>
 
-  <script>
-    const stars = document.querySelectorAll(".rating-stars");
-    const reviewTextarea = document.getElementById("review");
-    const submitButton = document.getElementById("submit-btn");
-
-    stars.forEach((star, index) => {
-      star.addEventListener("click", () => {
-        removeSelectedStars();
-        addSelectedStars(index);
-      });
-    });
-
-    function removeSelectedStars() {
-      stars.forEach((star) => {
-        star.classList.remove("selected");
-      });
-    }
-
-    function addSelectedStars(index) {
-      for (let i = 0; i <= index; i++) {
-        stars[i].classList.add("selected");
-      }
-    }
-
-    submitButton.addEventListener("click", () => {
-      const rating = document.querySelectorAll(".rating-stars.selected").length;
-      const review = reviewTextarea.value;
-
-      // Gửi đánh giá và xử lý logic tiếp theo
-      // ...
-
-      // Reset đánh giá và nhận xét
-      removeSelectedStars();
-      reviewTextarea.value = "";
-    });
-  </script>
-</body>
-</html>
+</html> -->

@@ -142,25 +142,58 @@ function selectRoom(){
     }
 }
 
-function createRoom($name, $type, $price, $availability, $description, $rating){
-    global $connection;
-    try{
-        $stt = $connection -> prepare("Insert into rooms(name, type, price, availability, description, rating) values(:name, :type, :price, :availability, :description, :rating)");
-        $stt -> bindParam(':name',$name);
-        $stt -> bindParam(':type', $type);
-        $stt -> bindParam(':price', $price);
-        $stt -> bindParam(':availability', $availability);
-        $stt -> bindParam(':description', $description);
-        $stt -> bindParam(':rating', $rating);
-        
-        $stt -> execute();
-        echo "Create new room record successfull!";
 
-    } catch(PDOException $e){
-        echo "Error: " .$e ->getMessage();
+function createRoom($name, $type, $price, $availability, $description, $imageUrls, $convenient)
+{
+    global $connection;
+
+    try {
+        $insertRoomStatement = $connection->prepare("INSERT INTO rooms (name, type, price, availability, description, rating) VALUES (:name, :type, :price, :availability, :description, :rating)");
+        $insertRoomStatement->execute([
+            ':name' => $name,
+            ':type' => $type,
+            ':price' => $price,
+            ':availability' => $availability,
+            ':description' => $description,
+            ':rating' => $rating,
+        ]);
+
+        $statement = $connection->prepare("SELECT id FROM rooms ORDER BY id DESC LIMIT 1");
+        $statement->execute();
+        $newlyInsertedRoom = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($newlyInsertedRoom) {
+            $roomId = $newlyInsertedRoom['id'];
+
+            if (!empty($roomId)) {
+                if (!empty($imageUrls)) {
+                    $imageUrls = explode(" ", $imageUrls);
+                    $imageUrls = array_map('trim', $imageUrls);
+
+                    foreach ($imageUrls as $imageUrl) {
+                        insertIntoDetailRoom($roomId, $imageUrl);
+                    }
+                }
+
+                if (!empty($convenient)) {
+                    $statement = $connection->prepare("INSERT INTO convenients(id_room, convenient) VALUES (:roomId, :convenient)");
+                    $statement->execute([
+                        ':roomId' => $roomId,
+                        ':convenient' => $convenient
+                    ]);
+                }
+
+                return true; // Room creation successful
+            } else {
+                return false; // Unable to retrieve newly inserted room ID
+            }
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false; // Room creation failed
     }
-    header('location: /admin');
 }
+
 
 function insertIntoDetailRoom($roomId, $imageUrl)
 {
@@ -177,17 +210,16 @@ function insertIntoDetailRoom($roomId, $imageUrl)
     }
     header('location: /admin');
 }
-function updateRoom($name, $type, $price, $availability, $description, $rating, int $id):bool
+function updateRoom($name, $type, $price, $availability, $description, int $id):bool
 {
     global $connection;
-    $statement = $connection->prepare("UPDATE rooms SET name = :name, type = :type, price = :price, availability = :availability, description = :description, rating = :rating WHERE id = :id");
+    $statement = $connection->prepare("UPDATE rooms SET name = :name, type = :type, price = :price, availability = :availability, description = :description WHERE id = :id");
         $statement->execute([
             ':name' => $name,
             ':type' =>  $type,
             ':price' =>  $price,
             ':availability' =>  $availability,
             ':description' =>  $description,
-            ':rating' =>  $rating,
             ':id' => $id
         ]);
 
@@ -232,21 +264,17 @@ function selectBookingRoom(){
     }
 }
 
-function updateBooking($id_room, $check_in_date, $check_out_date, $availability){
+function updateBooking($id_room, $check_in_date, $check_out_date, $availability, int $id){
     global $connection;
-    try {
         $statement = $connection->prepare("UPDATE booking SET id_room = :id_room, check_in_date = :check_in_date, check_out_date = :check_out_date, availability = :availability WHERE id = :id");
         $statement->execute([
             ':id_room' => $id_room,
             ':check_in_date' => $check_in_date,
             ':check_out_date' => $check_out_date,
             ':availability' => $availability,
-            ':id' => $_GET["id"]
+            ':id' => $id
         ]);
-    } catch (PDOException $e) {
-        // Handle the exception (display an error message or log it)
-        echo 'Error: ' . $e->getMessage();
-    }
+        return $statement->rowCount() > 0;
 }
 
 function deleteBooking(int $id) : bool
@@ -256,3 +284,4 @@ function deleteBooking(int $id) : bool
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
+

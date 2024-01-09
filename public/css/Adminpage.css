@@ -149,7 +149,7 @@
 #search {
     border: none;
     outline: none;
-    
+    font-size: 25px;
 }
 
 #buttonsearch {
@@ -161,7 +161,7 @@
 #iconsearch {
     width: 20px;
     height: 20px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .ItemRoom, .ItemUser{
@@ -189,7 +189,8 @@
     
 }
 
-.form-group input{
+.form-group input,
+.form-group select{
     border-radius: 10px;
     height: 50px;
     padding-left: 20px;
@@ -221,7 +222,7 @@
     border-radius: 5px;
     margin-left: 20px;
 }
-#button_edit, #button_delete{
+#button_edit, #button_delete, #button_comment{
     border: none;
     outline: none;
     background: none;
@@ -258,4 +259,9 @@
 .full-text {
     white-space: normal; 
     max-width: none;     
+}
+
+.option{
+    display:flex; 
+    flex-direction:row
 }

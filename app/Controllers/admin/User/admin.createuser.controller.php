@@ -1,6 +1,6 @@
 <?php
 require(__DIR__ . '/../../../Databases/database.php');
-
+require(__DIR__. '/../../../Models/admin.model.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (
         !empty($_POST['name']) &&
@@ -11,21 +11,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         !empty($_POST['age']) &&
         !empty($_POST['gender'])
     ) {
-        
-        $statement = $connection->prepare("INSERT INTO users (name, password, phone, email, age, gender, availability) VALUES (:name, :password, :phone, :email, :age, :gender, :availability)");
-        $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
+        $result = createNewUser(
+            $_POST['name'],
+            password_hash($_POST['password'], PASSWORD_DEFAULT),
+            $_POST['phone'],
+            $_POST['email'],
+            $_POST['age'],
+            $_POST['gender'],
+            $_POST['availability']
+        );
 
-        $statement->execute([
-            ':name' => $_POST['name'],
-            ':password' => $hashedPassword,
-            ':phone' => $_POST['phone'],
-            ':email' => $_POST['email'],
-            ':age' => $_POST['age'],
-            ':gender' => $_POST['gender'],
-            ':availability' => $_POST['availability']
-        ]);
-
-        header('location: /admin');
+        if ($result) {
+            echo '<script>
+                    alert("Create new user record successful!");
+                    window.location.href = "/admin";
+                </script>';
+            exit(); 
+        } else {
+            echo "Error creating new user record.";
+           
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="public/css/booking.css">
 <div class="body--content container">
-    <div class="title">     
+    <div class="title">
         <h3 id="title-booking-room">BOOKING ROOM</h3>
     </div>
     <form action="" method="post">
@@ -14,15 +14,17 @@
                     <div class="input--group row">
                         <div class="check-date  col-6 ">
                             <label for="" class="label">Check in</label>
-                            <input type="datetime-local" name="check_in" class="input__check-date"  id="check_in" required>
+                            <?php $day = getNextDateTime();
+                            $maxDayCheckIn = getMaxCheckInDateTime() ?>
+                            <input type="datetime-local" min="<?php echo $day ?>" name="check_in" class="input__check-date" id="check_in">
                         </div>
                         <div class="check-date col-6">
                             <label for="" class="label">Check out</label>
-                            <input type="datetime-local" name="check_out" class="input__check-date"id="check_out" required>
+                            <input min="<?php echo $day ?>" type="datetime-local" max="<?php echo $maxDayCheckIn ?>" name="check_out" class="input__check-date" id="check_out">
                         </div>
                     </div>
                     <div class="text_input">
-                        <textarea id="message" name="message" rows="4" cols="66" required></textarea> 
+                        <textarea id="message" name="message" rows="4" cols="66" required></textarea>
                     </div>
                     <div class="d-flex justify-content-between">
                         <a href="/"><button type="button" class="button">Back</button></a>
@@ -35,37 +37,39 @@
             <!-- total price -->
             <div class="right-content col-lg-5 col-12">
                 <div class="div-right">
-                <?php
-                if (!empty($images)) {
-                    $image = $images[0]['image_url'];
-                ?>
-                    <div class="div-infor--room row d-flex justify-content-center align-items-center">
-                        <img src="<?php echo $image; ?>" alt="image artistic_lounge_retreat room" class="col-7 img--infor" id="image_room">
-                    </div>
-                <?php
-                }
-                ?>
+                    <?php
+                    if (!empty($images)) {
+                        $image = $images[0]['image_url'];
+                    ?>
+                        <div class="div-infor--room row d-flex justify-content-center align-items-center">
+                            <img src="<?php echo $image; ?>" alt="image artistic_lounge_retreat room" class="col-7 img--infor" id="image_room">
+                        </div>
+                    <?php
+                    }
+                    ?>
                     <div class="div-price-detail">
                         <p class="title-small">Prices Detail</p>
                         <div class="row d-flex justify-content-center align-items-center">
                             <div class="col-7">
                                 <div class="d-flex ">
-                                    <p><?php echo "$" . $room['price']?></p><span>&nbsp; X &nbsp;</span> <p id="nights"></p> <p id="nights">/nights</p> 
+                                    <p><?php echo "$" . $room['price'] ?></p><span>&nbsp; X &nbsp;</span>
+                                    <p id="nights"></p>
+                                    <p id="nights">/nights</p>
                                 </div>
                                 <p>Cleaning fee</p>
                                 <p>Tax</p>
                             </div>
                             <div class="col-5 text-end">
-                                <p id="totalroom">$0</p>
-                                <p>$3</p>
-                                <p>$10</p>
+                                <p id="totalroom">0VND</p>
+                                <p>3VND</p>
+                                <p>10VND</p>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="div-total-price d-flex justify-content-between align-content-center ">
-                        <p class="title-small">Total (USD)</p>
-                        <input type="text" name="total_price" id="sum" readonly>$
+                        <p class="title-small">Total (VND)</p>
+                        <input type="text" name="total_price" id="sum" readonly>VND
                     </div>
                 </div>
             </div>
@@ -108,8 +112,7 @@
             // Gán kết quả vào phần tử có id = sum
             sumElement.value = total;
             nightsElement.textContent = nights;
-            totalroomElement.textContent = totalroom ;
+            totalroomElement.textContent = totalroom;
         }
     }
 </script>
-

@@ -6,13 +6,14 @@
     require ("app/Models/register/register.model.php");
     require ("app/Models/login/login.model.php");
     require "app/Models/admin.model.php";
+    require ("app/Models/booking_history/booking_history.model.php") ;
+    require ("app/Models/feedback/feedback.model.php") ;
     if (isset($_GET['id_room'])) {
         $roomId = $_GET['id_room'];
         $images = getRoomImages($roomId);
         $rooms = getRoomId($roomId);
         // $room = $rooms[$roomId];
-    }
-?>
+    }?>
 <?php
     $userName = "";
     $phone = "";    
@@ -74,7 +75,7 @@
         if (empty($user_error) &&  empty($email_error) && empty($phone_error)) {
             $result = registerUser($userName, $password, $phone, $email, $date, $gender);
             if (!empty($result)) {
-                echo '<script>alert("Register Successful and you need to log in again");</script>';
+                // echo '<script>alert("Register Successful and you need to log in again");</script>';
         }else{
             echo '<script>alert("Error");</script>';
         }}
@@ -103,6 +104,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
     }
 }
 
+?>
+
+
+<?php
+if (isset($_GET['id_room'])) {
+    $roomID = $_GET['id_room']; // ID Room hiện tại
+    echo "<script>console.log(" . $_GET['id_room'] . ")</script>";
+    $user_id_to_check = $_SESSION['id']; // ID user hiện tại
+    $isBooking = isBooking($roomID, $user_id_to_check);
+    if ($isBooking) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['id_room']) && isset($_POST['star_rating']) && isset($_POST['feedback'])) {
+                $id_room = $_POST['id_room'];
+                $star_rating = $_POST['star_rating'];
+                $feedback = $_POST['feedback'];
+                $currentDateTime = date('Y-m-d H:i:s');
+                $addFeedback = saveFeedbackToDatabase($id_room, $user_id_to_check, $star_rating, $feedback, $currentDateTime);
+            } else {
+                echo "Vui lòng điền đầy đủ thông tin trong form.";
+            }
+        }
+    } else {
+        //echo "<script>alert('Phòng bạn chưa được đ');</script>";
+    }
+}
+// header("Location:/detail_room?id_room=$roomID");
 ?>
 <?php 
     require "app/Views/detail_room/index.php";

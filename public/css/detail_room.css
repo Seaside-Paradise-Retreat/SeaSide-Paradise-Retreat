@@ -127,37 +127,20 @@ body {
 .content_comment-detail {
   margin-top: 20px;
 }
-.row{
-  display: flex;
-  flex-wrap: nowrap;
-}
-.button_booking {
-  position: relative;
-  padding: 0.6em 0.9em;
-  font-size: 1em;
-  box-shadow: 0 0 5px var(--blue), 0 0 25px var(--blue1);
-  background-color: transparent;
-  border: 0.2em solid;
-  border-radius: 1.5em;
-  margin: 5px 10px;
-  color: var(--blue);
-  font-weight: bolder;
-  cursor: pointer;
-  transition: transform 0.2s ease, border-radius 0.2s ease, color 0.2s ease, border-shadow 0.2s ease, border-style 0.2s ease;
-}
+
 
 .button_booking{
-  position: relative;
+  /* position: relative;   */
   padding: 0.6em 0.9em;
   font-size: 1em;
   box-shadow: 0 0 5px var(--blue), 0 0 25px var(--blue1);
   background-color: transparent;
   border: 0.2em solid;
   border-radius: 1.5em;
-  margin: 5px 10px;
+  /* margin: 5px 10px; */
   color: var(--blue);
   font-weight: bolder;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: transform 0.2s ease, border-radius 0.2s ease, color 0.2s ease, border-shadow 0.2s ease, border-style 0.2s ease;
 }
 
@@ -167,4 +150,42 @@ body {
   color: var(--blue1);
   box-shadow: 0 0 10px var(--blue1), 0 0 40px var(--blue1);
   border-style: double;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.btn_feedback,
+#submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn_feedback:hover,
+#submit-btn:hover {
+  background-color: #45a049;
+}
+.btn_feedback {
+  text-decoration: none;
 }

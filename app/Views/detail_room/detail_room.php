@@ -1,3 +1,9 @@
+<?php
+if (isset($_GET['id_room'])) {
+    $roomId = $_GET['id_room']; // Lấy ID phòng từ tham số trong URL
+    $roomfeedback = getFeedback($roomId);
+}
+ ?>
 <link rel="stylesheet" href="public/css/detail_room.css">
 <!-- Hiển thị hình ảnh tương ứng với id phòng -->
 <div class="row details_room">
@@ -31,15 +37,23 @@
     <?php if (!empty($rooms)) { ?>
         <div class="col-lg-9 col-12">
             <div class="row content-text">
-                <div class="col-lg-4 col-6 content__text">
+                <div class=" col-6 content__text">
                     <p id="name_room_detail"><?php echo $rooms['name']; ?></p>
                     <p id="price_room_detail"><?php echo $rooms['price']; ?></p>
                 </div>
-                <div class="col-lg-4 col-6 context__icon">
+                <div class=" col-5 context__icon">
                 <a href="/favorite?id_room=<?php echo $rooms['id']; ?>"><i id="icon_heart_detail" class="fa-regular fa-heart"></i></a> 
                     <i id="icon_share_detail" class="fa-solid fa-share"></i>
                     <div id="addbag"></div>
                 </div>
+                <div class=" col-1" id="booking-btn">
+            <!-- <a href="#" id="book1"><button id="booking_now" class="button_booking">BOOKING NOW</button></a> -->
+                <?php if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :?>
+                        <a href="/booking_room?id_room=<?php echo $rooms['id']; ?>"><input id="booking_now" type="button" class="button_booking" name="booking"  value="Booking now"></a>
+                        <?php else: ?>
+                        <a href=""><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
+                <?php endif ?>
+    </div>
             </div>
             <!-- Tiện nghi -->
             <div class="row content-icon">
@@ -62,24 +76,48 @@
                     <p><?php echo $rooms['description']; ?></p>
                 </div>
             </div>
+            <!-- Làm feedback  -->
+            <h4>Feedback room</h4>
+            <form action="" method="post" class="m-3">
+                <div class="container">
+                    <input type="hidden" name="id_room" value="<?php echo $rooms['id']; ?>">
+                    <label id="star-rating">Choose the number of rating stars:</label>
+                    <select id="star-rating" name="star_rating" class="custom-select" style="color: gold;">
+                        <option value="1" style="color: gold;">&#9733;</option>
+                        <option value="2" style="color: gold;">&#9733;&#9733;</option>
+                        <option value="3" style="color: gold;">&#9733;&#9733;&#9733;</option>
+                        <option value="4" style="color: gold;">&#9733;&#9733;&#9733;&#9733;</option>
+                        <option value="5" style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                    </select>
+
+                    <textarea id="review" name="feedback" placeholder="Reviews of hotel rooms"></textarea>
+                    <?php if(!empty($_SESSION['isLogin']) && $_SESSION['isLogin']): ?>
+                        <a href="/detail_room?id_room=<?php echo $rooms['id'];?>"><button type="submit" class="btn_feedback ">Feedback</button></a>
+                    <?php else: ?>
+                        <button type="submit"  id="submit-btn">Sent feedback</button>
+                    <?php endif ?>
+                </div>
+            </form>
+            <?php 
+
+if (!empty($roomfeedback)) {
+    foreach ($roomfeedback as $feedback) {
+        if (
+            isset($feedback['feedback_rating']) &&
+            isset($feedback['user_avatar']) &&
+            isset($feedback['user_name']) &&
+            isset($feedback['feedback_content'])
+        ) {
+?>
             <!-- Đánh giá trung bình -->
             <div class="row content-review">
                 <div class="col-lg-2 col-6">
                     <h4>Reviews</h4>
-                    <p>Convenient</p>
-                    <p>Clean</p>
-                    <p>Staff</p>
-                    <p>Quality room</p>
                 </div>
                 <div class="col-lg-1 col-6 text-end">
                     <div class="d-flex justify-content-end">
-                        <i class="fa-solid fa-star pe-2" style="color: #3A8CED"></i>
-                        <h4><?php echo $rooms['rating']?></h4>
+                        <h4><?php echo $feedback['feedback_rating'] . " stars"; ?></h4>
                     </div>
-                    <p id="convenient"><?php echo $rooms['rating']?></p>
-                    <p id="clean"><?php echo $rooms['rating']?></p>
-                    <p id="staff"><?php echo $rooms['rating']?></p>
-                    <p id="quality"><?php echo $rooms['rating']?></p>
                 </div>
             </div>
             <!-- Chi tiết đánh giá -->
@@ -87,54 +125,21 @@
                 <div class="col-lg-5 comment-cus m-4">
                     <div class="row">
                         <div class="col-lg-2 col-3">
-                            <img id="avata1" class="avata__review" src="public/images/person01.jpg" alt="">
+                            <img id="avata1" class="avata__review" src="<?php echo $feedback['user_avatar'] ?>" alt="">
                         </div>
                         <div class="col-lg-4 col-6">
-                            <h5>jondoberman</h5>
-                            <p>Mar 12 2022</p>
+                            <h5><?php echo $feedback['user_name'] ?></h5>
                         </div>
                     </div>
                     <div class="row">
-                        <p><?php echo $rooms['description']; ?></p>
+                        <p><?php echo $feedback['feedback_content']; ?></p>
                     </div>
-                </div>
-                <div class="col-lg-5 comment-cus m-4">
-                    <div class="row">
-                        <div class="col-lg-2 col-3">
-                            <img id="avata1" class="avata__review" src="public/images/person01.jpg" alt="">
-                        </div>
-                        <div class="col-lg-4 col-6">
-                            <h5>jondoberman</h5>
-                            <p>Mar 12 2022</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <p><?php echo $rooms['description']; ?></p>
-                    </div>
-                </div>
-                <div class="col-lg-5 comment-cus m-4">
-                    <div class="row">
-                        <div class="col-lg-2 col-3">
-                            <img id="avata1" class="avata__review" src="public/images/person01.jpg" alt="">
-                        </div>
-                        <div class="col-lg-4 col-6">
-                            <h5>jondoberman</h5>
-                            <p>Mar 12 2022</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <p><?php echo $rooms['description']; ?></p>
-                    </div>
+                    <p><?php echo $currentDateTime = date('Y-m-d H:i:s'); ?></p>
                 </div>
             </div>
-        </div>
-    <?php } ?>
-    <div class="col-lg-3 col-12" id="booking-btn">
-            <!-- <a href="#" id="book1"><button id="booking_now" class="button_booking">BOOKING NOW</button></a> -->
-            <?php if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :?>
-                    <a href="/booking_room?id_room=<?php echo $rooms['id']; ?>"><input id="booking_now" type="button" class="button_booking" name="booking"  value="Booking now"></a>
-                    <?php else: ?>
-                      <a href=""><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
-            <?php endif ?>
-    </div>
+    <?php
+        }
+    }
+ } ?>
+<?php }?>
 </div>

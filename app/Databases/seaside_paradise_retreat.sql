@@ -3,7 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2024 at 02:26 PM
+
+-- Generation Time: Jan 08, 2024 at 03:19 AM
+
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,7 +47,16 @@ INSERT INTO `bill` (`id`, `id_booking`, `date`, `total_price`) VALUES
 (6, 15, '2024-01-06 02:29:29', '2013'),
 (7, 16, '2024-01-06 05:23:51', '7013'),
 (8, 17, '2024-01-06 05:26:18', '733'),
-(9, 18, '2024-01-06 09:58:01', '405');
+(9, 18, '2024-01-06 09:58:01', '405'),
+(10, 19, '2024-01-06 17:06:34', '17013'),
+(11, 20, '2024-01-07 02:30:42', '2013'),
+(12, 21, '2024-01-07 02:33:28', '823'),
+(13, 22, '2024-01-07 02:37:23', '253'),
+(14, 23, '2024-01-07 02:47:59', '1000013'),
+(15, 24, '2024-01-07 02:53:10', '480013'),
+(16, 25, '2024-01-07 11:02:30', '1100013'),
+(17, 26, '2024-01-08 03:06:42', '240013');
+
 
 -- --------------------------------------------------------
 
@@ -81,7 +92,17 @@ INSERT INTO `booking` (`id`, `id_room`, `id_user`, `check_in_date`, `check_out_d
 (15, 1, 20, '2024-01-06 09:29:00', '2024-01-08 09:29:00', 'I will come to early', 1),
 (16, 4, 20, '2024-01-06 11:23:00', '2024-02-10 11:23:00', '7 triệu à mắc thế', 0),
 (17, 5, 20, '2024-01-18 11:26:00', '2024-01-26 11:26:00', 'ww', 1),
-(18, 20, 20, '2024-01-06 15:00:00', '2024-01-12 15:57:00', '111ew', 0);
+
+(18, 20, 20, '2024-01-06 15:00:00', '2024-01-12 15:57:00', '111ew', 0),
+(19, 1, 20, '2024-01-01 23:06:00', '2024-01-18 23:06:00', 'test booking', 1),
+(20, 1, 20, '2024-01-08 08:30:00', '2024-01-10 08:30:00', '2 đêm', 1),
+(21, 5, 20, '2024-01-08 08:33:00', '2024-01-17 08:33:00', '1111', 1),
+(22, 3, 20, '2024-01-08 08:37:00', '2024-01-10 08:37:00', 'dddđ', 1),
+(23, 14, 20, '2024-01-08 08:47:00', '2024-01-10 08:47:00', 'ok', 1),
+(24, 3, 20, '2024-01-09 08:52:00', '2024-01-11 08:52:00', 'ggg', 1),
+(25, 4, 20, '2024-01-08 17:02:00', '2024-01-10 17:02:00', 'llll', 1),
+(26, 2, 20, '2024-01-09 09:06:00', '2024-01-11 09:06:00', 'hhhhh', 1);
+
 
 -- --------------------------------------------------------
 
@@ -268,6 +289,15 @@ CREATE TABLE `favorite` (
 --
 
 INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
+
+(5, 1, 4),
+(7, 6, 20),
+(12, 2, 20),
+(13, 5, 20),
+(14, 1, 20),
+(15, 4, 20),
+(16, 14, 20);
+
 (4, 2, 3),
 (5, 1, 4),
 (6, 4, 20),
@@ -275,6 +305,7 @@ INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
 (8, 5, 20),
 (9, 1, 20),
 (10, 7, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -322,31 +353,33 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `name`, `type`, `price`, `availability`, `description`, `rating`) VALUES
-(1, 'Duluxey', 'Deluxe', '1000.00', 1, 'Deluxe Rooms are luxurious and spacious hotel accommodations, featuring modern amenities and stunning city views. Bringing visitors memorable and enjoyable experiences', 5),
-(2, 'Chic Lounge Oasis', 'Deluxe', '100.00', 1, 'Premium service along with a wide range of amenities will bring you the experience of the most fulfilling vacation.The 24-hour reception desk is always ready to serve you from check-in to check-out or any requests.', 5),
-(3, 'The Prestige Parlor', 'Family room', '120.00', 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication.', 5),
-(4, 'Paradise of Rest', 'Family room', '200.00', 1, 'Paradise of Rest is a living room designed to create a wonderful space of relaxation and rest. It brings a feeling of peace, comfort and convenience, helping you find relaxation and refresh your spirit.', 5),
-(5, 'Peaceful Room', 'Family room', '90.00', 1, 'Peaceful Living Room: This living room creates a peaceful and relaxing space. Soft colors, dim lights and comfortable furniture can be used to create an airy and relaxing space.', 5),
-(6, 'Honeymoon Suite', 'Family room', '120.00', 1, 'Honeymoon Suite is a type of hotel room specially designed to serve newlyweds or couples who want to enjoy romantic and special moments during their honeymoon. This room is often spacious and beautifully decorated to create an ideal space for love and romance.', 5),
-(7, 'Royal Parlor', 'Family room', '60.00', 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication', 5),
-(8, 'Glamorous Den ', 'Suite', '160.00', 1, 'Glamorous Den is a room full of charm and luxury, creating a classy and stylish resort space. With exquisite design and unique furniture, this room brings a desirable living space to customers.', 5),
-(9, 'Regal Gathering Space', 'Family room', '230.00', 1, 'Regal Gathering Space is a great space to gather and meet, giving you a luxurious and elegant space to hold special events. With its premium design and spacious space, this room creates a cozy and classy environment for important meetings and events.', 5),
-(10, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space ', 5),
-(11, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration.', 5),
-(12, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable.', 5),
-(13, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space.', 5),
-(14, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space.', 5),
-(15, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space ', 5),
-(16, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(17, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(18, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(19, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(20, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(21, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(22, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(23, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(31, 'Livotel Hotel Kaset Nawamin Bangkok', 'Hotel small', '1200000.00', 1, 'Livotel Hotel Kaset Nawamin Bangkok là một khách sạn nằm trong khu vực an ninh, toạ lạc tại Sena Nikhom.  khách sạn sở hữu vị trí đắc địa cách sân bay Sân bay quốc tế Don Mueang (DMK) 8,54 km.  khách sạn nằm cách Ratchadaphisek MRT Station 4,66 km.  Không chỉ sở hữu vị trí đắc địa, Livotel Hotel Kaset Nawamin Bangkok còn là một trong những khách sạn nằm cách Wat Mahathat chưa đầy 13,67 km và Wat Yan Nawa chưa đầy 15,53 km.', 5),
-(32, 'Dexululuuu', 'family', '21000000.00', 1, 'Phòng đẹp đó', 4);
+
+(1, 'Duluxey', 'Deluxe', '100000.00', 1, 'Deluxe Rooms are luxurious and spacious hotel accommodations, featuring modern amenities and stunning city views. Bringing visitors memorable and enjoyable experiences', 5),
+(2, 'Chic Lounge Oasis', 'Deluxe', '120000.00', 1, 'Premium service along with a wide range of amenities will bring you the experience of the most fulfilling vacation.The 24-hour reception desk is always ready to serve you from check-in to check-out or any requests.', 5),
+(3, 'The Prestige Parlor', 'Family room', '240000.00', 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication.', 5),
+(4, 'Paradise of Rest', 'Family room', '550000.00', 1, 'Paradise of Rest is a living room designed to create a wonderful space of relaxation and rest. It brings a feeling of peace, comfort and convenience, helping you find relaxation and refresh your spirit.', 5),
+(5, 'Peaceful Room', 'Family room', '800000.00', 1, 'Peaceful Living Room: This living room creates a peaceful and relaxing space. Soft colors, dim lights and comfortable furniture can be used to create an airy and relaxing space.', 5),
+(6, 'Honeymoon Suite', 'Family room', '200000.00', 1, 'Honeymoon Suite is a type of hotel room specially designed to serve newlyweds or couples who want to enjoy romantic and special moments during their honeymoon. This room is often spacious and beautifully decorated to create an ideal space for love and romance.', 5),
+(7, 'Royal Parlor', 'Family room', '900000.00', 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication', 5),
+(8, 'Glamorous Den ', 'Suite', '100000.00', 1, 'Glamorous Den is a room full of charm and luxury, creating a classy and stylish resort space. With exquisite design and unique furniture, this room brings a desirable living space to customers.', 5),
+(9, 'Regal Gathering Space', 'Family room', '450000.00', 1, 'Regal Gathering Space is a great space to gather and meet, giving you a luxurious and elegant space to hold special events. With its premium design and spacious space, this room creates a cozy and classy environment for important meetings and events.', 5),
+(10, 'Artistic Lounge Retreat', 'View', '890000.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space ', 5),
+(11, 'Artistic Lounge Retreat', 'View', '999000.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration.', 5),
+(12, 'Artistic Lounge Retreat', 'View', '450000.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable.', 5),
+(13, 'Artistic Lounge Retreat', 'View', '600000.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space.', 5),
+(14, 'Artistic Lounge Retreat', 'View', '500000.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space.', 5),
+(15, 'Artistic Lounge Retreat', 'View', '459000.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space ', 5),
+(16, 'Stylish Sitting Area ', 'Suite', '590000.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(17, 'Stylish Sitting Area ', 'Suite', '350000.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(18, 'Stylish Sitting Area ', 'Suite', '650000.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(19, 'Stylish Sitting Area ', 'Suite', '560000.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(20, 'Stylish Sitting Area ', 'Suite', '670000.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(21, 'Stylish Sitting Area ', 'Suite', '890000.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(22, 'Stylish Sitting Area ', 'Suite', '670000.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(23, 'Stylish Sitting Area ', 'Suite', '870000.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(31, 'Livotel Hotel Kaset Nawamin Bangkok', 'Hotel small', '540000.00', 1, 'Livotel Hotel Kaset Nawamin Bangkok là một khách sạn nằm trong khu vực an ninh, toạ lạc tại Sena Nikhom.  khách sạn sở hữu vị trí đắc địa cách sân bay Sân bay quốc tế Don Mueang (DMK) 8,54 km.  khách sạn nằm cách Ratchadaphisek MRT Station 4,66 km.  Không chỉ sở hữu vị trí đắc địa, Livotel Hotel Kaset Nawamin Bangkok còn là một trong những khách sạn nằm cách Wat Mahathat chưa đầy 13,67 km và Wat Yan Nawa chưa đầy 15,53 km.', 5),
+(32, 'Dexululuuu', 'family', '430000.00', 1, 'Phòng đẹp đó', 4);
+
 
 -- --------------------------------------------------------
 
@@ -453,13 +486,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 
 --
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 
 --
 -- AUTO_INCREMENT for table `convenients`
@@ -477,7 +514,9 @@ ALTER TABLE `detail_room`
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -485,6 +524,9 @@ ALTER TABLE `favorite`
 ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`),
+  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 --
 -- AUTO_INCREMENT for table `rooms`
 --

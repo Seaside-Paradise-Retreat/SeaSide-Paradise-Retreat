@@ -138,7 +138,7 @@
                                 </td>
                                 <td><?php echo $book['availability']; ?></td>
 
-                                <td>
+                                <td >
                                     <a href="/admin/Booking/edit?id=<?= $book['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
                                     <a href="/admin/Booking/delete?id=<?= $book['id'] ?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
                                 </td>
@@ -176,7 +176,6 @@
                         <th>Price</th>
                         <th>Availability</th>
                         <th>Description</th>
-                        <th>Rating</th>
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -185,6 +184,7 @@
 
                     require_once(__DIR__ . '/../../../Models/admin.model.php');
                     $rooms = selectRoom();
+                    
 
                     if ($rooms) {
                         foreach ($rooms as $room) {
@@ -196,10 +196,10 @@
                                 <td><?php echo $room['price']; ?></td>
                                 <td><?php echo $room['availability']; ?></td>
                                 <td class="ellipsis" onclick="showFullText(this)" > <?php echo $room['description'];  ?></td>
-                                <td><?php echo $room['rating']; ?></td>
-                                <td>
+                                <td class="option">
                                     <a href="/admin/Room/edit?id=<?= $room['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
                                     <a href="/admin/Room/delete?id=<?= $room['id'] ?>"><button type="button" onclick="deleteRoom(roomId)" id="button_delete"><i class="fas fa-trash"></i></button></a>
+                                    <button type="button" id="button_comment"><i class="fas fa-comment"></i></button>
                                 </td>
                             </tr>
                     <?php
@@ -227,7 +227,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th style="width: 100px;">Name</th>
                         <th>Avatar</th>
                         <th>Password</th>
                         <th>Phone Number</th>
@@ -251,7 +251,7 @@
                     ?>
                             <tr>
                                 <td><?php echo $user['id']; ?></td>
-                                <td><?php echo $user['name']; ?></td>
+                                <td style="width: 100px; white-space: nowrap;"> <?php echo $user['name']; ?></td>
                                 <td><?php echo $user['avatar']; ?></td>
                                 <td class="ellipsis" onclick="showFullText(this)"><?php echo password_hash($user['password'], PASSWORD_DEFAULT); ?></td>
                                 <td><?php echo $user['phone']; ?></td>

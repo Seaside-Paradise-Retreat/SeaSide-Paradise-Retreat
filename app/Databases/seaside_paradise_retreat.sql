@@ -3,7 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+
 -- Generation Time: Jan 08, 2024 at 03:19 AM
+
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -55,6 +57,7 @@ INSERT INTO `bill` (`id`, `id_booking`, `date`, `total_price`) VALUES
 (16, 25, '2024-01-07 11:02:30', '1100013'),
 (17, 26, '2024-01-08 03:06:42', '240013');
 
+
 -- --------------------------------------------------------
 
 --
@@ -89,6 +92,7 @@ INSERT INTO `booking` (`id`, `id_room`, `id_user`, `check_in_date`, `check_out_d
 (15, 1, 20, '2024-01-06 09:29:00', '2024-01-08 09:29:00', 'I will come to early', 1),
 (16, 4, 20, '2024-01-06 11:23:00', '2024-02-10 11:23:00', '7 triệu à mắc thế', 0),
 (17, 5, 20, '2024-01-18 11:26:00', '2024-01-26 11:26:00', 'ww', 1),
+
 (18, 20, 20, '2024-01-06 15:00:00', '2024-01-12 15:57:00', '111ew', 0),
 (19, 1, 20, '2024-01-01 23:06:00', '2024-01-18 23:06:00', 'test booking', 1),
 (20, 1, 20, '2024-01-08 08:30:00', '2024-01-10 08:30:00', '2 đêm', 1),
@@ -98,6 +102,7 @@ INSERT INTO `booking` (`id`, `id_room`, `id_user`, `check_in_date`, `check_out_d
 (24, 3, 20, '2024-01-09 08:52:00', '2024-01-11 08:52:00', 'ggg', 1),
 (25, 4, 20, '2024-01-08 17:02:00', '2024-01-10 17:02:00', 'llll', 1),
 (26, 2, 20, '2024-01-09 09:06:00', '2024-01-11 09:06:00', 'hhhhh', 1);
+
 
 -- --------------------------------------------------------
 
@@ -284,6 +289,7 @@ CREATE TABLE `favorite` (
 --
 
 INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
+
 (5, 1, 4),
 (7, 6, 20),
 (12, 2, 20),
@@ -291,6 +297,15 @@ INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
 (14, 1, 20),
 (15, 4, 20),
 (16, 14, 20);
+
+(4, 2, 3),
+(5, 1, 4),
+(6, 4, 20),
+(7, 6, 20),
+(8, 5, 20),
+(9, 1, 20),
+(10, 7, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -300,11 +315,14 @@ INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
 
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
-  `id_user` int(10) NOT NULL,
-  `id_room` int(10) NOT NULL,
-  `rating` int(1) NOT NULL,
-  `content` mediumtext NOT NULL,
-  `date` datetime NOT NULL
+  `id_room` int(11)  DEFAULT NULL,
+  `id_user` int(11)  DEFAULT NULL,
+  `rating` int(11) NOT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL
+  FOREIGN KEY (`id_room`) REFERENCES rooms(id),
+  FOREIGN KEY (`id_user`) REFERENCES users(id)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -338,6 +356,7 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `name`, `type`, `price`, `availability`, `description`, `rating`) VALUES
+
 (1, 'Duluxey', 'Deluxe', '100000.00', 1, 'Deluxe Rooms are luxurious and spacious hotel accommodations, featuring modern amenities and stunning city views. Bringing visitors memorable and enjoyable experiences', 5),
 (2, 'Chic Lounge Oasis', 'Deluxe', '120000.00', 1, 'Premium service along with a wide range of amenities will bring you the experience of the most fulfilling vacation.The 24-hour reception desk is always ready to serve you from check-in to check-out or any requests.', 5),
 (3, 'The Prestige Parlor', 'Family room', '240000.00', 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication.', 5),
@@ -363,6 +382,7 @@ INSERT INTO `rooms` (`id`, `name`, `type`, `price`, `availability`, `description
 (23, 'Stylish Sitting Area ', 'Suite', '870000.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
 (31, 'Livotel Hotel Kaset Nawamin Bangkok', 'Hotel small', '540000.00', 1, 'Livotel Hotel Kaset Nawamin Bangkok là một khách sạn nằm trong khu vực an ninh, toạ lạc tại Sena Nikhom.  khách sạn sở hữu vị trí đắc địa cách sân bay Sân bay quốc tế Don Mueang (DMK) 8,54 km.  khách sạn nằm cách Ratchadaphisek MRT Station 4,66 km.  Không chỉ sở hữu vị trí đắc địa, Livotel Hotel Kaset Nawamin Bangkok còn là một trong những khách sạn nằm cách Wat Mahathat chưa đầy 13,67 km và Wat Yan Nawa chưa đầy 15,53 km.', 5),
 (32, 'Dexululuuu', 'family', '430000.00', 1, 'Phòng đẹp đó', 4);
+
 
 -- --------------------------------------------------------
 
@@ -469,13 +489,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `booking_history`
+--
+ALTER TABLE `booking_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `convenients`
@@ -493,7 +519,7 @@ ALTER TABLE `detail_room`
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `feedback`

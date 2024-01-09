@@ -33,11 +33,19 @@
                   <div class="d-flex justify-content-between  mb-1">
                     <h5 class="mb-0"><?php echo $room['name']?></h5>
                     <div id="ratingContainer">
+                    <?php if(!empty($_SESSION['isLogin']) && $_SESSION['isLogin']): ?>
                     <a href="/favorite?id_room=<?php echo $room['id']; ?>">
                         <button class="favorite-button" >
                           <i class="<?php $issAdded = isAdded($room['id'],$_SESSION['id']) ;if($issAdded) { echo "fas";} else {echo "far";} ?> fa-heart" ></i>
                         </button>
                     </a>
+                    <?php else :?>
+                      <a href="/favorite?id_room=<?php echo $room['id']; ?>">
+                        <button class="favorite-button" >
+                          <i class="far fa-heart" ></i>
+                        </button>
+                    </a>
+                    <?php endif?>
                       <i class="fa-solid fa-star" style="color: #3A8CED; font-size:22px"></i><?php echo $room['rating']?>
                     </div>
                   </div>
@@ -52,9 +60,8 @@
                       </i>Wifi</small>
                   </div>
                   <div class="d-flex justify-content-between mt-4">
-                  <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
+                  <h4 style="color: #3568A4;"><?php echo $room['price']?> VND</h4>
                   <?php
-                    // if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :
                       if(!empty($_SESSION['isLogin']) && $_SESSION['isLogin']):
                     ?>
                     <a href="/booking_room?id_room=<?php echo $room['id']; ?>"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
@@ -63,16 +70,10 @@
                   <?php endif ?>
                   </div>
           </div>
-
         </div>
       </div>
       <?php endif ?>
     <?php endforeach; ?>
   </div>
-<!-- <script>
-  function toggleFavorite(button) {
-  button.classList.toggle('favorite');
-}
-</script> -->
 </div>
 

@@ -25,19 +25,25 @@
             isset($_POST['availability'])&&
             !empty($_GET["id"])
     ) {
-            
-            $statement = $connection->prepare("UPDATE users SET name = :name, phone = :phone, email = :email, age = :age, gender = :gender, availability = :availability where id = :id");
-            $statement->execute([
-                ':name' => $_POST['name'],
-                ':phone' =>  $_POST['phone'],
-                ':email' =>  $_POST['email'],
-                ':age' =>  $_POST['age'],
-                ':gender' =>  $_POST['gender'],
-                ':availability' =>  (int)$_POST['availability'],
-                ':id' => $_GET["id"]
-            ]);
-            
-            header('location: /admin');
+            $result = updateUser(
+                $_POST['name'],
+                $_POST['phone'],
+                $_POST['email'],
+                $_POST['age'],
+                $_POST['gender'],
+                (int)$_POST['availability'],
+                $_GET["id"]
+            );
+            if ($result) {
+                echo "<script> 
+                        alert('Update user record successful!') ;
+                        window.location.href='/admin';
+                    </script>";
+                // header('Location: /admin');
+                    exit();
+            } else {
+                echo "Error.";
+            }
         }
     }
     include(__DIR__ . "/.././../layouts/admin.navbar.php");

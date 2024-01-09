@@ -60,10 +60,6 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
                 <input type="text" id="description" class="form-control" placeholder="Description" name="description" required>
             </div>
             <div class="form-group">
-                <label for="rating">Rating:</label>
-                <input type="number" id="rating" class="form-control" placeholder="Rating" name="rating" min="1" max="5" required>
-            </div>
-            <div class="form-group">
                 <label for="convenient">Convenient:</label>
                 <input type="text" id="convenient" class="form-control" placeholder="Convenient" name="convenient" required>
             </div>

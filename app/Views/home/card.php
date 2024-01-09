@@ -13,7 +13,7 @@
                   <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
                   <!-- Trong vòng lặp foreach -->
                     <a href="/detail_room?id_room=<?php echo $room['id']; ?>">
-                      <img id="img-card-room" src="<?php echo $image['image_url']?>" height="238px" alt="">
+                      <img id="img-card-room" src="<?php echo $image['image_url']?>" height="300px" width="100%" alt="">
                     </a>
                   </div>
                   <?php $active = false; ?>
@@ -46,7 +46,6 @@
                         </button>
                     </a>
                     <?php endif?>
-                      <i class="fa-solid fa-star" style="color: #3A8CED; font-size:22px"></i><?php echo $room['rating']?>
                     </div>
                   </div>
                   <p class="convenient"><?php echo $room['convenient']?></p>

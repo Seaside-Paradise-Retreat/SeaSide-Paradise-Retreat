@@ -17,6 +17,7 @@ $routes = [
     '/home' => 'app/Controllers/home/home.controller.php',
     '/about' => 'app/Controllers/about/about.controller.php',
     '/detail_room' => 'app/Controllers/detail_room/detail_room.controller.php',
+    // '/feedback' => 'app/Controllers/detail_room/feedback.controller.php',
     '/booking_room' => 'app/Controllers/booking/booking.controller.php',
     '/bill' => 'app/Controllers/bill/bill.controller.php',
     '/booking_history' => 'app/Controllers/booking/booking_history.controller.php',

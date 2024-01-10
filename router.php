@@ -14,6 +14,7 @@ $routes = [
     '/admin/Room/delete' => 'app/Controllers/admin/Room/admin.delete.room.controller.php',
     '/admin/Booking/edit' => 'app/Controllers/admin/Booking/admin.edit.booking.controller.php',
     '/admin/Booking/delete' => 'app/Controllers/admin/Booking/admin.delete.booking.controller.php',
+    '/admin/Feedback' => 'app/Controllers/admin/Feedback/admin.feedback.controller.php',
     '/home' => 'app/Controllers/home/home.controller.php',
     '/about' => 'app/Controllers/about/about.controller.php',
     '/detail_room' => 'app/Controllers/detail_room/detail_room.controller.php',

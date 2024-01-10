@@ -245,11 +245,14 @@ function findRoomById($roomId) {
 }
 function findUserById($userId){
     global $users;
-    foreach ($users as $user){
-        if ($user['id'] == $userId){
-            return $user;
+    if ($users){
+        foreach ($users as $user){
+            if ($user['id'] == $userId){
+                return $user;
+            }
         }
     }
+    
     return null;
 }
 function selectBookingRoom(){
@@ -285,3 +288,43 @@ function deleteBooking(int $id) : bool
     return $statement->rowCount() > 0;
 }
 
+function selectAVGRatingForRoom($roomId)
+{
+    global $connection;
+    $stt = $connection->prepare("SELECT rooms.name, AVG(feedback.rating) as average_rating
+        FROM rooms
+        LEFT JOIN feedback ON rooms.id = feedback.id_room
+        WHERE rooms.id = :roomId"
+    );
+    $stt->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+    $stt->execute();
+    $result = $stt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+function selectDetailFeedback($roomId){
+    global $connection;
+    $stt = $connection ->prepare("SELECT  feedback.id_user, feedback.content, feedback.rating
+    FROM feedback
+    WHERE feedback.id_room = :roomId"); 
+    $stt->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+    $stt->execute();
+    $result = $stt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function selectBill(){
+    global $connection;
+    $stt = $connection -> prepare("SELECT bill.id, users.name as username, users.phone, users.email, rooms.name, bill.total_price, bill.date
+        FROM
+            booking
+        JOIN
+            users ON booking.id_user = users.id
+        JOIN
+            rooms ON booking.id_room = rooms.id
+        JOIN
+            bill ON booking.id = bill.id_booking");
+    $stt -> execute();
+    return $stt -> fetchAll(PDO::FETCH_ASSOC);
+}

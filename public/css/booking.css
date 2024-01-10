@@ -21,15 +21,18 @@
   .infor {
     margin-bottom: 20px;
   }
-  #in.name-booking{
+  #in.name-booking {
     margin-left: 10px;
-    width: 550px !important;
+    width: 607px !important;
   }
-
+  #message{
+    width: 607px !important;
+  }
+ 
   #in.name-booking,
   .input__check-date#check_in,
   .input__check-date#check_out {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -40,7 +43,7 @@
   .check-date.col-6 {
     float: left;
     width: 50%;
-    padding-right: 10px;
+    padding-right: 15px;
   }
   
   .button {

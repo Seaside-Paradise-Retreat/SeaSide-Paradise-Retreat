@@ -98,6 +98,7 @@ if (isset($_GET['id_room'])) {
                     <?php endif ?>
                 </div>
             </form>
+            <h4 class="m-4">Reviews</h4>
             <?php 
 
 if (!empty($roomfeedback)) {
@@ -111,25 +112,20 @@ if (!empty($roomfeedback)) {
 ?>
             <!-- Đánh giá trung bình -->
             <div class="row content-review">
-                <div class="col-lg-2 col-6">
-                    <h4>Reviews</h4>
-                </div>
-                <div class="col-lg-1 col-6 text-end">
-                    <div class="d-flex justify-content-end">
-                        <h4><?php echo $feedback['feedback_rating'] . " stars"; ?></h4>
-                    </div>
-                </div>
-            </div>
             <!-- Chi tiết đánh giá -->
             <div class="row content_comment-detail">
                 <div class="col-lg-5 comment-cus m-4">
                     <div class="row">
-                        <div class="col-lg-2 col-3">
+                        <div class="col-lg-2 col-2">
                             <img id="avata1" class="avata__review" src="<?php echo $feedback['user_avatar'] ?>" alt="">
                         </div>
-                        <div class="col-lg-4 col-6">
-                            <h5><?php echo $feedback['user_name'] ?></h5>
+                        <div class="col-lg-4 col-9">
+                            <h5 ><?php echo $feedback['user_name'] ?></h5>
                         </div>
+                        <div class="col-lg-4 col-1">
+                        <h5 style="color: gold"><?php echo $feedback['feedback_rating'] . " &#9733;"; ?></h5>
+                        </div>
+                        
                     </div>
                     <div class="row">
                         <p><?php echo $feedback['feedback_content']; ?></p>

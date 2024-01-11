@@ -7,6 +7,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['name
     $name = $_SESSION['name'];
     $phone = $_SESSION['phone'];
     $password = $_SESSION['password'];
+    $role = $_SESSION['role'];
 }
 ?>
 <?php 
@@ -20,7 +21,13 @@ echo "<script>
 
 <?php
 require 'app/Views/layouts/header.php';
-require 'app/Views/layouts/navbar.php';
+if ($role == 'user'){
+    require 'app/Views/layouts/navbar.php';
+}
+else {
+    require 'app/Views/layouts/admin.navbar.php';
+}
+
 ?>
 <link rel="stylesheet" href="public/css/profile.css">
 <!-- body -->

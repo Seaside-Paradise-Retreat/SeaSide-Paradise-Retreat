@@ -46,6 +46,7 @@
                         </button>
                     </a>
                     <?php endif?>
+
                     </div>
                   </div>
                   <p class="convenient"><?php echo $room['convenient']?></p>

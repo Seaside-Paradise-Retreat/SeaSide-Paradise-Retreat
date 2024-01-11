@@ -17,7 +17,7 @@ function saveFeedbackToDatabase($id_room, $id_user, $star_rating, $feedback, $cu
 function getFeedback($roomId){
     global $connection;
     try {
-        $query = "SELECT r.id, r.name, r.rating, r.price, r.description, c.convenient,
+        $query = "SELECT r.id, r.name, r.price, r.description, c.convenient,
         f.rating AS feedback_rating, f.content AS feedback_content, f.date AS feedback_date,
         u.id AS user_id, u.name AS user_name, u.avatar AS user_avatar
         FROM rooms r

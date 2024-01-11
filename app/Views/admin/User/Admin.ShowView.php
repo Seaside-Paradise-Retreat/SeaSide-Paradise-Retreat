@@ -39,6 +39,12 @@
                     <h5 class="titles">Booking</h5>
                 </button>
             </div>
+            <div class="item">
+                <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                    <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                    <h5 class="titles">Bill</h5>
+                </button>
+            </div>
         </div>
         <div id="bookingTab" class="tabcontent active">
 
@@ -138,7 +144,7 @@
                                 </td>
                                 <td><?php echo $book['availability']; ?></td>
 
-                                <td>
+                                <td >
                                     <a href="/admin/Booking/edit?id=<?= $book['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
                                     <a href="/admin/Booking/delete?id=<?= $book['id'] ?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
                                 </td>
@@ -176,7 +182,6 @@
                         <th>Price</th>
                         <th>Availability</th>
                         <th>Description</th>
-                        <th>Rating</th>
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -185,6 +190,7 @@
 
                     require_once(__DIR__ . '/../../../Models/admin.model.php');
                     $rooms = selectRoom();
+                    
 
                     if ($rooms) {
                         foreach ($rooms as $room) {
@@ -196,10 +202,10 @@
                                 <td><?php echo $room['price']; ?></td>
                                 <td><?php echo $room['availability']; ?></td>
                                 <td class="ellipsis" onclick="showFullText(this)" > <?php echo $room['description'];  ?></td>
-                                <td><?php echo $room['rating']; ?></td>
-                                <td>
+                                <td class="option">
                                     <a href="/admin/Room/edit?id=<?= $room['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
                                     <a href="/admin/Room/delete?id=<?= $room['id'] ?>"><button type="button" onclick="deleteRoom(roomId)" id="button_delete"><i class="fas fa-trash"></i></button></a>
+                                    <a href="/admin/Feedback?id=<?= $room['id'] ?>"><button type="button" id="button_comment"><i class="fas fa-comment"></i></button></a>
                                 </td>
                             </tr>
                     <?php
@@ -227,7 +233,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th style="width: 100px;">Name</th>
                         <th>Avatar</th>
                         <th>Password</th>
                         <th>Phone Number</th>
@@ -251,7 +257,7 @@
                     ?>
                             <tr>
                                 <td><?php echo $user['id']; ?></td>
-                                <td><?php echo $user['name']; ?></td>
+                                <td style="width: 100px; white-space: nowrap;"> <?php echo $user['name']; ?></td>
                                 <td><?php echo $user['avatar']; ?></td>
                                 <td class="ellipsis" onclick="showFullText(this)"><?php echo password_hash($user['password'], PASSWORD_DEFAULT); ?></td>
                                 <td><?php echo $user['phone']; ?></td>
@@ -274,6 +280,61 @@
             </table>
 
         </div>
+
+        <div id="billTab" class="tabcontent">
+            <h1 class="title" style="text-align: center; margin-bottom: 50px; ">BILL</h1>
+            <div class="ItemBill">
+                <div class="search">
+                    <input type="text" id="search" name="input_search" placeholder="Search">
+                    <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <br>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Room Name</th>
+                        <th>Total Price</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+
+                    require_once(__DIR__ . '/../../../Models/admin.model.php');
+                    $bills = selectBill();
+
+                    if ($bills) {
+
+                        foreach ($bills as $bill) {
+                    ?>
+                            <tr>
+                                <td><?php echo $bill['id']; ?></td>
+                                <td style="width: 100px; white-space: nowrap;"> <?php echo $bill['username']; ?></td>
+                                <td><?php echo $bill['phone']; ?></td>
+                                <td ><?php echo $bill['email']; ?></td>
+                                <td><?php echo $bill['name'];?></td>
+                                <td><?php echo $bill['total_price']; ?></td>
+                                <td><?php echo $bill['date']; ?></td>    
+                            </tr>
+                            <p></p>
+                    <?php
+                        }
+                    } else {
+                        echo "<p>No bill found. </p>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+
+        </div>
+        
+        
     </div>
 
     <script>

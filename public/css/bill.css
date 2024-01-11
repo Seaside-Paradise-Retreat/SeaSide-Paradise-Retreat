@@ -2,18 +2,20 @@ body {
     background-image: url("../../public/images/hotel1.jpg");
     background-size: cover;
     background-position: center;
-    background-color: rgba(255, 255, 255, 0.1);
 }
 .container {
     background-color: white;
     margin-top: 150px;
-    max-width: 600px;
     padding: 20px;
     border: 1px solid #9EEAF7;
     border-radius: 8px;
+    width: 50%;
 }
 .content{
-    margin-left: 170px;
+    /* margin-left: 170px; */
+    /* max-width:600px; */
+    display: flex;      
+    justify-content: space-between;
 }
 #logo_hotel{
     width: 90px;
@@ -24,6 +26,7 @@ body {
     font-size: 40px;
 }
 .bill-info {
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 .bill-info span {
@@ -35,15 +38,15 @@ body {
     text-align: right;
 }
 
-.button-container {
-    text-align: center;
-}
-
 .button-container button {
     padding: 10px 20px;
     background-color: #9EEAF7;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
+}
+.button-back-print{
+    display: flex;
+    justify-content: space-between;
 }

@@ -32,10 +32,24 @@ require ("./app/Databases/database.php");
 // lấy $favorite_room_id từ function trên (sử dụng hàm function getRoomId($roomId) đã được đinh nghĩa ở model detail)
 
 
-    function un_favorite($id_favorite){
+    function un_favorite($id_room,$id_user){
             global $connection;
-            $statement = $connection->prepare("delete from favorite where id = :id");
-            $statement->bindParam(':id',$id_favorite);
+            $statement = $connection->prepare("delete from favorite where id_room = :id_room && id_user = :id_user ");
+            $statement->bindParam(':id_room',$id_room);
+            $statement->bindParam(':id_user',$id_user);
             $statement->execute();
         }       
+
+    function isAdded($id_room, $id_user)
+    {
+        $isAdded = false; // if = false: phòng chưa được thêm vào yêu thích
+        $favorite_rooms = get_list_favorite($id_user);
+        foreach ($favorite_rooms as $favorite_room) {
+            if ($favorite_room['id'] == $id_room) {
+                $isAdded = true;
+                break;
+            }
+        }
+        return $isAdded;
+    }
 ?>

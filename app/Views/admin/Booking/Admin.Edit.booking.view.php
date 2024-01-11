@@ -16,27 +16,38 @@ require(__DIR__ . '/../../../Databases/database.php');
 require(__DIR__ . '/../../../Models/admin.model.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['id_room']) && !empty($_POST['check_in_date']) && !empty($_POST['check_out_date']) && isset($_POST['availability']) && !empty($_GET["id"])) {
-        $statement = $connection->prepare("UPDATE booking SET id_room = :id_room, check_in_date = :check_in_date, check_out_date = :check_out_date, availability = :availability WHERE id = :id");
-        $statement->execute([
-            ':id_room' => $_POST['id_room'],
-            ':check_in_date' => $_POST['check_in_date'],
-            ':check_out_date' => $_POST['check_out_date'],
-            ':availability' => $_POST['availability'],
-            ':id' => $_GET["id"]
-        ]);
-
-        header('location: /admin');
-        
+    if (!empty($_POST['id_room']) && 
+        !empty($_POST['check_in_date']) && 
+        !empty($_POST['check_out_date']) && 
+        isset($_POST['availability']) && 
+        !empty($_GET["id"])
+    ) {
+        $result = updateBooking(
+            $_POST['id_room'],
+            $_POST['check_in_date'],
+            $_POST['check_out_date'],
+            $_POST['availability'],
+            $_GET["id"]
+        );
+        if ($result) {
+            echo "<script> 
+                    alert('Update booking record successful!') ;
+                    window.location.href='/admin';
+                </script>";
+            // header('Location: /admin');
+            exit();
+        } else {
+            echo "Error.";
+        }
     }
 }
 
 include(__DIR__ . "/.././../layouts/admin.navbar.php");
-$id = $_GET["id"] ?? null; // Use the null coalescing operator for default value
-if ($id) :
-    $statement = $connection->prepare('SELECT * FROM booking WHERE id = :id');
-    $statement->execute([':id' => $id]);
-    $book = $statement->fetch();
+    $id = $_GET["id"] ?? null; // Use the null coalescing operator for default value
+    if ($id) :
+        $statement = $connection->prepare('SELECT * FROM booking WHERE id = :id');
+        $statement->execute([':id' => $id]);
+        $book = $statement->fetch();
     ?>
 
         <div class="container">

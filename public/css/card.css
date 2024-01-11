@@ -1,130 +1,131 @@
 .rating {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
 }
-.img-fluid{
-    border-radius: 20px;
+.img-fluid {
+  border-radius: 20px;
 }
 
 .rating::before {
-    content: "★";
-    margin-right: 5px;
-    color: #ddd;
-    font-size: 30px;
+  content: "★";
+  margin-right: 5px;
+  color: #ddd;
+  font-size: 30px;
 }
-.btn_card_booking{
-    padding: 0px 10px;
-    border-radius: 10px;
-    background-color: #3A8CED;
-    border: none;
-    color: white;
-    font-size: 15PX;
+.btn_card_booking {
+  padding: 0px 10px;
+  border-radius: 10px;
+  background-color: #3a8ced;
+  border: none;
+  color: white;
+  font-size: 15px;
 }
-.listroom{
-    position: relative;
+.listroom {
+  position: relative;
 }
-.btn-card-navigation-previous ,.btn-card-navigation-next{
-    position: absolute;
-    font-size: 24px;
-    background-color: transparent;
-    border: 1px solid #3568A4;
-    padding: 5px 15px;
-    border-radius: 50%;
-    color: #3568A4;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-.btn-card-navigation-previous{
-    left: -60px;
-    top: 335px;
+.btn-card-navigation-previous,
+.btn-card-navigation-next {
+  position: absolute;
+  font-size: 24px;
+  background-color: transparent;
+  border: 1px solid #3568a4;
+  padding: 5px 15px;
+  border-radius: 50%;
+  color: #3568a4;
+  cursor: pointer;
+  transition: color 0.3s;
 }
-.btn-card-navigation-next{
-    left: 1165px;
-    top: 335px;
+.btn-card-navigation-previous {
+  left: -60px;
+  top: 335px;
 }
-  .btn-card-navigation:hover {
-    color: #ff0000;
-  }
-.heart-button{
-  color: #3A8CED;
+.btn-card-navigation-next {
+  left: 1165px;
+  top: 335px;
 }
-
+.btn-card-navigation:hover {
+  color: #ff0000;
+}
+.heart-button {
+  color: #3a8ced;
+}
 
 .rating {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
 }
 .rating span {
-    color: #ffca08;
+  color: #ffca08;
 }
 
 .rating::before {
-    content: "★";
-    margin-right: 5px;
-    color: #ddd;
-    font-size: 30px;
+  content: "★";
+  margin-right: 5px;
+  color: #ddd;
+  font-size: 30px;
 }
-.btn_card_booking{
-    padding: 0px 10px;
-    font-size: 15PX;
-    font-weight: 600px;
-    width: 150px;
-    border: 3px solid #315cfd;
-    border-radius: 20px;
-    transition: all 0.3s;
-    cursor: pointer;
-    background: #3A8CED;
+.btn_card_booking {
+  padding: 0px 10px;
+  font-size: 15px;
+  font-weight: 600px;
+  width: 150px;
+  border: 3px solid #315cfd;
+  border-radius: 20px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: #3a8ced;
 }
-.btn_card_booking:hover{
-background: #315cfd;
-color: white;
-font-size: 1em;}
-.listroom{
-    position: relative;
+.btn_card_booking:hover {
+  background: #315cfd;
+  color: white;
+  font-size: 1em;
 }
-#img-card-room{
-    border-radius: 20px;
+.listroom {
+  position: relative;
+}
+#img-card-room {
+  border-radius: 20px;
 }
 
 .convenient {
-    color: #3A8CED !important;
+  color: #3a8ced !important;
 }
-#description{
-    height: 160px;
+#description {
+  height: 160px;
 }
 .room-item {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .room-item:hover {
-    transform: translateY(-10px);
+  transform: translateY(-10px);
 }
-  .favorite-button {
-    background-color: transparent;
-    border: none;
-    color: black;
-    cursor: pointer;
-  }
-  .fa-lg {
-    font-size: 24px;
-  }
-  .favorite-button .fa-heart {
-    color: gray;
-  }
-  .heart-container {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .favorite-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .favorite-button i {
-    font-size: 24px; 
-  }
+.favorite-button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+.fa-lg {
+  font-size: 24px;
+}
+.favorite-button .fa-heart {
+  color: red;
+}
+.heart-container {
+  width: 40px;
+  height: 40px;
+}
+
+.favorite-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.favorite-button i {
+  font-size: 24px;
+}

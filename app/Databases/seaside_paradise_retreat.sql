@@ -2,10 +2,12 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th1 06, 2024 lúc 03:51 AM
--- Phiên bản máy phục vụ: 8.0.31
--- Phiên bản PHP: 7.4.33
+-- Host: 127.0.0.1
+
+-- Generation Time: Jan 08, 2024 at 03:19 AM
+-- Generation Time: Dec 23, 2023 at 06:46 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +32,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `bill` (
   `id` int NOT NULL,
   `id_booking` int NOT NULL,
-  `date` datetime DEFAULT NULL,
+  `date` datetimetime DEFAULT NULL,
   `total_price` decimal(10,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;   
 
@@ -39,10 +41,22 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`id`, `id_booking`, `date`, `total_price`) VALUES
-(3, 3, '2023-03-25 00:00:00', 120),
-(4, 4, '2023-04-07 00:00:00', 200),
-(5, 5, '2023-05-20 00:00:00', 50),
-(6, 15, '2024-01-06 02:29:29', 2013);
+(3, 3, '2023-03-25 00:00:00', '120'),
+(4, 4, '2023-04-07 00:00:00', '200'),
+(5, 5, '2023-05-20 00:00:00', '50'),
+(6, 15, '2024-01-06 02:29:29', '2013'),
+(7, 16, '2024-01-06 05:23:51', '7013'),
+(8, 17, '2024-01-06 05:26:18', '733'),
+(9, 18, '2024-01-06 09:58:01', '405'),
+(10, 19, '2024-01-06 17:06:34', '17013'),
+(11, 20, '2024-01-07 02:30:42', '2013'),
+(12, 21, '2024-01-07 02:33:28', '823'),
+(13, 22, '2024-01-07 02:37:23', '253'),
+(14, 23, '2024-01-07 02:47:59', '1000013'),
+(15, 24, '2024-01-07 02:53:10', '480013'),
+(16, 25, '2024-01-07 11:02:30', '1100013'),
+(17, 26, '2024-01-08 03:06:42', '240013');
+
 
 -- --------------------------------------------------------
 
@@ -51,14 +65,14 @@ INSERT INTO `bill` (`id`, `id_booking`, `date`, `total_price`) VALUES
 --
 
 CREATE TABLE `booking` (
-  `id` int NOT NULL,
-  `id_room` int DEFAULT NULL,
-  `id_user` int DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `id_room` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
   `check_in_date` datetime DEFAULT NULL,
   `check_out_date` datetime DEFAULT NULL,
   `note` varchar(500) DEFAULT NULL,
-  `availability` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;   
+  `availability` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `booking`
@@ -75,22 +89,35 @@ INSERT INTO `booking` (`id`, `id_room`, `id_user`, `check_in_date`, `check_out_d
 (12, 6, 10, '2024-01-10 00:00:00', '2024-01-12 12:00:00', 'I will come to hotel soon', 1),
 (13, 7, 11, '2024-01-06 00:00:00', '2024-01-08 12:00:00', 'Oke', 1),
 (14, 5, 12, '2024-01-09 00:00:00', '2024-01-10 12:00:00', 'Oke', 1),
-(15, 1, 20, '2024-01-06 09:29:00', '2024-01-08 09:29:00', 'I will come to early', 1);
+(15, 1, 20, '2024-01-06 09:29:00', '2024-01-08 09:29:00', 'I will come to early', 1),
+(16, 4, 20, '2024-01-06 11:23:00', '2024-02-10 11:23:00', '7 triệu à mắc thế', 0),
+(17, 5, 20, '2024-01-18 11:26:00', '2024-01-26 11:26:00', 'ww', 1),
+
+(18, 20, 20, '2024-01-06 15:00:00', '2024-01-12 15:57:00', '111ew', 0),
+(19, 1, 20, '2024-01-01 23:06:00', '2024-01-18 23:06:00', 'test booking', 1),
+(20, 1, 20, '2024-01-08 08:30:00', '2024-01-10 08:30:00', '2 đêm', 1),
+(21, 5, 20, '2024-01-08 08:33:00', '2024-01-17 08:33:00', '1111', 1),
+(22, 3, 20, '2024-01-08 08:37:00', '2024-01-10 08:37:00', 'dddđ', 1),
+(23, 14, 20, '2024-01-08 08:47:00', '2024-01-10 08:47:00', 'ok', 1),
+(24, 3, 20, '2024-01-09 08:52:00', '2024-01-11 08:52:00', 'ggg', 1),
+(25, 4, 20, '2024-01-08 17:02:00', '2024-01-10 17:02:00', 'llll', 1),
+(26, 2, 20, '2024-01-09 09:06:00', '2024-01-11 09:06:00', 'hhhhh', 1);
+
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `convenients`
+-- Table structure for table `convenients`
 --
 
 CREATE TABLE `convenients` (
-  `id` int NOT NULL,
-  `id_room` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_room` int(11) NOT NULL,
   `convenient` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;   
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `convenients`
+-- Dumping data for table `convenients`
 --
 
 INSERT INTO `convenients` (`id`, `id_room`, `convenient`) VALUES
@@ -114,15 +141,20 @@ INSERT INTO `convenients` (`id`, `id_room`, `convenient`) VALUES
 (18, 18, 'Air conditioning, Television, 3 bed, 1 bath, wifi'),
 (19, 19, 'Air conditioning, Television, 6 bed, 1 bath, wifi'),
 (20, 20, 'Air conditioning, Television, 2 bed, 1 bath, wifi'),
-(26, 31, '2 Bed, 1 Bath, wifi');
+(26, 31, '2 Bed, 1 Bath, wifi'),
+(27, 32, '1bed 5 bed');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `detail_room`
+-- Table structure for table `detail_room`
 --
 
 CREATE TABLE `detail_room` (
+  `id` int(11) NOT NULL,
+  `id_room` int(11) NOT NULL,
+  `image_url` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
   `id` int NOT NULL,
   `id_room` int NOT NULL,
   `image_url` varchar(15000) CHARACTER SET utf8mb4 
@@ -237,19 +269,24 @@ INSERT INTO `detail_room` (`id`, `id_room`, `image_url`) VALUES
 (123, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640'),
 (124, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640'),
 (125, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640'),
-(126, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640');
+(126, 31, 'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10012349-2048x1233-FIT_AND_TRIM-ae0c7c0ce9f8fcbdc626271529c83049.jpeg?_src=imagekit&tr=c-at_max,h-360,q-40,w-640'),
+(127, 32, 'https://s.net.vn/Ry2u'),
+(128, 32, 'https://s.net.vn/Ry2u'),
+(129, 32, 'https://s.net.vn/Ry2u'),
+(130, 32, 'https://s.net.vn/Ry2u'),
+(131, 32, 'https://s.net.vn/Ry2u');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `favorite`
+-- Table structure for table `favorite`
 --
 
 CREATE TABLE `favorite` (
-  `id` int NOT NULL,
-  `id_room` int DEFAULT NULL,
-  `id_user` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;   
+  `id` int(11) NOT NULL,
+  `id_room` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `favorite`
@@ -272,7 +309,6 @@ CREATE TABLE `rooms` (
   `price` decimal(10,2) NOT NULL,
   `availability` tinyint(1) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `rating` tinyint NOT NULL
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;   
 
 --
@@ -314,7 +350,7 @@ INSERT INTO `rooms` (`id`, `name`, `type`, `price`, `availability`, `description
 CREATE TABLE `users` (
   `id` int NOT NULL,
   `name` varchar(100) NOT NULL,
-  `avatar` varchar(500) NOT NULL DEFAULT 'public/avatar.png',
+  `avatar` varchar(500) NOT NULL,
   `password` varchar(500) NOT NULL,
   `phone` varchar(11) NOT NULL,
   `email` varchar(50) NOT NULL,

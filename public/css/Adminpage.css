@@ -55,11 +55,8 @@
     flex-direction: column;
     background: #3568A4;
     align-items: center;
-<<<<<<< HEAD
-    border-radius: 10px;
-=======
     border-radius: 5px;
->>>>>>> e713722949a15582be1dca8b1912a8e67f2679f4
+
     
 }
 .item{
@@ -133,7 +130,7 @@
     
 }
 
-.ItemBooking{
+.ItemBooking, .ItemBill{
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
@@ -154,7 +151,7 @@
 #search {
     border: none;
     outline: none;
-    
+    font-size: 25px;
 }
 
 #buttonsearch {
@@ -166,7 +163,7 @@
 #iconsearch {
     width: 20px;
     height: 20px;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .ItemRoom, .ItemUser{
@@ -194,7 +191,8 @@
     
 }
 
-.form-group input{
+.form-group input,
+.form-group select{
     border-radius: 10px;
     height: 50px;
     padding-left: 20px;
@@ -226,7 +224,7 @@
     border-radius: 5px;
     margin-left: 20px;
 }
-#button_edit, #button_delete{
+#button_edit, #button_delete, #button_comment{
     border: none;
     outline: none;
     background: none;
@@ -263,8 +261,72 @@
 .full-text {
     white-space: normal; 
     max-width: none;     
-<<<<<<< HEAD
 }
-=======
+
+
+
+/* FeedBack */
+
+.main_menu{
+    width: 100%;
 }
->>>>>>> e713722949a15582be1dca8b1912a8e67f2679f4
+.feedback{
+    border: 1px solid #3498db;
+    border-radius: 20px;
+    width:80%;
+    height:650px;
+    padding: 40px;
+    line-height: 50px;
+    margin:auto auto;
+}
+.title_hotel {
+    text-align: center;
+}
+
+.detail_feedback{
+    
+    display:flex;
+    justify-content: space-between;
+}
+
+.rating{
+    display:inline; 
+    
+}
+
+.rating i{
+    color:yellow;
+    font-size: 25px;
+}
+.rating h4 {
+    display: inline;
+    margin-right: 5px;
+}
+.User_infor{
+    display:flex;
+    align-items:end;
+    margin-bottom: 20px;
+}
+.avata__review{
+    width:80px;
+    height:80px;
+    border-image: auto;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+
+
+.back-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Back{
+    width: 100px;
+    height:40px;
+    border:none;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #3498db;
+    color: white;
+}

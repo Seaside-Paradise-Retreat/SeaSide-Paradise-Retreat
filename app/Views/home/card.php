@@ -2,9 +2,9 @@
   <div class="row g-4 ml-2 mb-5 listroom" id="pp">
     <?php foreach($rooms as $index => $room): //trong room này sẽ là đầy đủ thông tin của 1 phòng bao gồm id, name, images_url, convenient?>
       <?php if($room['availability'] == 1) : ?>
-      <div class="col-lg-4 col-md-6 room-item">
+      <div class="col-lg-4 col-md-6 room-item" id="like_room<?php echo $room['id']?>">
         <div class="room-item">
-          <div class="position-relative">
+          <div class="position-relative" >
             <div id="imageCarousel<?php echo $index; ?>" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <?php $detailRoom = getRoomImages($room['id']) ?> 
@@ -13,7 +13,7 @@
                   <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
                   <!-- Trong vòng lặp foreach -->
                     <a href="/detail_room?id_room=<?php echo $room['id']; ?>">
-                      <img id="img-card-room" src="<?php echo $image['image_url']?>" height="238px" alt="">
+                      <img id="img-card-room" src="<?php echo $image['image_url']?>" height="300px" width="100%" alt="">
                     </a>
                   </div>
                   <?php $active = false; ?>
@@ -33,12 +33,20 @@
                   <div class="d-flex justify-content-between  mb-1">
                     <h5 class="mb-0"><?php echo $room['name']?></h5>
                     <div id="ratingContainer">
+                    <?php if(!empty($_SESSION['isLogin']) && $_SESSION['isLogin']): ?>
                     <a href="/favorite?id_room=<?php echo $room['id']; ?>">
-                        <button  class="favorite-button" onclick="toggleFavorite(this)" >
-                          <i class="fas fa-heart"  id="like_room<?php echo $room['id']?>" ></i>
+                        <button class="favorite-button" >
+                          <i class="<?php $issAdded = isAdded($room['id'],$_SESSION['id']) ;if($issAdded) { echo "fas";} else {echo "far";} ?> fa-heart" ></i>
                         </button>
                     </a>
-                      <i class="fa-solid fa-star" style="color: #3A8CED; font-size:22px"></i><?php echo $room['rating']?>
+                    <?php else :?>
+                      <a href="/favorite?id_room=<?php echo $room['id']; ?>">
+                        <button class="favorite-button" >
+                          <i class="far fa-heart" ></i>
+                        </button>
+                    </a>
+                    <?php endif?>
+
                     </div>
                   </div>
                   <p class="convenient"><?php echo $room['convenient']?></p>
@@ -52,9 +60,8 @@
                       </i>Wifi</small>
                   </div>
                   <div class="d-flex justify-content-between mt-4">
-                  <h4 style="color: #3568A4;">$<?php echo $room['price']?></h4>
+                  <h4 style="color: #3568A4;"><?php echo $room['price']?> VND</h4>
                   <?php
-                    // if(!empty($_SESSION['email']) || !empty($_SESSION['password']) )  :
                       if(!empty($_SESSION['isLogin']) && $_SESSION['isLogin']):
                     ?>
                     <a href="/booking_room?id_room=<?php echo $room['id']; ?>"><input type="button" class="btn_card_booking" name="booking"  value="Booking now"></a>
@@ -63,16 +70,10 @@
                   <?php endif ?>
                   </div>
           </div>
-
         </div>
       </div>
       <?php endif ?>
     <?php endforeach; ?>
   </div>
-<!-- <script>
-  function toggleFavorite(button) {
-  button.classList.toggle('favorite');
-}
-</script> -->
 </div>
 

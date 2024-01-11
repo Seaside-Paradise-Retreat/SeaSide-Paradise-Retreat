@@ -28,7 +28,7 @@ echo "<script>
                 </a>
             </div>
             <div class="list--profile col-lg-3 col-12">
-              <a href="#" class="text">
+              <a href="/list_favorite" class="text">
                 <i class="fas fa-shopping-cart"></i>
                 <h5 >Favourite list</h5>
                 <p >View booking information and their history</p>

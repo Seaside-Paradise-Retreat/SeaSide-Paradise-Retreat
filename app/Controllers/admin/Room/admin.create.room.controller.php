@@ -8,8 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         !empty($_POST['type']) &&
         !empty($_POST['price']) &&
         !empty($_POST['availability']) &&
-        !empty($_POST['description']) &&
-        !empty($_POST['rating'])
+        !empty($_POST['description'])
     ) {
         // Call the function to create a new room
         $result = createRoom(
@@ -18,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST['price'],
             $_POST['availability'],
             $_POST['description'],
-            $_POST['rating'],
             $_POST['image_url'], 
             $_POST['convenient'] 
         );

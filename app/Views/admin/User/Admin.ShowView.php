@@ -304,7 +304,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Add table rows with user data here -->
                     <?php
 
                     require_once(__DIR__ . '/../../../Models/admin.model.php');
@@ -321,9 +320,9 @@
                                 <td ><?php echo $bill['email']; ?></td>
                                 <td><?php echo $bill['name'];?></td>
                                 <td><?php echo $bill['total_price']; ?></td>
-                                <td><?php echo $bill['date']; ?></td>
-                                
+                                <td><?php echo $bill['date']; ?></td>    
                             </tr>
+                            <p></p>
                     <?php
                         }
                     } else {

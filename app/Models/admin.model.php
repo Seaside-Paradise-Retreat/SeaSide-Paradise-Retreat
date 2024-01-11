@@ -148,14 +148,13 @@ function createRoom($name, $type, $price, $availability, $description, $imageUrl
     global $connection;
 
     try {
-        $insertRoomStatement = $connection->prepare("INSERT INTO rooms (name, type, price, availability, description, rating) VALUES (:name, :type, :price, :availability, :description, :rating)");
+        $insertRoomStatement = $connection->prepare("INSERT INTO rooms (name, type, price, availability, description) VALUES (:name, :type, :price, :availability, :description)");
         $insertRoomStatement->execute([
             ':name' => $name,
             ':type' => $type,
             ':price' => $price,
             ':availability' => $availability,
             ':description' => $description,
-            ':rating' => $rating,
         ]);
 
         $statement = $connection->prepare("SELECT id FROM rooms ORDER BY id DESC LIMIT 1");

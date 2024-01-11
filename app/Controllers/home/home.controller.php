@@ -97,9 +97,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
                 $_SESSION['name'] = $dataUser['name'];
                 $_SESSION['avatar'] = $dataUser['avatar'];
                 $_SESSION['phone'] = $dataUser['phone'];
+                $_SESSION['role'] = $dataUser['role'];
                 $_SESSION['isLogin'] = true;    
                 echo '<script>alert("Login Successful");</script>';
             } else if ($dataUser['role']  == 'admin') {
+                $_SESSION['email'] = $email;
+                $_SESSION['password'] = $password;
+                $_SESSION['id'] = $dataUser['id'];
+                $_SESSION['name'] = $dataUser['name'];
+                $_SESSION['avatar'] = $dataUser['avatar'];
+                $_SESSION['phone'] = $dataUser['phone'];
+                $_SESSION['role'] = $dataUser['role'];
+                $_SESSION['isLogin'] = true;  
                 echo '<script>alert("Login Successful");</script>';
                 header("Location: /admin");
             }

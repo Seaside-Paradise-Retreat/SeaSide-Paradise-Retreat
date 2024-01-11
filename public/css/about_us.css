@@ -4,9 +4,51 @@
     font-size: 80px;
     text-align: center;
 }
+.about--introduce--right h3{
+    color: #9EEAF7;
+    margin-bottom: 30px;
+}
+.title-about{
+    margin-left: 20px;
+    color: #9EEAF7;
+    margin-top: 70px;
+    font-size: 50px;
+}
 .about--introduce{
     margin-bottom: 30px;
 }
 .about--introduce>.about--introduce--left img{
     border-radius: 20px;
+}
+
+.card-fact>p{
+    padding-left: 0;
+}
+
+.facts-text{
+    font-size:32px;
+}
+.card-img-top{
+    width: auto;
+    height: 80%;
+}
+.card-text-name{
+    margin-left: 0px;
+    padding-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.div-founders{
+    background-color: aliceblue;
+    padding-bottom: 30px;
+}
+.about--introduce--room{
+    margin-top: 60px;
+}
+.about_introduce_number{
+    font-size: 50px;
+}
+.about_introduce{
+    font-size: 20px;
+    margin-left: 30px;
 }

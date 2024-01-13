@@ -7,6 +7,7 @@ require ("./app/Models/login/login.model.php");
 require ("app/Models/favorite/favorite.model.php");
 $rooms= getRooms();
 ?>
+
 <?php
     $userName = "";
     $phone = "";    
@@ -66,7 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $terms_error = "You must accept the Terms of Service";
     }
 
-    if (empty($user_error) && empty($email_error) && empty($phone_error) && empty($confirmpassword_error) && empty($terms_error)) {
+    if (empty($user_error) && empty($email_error) && empty($phone_error) 
+    && empty($confirmpassword_error) && empty($terms_error)) {
         $result = registerUser($userName, $hashedPassword, $phone, $email, $date, $gender);
         if (!empty($result)) {
             echo '<script>alert("Register Successful and you need to log in again");</script>';

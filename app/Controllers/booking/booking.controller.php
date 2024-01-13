@@ -22,15 +22,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['check_in']) && !empty
     $user = $_SESSION['id'];
     $date = date('Y-m-d H:i:s');
     $total = $_POST['total_price'];
-    $booking = booking($roomId, $user, $date_check_in, $date_check_out, $note);
-    echo "<script>console.log(" . $booking . ");</script>";
-    if ($booking) {
-        $bill = bill($booking, $date, $total);
-        header("Location:/bill?id=$booking");
-        echo "<script>alert('" . "Booking successful" . "');</script>";
-    } else {
-        echo "<script>alert('" . "Booking Unsuccessful" . "');</script>";
+    $booked = checkBooked($date_check_in, $date_check_out);
+    if ($booked > 0) {
+        echo "<script>alert('" . "The room was booked within the requested time period. Please choose another time or another room" . "');</script>";
+    } else{
+        $booking = booking($roomId, $user, $date_check_in, $date_check_out, $note);
+        echo "<script>console.log(" . $booking . ");</script>";
+        if ($booking) {
+            echo "<script>alert('" . "Booking successful" . "');</script>";
+            $bill = bill($booking, $date, $total);
+            header("Location:/bill?id=$booking");
+        } else {
+            echo "<script>alert('" . "Booking Unsuccessful" . "');</script>";
+        }
     }
 }
+
 require "app/Views/booking/booking.view.php";
 ?>

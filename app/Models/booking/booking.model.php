@@ -24,7 +24,7 @@ function getNextDateTime()
     $nextDateTime =  date_add($currentDateTime, date_interval_create_from_date_string("1 days"));
     $nextDate = date_format($nextDateTime, "Y-m-d H:i");
     return $nextDate;
-} 
+}
 function getMaxCheckInDateTime()
 {
     $currentDateTime = new DateTime('now');
@@ -32,25 +32,19 @@ function getMaxCheckInDateTime()
     $nextDateTime =  date_add($currentDateTime, date_interval_create_from_date_string("30 days"));
     $nextDate = date_format($nextDateTime, "Y-m-d H:i");
     return $nextDate;
-} 
+}
 
-// if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['check_in']) && !empty($_POST['check_out']) && isset($_POST['message'])) {
-//     $date_check_in = $_POST['check_in'];
-//     $date_check_out = $_POST['check_out'];
-//     $note = $_POST['message'];
-//     $user = $_SESSION['id'];
-//     $date = date('Y-m-d H:i:s');
-//     $total = $_POST['total_price'];
-//     global $booking;
-//     $booking = booking($roomId,$user,$date_check_in,$date_check_out,$note);
-//     // echo "<script>console.log(". $booking. ");</script>";
-//     if($booking){
-//         $bill = bill($booking,$date,$total);
-//         $bill_information = get_information_bill($booking, $_SESSION['id']);
-//         header("Location:/bill");
-//         echo "<script>alert('" . "Booking successful" . "');</script>"; 
-//     }
-// }else{
-//     echo "<script>alert('" . "Booking Unsuccessful" . "');</script>"; 
-// }
+function checkBooked($check_in_date, $check_out_date) {
+    global $connection;
+    $query = "SELECT COUNT(*) AS count FROM booking WHERE id_room = :roomId 
+        AND check_in_date <= :checkout_date 
+        AND check_out_date >= :checkin_date";
+    $statement = $connection->prepare($query);
+    $statement->bindParam(':roomId', $roomId);
+    $statement->bindParam(':checkin_date', $check_in_date);
+    $statement->bindParam(':checkout_date', $check_out_date);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    return $result;
+}
 ?>

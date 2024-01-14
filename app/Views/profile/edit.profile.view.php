@@ -9,10 +9,6 @@ if (isset($_SESSION['id'], $_SESSION['email'], $_SESSION['name'], $_SESSION['pho
     $password = $_SESSION['password'];  
 } 
 ?>
-<?php 
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>" ?>
 <?php
 require 'app/Views/layouts/header.php';
 ?>
@@ -21,20 +17,17 @@ require 'app/Views/layouts/header.php';
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['phone']) && !empty($_POST['id']) && !empty($_POST['avatar'])) {
-    // if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['phone']) && !empty($_POST['password']) && !empty($_POST['id'])&& !empty($_POST['avatar'])) {
         echo "<script>alert('đã chạy')</script>";
         $statement = $connection->prepare("UPDATE users SET name = :name, email = :email, phone = :phone, avatar = :avatar WHERE id = :id");
         $statement->execute([
             ':name' => $_POST['name'],
             ':email' => $_POST['email'],
             ':phone' => $_POST['phone'],
-            // ':password' => $_POST['password'],
             ':avatar' => $_POST['avatar'],
             ':id' => $_POST['id'],
         ]);
         $_SESSION['name'] = $_POST['name'];
         $_SESSION['email'] = $_POST['email'];
-        // $_SESSION['password'] = $_POST['password'];
         $_SESSION['phone'] = $_POST['phone'];
         $_SESSION['avatar'] = $_POST['avatar'];
         
@@ -71,10 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <label for="phone" class="form-label">Phone Number:</label>
                             <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $phone; ?>">
                         </div>
-                        <!-- <div class="mb-3">
-                            <label for="password" class="form-label">Password:</label>
-                            <input type="password" class="form-control" id="password" name="password" value="<?php echo $password; ?>">
-                        </div> -->
+                            <?php echo $password; ?>
                         <button type="submit" class="btn btn-primary" name="save">Save</button>
                     </form>
                 </div>
@@ -82,7 +72,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </div>
-
-<?php
-  //require 'app/Views/layouts/footer.php';
-?>

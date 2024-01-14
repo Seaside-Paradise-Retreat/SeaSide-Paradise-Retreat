@@ -188,4 +188,9 @@ textarea {
 }
 .btn_feedback {
   text-decoration: none;
+  border-radius: 10px;
+}
+.type1{
+  color: #15c3ee;
+  font-size:30px;
 }

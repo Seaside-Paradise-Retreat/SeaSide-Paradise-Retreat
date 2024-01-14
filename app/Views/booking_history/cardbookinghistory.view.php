@@ -11,11 +11,10 @@
     <div class="col-md-2"></div>
     <?php 
         $images = getRoomImages($room['room_id']); 
-        echo "<script>console.log(" . json_encode($images) . ");</script>";
         if(!empty($images)):
     ?>
     <div class="card-left col-md-5 justify-content-end">
-        <img id="image-room" src="<?php echo $images[0]['image_url'] ?>" alt="image-room">
+        <a href="/detail_room?id_room=<?php echo $room['room_id'] ?>"><img id="image-room" src="<?php echo $images[0]['image_url'] ?>" alt="image-room"></a>
     </div>
     <?php endif ?>
     <div class="row col-md-5">

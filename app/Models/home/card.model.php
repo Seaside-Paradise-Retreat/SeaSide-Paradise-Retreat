@@ -18,5 +18,14 @@
             }
         return $rooms;
     }
+    function countRooms(){
+        global $connection;
+        $query = "SELECT COUNT(*) AS room_count FROM rooms;";
+        $statement = $connection->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $count = $result['room_count'];
+        return (int) $count;
+    }
 ?>
 

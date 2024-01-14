@@ -43,10 +43,17 @@
                         <h5 class="titles">Booking</h5>
                     </button>
                 </div>
+                <div class="item">
+                    <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                        <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                        <h5 class="titles">Bill</h5>
+                    </button>
+                </div>
             </div>
+            
             <div class="main_menu">
                 <div class="feedback">
-                    <h1 class="title_hotel">SEASIDE PARADISE RETREAT</h1>
+                    <h1 class="animate-charcter">SEASIDE PARADISE RETREAT</h1>
                     <?php
                     $ratings = selectAVGRatingForRoom($id);
                     $feedbacks = getFeedback($id);

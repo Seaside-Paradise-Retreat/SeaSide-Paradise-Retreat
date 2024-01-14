@@ -327,3 +327,13 @@ function selectBill(){
     $stt -> execute();
     return $stt -> fetchAll(PDO::FETCH_ASSOC);
 }
+
+
+function selectTotalPrice(){
+    global $connection;
+    $stt = $connection->prepare("SELECT SUM(total_price) as total_price FROM bill");
+    $stt->execute();
+    $result = $stt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total_price'];
+}

@@ -57,7 +57,7 @@ else {
 
         <!-- Form Thong tin người dùng -->
         <div class="col-lg-1"></div>
-        <form class="col-lg-5 " action="profile/edit" method="post" style="" >
+        <form class="col-lg-5 " action="profile/edit" method="post">
             <div class="content_profile-username-email-password" style="margin-top: 30px;">
                 <input type="hidden" value="<?= $id ?>" name="id">
                 <label for="user_name" class="title">Name</label>

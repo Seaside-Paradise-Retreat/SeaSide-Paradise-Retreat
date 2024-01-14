@@ -108,6 +108,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
     }
 }
 }
+
+$countusers = countUser();
+$countrooms = countRooms();
 ?>
 
 <?php 

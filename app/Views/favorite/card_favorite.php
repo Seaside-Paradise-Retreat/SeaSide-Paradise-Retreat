@@ -53,7 +53,7 @@
                           <i class="fas fa-heart"  id="like_room<?php echo $favorite_room_detail['id']?>" ></i>
                         </button>
                     </a>
-                      <i class="fa-solid fa-star" style="color: #3A8CED;"></i><?php echo $favorite_room_detail['rating']?>
+                      <!-- <i class="fa-solid fa-star" style="color: #3A8CED;"></i><?php echo $favorite_room_detail['rating']?> -->
                     </div>
                   </div>
                   <p class="convenient"><?php echo $favorite_room_detail['convenient']?></p>

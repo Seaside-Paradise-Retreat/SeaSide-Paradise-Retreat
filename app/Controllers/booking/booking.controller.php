@@ -22,16 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['check_in']) && !empty
     $user = $_SESSION['id'];
     $date = date('Y-m-d H:i:s');
     $total = $_POST['total_price'];
-    $booked = checkBooked($date_check_in, $date_check_out);
-    if ($booked > 0) {
+    $booked = checkBooked($roomId,$date_check_in, $date_check_out);
+    echo "<script>console.log(" . $booked . ");</script>";
+    if ($booked> 0) {
         echo "<script>alert('" . "The room was booked within the requested time period. Please choose another time or another room" . "');</script>";
     } else{
         $booking = booking($roomId, $user, $date_check_in, $date_check_out, $note);
-        echo "<script>console.log(" . $booking . ");</script>";
         if ($booking) {
             echo "<script>alert('" . "Booking successful" . "');</script>";
             $bill = bill($booking, $date, $total);
-            header("Location:/bill?id=$booking");
+            // header("Location:/bill?id=$booking");
         } else {
             echo "<script>alert('" . "Booking Unsuccessful" . "');</script>";
         }

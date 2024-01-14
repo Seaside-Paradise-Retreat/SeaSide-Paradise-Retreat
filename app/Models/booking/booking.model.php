@@ -34,7 +34,7 @@ function getMaxCheckInDateTime()
     return $nextDate;
 }
 
-function checkBooked($check_in_date, $check_out_date) {
+function checkBooked($roomId, $check_in_date, $check_out_date){
     global $connection;
     $query = "SELECT COUNT(*) AS count FROM booking WHERE id_room = :roomId 
         AND check_in_date <= :checkout_date 
@@ -44,7 +44,7 @@ function checkBooked($check_in_date, $check_out_date) {
     $statement->bindParam(':checkin_date', $check_in_date);
     $statement->bindParam(':checkout_date', $check_out_date);
     $statement->execute();
-    $result = $statement->fetchAll();
+    $result = $statement->fetchColumn();
     return $result;
 }
 ?>

@@ -34,7 +34,7 @@
                     <h5 class="mb-0"><?php echo $room['name']?></h5>
                     <div id="ratingContainer">
                     <?php if(!empty($_SESSION['isLogin']) && $_SESSION['isLogin']): ?>
-                    <a href="/favorite?id_room=<?php echo $room['id']; ?>">
+                    <a id="favorite" href="/favorite?id_room=<?php echo $room['id']; ?>">
                         <button class="favorite-button" >
                           <i class="<?php $issAdded = isAdded($room['id'],$_SESSION['id']) ;if($issAdded) { echo "fas";} else {echo "far";} ?> fa-heart" ></i>
                         </button>
@@ -46,7 +46,7 @@
                         </button>
                     </a>
                     <?php endif?>
-
+                    <i class="fa-solid fa-star" style="color: #3A8CED; font-size:22px"></i>
                     </div>
                   </div>
                   <p class="convenient"><?php echo $room['convenient']?></p>

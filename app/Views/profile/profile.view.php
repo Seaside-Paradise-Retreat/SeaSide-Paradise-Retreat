@@ -7,6 +7,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['name
     $name = $_SESSION['name'];
     $phone = $_SESSION['phone'];
     $password = $_SESSION['password'];
+    $role = $_SESSION['role'];
 }
 ?>
 <?php 
@@ -20,7 +21,13 @@ echo "<script>
 
 <?php
 require 'app/Views/layouts/header.php';
-require 'app/Views/layouts/navbar.php';
+if ($role == 'user'){
+    require 'app/Views/layouts/navbar.php';
+}
+else {
+    require 'app/Views/layouts/admin.navbar.php';
+}
+
 ?>
 <link rel="stylesheet" href="public/css/profile.css">
 <!-- body -->
@@ -50,7 +57,7 @@ require 'app/Views/layouts/navbar.php';
 
         <!-- Form Thong tin người dùng -->
         <div class="col-lg-1"></div>
-        <form class="col-lg-5 " action="profile/edit" method="post" style="" >
+        <form class="col-lg-5 " action="profile/edit" method="post">
             <div class="content_profile-username-email-password" style="margin-top: 30px;">
                 <input type="hidden" value="<?= $id ?>" name="id">
                 <label for="user_name" class="title">Name</label>

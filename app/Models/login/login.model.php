@@ -12,6 +12,15 @@ function getUser($email) {
     print_r($user);
     return $user;
 }
+function countUser(){
+    global $connection;
+    $query = "SELECT COUNT(*) AS user_count FROM users;";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $count = $result['user_count'];
+    return (int) $count;
+}
 // $email = "example@example.com";
 // $user = getUser($email);
 // if ($user) {

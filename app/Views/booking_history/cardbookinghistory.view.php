@@ -23,7 +23,7 @@
             <p><?php echo $room['description'] ?></p>
             <p></p>
         </div>
-        <div class="col-md-1" id="ratingContainer"><i class="fa-solid fa-star" style="color: #3A8CED;">5</i></div>
+        <div class="col-md-1" id="ratingContainer"><i class="fa-solid fa-star" style="color:yellow; font-size:22px"></i><?php echo round($rating = selectAVGRatingRoom($room['id']),1);?></div>
         <div class="d-flex mb-3">
             <small class="border-end me-3 pe-3"><i class="fa fa-bed text-secondary me-2">
                 </i>Bed</small> 
@@ -33,7 +33,7 @@
                 </i>Wifi</small>
         </div>
         <div>
-            <h4 class="col-md-6" style="color: #3568A4;">Total: <?php echo $room['total_price'] ?></h4>
+            <h4 class="col-md-6" style="color: #3568A4;">Total: <?php echo $room['total_price'] ?> VND</h4>
             <input type="submit" onclick="submitContactForm()" id="requestButton" class="btn_card_cancel btn-primary" value="Request Update booking">
         </div>    
         <p id="booking_date">Book date: <?php echo $room['date']  ?></p>

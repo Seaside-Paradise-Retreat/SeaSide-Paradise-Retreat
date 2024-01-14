@@ -61,7 +61,7 @@
                     if ($ratings) {
                         foreach ($ratings as $rating) {
                             if (isset($rating['average_rating']) && isset($rating['name'])) {
-                                $averageRating = round($rating['average_rating']);
+                                $averageRating = round($rating['average_rating'], 1);
                                 echo '<div class="detail_feedback">';
                                 echo '    <h3 style="font-size:25px">Room name: ' . $rating['name'] . '</h3>';
                                 echo '    <div class="rating">';

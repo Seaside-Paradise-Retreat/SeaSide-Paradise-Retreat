@@ -314,7 +314,6 @@
     border: 1px solid #3498db;
     border-radius: 20px;
     width: 80%;
-    height: 650px;
     padding: 40px;
     line-height: 50px;
     margin: auto auto;
@@ -377,7 +376,6 @@
 
 .back-button {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 

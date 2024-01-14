@@ -69,7 +69,7 @@
                                 echo '    </div>';
                                 echo '</div>';
                             } else {
-                                echo 'Invalid data structure in the result set: ' . print_r($rating, true);
+                                echo 'This room ' . $rating['name'] .' has no feedback yet';
                             }
                         }
                     } else {

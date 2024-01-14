@@ -96,10 +96,16 @@ if (isset($_GET['id_room'])) {
                     </select>
 
                     <textarea id="review" name="feedback" placeholder="Reviews of hotel rooms"></textarea>
-                    <?php if (!empty($_SESSION['isLogin']) && $_SESSION['isLogin']) : ?>
-                        <a style="text-decoration: none;" href="/detail_room?id_room=<?php echo $rooms['id']; ?>"><button type="submit" class="btn_feedback" style="border-radius: 10px;" >Feedback</button></a>
+                    <button type="submit" class="btn_feedback" style="border-radius: 10px;" >Feedback</button>
+                    <?php if (!empty($_SESSION['isLogin']) && $_SESSION['isLogin']) :
+
+                        if (isBooking($rooms['id'], $_SESSION['id'])): ?>
+                            <a style="text-decoration: none;" href="/detail_room?id_room=<?php echo $rooms['id']; ?>"></a>
+                        <?php else:
+                            echo "<script>alert('You need booking room before feeback')</script>";
+                            ?>
+                        <?php endif?>
                     <?php else : ?>
-                        <button type="submit" id="submit-btn">Sent feedback</button>
                     <?php endif ?>
                 </div>
             </form>

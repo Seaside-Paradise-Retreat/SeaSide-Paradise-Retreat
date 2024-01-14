@@ -1,7 +1,7 @@
-* {
+*{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;  
 }
 
 
@@ -30,7 +30,7 @@
 /* Profile styles */
 .profile_user {
     display: flex;
-    align-items: end;
+    align-items:center;
     padding-right: 50px;
 
 }
@@ -166,13 +166,17 @@
     display: flex;
     justify-content: space-around;
     width: 400px;
+}
     /* Adjust width as needed */
+.search {
+    display: flex;
+    justify-content: space-around;
+    width: 400px; /* Adjust width as needed */
     height: 40px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     border: 1px solid var(--bulue1, #5FBDFF);
     background: var(--WHITE, #FFF);
-
 }
 
 #search {

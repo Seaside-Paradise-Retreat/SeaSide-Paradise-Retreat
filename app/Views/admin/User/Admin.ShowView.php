@@ -48,7 +48,7 @@
         </div>
         <div id="bookingTab" class="tabcontent active">
 
-            <h1 class="title" style="text-align: center; margin-bottom:50px">BOOKING</h1>
+            <h1 class="animate-charcter" style="text-align: center; margin-bottom:50px">BOOKING</h1>
             <div class="ItemBooking">
                 <div class="search">
                     <input type="text" id="search" name="input_search" placeholder="Search">
@@ -126,44 +126,44 @@
                                 </td>
                                 <td><?php echo $book['check_in_date']; ?></td>
                                 <td><?php echo $book['check_out_date']; ?></td>
-                                <td> 
+                                <td>
                                     <?php
 
-                                        $roomId = $book['id_room'];
-                                        // Find the room in the $rooms array
-                                        $room = findRoomById($roomId);
+                                    $roomId = $book['id_room'];
+                                    // Find the room in the $rooms array
+                                    $room = findRoomById($roomId);
 
-                                        // Check if the room is found
-                                        if ($room) {
-                                            echo $room['price']; // Replace 'room_name' with the actual field name
-                                        } else {
-                                            echo "Room not found";
-                                        }
+                                    // Check if the room is found
+                                    if ($room) {
+                                        echo $room['price']; // Replace 'room_name' with the actual field name
+                                    } else {
+                                        echo "Room not found";
+                                    }
 
                                     ?>
                                 </td>
                                 <td><?php echo $book['availability']; ?></td>
 
-                                <td >
+                                <td>
                                     <a href="/admin/Booking/edit?id=<?= $book['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
                                     <a href="/admin/Booking/delete?id=<?= $book['id'] ?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
                                 </td>
                             </tr>
-                        <?php
-                            }
-                        } else {
-                            echo "<p>No booking found. </p>";
+                    <?php
                         }
-                        ?>
+                    } else {
+                        echo "<p>No booking found. </p>";
+                    }
+                    ?>
 
                 </tbody>
             </table>
         </div>
-            
-        
+
+
         <div id="roomTab" class="tabcontent">
 
-            <h1 class="title" style="text-align: center; margin-bottom:50px">ROOM</h1>
+            <h1 class="animate-charcter" style="text-align: center; margin-bottom:50px">ROOM</h1>
             <div class="ItemRoom">
                 <div class="search">
                     <input type="text" id="search" name="input_search" placeholder="Search">
@@ -190,7 +190,7 @@
 
                     require_once(__DIR__ . '/../../../Models/admin.model.php');
                     $rooms = selectRoom();
-                    
+
 
                     if ($rooms) {
                         foreach ($rooms as $room) {
@@ -201,7 +201,7 @@
                                 <td><?php echo $room['type']; ?></td>
                                 <td><?php echo $room['price']; ?></td>
                                 <td><?php echo $room['availability']; ?></td>
-                                <td class="ellipsis" onclick="showFullText(this)" > <?php echo $room['description'];  ?></td>
+                                <td class="ellipsis" onclick="showFullText(this)"> <?php echo $room['description'];  ?></td>
                                 <td class="option">
                                     <a href="/admin/Room/edit?id=<?= $room['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
                                     <a href="/admin/Room/delete?id=<?= $room['id'] ?>"><button type="button" onclick="deleteRoom(roomId)" id="button_delete"><i class="fas fa-trash"></i></button></a>
@@ -219,7 +219,7 @@
             </table>
         </div>
         <div id="userTab" class="tabcontent">
-            <h1 class="title" style="text-align: center; margin-bottom: 50px; ">USER</h1>
+            <h1 class="animate-charcter" style="text-align: center; margin-bottom: 50px; ">USER</h1>
             <div class="ItemUser">
                 <div class="search">
                     <input type="text" id="search" name="input_search" placeholder="Search">
@@ -228,7 +228,7 @@
                 <a href="admin/User/create"><button type="button" id="createUser">Create +</button></a>
             </div>
             <br>
-            
+
             <table class="table">
                 <thead>
                     <tr>
@@ -282,7 +282,7 @@
         </div>
 
         <div id="billTab" class="tabcontent">
-            <h1 class="title" style="text-align: center; margin-bottom: 50px; ">BILL</h1>
+            <h1 class="animate-charcter" style="text-align: center; margin-bottom: 50px; ">BILL</h1>
             <div class="ItemBill">
                 <div class="search">
                     <input type="text" id="search" name="input_search" placeholder="Search">
@@ -290,7 +290,7 @@
                 </div>
             </div>
             <br>
-            
+
             <table class="table">
                 <thead>
                     <tr>
@@ -308,33 +308,55 @@
 
                     require_once(__DIR__ . '/../../../Models/admin.model.php');
                     $bills = selectBill();
+                    $price = selectTotalPrice();
+
 
                     if ($bills) {
-
                         foreach ($bills as $bill) {
                     ?>
                             <tr>
                                 <td><?php echo $bill['id']; ?></td>
-                                <td style="width: 100px; white-space: nowrap;"> <?php echo $bill['username']; ?></td>
+                                <td style="width: 100px; white-space: nowrap;"><?php echo $bill['username']; ?></td>
                                 <td><?php echo $bill['phone']; ?></td>
-                                <td ><?php echo $bill['email']; ?></td>
-                                <td><?php echo $bill['name'];?></td>
+                                <td><?php echo $bill['email']; ?></td>
+                                <td><?php echo $bill['name']; ?></td>
                                 <td><?php echo $bill['total_price']; ?></td>
-                                <td><?php echo $bill['date']; ?></td>    
+                                <td><?php echo $bill['date']; ?></td>
                             </tr>
-                            <p></p>
-                    <?php
+                        <?php
                         }
+                        ?>
+                        <tr class="total-price">
+                            <td colspan="6">
+                                <?php
+                               if (is_array($price)) {
+                                   echo '<div class="total-prices">';
+                                   echo '<label>Total Price: </label>';
+                                   echo '<span>' . implode(', ', $price) . ' VND</span>';
+                                   echo '</div>';
+                               } else {
+                                   echo '<div class="total-prices">';
+                                   echo '<label>Total Price: </label>';
+                                   echo '<span>' . $price . ' VND</span>';
+                                   echo '</div>';
+                               }
+                           ?>
+                                
+                            </td>
+                        </tr>
+                    <?php
                     } else {
                         echo "<p>No bill found. </p>";
                     }
                     ?>
+
                 </tbody>
+
             </table>
 
         </div>
-        
-        
+
+
     </div>
 
     <script>
@@ -347,9 +369,11 @@
             var activeTab = document.getElementById(type);
             activeTab.classList.add("active");
         }
+
         function showFullText(element) {
             element.classList.toggle('full-text');
         }
+
         function deleteRoom(roomId) {
             let text = "Do you want to delete that room?\n Either OK or Cancel.";
             if (confirm(text) === true) {

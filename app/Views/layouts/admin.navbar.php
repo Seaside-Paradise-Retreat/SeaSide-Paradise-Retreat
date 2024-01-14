@@ -10,14 +10,24 @@
 </head>
 
 <body>
+    <?php 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (isset($_SESSION['avatar'])) {
+        $avatar = $_SESSION['avatar'];
+    } else {
+        echo "Error";
+    } ?>
     <div class="navbar">
         <a href="/admin" style="text-decoration: none;">
             <img id="logo_hotel" src="../../../public/images/logo_hotel.png" alt="logo_hotel">
         </a>
         
         <div class="profile_user">
-            <a href="/profile"><button id="profile"><i class="fas fa-user-circle" style="font-size: 40px; padding-right:10px"></i></button></a>
-            <a href="/logout"><button id="logout"><i class="fas fa-sign-out-alt" style="font-size: 40px;"></i></button></a>
+            <a href="/profile"><button id="profile"><img id="nav-avatar" src="<?php echo $avatar; ?>" alt="avatar" ></button></a>
+            <a href="/logout"><button id="logout"><i class="fas fa-sign-out-alt" style="font-size: 30px;"></i></button></a>
         </div>
     </div>
 </body>

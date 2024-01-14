@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;   
+    font-family: 'Roboto', sans-serif;  
 }
 
 
@@ -13,11 +13,13 @@
     padding: 20px;
     padding-left: 50px;
     background-color: var(--white-color);
-    
+
 }
-.form_title>#title{
+
+.form_title>#title {
     color: black;
 }
+
 #logo_hotel {
     width: 100px;
     height: 100px;
@@ -28,41 +30,56 @@
 /* Profile styles */
 .profile_user {
     display: flex;
+    align-items:center;
     padding-right: 50px;
 
 }
 
-
-#profile, #logout{
-    border:none;
-    background: none;
-    outline: none;
-    font-size: 20px;
+#nav-avatar {
+    height: 70px;
+    border-radius: 50%;
+    width: 70px;
 }
 
+#profile {
+    border: none;
+    background: none;
+    outline: none;
+    margin-right:5px;
+}
+#logout{
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 10px;
+    
+}
 
 /* Main menu styles */
-.container{
+.container {
     display: grid;
     grid-template-columns: 20% 80%;
     flex-shrink: 0;
     border-left: 1px solid var(--Gray, #9F9B9B);
     height: 100%;
-   
+
 }
+
 .main_menu_left {
     display: flex;
     flex-direction: column;
     background: #3568A4;
     align-items: center;
     border-radius: 5px;
+    transition: width 0.3s ease-in-out;
 
-    
 }
-.item{
+
+.item {
     width: 100%;
 }
-.item button{
+
+.item button {
     display: flex;
     border: none;
     outline: none;
@@ -71,25 +88,27 @@
     height: 79px;
     font-size: 40px;
     align-items: center;
-    color:#FFF;
-    margin:20px;
+    color: #FFF;
+    margin: 20px;
 }
 
-.item:hover{
+.item:hover {
     background-color: #0052FE;
 }
 
-.tabcontent{
+.tabcontent {
     max-width: 100%;
     margin: 20px;
-    display:none;
-    overflow:auto;
+    display: none;
+    overflow: auto;
 }
 
 .active {
     display: block;
 }
-#createUser, #createRoom{
+
+#createUser,
+#createRoom {
     text-align: center;
     width: 154px;
     height: 40px;
@@ -98,44 +117,57 @@
     border-radius: 20px;
     border: 1px solid var(--bulue1, #5FBDFF);
 }
-#createUser:hover, #createRoom:hover{
+
+#createUser:hover,
+#createRoom:hover {
     background-color: var(--blue2, #C0F2F9);
 }
+
 .table {
     width: 100%;
     margin: 10px;
     border-collapse: collapse;
     font-size: 20px;
-    
+
 }
 
-.table th, .table td {
+.table th,
+.table td {
     border: 1px solid #dddddd;
     padding: 8px;
     text-align: center;
 }
+
 .table th {
     background-color: #5FBDFF;
 }
+
 .table tbody tr:hover {
     background-color: #e6f7ff;
 }
 
-.main_menu_right{
+.main_menu_right {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 50px;
     line-height: 50px;
-    
+
 }
 
-.ItemBooking, .ItemBill{
+.ItemBooking,
+.ItemBill {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
 }
 
+.search {
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+}
+    /* Adjust width as needed */
 .search {
     display: flex;
     justify-content: space-around;
@@ -145,7 +177,6 @@
     border-radius: 20px;
     border: 1px solid var(--bulue1, #5FBDFF);
     background: var(--WHITE, #FFF);
-    
 }
 
 #search {
@@ -166,80 +197,92 @@
     font-size: 20px;
 }
 
-.ItemRoom, .ItemUser{
+.ItemRoom,
+.ItemUser {
     display: flex;
     justify-content: space-around;
     margin-top: 30px;
 }
-.form_action{
-    border:1px solid #9EEAF7;
+
+.form_action {
+    border: 1px solid #9EEAF7;
     width: 500px;
     flex-shrink: 0;
-    padding:20px;
+    padding: 20px;
     border-radius: 10px;
 }
-.form-group{
+
+.form-group {
     display: flex;
     flex-direction: column;
-    
-    
+
+
 }
-.form-group label{
+
+.form-group label {
     color: #9EEAF7;
     font-size: 25px;
     font-style: normal;
-    
+
 }
 
 .form-group input,
-.form-group select{
+.form-group select {
     border-radius: 10px;
     height: 50px;
     padding-left: 20px;
     border: 1px solid #0052FE;
 }
-.button{
-    display:flex;
+
+.button {
+    display: flex;
     justify-content: center;
 }
-.button_create{
+
+.button_create {
     margin-top: 50px;
     width: 30%;
     height: 50px;
-    background-color: #3498db; /* Change color as needed */
-    color: #fff; /* Change color as needed */
+    background-color: #3498db;
+    /* Change color as needed */
+    color: #fff;
+    /* Change color as needed */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 25px;
- 
+
 }
 
-.button_addimage{
+.button_addimage {
     width: 30%;
-    height:50px;
+    height: 50px;
     background-color: #3498db;
     border: none;
     font-size: 20px;
     border-radius: 5px;
     margin-left: 20px;
 }
-#button_edit, #button_delete, #button_comment{
+
+#button_edit,
+#button_delete,
+#button_comment {
     border: none;
     outline: none;
     background: none;
     font-size: 25px;
 }
 
-#button_edit{
+#button_edit {
     color: #3498db;
 
 }
-#button_delete{
-    color:red;
+
+#button_delete {
+    color: red;
 }
 
-.form_title{
+.form_title {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
@@ -255,78 +298,108 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 500px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .full-text {
-    white-space: normal; 
-    max-width: none;     
+    white-space: normal;
+    max-width: none;
 }
 
 
 
 /* FeedBack */
 
-.main_menu{
+.main_menu {
     width: 100%;
 }
-.feedback{
+
+.feedback {
     border: 1px solid #3498db;
     border-radius: 20px;
-    width:80%;
-    height:650px;
+    width: 80%;
     padding: 40px;
     line-height: 50px;
-    margin:auto auto;
-}
-.title_hotel {
-    text-align: center;
+    margin: auto auto;
 }
 
-.detail_feedback{
-    
-    display:flex;
+.animate-charcter {
+    text-align: center;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    background-image: linear-gradient(-225deg, #002661 0%, #130CB7 29%, #736EFE 67%, #52E5E7 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+
+    font-size: 50px;
+
+}
+
+.detail_feedback {
+
+    display: flex;
     justify-content: space-between;
 }
 
-.rating{
-    display:inline; 
-    
+.rating {
+    display: inline;
+
 }
 
-.rating i{
-    color:yellow;
+.rating i {
+    color: yellow;
     font-size: 25px;
 }
+
 .rating h4 {
     display: inline;
     margin-right: 5px;
 }
-.User_infor{
-    display:flex;
-    align-items:end;
+
+.User_infor {
+    display: flex;
+    align-items: end;
     margin-bottom: 20px;
 }
-.avata__review{
-    width:80px;
-    height:80px;
+
+.avata__review {
+    width: 80px;
+    height: 80px;
     border-image: auto;
     border-radius: 50%;
     margin-right: 30px;
 }
 
 
-.back-button{
+.back-button {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
-.Back{
+
+.Back {
     width: 100px;
-    height:40px;
-    border:none;
+    height: 40px;
+    border: none;
     border-radius: 10px;
     font-size: 20px;
     background-color: #3498db;
     color: white;
 }
+
+.total-price {
+    background-color: #3498db;
+
+}
+
+.total-prices {
+    display: flex;
+    justify-content: space-between;
+}
+

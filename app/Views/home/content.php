@@ -1,3 +1,4 @@
+<?php require_once ("./app/Views/layouts/banner.php") ?>
 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
     <div class="about-us__our_rooms">
         <hr>

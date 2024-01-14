@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['check_in']) && !empty
         if ($booking) {
             echo "<script>alert('" . "Booking successful" . "');</script>";
             $bill = bill($booking, $date, $total);
-            // header("Location:/bill?id=$booking");
+            header("Location:/bill?id=$booking");
         } else {
             echo "<script>alert('" . "Booking Unsuccessful" . "');</script>";
         }

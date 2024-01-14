@@ -99,14 +99,10 @@ function createNewUser($name, $password, $phone, $email, $age, $gender,$availabi
     }
     header('location: /admin');
 }
-
-
-function updateUser($name, $availability, $phone, $email, $age, $gender, int $id):bool
-
+function updateUser($name, $phone, $email, $age, $gender,  $availability ,int $id):bool
 {
     global $connection;
-    
-    $statement = $connection->prepare("update  users set name = :name, availability = :availability, phone = :phone, email = :email, age = :age, gender = :gender where id = :id");
+    $statement = $connection->prepare("UPDATE  users SET name = :name, phone = :phone, email = :email, age = :age, gender = :gender, availability = :availability where id = :id");
     $statement->execute([
         ':name' => $name,
         ':phone' => $phone,
@@ -330,4 +326,14 @@ function selectBill(){
             bill ON booking.id = bill.id_booking");
     $stt -> execute();
     return $stt -> fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+function selectTotalPrice(){
+    global $connection;
+    $stt = $connection->prepare("SELECT SUM(total_price) as total_price FROM bill");
+    $stt->execute();
+    $result = $stt->fetch(PDO::FETCH_ASSOC);
+
+    return $result['total_price'];
 }

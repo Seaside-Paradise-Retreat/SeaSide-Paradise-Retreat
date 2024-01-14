@@ -30,14 +30,84 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bill` (
-  `id` int NOT NULL,
-  `id_booking` int NOT NULL,
-  `date` datetimetime DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `id_booking` int(11) NOT NULL,
+<<<<<<<<< Temporary merge branch 1
+  `date` date DEFAULT NULL,
   `total_price` decimal(10,0) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;   
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `bill`
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`id`, `id_booking`, `date`, `total_price`) VALUES
+(1, 1, '2023-01-03', '50'),
+(2, 2, '2023-02-15', '100'),
+(3, 3, '2023-03-25', '120'),
+(4, 4, '2023-04-07', '200'),
+(5, 5, '2023-05-20', '50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(11) NOT NULL,
+  `id_room` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `check_in_date` date DEFAULT NULL,
+  `check_out_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `id_room`, `id_user`, `check_in_date`, `check_out_date`) VALUES
+(1, 1, 1, '2023-01-01', '2023-01-03'),
+(2, 2, 2, '2023-02-10', '2023-02-15'),
+(3, 3, 3, '2023-03-20', '2023-03-25'),
+(4, 4, 4, '2023-04-05', '2023-04-07'),
+(5, 1, 2, '2023-05-15', '2023-05-20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_history`
+--
+
+CREATE TABLE `booking_history` (
+  `id` int(11) NOT NULL,
+  `id_booking` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_bill` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking_history`
+--
+
+INSERT INTO `booking_history` (`id`, `id_booking`, `id_user`, `id_bill`) VALUES
+(1, 1, 1, 1),
+(2, 2, 2, 2),
+(3, 3, 3, 3),
+(4, 4, 4, 4),
+(5, 5, 2, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `convenients`
+=========
+  `date` datetime DEFAULT NULL,
+  `total_price` decimal(10,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bill`
 --
 
 INSERT INTO `bill` (`id`, `id_booking`, `date`, `total_price`) VALUES
@@ -365,18 +435,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `avatar`, `password`, `phone`, `email`, `age`, `gender`, `role`, `availability`) VALUES
-(3, 'Thanh Vân Tran', 'public/avatar_hi.png', 'phamhi123', '9876543210', 'phamhi@gmail.com', 30, 'Female', 'user', 0),
-(4, 'Thanh Vân Tran', 'public/avatar_linh.png', 'nguyenlinh123', '0123456789', 'nguyenlinh@gmail.com', 28, 'Female', 'user', 0),
-(6, 'Thanh Vân Tran', 'public/avatar.png', '22446688', '0382870032', 'hung.tran25@student.passerellesnumeriques.org', 21, 'Male', 'user', 1),
-(8, 'Hoàng Hữu Hùng', 'public/avatar.png', '2233445566', '0987664544', 'hunghoang2003@gmail.com', 20, 'Male', 'user', 1),
-(10, 'lam Hồng', 'public/avatar.png', '$2y$10$s1V4e9E10VWhClhKULP9oOVLAWd5QqOlX5ICcNefELVvuiXnu5V6O', '0987664544', 'lamlo2003@gmail.com', 19, 'Female', 'user', 1),
-(11, 'Hồ Ngân', 'public/avatar.png', '$2y$10$/zKmqGD2OGA5fOYEIBu/2.E83BENzGjcZA4QbQs.xBm1SHWLc2ZTy', '098735151', 'nganho@gmail.com', 20, 'Nu', 'user', 1),
-(12, 'lam Hồng', 'public/avatar.png', '$2y$10$oL/6SejZmkUJJP.6VDNO.ecyeQ9FhpEjO4bW..8AbzcauawvHzBHW', '0987664544', 'lamlo2003@gmail.com', 23, 'Nữ', 'user', 1),
-(13, 'lam Hồng', 'public/avatar.png', '$2y$10$u6/ovGykcjEsgbiAoRWOqOLOnChMnKgN.N/NlB0vFmprr48mdQKNq', '0987664444', 'lamlo2003@gmail.com', 23, 'Nữ', 'user', 1),
-(15, 'Trần Đức Hùng', 'public/avatar.png', '$2y$10$uIqZNloxjgQHWO.SsFRFO.cZ5SUGBJ..n55QacbsqAaq1wcY6WPhy', '0905753333', 'seasideparadiseretreat@gmail.com', 20, 'Male', 'admin', 1),
-(16, 'Dương Thị Hồng Lam', 'public/avatar.png', '$2y$10$ZknsRfQ.4h5xmoKFJyB0C.BvZM5BDjElvoWhkSixp6SoI3srMvwj.', '0987654444', 'lam.duong2004@gmail.com', 20, 'Nữ', 'admin', 1),
-(17, 'Phạm Thị Hỉ', 'public/avatar.png', '$2y$10$RaeEiobq4D2JLUSAqYD46eLv98.cb.nZZgACIkaCNZKvSYBjB111u', '0987645555', 'hi.pham2004@gmail.com', 20, 'Nữ', 'admin', 1),
-(20, 'Duong Hong Lam', 'public/avatar.png', '$2y$10$Lm7uBb7t1N3wCvtNr3jEl.aJJip9Xrq3zEb7um/cE76D/nJDe97TG', '0347645305', 'lamhong@gmail.com', 17, 'Nu', 'user', 1);
+(3, 'Thanh Vân Tran', 'public/images/avatar_hi.png', 'phamhi123', '9876543210', 'phamhi@gmail.com', 30, 'Female', 'user', 0),
+(4, 'Thanh Vân Tran', 'public/images/avatar_linh.png', 'nguyenlinh123', '0123456789', 'nguyenlinh@gmail.com', 28, 'Female', 'user', 0),
+(6, 'Thanh Vân Tran', 'public/images/avatar.png', '22446688', '0382870032', 'hung.tran25@student.passerellesnumeriques.org', 21, 'Male', 'user', 1),
+(8, 'Hoàng Hữu Hùng', 'public/images/avatar.png', '2233445566', '0987664544', 'hunghoang2003@gmail.com', 20, 'Male', 'user', 1),
+(10, 'lam Hồng', 'public/images/avatar.png', '$2y$10$s1V4e9E10VWhClhKULP9oOVLAWd5QqOlX5ICcNefELVvuiXnu5V6O', '0987664544', 'lamlo2003@gmail.com', 19, 'Female', 'user', 1),
+(11, 'Hồ Ngân', 'public/images/avatar.png', '$2y$10$/zKmqGD2OGA5fOYEIBu/2.E83BENzGjcZA4QbQs.xBm1SHWLc2ZTy', '098735151', 'nganho@gmail.com', 20, 'Nu', 'user', 1),
+(12, 'lam Hồng', 'public/images/avatar.png', '$2y$10$oL/6SejZmkUJJP.6VDNO.ecyeQ9FhpEjO4bW..8AbzcauawvHzBHW', '0987664544', 'lamlo2003@gmail.com', 23, 'Nữ', 'user', 1),
+(13, 'lam Hồng', 'public/images/avatar.png', '$2y$10$u6/ovGykcjEsgbiAoRWOqOLOnChMnKgN.N/NlB0vFmprr48mdQKNq', '0987664444', 'lamlo2003@gmail.com', 23, 'Nữ', 'user', 1),
+(15, 'Trần Đức Hùng', 'public/images/avatar.png', '$2y$10$uIqZNloxjgQHWO.SsFRFO.cZ5SUGBJ..n55QacbsqAaq1wcY6WPhy', '0905753333', 'seasideparadiseretreat@gmail.com', 20, 'Male', 'admin', 1),
+(16, 'Dương Thị Hồng Lam', 'public/images/avatar.png', '$2y$10$ZknsRfQ.4h5xmoKFJyB0C.BvZM5BDjElvoWhkSixp6SoI3srMvwj.', '0987654444', 'lam.duong2004@gmail.com', 20, 'Nữ', 'admin', 1),
+(17, 'Phạm Thị Hỉ', 'public/images/avatar.png', '$2y$10$RaeEiobq4D2JLUSAqYD46eLv98.cb.nZZgACIkaCNZKvSYBjB111u', '0987645555', 'hi.pham2004@gmail.com', 20, 'Nữ', 'admin', 1),
+(20, 'Duong Hong Lam', 'public/images/avatar.png', '$2y$10$Lm7uBb7t1N3wCvtNr3jEl.aJJip9Xrq3zEb7um/cE76D/nJDe97TG', '0347645305', 'lamhong@gmail.com', 17, 'Nu', 'user', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -460,26 +530,93 @@ ALTER TABLE `detail_room`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
--- AUTO_INCREMENT cho bảng `favorite`
+
+-- Dumping data for table `favorite`
+--
+
+INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 1),
+(4, 2, 3),
+(5, 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id` int(11) NOT NULL,
+  `id_room` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `id_room`, `id_user`, `rating`, `content`, `date`) VALUES
+(1, 1, 1, 5, 'Great experience!', '2023-01-04'),
+(2, 2, 2, 4, 'Nice place to stay.', '2023-02-16'),
+(3, 3, 3, 3, 'Average service.', '2023-03-26'),
+(4, 4, 4, 2, 'Disappointing experience.', '2023-04-08'),
+(5, 1, 2, 4, 'Good value for money.', '2023-05-21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE `favorite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_room` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_room`) REFERENCES rooms(id),
+  FOREIGN KEY (`id_user`) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 
 --
--- AUTO_INCREMENT cho bảng `rooms`
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`),
+  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bill`
 
 --
 -- Các ràng buộc cho bảng `bill`
@@ -496,6 +633,7 @@ ALTER TABLE `booking`
 
 --
 -- Các ràng buộc cho bảng `convenients`
+-- Constraints for table `convenients`
 --
 ALTER TABLE `convenients`
   ADD CONSTRAINT `convenients_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`);

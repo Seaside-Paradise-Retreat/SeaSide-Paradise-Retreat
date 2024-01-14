@@ -46,7 +46,8 @@
                         </button>
                     </a>
                     <?php endif?>
-                    <i class="fa-solid fa-star" style="color: #3A8CED; font-size:22px"></i>
+                      <i class="fa-solid fa-star" style="color:yellow; font-size:22px"></i><?php echo round($rating = selectAVGRatingRoom($room['id']),1);?>
+                    
                     </div>
                   </div>
                   <p class="convenient"><?php echo $room['convenient']?></p>

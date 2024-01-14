@@ -43,10 +43,17 @@
                         <h5 class="titles">Booking</h5>
                     </button>
                 </div>
+                <div class="item">
+                    <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                        <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                        <h5 class="titles">Bill</h5>
+                    </button>
+                </div>
             </div>
+            
             <div class="main_menu">
                 <div class="feedback">
-                    <h1 class="title_hotel">SEASIDE PARADISE RETREAT</h1>
+                    <h1 class="animate-charcter">SEASIDE PARADISE RETREAT</h1>
                     <?php
                     $ratings = selectAVGRatingForRoom($id);
                     $feedbacks = getFeedback($id);
@@ -54,7 +61,7 @@
                     if ($ratings) {
                         foreach ($ratings as $rating) {
                             if (isset($rating['average_rating']) && isset($rating['name'])) {
-                                $averageRating = round($rating['average_rating']);
+                                $averageRating = round($rating['average_rating'], 1);
                                 echo '<div class="detail_feedback">';
                                 echo '    <h3 style="font-size:25px">Room name: ' . $rating['name'] . '</h3>';
                                 echo '    <div class="rating">';
@@ -62,7 +69,7 @@
                                 echo '    </div>';
                                 echo '</div>';
                             } else {
-                                echo 'Invalid data structure in the result set: ' . print_r($rating, true);
+                                echo 'This room ' . $rating['name'] .' has no feedback yet';
                             }
                         }
                     } else {

@@ -221,10 +221,6 @@ INSERT INTO `convenients` (`id`, `id_room`, `convenient`) VALUES
 --
 
 CREATE TABLE `detail_room` (
-  `id` int(11) NOT NULL,
-  `id_room` int(11) NOT NULL,
-  `image_url` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
   `id` int NOT NULL,
   `id_room` int NOT NULL,
   `image_url` varchar(15000) CHARACTER SET utf8mb4 

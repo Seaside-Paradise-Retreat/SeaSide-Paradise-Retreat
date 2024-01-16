@@ -329,19 +329,19 @@
                         <tr class="total-price">
                             <td colspan="6">
                                 <?php
-                               if (is_array($price)) {
-                                   echo '<div class="total-prices">';
-                                   echo '<label>Total Price: </label>';
-                                   echo '<span>' . implode(', ', $price) . ' VND</span>';
-                                   echo '</div>';
-                               } else {
-                                   echo '<div class="total-prices">';
-                                   echo '<label>Total Price: </label>';
-                                   echo '<span>' . $price . ' VND</span>';
-                                   echo '</div>';
-                               }
-                           ?>
-                                
+                                if (is_array($price)) {
+                                    echo '<div class="total-prices">';
+                                    echo '<label>Total Price: </label>';
+                                    echo '<span>' . implode(', ', $price) . ' VND</span>';
+                                    echo '</div>';
+                                } else {
+                                    echo '<div class="total-prices">';
+                                    echo '<label>Total Price: </label>';
+                                    echo '<span>' . $price . ' VND</span>';
+                                    echo '</div>';
+                                }
+                                ?>
+
                             </td>
                         </tr>
                     <?php

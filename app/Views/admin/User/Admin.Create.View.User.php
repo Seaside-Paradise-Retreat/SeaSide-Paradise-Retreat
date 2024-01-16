@@ -17,28 +17,36 @@
     <div class="container">
         <div class="main_menu_left">
             <div class="item">
-                <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
-                    <i class="fas fa-user" style="padding-right:20px"></i>
-                    <h5 class="title">User</h5>
-                </button>
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
+                        <i class="fas fa-user" style="padding-right:30px"></i>
+                        <h5 class="titles">User</h5>
+                    </button>
+                </a>
             </div>
             <div class="item">
-                <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
-                    <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                    <h5 class="title">Room</h5>
-                </button>
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
+                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                        <h5 class="title">Room</h5>
+                    </button>
+                </a>
             </div>
             <div class="item">
-                <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
-                    <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                    <h5 class="title">Booking</h5>
-                </button>
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
+                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                        <h5 class="title">Booking</h5>
+                    </button>
+                </a>
             </div>
             <div class="item">
-                <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
-                    <i class="fas fa-list-ul" style="padding-right:30px"></i>
-                    <h5 class="titles">Bill</h5>
-                </button>
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                        <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                        <h5 class="titles">Bill</h5>
+                    </button>
+                </a>
             </div>
         </div>
         <div id="Modal" class="main_menu_right">
@@ -50,37 +58,37 @@
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" placeholder="Name" name="name">
-                    <!-- <span class="error"><?php echo $user_error; ?></span> -->
+                    <span class="error"><?php echo $user_error; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" class="form-control" placeholder="Password" name="password">
-                    <!-- <span class="error"><?php echo $password_error; ?></span> -->
+                    <span class="error"><?php echo $password_error; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number:</label>
                     <input type="number" id="phone" class="form-control" placeholder="Phone Number" name="phone">
-                    <!-- <span class="error"><?php echo $phone_error; ?></span> -->
+                    <span class="error"><?php echo $phone_error; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="availability">Availability :</label>
                     <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability">
-                    <!-- <span class="error"><?php echo $availability_error; ?></span> -->
+                    <span class="error"><?php echo $availability_error; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" class="form-control" placeholder="Email" name="email">
-                    <!-- <span class="error"><?php echo $email_error; ?></span> -->
+                    <span class="error"><?php echo $email_error; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="age">Age:</label>
                     <input type="number" id="age" class="form-control" placeholder="Age" name="age">
-                    <!-- <span class="error"><?php echo $age_error; ?></span> -->
+                    <span class="error"><?php echo $age_error; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender:</label>
                     <input type="text" id="gender" class="form-control" placeholder="Gender" name="gender">
-                    <!-- <span class="error"><?php echo $gender_error; ?></span> -->
+                    <span class="error"><?php echo $gender_error; ?></span>
                 </div>
                 <div class="button">
                     <button type="submit" class="button_create" class="btn btn-primary btn-block">CREATE</button>

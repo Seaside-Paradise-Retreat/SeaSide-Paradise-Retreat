@@ -16,28 +16,36 @@
     <div class="container">
         <div class="main_menu_left">
             <div class="item">
-                <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
-                    <i class="fas fa-user" style="padding-right:20px"></i>
-                    <h5 class="title">User</h5>
-                </button>
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
+                        <i class="fas fa-user" style="padding-right:30px"></i>
+                        <h5 class="titles">User</h5>
+                    </button>
+                </a>
             </div>
             <div class="item">
-                <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
-                    <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                    <h5 class="title">Room</h5>
-                </button>
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
+                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                        <h5 class="title">Room</h5>
+                    </button>
+                </a>
             </div>
             <div class="item">
-                <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
-                    <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                    <h5 class="title">Booking</h5>
-                </button>
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
+                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                        <h5 class="title">Booking</h5>
+                    </button>
+                </a>
             </div>
             <div class="item">
-                <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
-                    <i class="fas fa-list-ul" style="padding-right:30px"></i>
-                    <h5 class="titles">Bill</h5>
-                </button>
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                        <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                        <h5 class="titles">Bill</h5>
+                    </button>
+                </a>
             </div>
         </div>
         <div id="Modal" class="main_menu_right">
@@ -75,7 +83,6 @@
                     <label for="image_url">Image:</label>
                     <input type="text" id="image_url" class="form-control" placeholder="Image" name="image_url" required>
                 </div>
-
                 <div class="button">
                     <button type="submit" class="button_create" class="btn btn-primary btn-block">CREATE</button>
                 </div>

@@ -12,37 +12,58 @@
 <body>
     <?php
 
-    // require(__DIR__ . '/../../../Databases/database.php');
     require(__DIR__ . '/../../../Models/admin.model.php');
-
+    $user_error = $phone_error = $availability_error = $email_error = $age_error = $gender_error = "";
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $name = $_POST['name'];
+        $availability = $_POST['availability'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $age = $_POST['age'];
+        $gender = $_POST['gender'];
+        !empty($_GET["id"]);
+        if (!validateUsernames($name)) {
+            $user_error = "Please enter a valid username (4-25 characters).";
+        }
+        if (!validateAvailabilitys($availability)) {
+            $availability_error = "Please enter a valid availability (0 or 1).";
+        }
+        if (!validatePhones($phone)) {
+            $phone_error = "Please enter a valid 10-digit phone number.";
+        }
+        if (!validateEmails($email, $connection)) {
+            $email_error = "Please enter a valid email address without spaces and '@'.";
+        }
+        if (!validateAge($age)) {
+            $age_error = "Please enter a valid age as a positive numeric value.";
+        }
 
-        if (!empty($_POST['name']) &&
-            !empty($_POST['phone']) &&
-            !empty($_POST['email']) &&
-            !empty($_POST['age']) &&
-            !empty($_POST['gender']) &&
-            isset($_POST['availability'])&&
-            !empty($_GET["id"])
-    ) {
+        // Add gender validation if needed
+        if (!validateGender($gender)) {
+            $gender_error = "Please enter a valid gender as a positive numeric value.";
+        }
+        // Check if any error occurred
+        if ($user_error || $availability_error || $phone_error || $email_error || $age_error || $gender_error) {
+            echo "Invalid input. Please check your form data.";
+        } else {
+            // All input fields are valid, proceed to create a new user
             $result = updateUser(
-                $_POST['name'],
-                $_POST['phone'],
-                $_POST['email'],
-                $_POST['age'],
-                $_POST['gender'],
-                (int)$_POST['availability'],
+                $name,
+                $phone,
+                $email,
+                $age,
+                $gender,
+                $availability,
                 $_GET["id"]
             );
             if ($result) {
-                echo "<script> 
-                        alert('Update user record successful!') ;
-                        window.location.href='/admin';
-                    </script>";
-                // header('Location: /admin');
-                    exit();
+                echo '<script>
+                    alert("Update user record successful!");
+                    window.location.href = "/admin";
+                </script>';
+                exit();
             } else {
-                echo "Error.";
+                echo "Error update user record.";
             }
         }
     }
@@ -57,28 +78,36 @@
         <div class="container">
             <div class="main_menu_left">
                 <div class="item">
-                    <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
-                        <i class="fas fa-user" style="padding-right:20px"></i>
-                        <h5 class="title">User</h5>
-                    </button>
+                    <a class="redirect" href="/admin">
+                        <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
+                            <i class="fas fa-user" style="padding-right:30px"></i>
+                            <h5 class="titles">User</h5>
+                        </button>
+                    </a>
                 </div>
                 <div class="item">
-                    <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
-                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                        <h5 class="title">Room</h5>
-                    </button>
+                    <a class="redirect" href="/admin">
+                        <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
+                            <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                            <h5 class="title">Room</h5>
+                        </button>
+                    </a>
                 </div>
                 <div class="item">
-                    <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
-                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                        <h5 class="title">Booking</h5>
-                    </button>
+                    <a class="redirect" href="/admin">
+                        <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
+                            <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                            <h5 class="title">Booking</h5>
+                        </button>
+                    </a>
                 </div>
                 <div class="item">
-                    <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
-                        <i class="fas fa-list-ul" style="padding-right:30px"></i>
-                        <h5 class="titles">Bill</h5>
-                    </button>
+                    <a class="redirect" href="/admin">
+                        <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                            <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                            <h5 class="titles">Bill</h5>
+                        </button>
+                    </a>
                 </div>
             </div>
             <div id="Modal" class="main_menu_right">
@@ -90,27 +119,33 @@
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="<?= $user['name']; ?>">
+                        <span class="error"><?php echo $user_error; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number:</label>
                         <input type="number" id="phone" class="form-control" placeholder="Phone Number" name="phone" value="<?= $user['phone']; ?>">
+                        <span class="error"><?php echo $phone_error; ?></span>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" id="email" class="form-control" placeholder="Email" name="email" value="<?= $user['email']; ?>">
+                        <span class="error"><?php echo $email_error; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="age">Age:</label>
-                        <input type="number" id="age" class="form-control" placeholder="Age" name="age" value="<?= $user['age']; ?>" >
+                        <input type="number" id="age" class="form-control" placeholder="Age" name="age" value="<?= $user['age']; ?>">
+                        <span class="error"><?php echo $age_error; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender:</label>
                         <input type="text" id="gender" class="form-control" placeholder="Gender" name="gender" value="<?= $user['gender']; ?>">
+                        <span class="error"><?php echo $gender_error; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="availability">Availability</label>
-                        <input type="text" id="availability" class="form-control" placeholder="Availability" name="availability" value="<?= $user['availability'];?>" >
+                        <input type="text" id="availability" class="form-control" placeholder="Availability" name="availability" value="<?= $user['availability']; ?>">
+                        <span class="error"><?php echo $availability_error; ?></span>
                     </div>
                     <div class="button">
                         <button type="submit" class="button_create">EDIT</button>
@@ -121,8 +156,4 @@
     <?php endif ?>
 </body>
 
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> e713722949a15582be1dca8b1912a8e67f2679f4

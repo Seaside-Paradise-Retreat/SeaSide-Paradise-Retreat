@@ -39,11 +39,11 @@ if (isset($_GET['id_room'])) {
                     <p id="name_room_detail"><?php echo $rooms['name']; ?></p>
                     <p id="price_room_detail"><?php echo $rooms['price']; ?></p>
                 </div>
-                <div class=" col-2 context__icon">
+                <div class=" col-5 context__icon">
                     <a href="/favorite?id_room=<?php echo $rooms['id']; ?>"><i id="icon_heart_detail" class="fa-regular fa-heart"></i></a>
                     <i id="icon_share_detail" class="fa-solid fa-share"></i>
                 </div>
-                <div class=" col-4" id="booking-btn">
+                <div class=" col-1" id="booking-btn">
                     <!-- <a href="#" id="book1"><button id="booking_now" class="button_booking">BOOKING NOW</button></a> -->
                     <?php if (!empty($_SESSION['email']) || !empty($_SESSION['password'])) : ?>
                         <a href="/booking_room?id_room=<?php echo $rooms['id']; ?>"><input id="booking_now" type="button" class="button_booking" name="booking" value="Booking now"></a>
@@ -154,4 +154,4 @@ if (isset($_GET['id_room'])) {
             } ?>
             <?php } ?>
                         </div>
-        </div>
+

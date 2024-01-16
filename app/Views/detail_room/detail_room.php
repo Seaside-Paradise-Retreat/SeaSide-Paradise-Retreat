@@ -31,7 +31,7 @@ if (isset($_GET['id_room'])) {
         } ?>
     </div>
 </div>
-<div class="row content ">
+<div class=" content m-3 ">
     <?php if (!empty($rooms)) { ?>
         <div class="">
             <div class="row content-text">
@@ -154,3 +154,4 @@ if (isset($_GET['id_room'])) {
             } ?>
             <?php } ?>
                         </div>
+

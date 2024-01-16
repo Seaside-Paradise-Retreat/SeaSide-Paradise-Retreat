@@ -109,6 +109,12 @@
                         </button>
                     </a>
                 </div>
+                <div class="item">
+                    <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                        <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                        <h5 class="titles">Bill</h5>
+                    </button>
+                </div>
             </div>
             <div id="Modal" class="main_menu_right">
                 <form class="form_action" method="post">

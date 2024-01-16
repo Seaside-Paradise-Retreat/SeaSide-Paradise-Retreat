@@ -53,9 +53,7 @@
     background: none;
     outline: none;
     font-size: 10px;
-
 }
-
 /* Main menu styles */
 .container {
     display: grid;
@@ -168,13 +166,10 @@
     justify-content: space-around;
     width: 400px;
 }
-
-/* Adjust width as needed */
 .search {
     display: flex;
     justify-content: space-around;
     width: 400px;
-    /* Adjust width as needed */
     height: 40px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -325,14 +320,11 @@
     line-height: 50px;
     margin: auto auto;
 }
-
-
 .animate-charcter {
     text-align: center;
     font-size: 50px;
     animation: myAnimation 5s infinite;
 }
-
 @keyframes myAnimation {
     0% {
         color: #3498db;
@@ -350,10 +342,6 @@
         color: #f39c12; /* Màu cam */
     }
 }
-
-
-
-
 .detail_feedback {
 
     display: flex;
@@ -380,7 +368,6 @@
     align-items: end;
     margin-bottom: 20px;
 }
-
 .avata__review {
     width: 80px;
     height: 80px;
@@ -394,7 +381,6 @@
     display: flex;
     align-items: center;
 }
-
 .Back {
     width: 100px;
     height: 40px;
@@ -404,17 +390,14 @@
     background-color: #3498db;
     color: white;
 }
-
 .total-price {
     background-color: #3498db;
 
 }
-
 .total-prices {
     display: flex;
     justify-content: space-between;
 }
-
 .error {
     color: red;
 }
@@ -422,3 +405,4 @@
 .redirect {
     text-decoration: none;
 }
+

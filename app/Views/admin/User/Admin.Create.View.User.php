@@ -47,6 +47,7 @@
                         <h5 class="titles">Bill</h5>
                     </button>
                 </a>
+
             </div>
         </div>
         <div id="Modal" class="main_menu_right">

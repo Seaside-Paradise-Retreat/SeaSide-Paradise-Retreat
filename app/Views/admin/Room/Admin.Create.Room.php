@@ -16,6 +16,7 @@
     <div class="container">
         <div class="main_menu_left">
             <div class="item">
+
                 <a class="redirect" href="/admin">
                     <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
                         <i class="fas fa-user" style="padding-right:30px"></i>
@@ -46,6 +47,7 @@
                         <h5 class="titles">Bill</h5>
                     </button>
                 </a>
+
             </div>
         </div>
         <div id="Modal" class="main_menu_right">

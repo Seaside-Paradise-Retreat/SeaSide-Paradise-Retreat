@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="public/css/booking_history.css">
 <div class="body--content container">
     <div class="title">     
-        <h3 id="title-booking-history-room">BOOKING HISTORY ROOM</h3>
+        <h3 id="title-booking-history-room">BOOKING HISTORY</h3>
     </div>
 </div>
 

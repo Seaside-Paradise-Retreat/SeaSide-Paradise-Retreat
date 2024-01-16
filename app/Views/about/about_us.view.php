@@ -1,6 +1,11 @@
 <link rel="stylesheet" href="public/css/about_us.css">
-<?php require ("app/Views/layouts/header.php") ?>
-<?php require ("app/Views/layouts/navbar.php") ?>
+<?php 
+    require ("app/Views/layouts/header.php");
+    require ("app/Views/layouts/navbar.php");
+    require ("app/Views/auth/login.php");
+    require ("app/Views/auth/register.view.php");
+    ?>
+
 <div class="body--content container">
     <div class="title">     
         <h3 id="title-about-us">ABOUT US</h3>

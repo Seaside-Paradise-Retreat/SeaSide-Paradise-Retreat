@@ -17,6 +17,8 @@ $routes = [
     '/admin/Feedback' => 'app/Controllers/admin/Feedback/admin.feedback.controller.php',
     '/detail_room' => 'app/Controllers/detail_room/detail_room.controller.php',
     // '/feedback' => 'app/Controllers/detail_room/feedback.controller.php',
+    '/search' => 'app/Controllers/search/search.controller.php',
+    '/error' => 'app/Controllers/error/error.controller.php',
     '/booking_room' => 'app/Controllers/booking/booking.controller.php',
     '/bill' => 'app/Controllers/bill/bill.controller.php',
     '/booking_history' => 'app/Controllers/booking/booking_history.controller.php',
@@ -29,6 +31,7 @@ $routes = [
     '/favorite' => 'app/Controllers/favorite/favorite.controller.php',
     '/list_favorite' => 'app/Controllers/favorite/list_favorite.controller.php',
     '/profile/edit' => 'app/Controllers/profile/edit.profile.controller.php',
+
 ];
 
 if (array_key_exists($uri, $routes)) {

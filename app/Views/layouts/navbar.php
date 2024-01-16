@@ -3,12 +3,14 @@
         <a href="/"><img src="public/images/logo_hotel.png" id="logo_nav" alt="logo"  width="50px" height="50px" > </a>
       </div>
       <div class="nav_text"><a class="nav_text_menu" style="<?= urlIs('/') ? 'color: blue;' : '' ?>" href="/">HOME</a></div>
-      <div class="nav_text"><a  class="nav_text_menu" style="<?= urlIs('/about') ? 'color: blue;' : '' ?>" href="/about">ABOUTS US</a></div>
+      <div class="nav_text"><a  class="nav_text_menu" style="<?= urlIs('/about') ? 'color: blue;' : '' ?>" href="/about">ABOUT US</a></div>
       <div class="nav_text"><a  class="nav_text_menu" style="<?= urlIs('/room') ? 'color: blue;' : '' ?>" href="/room">ROOMS</a></div>
       <div class="nav_text nav_text_search">
-        <input type="text" name="nav_input" id="nav_input_search" style="outline: none; padding-left:20px; " placeholder="Search" >
-        <button id="nav_search_icon"><i class="fa-solid fa-magnifying-glass"></i></button>   
-      </div>
+        <form action="/search" method="post">
+          <input type="text" name="nav_input" id="nav_input_search" style="outline: none; padding-left:20px; " placeholder="Search" >
+          <a href="/search"> <button type="submit" id="nav_search_icon"><i class="fa-solid fa-magnifying-glass"></i></button></a>
+        </form>
+      </div>  
       <div class="nav_log nav_text">
         <?php 
         if(empty($_SESSION['email']) || empty($_SESSION['password']) )  :

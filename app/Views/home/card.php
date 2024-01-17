@@ -51,7 +51,7 @@
                     </div>
                   </div>
                   <p class="convenient"><?php echo $room['convenient']?></p>
-                  <p id="description"><?php echo $room['description'] ?></p>
+                  <p id="description" class="ellipsis" onclick="showFullText(this)"><?php echo $room['description'] ?></p>
                   <div class="d-flex mb-3">
                     <small class="border-end me-3 pe-3"><i class="fa fa-bed text-secondary me-2">
                       </i>Bed</small> 
@@ -78,3 +78,8 @@
   </div>
 </div>
 
+<script>
+    function showFullText(element) {
+            element.classList.toggle('full-text');
+        }
+</script>

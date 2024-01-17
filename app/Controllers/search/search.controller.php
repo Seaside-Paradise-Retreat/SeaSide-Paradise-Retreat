@@ -6,20 +6,22 @@ require ("./app/Models/register/register.model.php");
 require ("./app/Models/login/login.model.php");
 require ("app/Models/favorite/favorite.model.php");
 require ("app/Models/search/search.model.php");
-echo "<script>
-    console.log('lam');
-</script>";
-echo "<script>
-console.log('{$_POST["nav_input"]}');
-</script>";
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nav_input'])){
-    echo "<script>console.log('{$_POST["nav_input"]}');</script>";
-    $searchPrice = $_POST['nav_input'];
-    $search_price = (int)$searchPrice;// Giá tiền tối thiểu
+    $search = $_POST['nav_input'];
+    $rooms = '';
+    $search_price = (int)$search;
     $rooms = search_room($search_price);
     if(empty($rooms)){
+        $rooms = search_room_convenient($search);
+    }
+    // echo "<script>console.log('{$room['availability']}');</script>";
+    foreach($rooms as $room){
+        $room_availability = $room['availability'];
+    }
+    if(empty($rooms) || $room_availability == 0){
         header("Location:/error");
     }
+
 }
 ?>
 <?php require ("app/Views/search/search.view.php"); ?>

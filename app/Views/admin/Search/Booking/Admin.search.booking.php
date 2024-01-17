@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEASIDE PARADISE RETREAT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
+</head>
+<body>
+    <?php
+    include(__DIR__ . "../../../../layouts/admin.navbar.php");
+    require(__DIR__ . '/../../../../Models/admin.model.php');
+    ?>
+    <div class="container">
+        <div class="main_menu_left">
+            <div class="item">
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
+                        <i class="fas fa-user" style="padding-right:30px"></i>
+                        <h5 class="titles">User</h5>
+                    </button>
+                </a>
+            </div>
+            <div class="item">
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
+                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                        <h5 class="title">Room</h5>
+                    </button>
+                </a>
+            </div>
+            <div class="item">
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
+                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
+                        <h5 class="title">Booking</h5>
+                    </button>
+                </a>
+            </div>
+            <div class="item">
+                <a class="redirect" href="/admin">
+                    <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                        <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                        <h5 class="titles">Bill</h5>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="main_menu">
+            <div class="searchUser">
+                <h1 class="animate-character">SEASIDE PARADISE RETREAT</h1>
+            </div>
+            <div class="scrollable-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Room</th>
+                            <th>Name Customer</th>
+                            <th>Phone Number</th>
+                            <th>Check in</th>
+                            <th>Check out</th>
+                            <th>Price</th>
+                            <th>Availability</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $rooms = selectRoom();
+                        $users = selectAllUser();
+                        if (!empty($_POST['search'])) {
+                            $searchTerm = $_POST['search'];
+                            $searchBooks = searchBooked($searchTerm);
+                            if ($searchBooks) {
+                                foreach ($searchBooks as $searchBook) {
+                        ?>
+                                    <tr>
+                                        <td><?php echo $searchBook['id']; ?></td>
+                                        <td>
+                                            <?php
+                                            $roomId = $searchBook['id_room'];
+                                            $room = findRoomById($roomId);
+
+                                            // Check if the room is found
+                                            if ($room) {
+                                                echo $room['name']; // Replace 'room_name' with the actual field name
+                                            } else {
+                                                echo "Room not found";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            $userId = $searchBook['id_user'];
+                                            $user = findUserById($userId);
+                                            if ($user) {
+                                                echo $user['name'];
+                                            } else {
+                                                echo "User not found";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            $userId = $searchBook['id_user'];
+                                            $user = findUserById($userId);
+                                            if ($user) {
+                                                echo $user['phone'];
+                                            } else {
+                                                echo "User not found";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td><?php echo $searchBook['check_in_date']; ?></td>
+                                        <td><?php echo $searchBook['check_out_date']; ?></td>
+                                        <td>
+                                            <?php
+                                            $roomId = $searchBook['id_room'];
+                                            $room = findRoomById($roomId);
+                                            if ($room) {
+                                                echo $room['price']; // Replace 'room_name' with the actual field name
+                                            } else {
+                                                echo "Room not found";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td><?php echo $searchBook['availability']; ?></td>
+                                        <td>
+                                            <a href="/admin/Booking/edit?id=<?= $searchBook['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
+                                            <a href="/admin/Booking/delete?id=<?= $searchBook['id'] ?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
+                                        </td>
+                                    </tr>
+                        <?php
+                                }
+                            } else {
+                                echo "<p>No booking found. </p>";
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>

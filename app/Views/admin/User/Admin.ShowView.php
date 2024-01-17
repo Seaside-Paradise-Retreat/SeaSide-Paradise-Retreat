@@ -47,12 +47,13 @@
             </div>
         </div>
         <div id="bookingTab" class="tabcontent active">
-
             <h1 class="animate-charcter" style="text-align: center; margin-bottom:50px">BOOKING</h1>
             <div class="ItemBooking">
                 <div class="search">
-                    <input type="text" id="search" name="input_search" placeholder="Search">
-                    <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
+                    <form action="/admin/Search/Booking" method="POST">
+                        <input type="text" id="search" name="search" placeholder="Search">
+                        <button type="submit" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
+                    </form>
                 </div>
             </div>
             <table class="table">
@@ -70,15 +71,11 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     <?php
                     require(__DIR__ . '/../../../Models/admin.model.php');
-
                     $bookings = selectBookingRoom();
                     $rooms = selectRoom();
                     $users = selectAllUser();
-
-
                     if ($bookings) {
                         foreach ($bookings as $book) {
                     ?>
@@ -86,18 +83,13 @@
                                 <td><?php echo $book['id']; ?></td>
                                 <td>
                                     <?php
-
                                     $roomId = $book['id_room'];
-                                    // Find the room in the $rooms array
                                     $room = findRoomById($roomId);
-
-                                    // Check if the room is found
                                     if ($room) {
-                                        echo $room['name']; // Replace 'room_name' with the actual field name
+                                        echo $room['name'];
                                     } else {
                                         echo "Room not found";
                                     }
-
                                     ?>
                                 </td>
                                 <td>
@@ -113,7 +105,6 @@
                                 </td>
                                 <td>
                                     <?php
-
                                     $userId = $book['id_user'];
                                     $user = findUserById($userId);
                                     if ($user) {
@@ -121,29 +112,22 @@
                                     } else {
                                         echo "User not found";
                                     }
-
                                     ?>
                                 </td>
                                 <td><?php echo $book['check_in_date']; ?></td>
                                 <td><?php echo $book['check_out_date']; ?></td>
                                 <td>
                                     <?php
-
                                     $roomId = $book['id_room'];
-                                    // Find the room in the $rooms array
                                     $room = findRoomById($roomId);
-
-                                    // Check if the room is found
                                     if ($room) {
                                         echo $room['price']; // Replace 'room_name' with the actual field name
                                     } else {
                                         echo "Room not found";
                                     }
-
                                     ?>
                                 </td>
                                 <td><?php echo $book['availability']; ?></td>
-
                                 <td>
                                     <a href="/admin/Booking/edit?id=<?= $book['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
                                     <a href="/admin/Booking/delete?id=<?= $book['id'] ?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
@@ -155,19 +139,17 @@
                         echo "<p>No booking found. </p>";
                     }
                     ?>
-
                 </tbody>
             </table>
         </div>
-
-
         <div id="roomTab" class="tabcontent">
-
             <h1 class="animate-charcter" style="text-align: center; margin-bottom:50px">ROOM</h1>
             <div class="ItemRoom">
                 <div class="search">
-                    <input type="text" id="search" name="input_search" placeholder="Search">
-                    <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
+                    <form action="/admin/Search/Room" method="POST">
+                        <input type="text" id="search" name="search" placeholder="Search">
+                        <button type="submit" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
+                    </form>
                 </div>
                 <a href="/admin/Room/create"><button type="button" id="createRoom">Create +</button></a>
             </div>
@@ -187,11 +169,8 @@
                 </thead>
                 <tbody>
                     <?php
-
                     require_once(__DIR__ . '/../../../Models/admin.model.php');
                     $rooms = selectRoom();
-
-
                     if ($rooms) {
                         foreach ($rooms as $room) {
                     ?>
@@ -214,7 +193,6 @@
                         echo "<p>No room found. </p>";
                     }
                     ?>
-
                 </tbody>
             </table>
         </div>
@@ -222,13 +200,14 @@
             <h1 class="animate-charcter" style="text-align: center; margin-bottom: 50px; ">USER</h1>
             <div class="ItemUser">
                 <div class="search">
-                    <input type="text" id="search" name="input_search" placeholder="Search">
-                    <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
+                    <form action="/admin/Search/User" method="POST">
+                        <input type="text" id="search" name="search" placeholder="Search">
+                        <button type="submit" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
+                    </form>
                 </div>
                 <a href="admin/User/create"><button type="button" id="createUser">Create +</button></a>
             </div>
             <br>
-
             <table class="table">
                 <thead>
                     <tr>
@@ -247,18 +226,15 @@
                 <tbody>
                     <!-- Add table rows with user data here -->
                     <?php
-
                     require_once(__DIR__ . '/../../../Models/admin.model.php');
                     $users = selectAllUser();
-
                     if ($users) {
-
                         foreach ($users as $user) {
                     ?>
                             <tr>
                                 <td><?php echo $user['id']; ?></td>
                                 <td style="width: 100px; white-space: nowrap;"> <?php echo $user['name']; ?></td>
-                                <td><?php echo $user['avatar']; ?></td>
+                                <td><img style="height:100px; width:100px" src="<?php echo $user['avatar']; ?>" alt="User Avatar"></td>
                                 <td class="ellipsis" onclick="showFullText(this)"><?php echo password_hash($user['password'], PASSWORD_DEFAULT); ?></td>
                                 <td><?php echo $user['phone']; ?></td>
                                 <td><?php echo $user['email']; ?></td>
@@ -278,19 +254,18 @@
                     ?>
                 </tbody>
             </table>
-
         </div>
-
         <div id="billTab" class="tabcontent">
             <h1 class="animate-charcter" style="text-align: center; margin-bottom: 50px; ">BILL</h1>
             <div class="ItemBill">
                 <div class="search">
-                    <input type="text" id="search" name="input_search" placeholder="Search">
-                    <button type="button" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
+                    <form action="/admin/Search/Bill" method="POST">
+                        <input type="text" id="search" name="search" placeholder="Search">
+                        <button type="submit" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
+                    </form>
                 </div>
             </div>
             <br>
-
             <table class="table">
                 <thead>
                     <tr>
@@ -305,12 +280,9 @@
                 </thead>
                 <tbody>
                     <?php
-
                     require_once(__DIR__ . '/../../../Models/admin.model.php');
                     $bills = selectBill();
                     $price = selectTotalPrice();
-
-
                     if ($bills) {
                         foreach ($bills as $bill) {
                     ?>
@@ -349,39 +321,22 @@
                         echo "<p>No bill found. </p>";
                     }
                     ?>
-
                 </tbody>
-
             </table>
-
         </div>
-
-
     </div>
-
     <script>
         function OpenType(type) {
             var tabcontent = document.getElementsByClassName("tabcontent");
             for (var i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].classList.remove("active");
             }
-
             var activeTab = document.getElementById(type);
             activeTab.classList.add("active");
         }
 
         function showFullText(element) {
             element.classList.toggle('full-text');
-        }
-
-        function deleteRoom(roomId) {
-            let text = "Do you want to delete that room?\n Either OK or Cancel.";
-            if (confirm(text) === true) {
-                let deleteUrl = `admin/Room/delete?id=${roomId}`;
-                window.location.href = deleteUrl;
-            } else {
-                alert("Delete Canceled");
-            }
         }
     </script>
 </body>

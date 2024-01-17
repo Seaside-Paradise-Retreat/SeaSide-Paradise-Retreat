@@ -60,7 +60,7 @@
             </div>
             <div class="main_menu">
                 <div class="feedback">
-                    <h1 class="animate-charcter">SEASIDE PARADISE RETREAT</h1>
+                    <h1 class="animate-character">SEASIDE PARADISE RETREAT</h1>
                     <?php
                     $ratings = selectAVGRatingForRoom($id);
                     $feedbacks = getFeedback($id);

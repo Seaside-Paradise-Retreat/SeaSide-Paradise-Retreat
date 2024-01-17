@@ -52,3 +52,16 @@ th {
 .total-label, .total-amount {
     border-top: 1px solid #ddd;
 }
+.button-container button {
+    margin-top: 30px;
+    padding: 10px 50px;
+    background-color: #9EEAF7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.button-back-print{
+    display: flex;
+    justify-content: space-between;
+}

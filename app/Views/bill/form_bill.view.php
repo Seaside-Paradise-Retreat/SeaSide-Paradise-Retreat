@@ -37,5 +37,13 @@
                 <td class="total-amount"><?php echo " " . $bill_information['total_price'] . "VND" ?></td>
             </tr>
         </table>
+        <div class="button-back-print">
+            <div class="button-container">
+                <a href="/"><button type="button">Back</button></a>
+            </div>
+            <div class="button-container">
+                <button>Print Bill</button>
+            </div>
+        </div>
     </div>
 </body>

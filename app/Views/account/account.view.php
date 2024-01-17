@@ -4,18 +4,10 @@
 require 'app/Views/layouts/navbar.php';
 require 'app/Views/layouts/header.php';
  ?>
- <?php 
-echo "<script>
-    console.log('Avatar:', '{$_SESSION['avatar']}');
-    console.log('Name:', '{$_SESSION['name']}');
-    console.log('Email:', '{$_SESSION['email']}');
-    console.log('ID:', '{$_SESSION['id']}');
-</script>";
-?>
  <link rel="stylesheet" href="public/css/account.css">
 <div class="row profile-home-page">
         <div class="row-name">
-            <img src="<?php echo $_SESSION['avatar']; ?>" width="200px" height="200px" class="img-avt" alt="img-avt" id="img-avt">
+            <img src="/public/images/<?php echo $_SESSION['avatar']; ?>" width="200px" height="200px" class="img-avt" alt="img-avt" id="img-avt">
             <p class="name-user" id="name-user"><?php echo $_SESSION['name']?></p>
         </div>
 

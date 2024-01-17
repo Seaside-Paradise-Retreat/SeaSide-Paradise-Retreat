@@ -25,7 +25,7 @@
           </div>
         <div class="nav_log nav_text nav-item dropdown" id="avata">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img id="nav-avatar" src="<?php echo $_SESSION['avatar']; ?>" alt="avatar" height="150px" width="auto">
+          <img id="nav-avatar" src="/public/images/<?php echo $_SESSION['avatar']; ?>" alt="avatar" height="150px" width="auto" >
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="/list_favorite" style="color: #0052FE;" id="favorite" >Favorite</a></li>

@@ -1,7 +1,7 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;  
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -30,7 +30,7 @@
 /* Profile styles */
 .profile_user {
     display: flex;
-    align-items:center;
+    align-items: center;
     padding-right: 50px;
 
 }
@@ -45,16 +45,15 @@
     border: none;
     background: none;
     outline: none;
-    margin-right:5px;
+    margin-right: 5px;
 }
-#logout{
+
+#logout {
     border: none;
     background: none;
     outline: none;
     font-size: 10px;
-    
 }
-
 /* Main menu styles */
 .container {
     display: grid;
@@ -167,11 +166,10 @@
     justify-content: space-around;
     width: 400px;
 }
-    /* Adjust width as needed */
 .search {
     display: flex;
     justify-content: space-around;
-    width: 400px; /* Adjust width as needed */
+    width: 400px;
     height: 40px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -322,26 +320,28 @@
     line-height: 50px;
     margin: auto auto;
 }
-
 .animate-charcter {
     text-align: center;
-    font-weight: bold;
-    /* text-transform: uppercase; */
-    background-image: linear-gradient(-225deg, #002661 0%, #130CB7 29%, #736EFE 67%, #52E5E7 100%);
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 2s linear infinite;
-
     font-size: 50px;
-
+    animation: myAnimation 5s infinite;
 }
+@keyframes myAnimation {
+    0% {
+        color: #3498db;
+    }
 
+    25% {
+        color: #e74c3c; /* Màu đỏ */
+    }
+
+    50% {
+        color: #2ecc71; /* Màu xanh lá cây */
+    }
+
+    100% {
+        color: #f39c12; /* Màu cam */
+    }
+}
 .detail_feedback {
 
     display: flex;
@@ -368,7 +368,6 @@
     align-items: end;
     margin-bottom: 20px;
 }
-
 .avata__review {
     width: 80px;
     height: 80px;
@@ -382,7 +381,6 @@
     display: flex;
     align-items: center;
 }
-
 .Back {
     width: 100px;
     height: 40px;
@@ -392,14 +390,19 @@
     background-color: #3498db;
     color: white;
 }
-
 .total-price {
     background-color: #3498db;
 
 }
-
 .total-prices {
     display: flex;
     justify-content: space-between;
+}
+.error {
+    color: red;
+}
+
+.redirect {
+    text-decoration: none;
 }
 

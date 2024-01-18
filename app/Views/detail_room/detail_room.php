@@ -154,4 +154,4 @@ if (isset($_GET['id_room'])) {
             } ?>
             <?php } ?>
                         </div>
-        </div>
+

@@ -56,10 +56,10 @@ require ("./app/Databases/database.php");
     }
 
     function getAge($date){
-        $dateofbirth = new DateTime($date);
         $currentDate = new DateTime();
-        $age = $currentDate->diff($dateofbirth)->y;
-        return $age;
+        $dateOfBirth = new DateTime($date);
+        $age = $dateOfBirth->diff($currentDate);
+        return $age->y; 
     }
    
 

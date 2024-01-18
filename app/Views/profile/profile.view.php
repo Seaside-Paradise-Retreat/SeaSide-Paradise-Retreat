@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php 
 if (isset($_SESSION['id']) && isset($_SESSION['email']) && isset($_SESSION['name']) && isset($_SESSION['phone']) && isset($_SESSION['avatar'])) {
     $id = $_SESSION['id'];
     $avatar = $_SESSION['avatar'];

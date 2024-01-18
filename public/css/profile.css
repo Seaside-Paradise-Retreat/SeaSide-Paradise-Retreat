@@ -10,11 +10,9 @@
 .title-modal{
     text-align: center;
 }
-
 .edit-avata-user {
     display: none;
 }
-
 img .images{
     width: 40px;
 }
@@ -45,35 +43,23 @@ hr {
     align-items: center;
     background-color: var(--blue3);
     border-radius: 10px;
+    height: 700px;
 }
 .edit-avata-user{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-
 .content_profile-username-email-password{
     display: grid;
 }
-
-
-.profile-back-edit{
-    text-align:end;
-}
-
-.profile-back-edit button{
-    border: none;
-    padding: 6px;
-    width: 30%;
-    border-radius: 7px;
+.profile-back-edit {
+   margin-top: 70px;
 }
 #profile-back{
     margin-bottom: 200px;
     background-color:var(--blue3);
 }
-
-/* Modal-edit */
 .modal-title {
     display: flex;
     justify-content: center;
@@ -110,7 +96,6 @@ hr {
 #profile-edit-avata{
     width: 130px ;
     border-radius: 10px;
-    /* border: none; */
 }
 .form-input-profile{
     border-radius: 10px;
@@ -121,14 +106,11 @@ hr {
     border-color:var(--blue);
 }
 .link-back {
-    /* display: inline-block; */
-    background-color: #f2f2f2;
     border: none;
+
     color: #333;
     padding: 10px 20px;
     font-size: 16px;
-    cursor: pointer;
-    /* margin-right: 200px; */
     border-radius: 4px;
     text-decoration: none;
     margin-right: 274px;
@@ -141,4 +123,15 @@ hr {
   .link-back:focus {
     outline: none;
   }
-
+  a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+  }

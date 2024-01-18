@@ -23,7 +23,7 @@ if ($role == 'user') {
     <div class="row content_profile-usernames">
         <div class="col-lg-4 content_profile-usernames-about">
             <div class="edit-avata-user">
-                <img src="/public/images/<?php echo $_SESSION['avatar']; ?>" alt="Avatar" width="200px" height="200px" style="border-radius: 50%; object-fit: cover;">
+                <img src="<?php echo $_SESSION['avatar'];?>" alt="Avatar" width="200px" height="200px" style="border-radius: 50%; object-fit: cover;">
             </div>
             <h4 class="m-4">Identify Verification</h4>
             <p style="padding-left: 30px; padding-right:30px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure cum veritatis quaerat ut reprehenderit architecto ipsa quos similique eveniet voluptates. Iste facere cumque, voluptatibus cum ut aut ipsam similique eaque?</p>

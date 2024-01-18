@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['name'] = $_POST['name'];
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['phone'] = $_POST['phone'];
-                $_SESSION['avatar'] =  $_FILES['fileToUpload']['name'];
+                $_SESSION['avatar'] = "public/images/" . $_FILES['fileToUpload']['name'];
                 var_dump($name, $email, $phone, $_SESSION['avatar']);
                 header('Location: /profile');
                 exit;

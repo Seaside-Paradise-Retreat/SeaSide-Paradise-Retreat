@@ -7,7 +7,7 @@ require 'app/Views/layouts/header.php';
  <link rel="stylesheet" href="public/css/account.css">
 <div class="row profile-home-page">
         <div class="row-name">
-            <img src="/public/images/<?php echo $_SESSION['avatar']; ?>" width="200px" height="200px" class="img-avt" alt="img-avt" id="img-avt">
+            <img src="<?php echo $_SESSION['avatar']; ?>" width="200px" height="200px" class="img-avt" alt="img-avt" id="img-avt">
             <p class="name-user" id="name-user"><?php echo $_SESSION['name']?></p>
         </div>
 

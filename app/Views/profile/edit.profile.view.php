@@ -5,13 +5,15 @@ if (isset($_SESSION['id'], $_SESSION['email'], $_SESSION['name'], $_SESSION['pho
     $email = $_SESSION['email'];
     $name = $_SESSION['name'];
     $phone = $_SESSION['phone'];
-    $password = $_SESSION['password'];
+    $password = $_SESSION['password'];  
     $role = $_SESSION['role'];
-}
+} 
 ?>
 <?php
 require 'app/Views/layouts/header.php';
 ?>
+
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['phone']) && $_SESSION['id']) {

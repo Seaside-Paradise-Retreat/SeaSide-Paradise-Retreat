@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
 </head>
-
 <body>
     <?php
-    include(__DIR__ . "../../../../layouts/admin.navbar.php");
-    require(__DIR__ . '/../../../../Models/admin.model.php');
+    include(__DIR__ . "/.././../layouts/admin.navbar.php");
     ?>
     <div class="container">
         <div class="main_menu_left">
@@ -49,58 +46,68 @@
                 </a>
             </div>
         </div>
-        <div class="main_menu">
-            <div class="searchUser">
-                <h1 class="animate-character">SEASIDE PARADISE RETREAT</h1>
-                <div class="ItemBooking">
-                    <div class="searchAdmin">
-                        <form action="/admin/Search/Bill" method="POST">
+        <div class="menu_right">
+            <div id="roomTab" class="tabcontent">
+                <h1 class="animate-charcter" style="text-align: center; margin-bottom:50px">ROOM</h1>
+                <div class="ItemRoom">
+                    <div class="search">
+                        <form action="/admin/Search/Room" method="POST">
                             <input type="text" id="search" name="search" placeholder="Search">
                             <button type="submit" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
                         </form>
                     </div>
+                    <a href="/admin/Room/create"><button type="button" id="createRoom">Create +</button></a>
                 </div>
-            </div>
-            <div class="scrollable-table">
+
+                <br>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>User Name</th>
-                            <th>Phone Number</th>
-                            <th>Email</th>
-                            <th>Room Name</th>
-                            <th>Total Price</th>
-                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Availability</th>
+                            <th>Description</th>
+                            <th>Option</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        if (!empty($_POST['search'])) {
-                            $searchTerm = $_POST['search'];
-                            $searchBills = searchBillWithUser($searchTerm);
-                            if ($searchBills) {
-                                foreach ($searchBills as $searchBill) {
+                        require_once(__DIR__ . '/../../../Models/admin.model.php');
+                        $rooms = selectRoom();
+                        if ($rooms) {
+                            foreach ($rooms as $room) {
                         ?>
-                                    <tr>
-                                        <td><?php echo $searchBill['id']; ?></td>
-                                        <td style="width: 100px; white-space: nowrap;"><?php echo $searchBill['username']; ?></td>
-                                        <td><?php echo $searchBill['phone']; ?></td>
-                                        <td><?php echo $searchBill['email']; ?></td>
-                                        <td><?php echo $searchBill['name']; ?></td>
-                                        <td><?php echo $searchBill['total_price']; ?></td>
-                                        <td><?php echo $searchBill['date']; ?></td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
+                                <tr>
+                                    <td><?php echo $room['id']; ?></td>
+                                    <td><?php echo $room['name']; ?></td>
+                                    <td><?php echo $room['type']; ?></td>
+                                    <td><?php echo $room['price']; ?></td>
+                                    <td><?php echo $room['availability']; ?></td>
+                                    <td class="ellipsis" onclick="showFullText(this)"> <?php echo $room['description'];  ?></td>
+                                    <td class="option">
+                                        <a href="/admin/Room/edit?id=<?= $room['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
+                                        <a href="/admin/Room/delete?id=<?= $room['id'] ?>"><button type="button" onclick="deleteRoom(roomId)" id="button_delete"><i class="fas fa-trash"></i></button></a>
+                                        <a href="/admin/Feedback?id=<?= $room['id'] ?>"><button type="button" id="button_comment"><i class="fas fa-comment"></i></button></a>
+                                    </td>
+                                </tr>
                         <?php
-                            } else {
-                                echo "<p>No bill found. </p>";
                             }
+                        } else {
+                            echo "<p>No room found. </p>";
                         }
                         ?>
                     </tbody>
                 </table>
             </div>
         </div>
+
+    </div>
+</body>
+<script>
+    function showFullText(element) {
+        element.classList.toggle('full-text');
+    }
+</script>
+</html>

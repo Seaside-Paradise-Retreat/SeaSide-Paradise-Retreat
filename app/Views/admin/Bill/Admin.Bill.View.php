@@ -11,8 +11,7 @@
 
 <body>
     <?php
-    include(__DIR__ . "../../../../layouts/admin.navbar.php");
-    require(__DIR__ . '/../../../../Models/admin.model.php');
+    include(__DIR__ . "/.././../layouts/admin.navbar.php");
     ?>
     <div class="container">
         <div class="main_menu_left">
@@ -49,19 +48,18 @@
                 </a>
             </div>
         </div>
-        <div class="main_menu">
-            <div class="searchUser">
-                <h1 class="animate-character">SEASIDE PARADISE RETREAT</h1>
-                <div class="ItemBooking">
-                    <div class="searchAdmin">
+        <div class="menu_right">
+            <div id="billTab" class="tabcontent">
+                <h1 class="animate-charcter" style="text-align: center; margin-bottom: 50px; ">BILL</h1>
+                <div class="ItemBill">
+                    <div class="search">
                         <form action="/admin/Search/Bill" method="POST">
                             <input type="text" id="search" name="search" placeholder="Search">
                             <button type="submit" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
                         </form>
                     </div>
                 </div>
-            </div>
-            <div class="scrollable-table">
+                <br>
                 <table class="table">
                     <thead>
                         <tr>
@@ -76,31 +74,52 @@
                     </thead>
                     <tbody>
                         <?php
-                        if (!empty($_POST['search'])) {
-                            $searchTerm = $_POST['search'];
-                            $searchBills = searchBillWithUser($searchTerm);
-                            if ($searchBills) {
-                                foreach ($searchBills as $searchBill) {
+                        require_once(__DIR__ . '/../../../Models/admin.model.php');
+                        $bills = selectBill();
+                        $price = selectTotalPrice();
+                        if ($bills) {
+                            foreach ($bills as $bill) {
                         ?>
-                                    <tr>
-                                        <td><?php echo $searchBill['id']; ?></td>
-                                        <td style="width: 100px; white-space: nowrap;"><?php echo $searchBill['username']; ?></td>
-                                        <td><?php echo $searchBill['phone']; ?></td>
-                                        <td><?php echo $searchBill['email']; ?></td>
-                                        <td><?php echo $searchBill['name']; ?></td>
-                                        <td><?php echo $searchBill['total_price']; ?></td>
-                                        <td><?php echo $searchBill['date']; ?></td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                        <?php
-                            } else {
-                                echo "<p>No bill found. </p>";
+                                <tr>
+                                    <td><?php echo $bill['id']; ?></td>
+                                    <td style="width: 100px; white-space: nowrap;"><?php echo $bill['username']; ?></td>
+                                    <td><?php echo $bill['phone']; ?></td>
+                                    <td><?php echo $bill['email']; ?></td>
+                                    <td><?php echo $bill['name']; ?></td>
+                                    <td><?php echo $bill['total_price']; ?></td>
+                                    <td><?php echo $bill['date']; ?></td>
+                                </tr>
+                            <?php
                             }
+                            ?>
+                            <tr class="total-price">
+                                <td colspan="6">
+                                    <?php
+                                    if (is_array($price)) {
+                                        echo '<div class="total-prices">';
+                                        echo '<label>Total Price: </label>';
+                                        echo '<span>' . implode(', ', $price) . ' VND</span>';
+                                        echo '</div>';
+                                    } else {
+                                        echo '<div class="total-prices">';
+                                        echo '<label>Total Price: </label>';
+                                        echo '<span>' . $price . ' VND</span>';
+                                        echo '</div>';
+                                    }
+                                    ?>
+
+                                </td>
+                            </tr>
+                        <?php
+                        } else {
+                            echo "<p>No bill found. </p>";
                         }
                         ?>
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
+</body>
+
+</html>

@@ -8,7 +8,7 @@ if (isset($id)) {
 
     if ($result) {
         echo '<script>alert("User record deleted successfully!");
-            window.location.href = "/admin";
+            window.location.href = "/admin/User/view";
         </script>';
         exit();
     } else {

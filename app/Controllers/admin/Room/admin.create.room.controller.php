@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         );
 
         if ($result) {
-            echo "Create new room record successful!";
-            header('Location: /admin'); 
+            echo "<script>alert(Create new room record successful!)</script>";
+            header('Location: /admin/Room/view'); 
             exit();  
         } else {
             echo "Error creating new room record.";

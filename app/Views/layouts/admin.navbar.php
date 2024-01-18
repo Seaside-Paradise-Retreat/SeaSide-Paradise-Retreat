@@ -22,7 +22,7 @@
     } ?>
     <div class="navbar">
         <a href="/admin" style="text-decoration: none;">
-            <img id="logo_hotel" src="../../../public/images/logo_hotel.png" alt="logo_hotel">
+            <img id="logo_hotel" src="../../../../public/images/logo_hotel.png" alt="logo_hotel">
         </a>
         
         <div class="profile_user">

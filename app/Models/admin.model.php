@@ -110,7 +110,7 @@ function createNewUser($name, $password, $phone, $email, $age, $gender,$availabi
     } catch(PDOException $e){
         echo "Error: " .$e ->getMessage();
     }
-    header('location: /admin');
+    header('location: /admin/User/view');
 }
 function updateUser($name, $phone, $email, $age, $gender,  $availability ,int $id):bool
 {
@@ -391,4 +391,41 @@ function searchBillWithUser($searchTerm) {
     $stt->bindParam(":searchTerm", $searchTerm, PDO::PARAM_STR);
     $stt->execute();
     return $stt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function selectCountUser(){
+    global $connection;
+    $query = "SELECT COUNT(*) AS user_count FROM users;";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $count = $result['user_count'];
+    return (int) $count;
+}
+function selectCountRoom(){
+    global $connection;
+    $query = "SELECT COUNT(*) AS room_count FROM rooms;";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $count = $result['room_count'];
+    return (int) $count;
+}
+function selectCountBooking(){
+    global $connection;
+    $query = "SELECT COUNT(*) AS booked_count FROM booking;";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $count = $result['booked_count'];
+    return (int) $count;
+}
+function selectCountBill(){
+    global $connection;
+    $query = "SELECT COUNT(*) AS bill_count FROM bill;";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $count = $result['bill_count'];
+    return (int) $count;
 }

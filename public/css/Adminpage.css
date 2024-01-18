@@ -83,12 +83,11 @@
 .tabcontent {
     max-width: 100%;
     margin: 20px;
-    display: none;
     overflow: auto;
 }
-.active {
+/* .active {
     display: block;
-}
+} */
 #createUser,
 #createRoom {
     text-align: center;
@@ -352,3 +351,51 @@
 .scrollable-table {
     overflow: auto; 
 }
+.searchAdmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 40px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    border: 1px solid var(--bulue1, #5FBDFF);
+    background: var(--WHITE, #FFF);
+}
+
+.button_user {
+    width: 250px;
+    height: 150px;
+    border: 2px solid #3498db; 
+    background-color: #ecf0f1; 
+    border-radius: 8px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s; 
+    cursor: pointer; 
+    color:white;
+}
+.button_user:nth-child(1) {
+    background: linear-gradient(to bottom, #5d9cec, #89c4f4);
+}
+
+.button_user:nth-child(2) {
+    background: linear-gradient(to bottom, #e57373, #ef9a9a);
+}
+
+.button_user:nth-child(3) {
+    background: linear-gradient(to bottom, #81c784, #a5d6a7);
+}
+
+.button_user:nth-child(4) {
+    background: linear-gradient(to bottom, #ffb74d, #ffcc80);
+}
+.ManageTab{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+

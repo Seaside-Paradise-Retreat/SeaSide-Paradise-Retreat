@@ -11,12 +11,11 @@
 
 <body>
     <?php
-    include(__DIR__ . "../../../../layouts/admin.navbar.php");
-    require(__DIR__ . '/../../../../Models/admin.model.php');
+    include(__DIR__ . "/.././../layouts/admin.navbar.php");
     ?>
     <div class="container">
         <div class="main_menu_left">
-        <div class="item">
+            <div class="item">
                 <a class="redirect" href="/admin/User/view">
                     <button class="tablinks" data-tab="userTab">
                         <i class="fas fa-user" style="padding-right:30px"></i>
@@ -49,19 +48,19 @@
                 </a>
             </div>
         </div>
-        <div class="main_menu">
-            <div class="searchUser">
-                <h1 class="animate-character">SEASIDE PARADISE RETREAT</h1>
-                <div class="ItemBooking">
-                    <div class="searchAdmin">
-                        <form action="/admin/Search/Booking" method="POST">
+        <div class="menu_right">
+            <div id="userTab" class="tabcontent">
+                <h1 class="animate-charcter" style="text-align: center; margin-bottom: 50px; ">USER</h1>
+                <div class="ItemUser">
+                    <div class="search">
+                        <form action="/admin/Search/User" method="POST">
                             <input type="text" id="search" name="search" placeholder="Search">
                             <button type="submit" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
                         </form>
                     </div>
+                    <a href="/admin/User/create"><button type="button" id="createUser">Create +</button></a>
                 </div>
-            </div>
-            <div class="scrollable-table">
+                <br>
                 <table class="table">
                     <thead>
                         <tr>
@@ -78,36 +77,46 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Add table rows with user data here -->
                         <?php
-                        if (!empty($_POST['search'])) {
-                            $searchTerm = $_POST['search'];
-                            $searchUsers = searchUser($searchTerm);
-                            if ($searchUsers) {
-                                foreach ($searchUsers as $searchUser) {
+                        require_once(__DIR__ . '/../../../Models/admin.model.php');
+                        $users = selectAllUser();
+                        if ($users) {
+                            foreach ($users as $user) {
                         ?>
-                                    <tr>
-                                        <td><?php echo $searchUser['id']; ?></td>
-                                        <td style="width: 100px; white-space: nowrap;"> <?php echo $searchUser['name']; ?></td>
-                                        <td><img style="height:100px; width:100px" src="<?php echo $searchUser['avatar']; ?>" alt="User Avatar"></td>
-                                        <td class="ellipsis" onclick="showFullText(this)"><?php echo password_hash($searchUser['password'], PASSWORD_DEFAULT); ?></td>
-                                        <td><?php echo $searchUser['phone']; ?></td>
-                                        <td><?php echo $searchUser['email']; ?></td>
-                                        <td><?php echo $searchUser['age']; ?></td>
-                                        <td><?php echo $searchUser['gender']; ?></td>
-                                        <td><?php echo $searchUser['availability']; ?></td>
-                                        <td>
-                                            <a href="/admin/User/edit?id=<?= $searchUser['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
-                                            <a href="/admin/User/delete?id=<?= $searchUser['id'] ?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td><?php echo $user['id']; ?></td>
+                                    <td style="width: 100px; white-space: nowrap;"> <?php echo $user['name']; ?></td>
+                                    <td><img style="height:100px; width:100px" src="<?php echo $user['avatar']; ?>" alt="User Avatar"></td>
+                                    <td class="ellipsis" onclick="showFullText(this)"><?php echo password_hash($user['password'], PASSWORD_DEFAULT); ?></td>
+                                    <td><?php echo $user['phone']; ?></td>
+                                    <td><?php echo $user['email']; ?></td>
+                                    <td><?php echo $user['age']; ?></td>
+                                    <td><?php echo $user['gender']; ?></td>
+                                    <td><?php echo $user['availability']; ?></td>
+                                    <td>
+                                        <a href="/admin/User/edit?id=<?= $user['id'] ?>"><button type="button" id="button_edit"><i class="fas fa-edit"></i></button></a>
+                                        <a href="/admin/User/delete?id=<?= $user['id'] ?>"><button type="button" id="button_delete"><i class="fas fa-trash"></i></button></a>
+                                    </td>
+                                </tr>
                         <?php
-                                }
-                            } else {
-                                echo "<p>No user found. </p>";
                             }
+                        } else {
+                            echo "<p>No user found. </p>";
                         }
                         ?>
                     </tbody>
                 </table>
             </div>
         </div>
+
+    </div>
+</body>
+<script>
+    function showFullText(element) {
+        element.classList.toggle('full-text');
+    }
+</script>
+
+
+</html>

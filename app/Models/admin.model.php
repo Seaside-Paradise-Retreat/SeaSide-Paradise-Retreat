@@ -110,7 +110,7 @@ function createNewUser($name, $password, $phone, $email, $age, $gender,$availabi
     } catch(PDOException $e){
         echo "Error: " .$e ->getMessage();
     }
-    header('location: /admin');
+    header('location: /admin/User/view');
 }
 function updateUser($name, $phone, $email, $age, $gender,  $availability ,int $id):bool
 {
@@ -349,4 +349,83 @@ function selectTotalPrice(){
     $result = $stt->fetch(PDO::FETCH_ASSOC);
 
     return $result['total_price'];
+}
+
+
+function searchRoom($searchTerm) {
+    global $connection;
+    $searchTerm = "%" . $searchTerm . "%";
+    $stt = $connection->prepare("SELECT * FROM rooms WHERE name LIKE :searchTerm OR type LIKE :searchTerm OR price LIKE :searchTerm");
+    $stt->bindParam(":searchTerm", $searchTerm, PDO::PARAM_STR);
+    $stt->execute();
+    $result = $stt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+function searchUser($searchTerm){
+    global $connection;
+    $searchTerm = "%" . $searchTerm . "%";
+    $stt = $connection->prepare("SELECT * FROM users WHERE name LIKE :searchTerm OR email LIKE :searchTerm OR phone LIKE :searchTerm");
+    $stt->bindParam(":searchTerm", $searchTerm, PDO::PARAM_STR);
+    $stt->execute();
+    $result = $stt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+function searchBooked($searchTerm){
+    global $connection;
+    $searchTerm = "%" . $searchTerm . "%";
+    $stt = $connection->prepare("SELECT * FROM booking WHERE check_in_date LIKE :searchTerm OR check_out_date LIKE :searchTerm");
+    $stt->bindParam(":searchTerm", $searchTerm, PDO::PARAM_STR);
+    $stt->execute();
+    $result = $stt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+function searchBillWithUser($searchTerm) {
+    global $connection;
+    $searchTerm = "%" . $searchTerm . "%";
+    $stt = $connection->prepare("SELECT bill.id, users.name as username, users.phone, users.email, rooms.name, bill.total_price, bill.date
+        FROM booking
+        JOIN users ON booking.id_user = users.id
+        JOIN rooms ON booking.id_room = rooms.id
+        JOIN bill ON booking.id = bill.id_booking
+        WHERE bill.total_price LIKE :searchTerm OR bill.date LIKE :searchTerm");
+    $stt->bindParam(":searchTerm", $searchTerm, PDO::PARAM_STR);
+    $stt->execute();
+    return $stt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function selectCountUser(){
+    global $connection;
+    $query = "SELECT COUNT(*) AS user_count FROM users;";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $count = $result['user_count'];
+    return (int) $count;
+}
+function selectCountRoom(){
+    global $connection;
+    $query = "SELECT COUNT(*) AS room_count FROM rooms;";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $count = $result['room_count'];
+    return (int) $count;
+}
+function selectCountBooking(){
+    global $connection;
+    $query = "SELECT COUNT(*) AS booked_count FROM booking;";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $count = $result['booked_count'];
+    return (int) $count;
+}
+function selectCountBill(){
+    global $connection;
+    $query = "SELECT COUNT(*) AS bill_count FROM bill;";
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    $count = $result['bill_count'];
+    return (int) $count;
 }

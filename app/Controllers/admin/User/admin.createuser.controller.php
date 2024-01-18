@@ -47,11 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $availability
         );
         if ($result) {
-            echo '<script>
-                    alert("Create new user record successful!");
-                    window.location.href = "/admin";
-                </script>';
-            exit(); 
+            echo "<script>alert('Create successful!');</script>";
+            header("Location: /admin/User/view");
+            exit();
         } else {
             echo "Error creating new user record.";
         }

@@ -10,39 +10,39 @@
 </head>
 
 <body>
-<?php
+    <?php
 
-require(__DIR__ . '/../../../Databases/database.php');
-require(__DIR__ . '/../../../Models/admin.model.php');
+    require(__DIR__ . '/../../../Databases/database.php');
+    require(__DIR__ . '/../../../Models/admin.model.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['id_room']) && 
-        !empty($_POST['check_in_date']) && 
-        !empty($_POST['check_out_date']) && 
-        isset($_POST['availability']) && 
-        !empty($_GET["id"])
-    ) {
-        $result = updateBooking(
-            $_POST['id_room'],
-            $_POST['check_in_date'],
-            $_POST['check_out_date'],
-            $_POST['availability'],
-            $_GET["id"]
-        );
-        if ($result) {
-            echo "<script> 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (
+            !empty($_POST['id_room']) &&
+            !empty($_POST['check_in_date']) &&
+            !empty($_POST['check_out_date']) &&
+            isset($_POST['availability']) &&
+            !empty($_GET["id"])
+        ) {
+            $result = updateBooking(
+                $_POST['id_room'],
+                $_POST['check_in_date'],
+                $_POST['check_out_date'],
+                $_POST['availability'],
+                $_GET["id"]
+            );
+            if ($result) {
+                echo "<script> 
                     alert('Update booking record successful!') ;
-                    window.location.href='/admin';
+                    window.location.href='/admin/Booking/view';
                 </script>";
-            // header('Location: /admin');
-            exit();
-        } else {
-            echo "Error.";
+                exit();
+            } else {
+                echo "Error.";
+            }
         }
     }
-}
 
-include(__DIR__ . "/.././../layouts/admin.navbar.php");
+    include(__DIR__ . "/.././../layouts/admin.navbar.php");
     $id = $_GET["id"] ?? null; // Use the null coalescing operator for default value
     if ($id) :
         $statement = $connection->prepare('SELECT * FROM booking WHERE id = :id');
@@ -51,34 +51,34 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
     ?>
 
         <div class="container">
-        <div class="main_menu_left">
+            <div class="main_menu_left">
                 <div class="item">
-                    <a class="redirect" href="/admin">
-                        <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
+                    <a class="redirect" href="/admin/User/view">
+                        <button class="tablinks" data-tab="userTab">
                             <i class="fas fa-user" style="padding-right:30px"></i>
                             <h5 class="titles">User</h5>
                         </button>
                     </a>
                 </div>
                 <div class="item">
-                    <a class="redirect" href="/admin">
-                        <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
-                            <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                            <h5 class="title">Room</h5>
+                    <a class="redirect" href="/admin/Room/view">
+                        <button class="tablinks" data-tab="roomTab">
+                            <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                            <h5 class="titles">Room</h5>
                         </button>
                     </a>
                 </div>
                 <div class="item">
-                    <a class="redirect" href="/admin">
-                        <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
-                            <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                            <h5 class="title">Booking</h5>
+                    <a class="redirect" href="/admin/Booking/view">
+                        <button class="tablinks" data-tab="bookingTab">
+                            <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                            <h5 class="titles">Booking</h5>
                         </button>
                     </a>
                 </div>
                 <div class="item">
-                    <a class="redirect" href="/admin">
-                        <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                    <a class="redirect" href="/admin/Bill/view">
+                        <button class="tablinks" data-tab="billTab">
                             <i class="fas fa-list-ul" style="padding-right:30px"></i>
                             <h5 class="titles">Bill</h5>
                         </button>
@@ -108,7 +108,7 @@ include(__DIR__ . "/.././../layouts/admin.navbar.php");
                         <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability" value="<?= $book['availability']; ?>" min="0" max="1">
                     </div>
                     <div class="button">
-                        <button type="submit" class="button_create" >EDIT</button>
+                        <button type="submit" class="button_create">EDIT</button>
                     </div>
                 </form>
             </div>

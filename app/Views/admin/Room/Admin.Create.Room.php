@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Room</title>
+    <title>SEASIDE PARADISE RETREAT</title>
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-
 <body>
     <?php
     include(__DIR__ . "/.././../layouts/admin.navbar.php");
@@ -16,38 +14,36 @@
     <div class="container">
         <div class="main_menu_left">
             <div class="item">
-
-                <a class="redirect" href="/admin">
-                    <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
+                <a class="redirect" href="/admin/User/view">
+                    <button class="tablinks" data-tab="userTab">
                         <i class="fas fa-user" style="padding-right:30px"></i>
                         <h5 class="titles">User</h5>
                     </button>
                 </a>
             </div>
             <div class="item">
-                <a class="redirect" href="/admin">
-                    <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
-                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                        <h5 class="title">Room</h5>
+                <a class="redirect" href="/admin/Room/view">
+                    <button class="tablinks" data-tab="roomTab">
+                        <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                        <h5 class="titles">Room</h5>
                     </button>
                 </a>
             </div>
             <div class="item">
-                <a class="redirect" href="/admin">
-                    <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
-                        <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                        <h5 class="title">Booking</h5>
+                <a class="redirect" href="/admin/Booking/view">
+                    <button class="tablinks" data-tab="bookingTab">
+                        <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                        <h5 class="titles">Booking</h5>
                     </button>
                 </a>
             </div>
             <div class="item">
-                <a class="redirect" href="/admin">
-                    <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                <a class="redirect" href="/admin/Bill/view">
+                    <button class="tablinks" data-tab="billTab">
                         <i class="fas fa-list-ul" style="padding-right:30px"></i>
                         <h5 class="titles">Bill</h5>
                     </button>
                 </a>
-
             </div>
         </div>
         <div id="Modal" class="main_menu_right">
@@ -68,7 +64,6 @@
                     <label for="price">Price:</label>
                     <input type="number" id="price" class="form-control" placeholder="Price" name="price" required>
                 </div>
-
                 <div class="form-group">
                     <label for="availability">Availability:</label>
                     <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability" min="0" max="1" required>

@@ -7,7 +7,7 @@ if (isset($id))
     if ($result){
         echo '<script>
                 alert("deleted successfully!");
-                window.location.href = "/admin";
+                window.location.href = "/admin/Booking/view";
             </script>';
     }
     else {

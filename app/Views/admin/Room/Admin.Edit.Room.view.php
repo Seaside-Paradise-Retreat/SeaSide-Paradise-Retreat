@@ -35,7 +35,7 @@
             if ($result) {
                 echo "<script> 
                         alert('Update room record successful!') ;
-                        window.location.href='/admin';
+                        window.location.href='/admin/Room/view';
                     </script>";
                 // header('Location: /admin');
                 exit();
@@ -57,32 +57,32 @@
         <div class="container">
             <div class="main_menu_left">
                 <div class="item">
-                    <a class="redirect" href="/admin">
-                        <button onclick="OpenType('userTab')" class="tablinks" data-tab="userTab">
+                    <a class="redirect" href="/admin/User/view">
+                        <button class="tablinks" data-tab="userTab">
                             <i class="fas fa-user" style="padding-right:30px"></i>
                             <h5 class="titles">User</h5>
                         </button>
                     </a>
                 </div>
                 <div class="item">
-                    <a class="redirect" href="/admin">
-                        <button onclick="OpenType('roomTab')" class="tablinks" data-tab="roomTab">
-                            <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                            <h5 class="title">Room</h5>
+                    <a class="redirect" href="/admin/Room/view">
+                        <button class="tablinks" data-tab="roomTab">
+                            <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                            <h5 class="titles">Room</h5>
                         </button>
                     </a>
                 </div>
                 <div class="item">
-                    <a class="redirect" href="/admin">
-                        <button onclick="OpenType('bookingTab')" class="tablinks active" data-tab="bookingTab">
-                            <i class="fas fa-list-ul" style="padding-right:20px"></i>
-                            <h5 class="title">Booking</h5>
+                    <a class="redirect" href="/admin/Booking/view">
+                        <button class="tablinks" data-tab="bookingTab">
+                            <i class="fas fa-list-ul" style="padding-right:30px"></i>
+                            <h5 class="titles">Booking</h5>
                         </button>
                     </a>
                 </div>
                 <div class="item">
-                    <a class="redirect" href="/admin">
-                        <button onclick="OpenType('billTab')" class="tablinks" data-tab="billTab">
+                    <a class="redirect" href="/admin/Bill/view">
+                        <button class="tablinks" data-tab="billTab">
                             <i class="fas fa-list-ul" style="padding-right:30px"></i>
                             <h5 class="titles">Bill</h5>
                         </button>
@@ -143,4 +143,5 @@
         </div>
     <?php endif ?>
 </body>
+
 </html>

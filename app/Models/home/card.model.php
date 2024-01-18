@@ -18,5 +18,28 @@
             }
         return $rooms;
     }
+    function countRooms(){
+        global $connection;
+        $query = "SELECT COUNT(*) AS room_count FROM rooms;";
+        $statement = $connection->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $count = $result['room_count'];
+        return (int) $count;
+    }
+
+    function selectAVGRatingRoom($roomId)
+{
+    global $connection;
+    $stt = $connection->prepare("SELECT AVG(feedback.rating) as average_rating
+        FROM rooms
+        LEFT JOIN feedback ON rooms.id = feedback.id_room
+        WHERE rooms.id = :roomId"
+    );
+    $stt->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+    $stt->execute();
+    $result = $stt->fetch(PDO::FETCH_ASSOC);
+    return $result['average_rating'];
+}
 ?>
 

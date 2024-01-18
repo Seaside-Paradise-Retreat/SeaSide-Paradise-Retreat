@@ -24,7 +24,7 @@
                   </div>
                 </div>
                 <div class="auth-form__control">
-                  <button class="btn-control">Sign in</button>
+                  <button class="btn-control" id="loginToRegister" >Sign in</button>
                 </div>
                 <div class="auth-form__or login">
                     <div>

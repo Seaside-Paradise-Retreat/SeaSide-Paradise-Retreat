@@ -26,3 +26,6 @@
 #booking_date{
     font-weight: 600;
 }
+#ratingContainer{
+    display:flex;
+}

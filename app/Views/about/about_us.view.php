@@ -1,6 +1,11 @@
 <link rel="stylesheet" href="public/css/about_us.css">
-<?php require ("app/Views/layouts/header.php") ?>
-<?php require ("app/Views/layouts/navbar.php") ?>
+<?php 
+    require ("app/Views/layouts/header.php");
+    require ("app/Views/layouts/navbar.php");
+    require ("app/Views/auth/login.php");
+    require ("app/Views/auth/register.view.php");
+    ?>
+
 <div class="body--content container">
     <div class="title">     
         <h3 id="title-about-us">ABOUT US</h3>
@@ -37,8 +42,48 @@
         <div class="col-md-1"></div>
         <div class="col-md-5 about--introduce--right">
             <h3>Introduce</h3>
-            <p>Booking Room is a leading online hotel booking website worldwide. With a user-friendly interface, you can easily search and book rooms from thousands of hotels, resorts, and apartments. The website provides detailed information on amenities, prices, and customer reviews. You can find accommodations in bustling cities to unique destinations. Booking Room is committed to providing a seamless and reliable booking experience.</p>
+            <div class="row" >
+                <div class="col-md-6 about--introduce--room">
+                    <p class="about_introduce_number" style="color:blueviolet;"><?php echo "$countusers" ?> +</p>
+                    <p class="about_introduce">Users</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="about_introduce_number" style="color: red;"> <?php echo "$countrooms" ?>  +</p>
+                    <p class="about_introduce">Rooms</p>
+                </div>
+            </div>
         </div>
     </div>
+        <div>
+            <div><p class="title-about">About Seaside paradise retreat</p></div>
+            <p>Booking Room is a leading online hotel booking website worldwide. With a user-friendly interface, you can easily search and book rooms from thousands of hotels, resorts, and apartments. The website provides detailed information on amenities, prices, and customer reviews. You can find accommodations in bustling cities to unique destinations. Booking Room is committed to providing a seamless and reliable booking experience.</p>
+        </div>
+        <!-- about us -->
+        <div class="div-founders my-5">
+            <div><p class="title-about">Founders</p></div>
+            <div class="row founders justify-content-evenly">
+                <div class="card col-lg-2  col-10 my-2  founders_card">
+                    <img src="public/images/card.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text-name">Dương Thị Hồng Lam</p> 
+                        <p class="card-text">honglam@gmail.com</p>
+                    </div>
+                </div>
+                <div class="card col-lg-2 col-10 my-2 founders_card">
+                    <img src="public/images/card_hung.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text-name">Trần Đức Hùng</p> 
+                        <p class="card-text">hung@gmail.com</p>
+                    </div>
+                </div>
+                <div class="card col-lg-2 col-10 my-2 founders_card">
+                    <img src="public/images/card_hi.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text-name">Phạm Thị Hỉ</p> 
+                        <p class="card-text">hi@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 <?php require ("app/Views/layouts/footer.php") ?>

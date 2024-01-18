@@ -13,7 +13,7 @@
         </div>
         <div class="bill-info row-right">
             <div>
-                <label>Room Name:</label>
+                <label>Name:</label>
                 <span><?php echo $bill_information['name'] ?></span>
             </div>
             <div class="bill-info">

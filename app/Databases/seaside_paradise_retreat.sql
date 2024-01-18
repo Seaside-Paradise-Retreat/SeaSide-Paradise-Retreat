@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
@@ -20,18 +20,88 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `seaside_paradise_retreat`
+-- Cơ sở dữ liệu: `seaside_paradise_retreat`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill`
+-- Cấu trúc bảng cho bảng `bill`
 --
 
 CREATE TABLE `bill` (
   `id` int(11) NOT NULL,
   `id_booking` int(11) NOT NULL,
+<<<<<<<<< Temporary merge branch 1
+  `date` date DEFAULT NULL,
+  `total_price` decimal(10,0) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`id`, `id_booking`, `date`, `total_price`) VALUES
+(1, 1, '2023-01-03', '50'),
+(2, 2, '2023-02-15', '100'),
+(3, 3, '2023-03-25', '120'),
+(4, 4, '2023-04-07', '200'),
+(5, 5, '2023-05-20', '50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `id` int(11) NOT NULL,
+  `id_room` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `check_in_date` date DEFAULT NULL,
+  `check_out_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`id`, `id_room`, `id_user`, `check_in_date`, `check_out_date`) VALUES
+(1, 1, 1, '2023-01-01', '2023-01-03'),
+(2, 2, 2, '2023-02-10', '2023-02-15'),
+(3, 3, 3, '2023-03-20', '2023-03-25'),
+(4, 4, 4, '2023-04-05', '2023-04-07'),
+(5, 1, 2, '2023-05-15', '2023-05-20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_history`
+--
+
+CREATE TABLE `booking_history` (
+  `id` int(11) NOT NULL,
+  `id_booking` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_bill` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking_history`
+--
+
+INSERT INTO `booking_history` (`id`, `id_booking`, `id_user`, `id_bill`) VALUES
+(1, 1, 1, 1),
+(2, 2, 2, 2),
+(3, 3, 3, 3),
+(4, 4, 4, 4),
+(5, 5, 2, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `convenients`
+=========
   `date` datetime DEFAULT NULL,
   `total_price` decimal(10,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -61,7 +131,7 @@ INSERT INTO `bill` (`id`, `id_booking`, `date`, `total_price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `booking`
+-- Cấu trúc bảng cho bảng `booking`
 --
 
 CREATE TABLE `booking` (
@@ -75,7 +145,7 @@ CREATE TABLE `booking` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `booking`
+-- Đang đổ dữ liệu cho bảng `booking`
 --
 
 INSERT INTO `booking` (`id`, `id_room`, `id_user`, `check_in_date`, `check_out_date`, `note`, `availability`) VALUES
@@ -155,9 +225,13 @@ CREATE TABLE `detail_room` (
   `id_room` int(11) NOT NULL,
   `image_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int NOT NULL,
+  `id_room` int NOT NULL,
+  `image_url` varchar(15000) CHARACTER SET utf8mb4 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;   
 
 --
--- Dumping data for table `detail_room`
+-- Đang đổ dữ liệu cho bảng `detail_room`
 --
 
 INSERT INTO `detail_room` (`id`, `id_room`, `image_url`) VALUES
@@ -285,6 +359,178 @@ CREATE TABLE `favorite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Đang đổ dữ liệu cho bảng `favorite`
+--
+
+INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
+(4, 2, 3),
+(5, 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `id` int NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `availability` tinyint(1) NOT NULL,
+  `description` varchar(500) NOT NULL,
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;   
+
+--
+-- Đang đổ dữ liệu cho bảng `rooms`
+--
+
+INSERT INTO `rooms` (`id`, `name`, `type`, `price`, `availability`, `description`, `rating`) VALUES
+(1, 'Duluxey', 'Deluxe', 1000.00, 1, 'Deluxe Rooms are luxurious and spacious hotel accommodations, featuring modern amenities and stunning city views. Bringing visitors memorable and enjoyable experiences', 5),
+(2, 'Chic Lounge Oasis', 'Deluxe', 100.00, 1, 'Premium service along with a wide range of amenities will bring you the experience of the most fulfilling vacation.The 24-hour reception desk is always ready to serve you from check-in to check-out or any requests.', 5),
+(3, 'The Prestige Parlor', 'Family room', 120.00, 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication.', 5),
+(4, 'Paradise of Rest', 'Family room', 200.00, 1, 'Paradise of Rest is a living room designed to create a wonderful space of relaxation and rest. It brings a feeling of peace, comfort and convenience, helping you find relaxation and refresh your spirit.', 5),
+(5, 'Peaceful Room', 'Family room', 90.00, 1, 'Peaceful Living Room: This living room creates a peaceful and relaxing space. Soft colors, dim lights and comfortable furniture can be used to create an airy and relaxing space.', 5),
+(6, 'Honeymoon Suite', 'Family room', 120.00, 1, 'Honeymoon Suite is a type of hotel room specially designed to serve newlyweds or couples who want to enjoy romantic and special moments during their honeymoon. This room is often spacious and beautifully decorated to create an ideal space for love and romance.', 5),
+(7, 'Royal Parlor', 'Family room', 60.00, 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication', 5),
+(8, 'Glamorous Den ', 'Suite', 160.00, 1, 'Glamorous Den is a room full of charm and luxury, creating a classy and stylish resort space. With exquisite design and unique furniture, this room brings a desirable living space to customers.', 5),
+(9, 'Regal Gathering Space', 'Family room', 230.00, 1, 'Regal Gathering Space is a great space to gather and meet, giving you a luxurious and elegant space to hold special events. With its premium design and spacious space, this room creates a cozy and classy environment for important meetings and events.', 5),
+(10, 'Artistic Lounge Retreat', 'View', 80.00, 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space ', 5),
+(11, 'Artistic Lounge Retreat', 'View', 80.00, 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration.', 5),
+(12, 'Artistic Lounge Retreat', 'View', 80.00, 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable.', 5),
+(13, 'Artistic Lounge Retreat', 'View', 80.00, 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space.', 5),
+(14, 'Artistic Lounge Retreat', 'View', 80.00, 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space.', 5),
+(15, 'Artistic Lounge Retreat', 'View', 80.00, 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space ', 5),
+(16, 'Stylish Sitting Area ', 'Suite', 56.00, 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(17, 'Stylish Sitting Area ', 'Suite', 56.00, 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(18, 'Stylish Sitting Area ', 'Suite', 56.00, 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(19, 'Stylish Sitting Area ', 'Suite', 56.00, 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(20, 'Stylish Sitting Area ', 'Suite', 56.00, 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(21, 'Stylish Sitting Area ', 'Suite', 56.00, 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(22, 'Stylish Sitting Area ', 'Suite', 56.00, 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(23, 'Stylish Sitting Area ', 'Suite', 56.00, 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
+(31, 'Livotel Hotel Kaset Nawamin Bangkok', 'Hotel small', 1200000.00, 1, 'Livotel Hotel Kaset Nawamin Bangkok là một khách sạn nằm trong khu vực an ninh, toạ lạc tại Sena Nikhom.  khách sạn sở hữu vị trí đắc địa cách sân bay Sân bay quốc tế Don Mueang (DMK) 8,54 km.  khách sạn nằm cách Ratchadaphisek MRT Station 4,66 km.  Không chỉ sở hữu vị trí đắc địa, Livotel Hotel Kaset Nawamin Bangkok còn là một trong những khách sạn nằm cách Wat Mahathat chưa đầy 13,67 km và Wat Yan Nawa chưa đầy 15,53 km.', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `avatar` varchar(500) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `age` int NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `role` varchar(20) CHARACTER SET utf8mb4  DEFAULT 'user',
+  `availability` int DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `avatar`, `password`, `phone`, `email`, `age`, `gender`, `role`, `availability`) VALUES
+(3, 'Thanh Vân Tran', 'public/images/avatar_hi.png', 'phamhi123', '9876543210', 'phamhi@gmail.com', 30, 'Female', 'user', 0),
+(4, 'Thanh Vân Tran', 'public/images/avatar_linh.png', 'nguyenlinh123', '0123456789', 'nguyenlinh@gmail.com', 28, 'Female', 'user', 0),
+(6, 'Thanh Vân Tran', 'public/images/avatar.png', '22446688', '0382870032', 'hung.tran25@student.passerellesnumeriques.org', 21, 'Male', 'user', 1),
+(8, 'Hoàng Hữu Hùng', 'public/images/avatar.png', '2233445566', '0987664544', 'hunghoang2003@gmail.com', 20, 'Male', 'user', 1),
+(10, 'lam Hồng', 'public/images/avatar.png', '$2y$10$s1V4e9E10VWhClhKULP9oOVLAWd5QqOlX5ICcNefELVvuiXnu5V6O', '0987664544', 'lamlo2003@gmail.com', 19, 'Female', 'user', 1),
+(11, 'Hồ Ngân', 'public/images/avatar.png', '$2y$10$/zKmqGD2OGA5fOYEIBu/2.E83BENzGjcZA4QbQs.xBm1SHWLc2ZTy', '098735151', 'nganho@gmail.com', 20, 'Nu', 'user', 1),
+(12, 'lam Hồng', 'public/images/avatar.png', '$2y$10$oL/6SejZmkUJJP.6VDNO.ecyeQ9FhpEjO4bW..8AbzcauawvHzBHW', '0987664544', 'lamlo2003@gmail.com', 23, 'Nữ', 'user', 1),
+(13, 'lam Hồng', 'public/images/avatar.png', '$2y$10$u6/ovGykcjEsgbiAoRWOqOLOnChMnKgN.N/NlB0vFmprr48mdQKNq', '0987664444', 'lamlo2003@gmail.com', 23, 'Nữ', 'user', 1),
+(15, 'Trần Đức Hùng', 'public/images/avatar.png', '$2y$10$uIqZNloxjgQHWO.SsFRFO.cZ5SUGBJ..n55QacbsqAaq1wcY6WPhy', '0905753333', 'seasideparadiseretreat@gmail.com', 20, 'Male', 'admin', 1),
+(16, 'Dương Thị Hồng Lam', 'public/images/avatar.png', '$2y$10$ZknsRfQ.4h5xmoKFJyB0C.BvZM5BDjElvoWhkSixp6SoI3srMvwj.', '0987654444', 'lam.duong2004@gmail.com', 20, 'Nữ', 'admin', 1),
+(17, 'Phạm Thị Hỉ', 'public/images/avatar.png', '$2y$10$RaeEiobq4D2JLUSAqYD46eLv98.cb.nZZgACIkaCNZKvSYBjB111u', '0987645555', 'hi.pham2004@gmail.com', 20, 'Nữ', 'admin', 1),
+(20, 'Duong Hong Lam', 'public/images/avatar.png', '$2y$10$Lm7uBb7t1N3wCvtNr3jEl.aJJip9Xrq3zEb7um/cE76D/nJDe97TG', '0347645305', 'lamhong@gmail.com', 17, 'Nu', 'user', 1);
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `bill`
+--
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_booking` (`id_booking`);
+
+--
+-- Chỉ mục cho bảng `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_room` (`id_room`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Chỉ mục cho bảng `convenients`
+--
+ALTER TABLE `convenients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_room` (`id_room`);
+
+--
+-- Chỉ mục cho bảng `detail_room`
+--
+ALTER TABLE `detail_room`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_room` (`id_room`);
+
+--
+-- Chỉ mục cho bảng `favorite`
+--
+ALTER TABLE `favorite`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_room` (`id_room`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Chỉ mục cho bảng `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `bill`
+--
+ALTER TABLE `bill`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT cho bảng `convenients`
+--
+ALTER TABLE `convenients`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT cho bảng `detail_room`
+--
+ALTER TABLE `detail_room`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+
+--
+
 -- Dumping data for table `favorite`
 --
 
@@ -303,15 +549,11 @@ INSERT INTO `favorite` (`id`, `id_room`, `id_user`) VALUES
 
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
-  `id_room` int(11)  DEFAULT NULL,
-  `id_user` int(11)  DEFAULT NULL,
   `id_room` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `rating` int(11) NOT NULL,
   `content` varchar(255) DEFAULT NULL,
   `date` date DEFAULT NULL
-  FOREIGN KEY (`id_room`) REFERENCES rooms(id),
-  FOREIGN KEY (`id_user`) REFERENCES users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -331,197 +573,43 @@ INSERT INTO `feedback` (`id`, `id_room`, `id_user`, `rating`, `content`, `date`)
 -- Table structure for table `rooms`
 --
 
-CREATE TABLE `rooms` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `availability` tinyint(1) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `rating` tinyint(10) NOT NULL
+CREATE TABLE `favorite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_room` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_room`) REFERENCES rooms(id),
+  FOREIGN KEY (`id_user`) REFERENCES users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `rooms`
---
-
-INSERT INTO `rooms` (`id`, `name`, `type`, `price`, `availability`, `description`, `rating`) VALUES
-(1, 'Duluxe', 'Deluxe', '50.00', 1, 'Deluxe Rooms are luxurious and spacious hotel accommodations, featuring modern amenities and stunning city views. Bringing visitors memorable and enjoyable experiences', 4),
-(2, 'Chic Lounge Oasis', 'Deluxe', '100.00', 0, 'Premium service along with a wide range of amenities will bring you the experience of the most fulfilling vacation.The 24-hour reception desk is always ready to serve you from check-in to check-out or any requests.', 5),
-(3, 'The Prestige Parlor', 'Family room', '120.00', 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication.', 5),
-(4, 'Paradise of Rest', 'Family room', '200.00', 1, 'Paradise of Rest is a living room designed to create a wonderful space of relaxation and rest. It brings a feeling of peace, comfort and convenience, helping you find relaxation and refresh your spirit.', 5),
-(5, 'Peaceful Room', 'Family room', '90.00', 1, 'Peaceful Living Room: This living room creates a peaceful and relaxing space. Soft colors, dim lights and comfortable furniture can be used to create an airy and relaxing space.', 5),
-(6, 'Honeymoon Suite', 'Family room', '120.00', 1, 'Honeymoon Suite is a type of hotel room specially designed to serve newlyweds or couples who want to enjoy romantic and special moments during their honeymoon. This room is often spacious and beautifully decorated to create an ideal space for love and romance.', 5),
-(7, 'Royal Parlor', 'Family room', '60.00', 1, 'Prestige Parlor is a luxurious living room that exudes elegance and sophistication. Every aspect of this room has been carefully designed to create a feeling of prestige and sophistication', 5),
-(8, 'Glamorous Den ', 'Suite', '160.00', 1, 'Glamorous Den is a room full of charm and luxury, creating a classy and stylish resort space. With exquisite design and unique furniture, this room brings a desirable living space to customers.', 5),
-(9, 'Regal Gathering Space', 'Family room', '230.00', 1, 'Regal Gathering Space is a great space to gather and meet, giving you a luxurious and elegant space to hold special events. With its premium design and spacious space, this room creates a cozy and classy environment for important meetings and events.', 5),
-(10, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space ', 5),
-(11, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration.', 5),
-(12, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable.', 5),
-(13, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space.', 5),
-(14, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space.', 5),
-(15, 'Artistic Lounge Retreat', 'View', '80.00', 1, 'Artistic Lounge Retreat is a unique and creative art space where you can relax and find inspiration. With its distinctive design and unique artistic decoration, this space offers a memorable space ', 5),
-(16, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(17, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(18, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(19, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5),
-(20, 'Stylish Sitting Area ', 'Suite', '56.00', 1, 'Stylish Sitting Area is a luxurious and trendy sitting space, creating a comfortable and classy environment for relaxation and conversation. With a modern design and unique interior, this space brings a sense of elegance and style to customers.', 5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `avatar` varchar(500) NOT NULL,
-  `password` varchar(500) NOT NULL,
-  `phone` varchar(11) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `age` int(11) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `rule` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `avatar`, `password`, `phone`, `email`, `age`, `gender`, `rule`) VALUES
-(1, 'Dương Thị Hồng Lam', 'public/avatar_lam.png', 'duonglam123', '1234567890', 'duonglam.@gmail.com', 30, 'Female', 'admin'),
-(2, 'Trần Đức Hùng', 'public/avatar_hung.png', 'tranhung123', '0987654321', 'tranhung.smith@gmail.com', 25, 'Male', 'admin'),
-(3, 'Phạm Thị Hỉ', 'public/avatar_hi.png', 'phamhi123', '9876543210', 'phamhi@gmail.com', 35, 'Female', 'user'),
-(4, 'Nguyễn Thị Linh', 'public/avatar_linh.png', 'nguyenlinh123', '0123456789', 'nguyenlinh@gmail.com', 28, 'Female', 'user'),
-(5, 'Hồ Thị Ngân', 'public/avatar_ngan.png', 'hongan123', '5678901234', 'hongan@gmail.com', 32, 'Female', 'user');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `bill`
---
-ALTER TABLE `bill`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_booking` (`id_booking`);
-
---
--- Indexes for table `booking`
---
-ALTER TABLE `booking`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_room` (`id_room`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `booking_history`
---
-ALTER TABLE `booking_history`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_bill` (`id_bill`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `convenients`
---
-ALTER TABLE `convenients`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_room` (`id_room`);
-
---
--- Indexes for table `detail_room`
---
-ALTER TABLE `detail_room`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_room` (`id_room`);
-
---
--- Indexes for table `favorite`
---
-ALTER TABLE `favorite`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_room` (`id_room`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_room` (`id_room`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `rooms`
---
-ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `bill`
---
-ALTER TABLE `bill`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `booking`
---
-ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `booking_history`
---
-ALTER TABLE `booking_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `convenients`
---
-ALTER TABLE `convenients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `detail_room`
---
-ALTER TABLE `detail_room`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
-
---
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`),
+  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
@@ -529,49 +617,39 @@ ALTER TABLE `users`
 
 --
 -- Constraints for table `bill`
+
+--
+-- Các ràng buộc cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`id_booking`) REFERENCES `booking` (`id`);
 
 --
--- Constraints for table `booking`
+-- Các ràng buộc cho bảng `booking`
 --
 ALTER TABLE `booking`
   ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`),
   ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `booking_history`
---
-ALTER TABLE `booking_history`
-  ADD CONSTRAINT `booking_history_ibfk_1` FOREIGN KEY (`id_bill`) REFERENCES `bill` (`id`),
-  ADD CONSTRAINT `booking_history_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
+-- Các ràng buộc cho bảng `convenients`
 -- Constraints for table `convenients`
 --
 ALTER TABLE `convenients`
-  ADD CONSTRAINT `convenients_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `convenients_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`);
 
 --
--- Constraints for table `detail_room`
+-- Các ràng buộc cho bảng `detail_room`
 --
 ALTER TABLE `detail_room`
-  ADD CONSTRAINT `detail_room_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `detail_room_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`);
 
 --
--- Constraints for table `favorite`
+-- Các ràng buộc cho bảng `favorite`
 --
 ALTER TABLE `favorite`
   ADD CONSTRAINT `favorite_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`),
   ADD CONSTRAINT `favorite_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id`),
-  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -7,6 +7,7 @@ if (isset($_SESSION['id'], $_SESSION['email'], $_SESSION['name'], $_SESSION['pho
     $name = $_SESSION['name'];
     $phone = $_SESSION['phone'];
     $password = $_SESSION['password'];  
+    $role = $_SESSION['role'];
 } 
 ?>
 <?php 
@@ -15,6 +16,12 @@ if (isset($_SESSION['id'], $_SESSION['email'], $_SESSION['name'], $_SESSION['pho
 // echo "</pre>" ?>
 <?php
 require 'app/Views/layouts/header.php';
+// if ($role == 'user'){
+//     require 'app/Views/layouts/navbar.php';
+// }
+// else {
+//     require 'app/Views/layouts/admin.navbar.php';
+// }
 ?>
 
 

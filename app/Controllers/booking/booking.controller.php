@@ -1,6 +1,6 @@
 <?php session_start() ?>
 <?php
-$booking = "null";
+// $booking = "null";
 require "app/Models/home/card.model.php";
 require "app/Models/home/detailroom.model.php";
 require "app/Models/bill/bill.model.php";

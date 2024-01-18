@@ -17,7 +17,7 @@ require ("./app/Databases/database.php");
         $statament->execute();
         $user=$statament->fetch(PDO::FETCH_ASSOC);
         if (!empty($user) ) {
-            return "Username already exists";
+            return "Username already exist";
         }
         return;
     }
@@ -37,7 +37,7 @@ require ("./app/Databases/database.php");
             $statament->execute();
             $email=$statament->fetch(PDO::FETCH_ASSOC);
             if (!empty($email)) {
-                return "Email does exit";
+                return "Email does exist";
             }
             return;
         }
@@ -50,7 +50,7 @@ require ("./app/Databases/database.php");
         $statament->execute();
         $phonedata=$statament->fetch(PDO::FETCH_ASSOC);
         if (!empty($phonedata)) {
-            return "Phone does exit";
+            return "Phone does exist";
         }
         return;
     }
@@ -75,7 +75,7 @@ require ("./app/Databases/database.php");
             $statament->bindParam(":username", $userName, PDO::PARAM_STR);
             $statament->bindParam(":email", $email, PDO::PARAM_STR);
             $statament->bindParam(":password", $password);
-            $statament->bindParam(":phone", $phone, PDO::PARAM_INT);
+            $statament->bindParam(":phone", $phone,PDO::PARAM_STR);
             $statament->bindParam(":age", $date, PDO::PARAM_INT);
             $statament->bindParam(":gender", $gender, PDO::PARAM_STR);
             $result = $statament->execute();

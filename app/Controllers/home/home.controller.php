@@ -39,11 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     if (isset($_POST["phone"])) {
+        echo "<script>console.log('" . $_POST["phone"] . "');</script>";
         $phone_error = validatePhone($_POST["phone"]);
         if (empty($phone_error)) {
             $phone = htmlspecialchars($_POST["phone"]);
             $_SESSION['phone'] = $phone;
         }
+        echo "<script>console.log('" . $phone. "');</script>";
     }
     if (!empty($_POST["date"])) {
         $date = $_POST["date"];
@@ -68,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (empty($user_error) && empty($email_error) && empty($phone_error) && empty($confirmpassword_error) && empty($terms_error)) {
-        $result = registerUser($userName, $hashedPassword, $phone, $email, $date, $gender);
+        $result = registerUser($userName, $hashedPassword, $phone, $email, $age, $gender);
         if (!empty($result)) {
             echo '<script>alert("Register Successful and you need to log in again");</script>';
             $registersuccessfull = true;

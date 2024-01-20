@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adminpage</title>
+    <title>Seaside Paradise Retreat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="../../../public/css/Adminpage.css">
 </head>
@@ -14,7 +14,6 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-
     if (isset($_SESSION['avatar'])) {
         $avatar = $_SESSION['avatar'];
     } else {
@@ -32,3 +31,4 @@
     </div>
 </body>
 </html>
+

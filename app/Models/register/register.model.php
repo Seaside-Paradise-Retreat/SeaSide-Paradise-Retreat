@@ -12,14 +12,6 @@ function validateUsername($userName)
     if (strlen($userName) < 4 || strlen($userName) > 25) {
         return "Your name must be at least 4 characters";
     }
-    $query = "SELECT name FROM users WHERE name = :username";
-    $statament = $connection->prepare($query);
-    $statament->bindParam(":username", $userName);
-    $statament->execute();
-    $user = $statament->fetch(PDO::FETCH_ASSOC);
-    if (!empty($user)) {
-        return "Username already exist";
-    }
     return;
 }
 
@@ -90,13 +82,13 @@ function registerUser($userName, $password, $phone, $email, $date, $gender)
     }
 }
 
-function validateDay($date_of_birth)
-{
-    $currentDateTime = new DateTime('now');
-    $currentDate = $currentDateTime->format('Y-m-d H:i');
-    if($date_of_birth > $currentDate){
-        return  "You cannot choose a date in the future";
+    function validateDay($date_of_birth)
+    {
+        $currentDateTime = new DateTime('now');
+        $currentDate = $currentDateTime->format('Y-m-d H:i');
+        if($date_of_birth > $currentDate){
+            return  "You cannot choose a date in the future";
+        }
+        return;
     }
-    return;
-}
 ?>

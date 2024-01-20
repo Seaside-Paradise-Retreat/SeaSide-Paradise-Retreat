@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEASIDE PARADISE RETREAT</title>
+    <title>Seaside Paradise Retreat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
 </head>
@@ -16,7 +16,7 @@
     ?>
     <div class="container">
         <div class="main_menu_left">
-        <div class="item">
+            <div class="item">
                 <a class="redirect" href="/admin/User/view">
                     <button class="tablinks" data-tab="userTab">
                         <i class="fas fa-user" style="padding-right:30px"></i>
@@ -88,7 +88,7 @@
                                     <tr>
                                         <td><?php echo $searchUser['id']; ?></td>
                                         <td style="width: 100px; white-space: nowrap;"> <?php echo $searchUser['name']; ?></td>
-                                        <td><img style="height:100px; width:100px" src="<?php echo $searchUser['avatar']; ?>" alt="User Avatar"></td>
+                                        <td><img style="height:100px; width:100px" src="../../<?php echo $searchUser['avatar']; ?>" alt="User Avatar"></td>
                                         <td class="ellipsis" onclick="showFullText(this)"><?php echo password_hash($searchUser['password'], PASSWORD_DEFAULT); ?></td>
                                         <td><?php echo $searchUser['phone']; ?></td>
                                         <td><?php echo $searchUser['email']; ?></td>
@@ -111,3 +111,8 @@
                 </table>
             </div>
         </div>
+        <script>
+            function showFullText(element) {
+                element.classList.toggle('full-text');
+            }
+        </script>

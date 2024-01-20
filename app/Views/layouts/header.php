@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../../../public/css/register.css">
     <link rel="stylesheet" href="../../../public/css/content.css">
     <link rel="stylesheet" href="../../../public/css/card.css">
+    <link rel="stylesheet" href="../../../public/css/content.css">
+    <link rel="stylesheet" href="../../../public/css/card.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -23,7 +25,7 @@
       <div class="nav_text"><a  class="nav_text_menu" href="">ROOMS</a></div>
       <div class="nav_text nav_text_search">
         <input type="text" name="nav_input" id="nav_input_search" style="outline: none; padding-left:20px; " placeholder="Search" >
-        <button id="nav_search_icon"><i class="fa-solid fa-magnifying-glass"></i></button>   
+        <button><i id="nav_search_icon" class="fa-solid fa-magnifying-glass"></i></button>   
       </div>
   
       <div class="nav_log nav_text">

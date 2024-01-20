@@ -12,10 +12,16 @@
                 <div class="mb-3">
                   <div class="auth-form__group login">
                     <input name="email" id="loginEmail" type="email" class="auth-form__input" placeholder="Email" >
+                    <input name="email" id="loginEmail" type="email" class="auth-form__input" placeholder="Email" >
                   </div>
                 </div>
                 <div class="mb-3">
                   <div class="auth-form__group login">
+                    <input name="password" id="loginPassord" type="password" class="auth-form__input" placeholder="Password" >
+                  </div>
+                  <div class="mb-3 forgot_password">
+                    <button type="button" class="button_register" id="loginToRegister" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</button>
+                    <a href="#" id="forgot_password">Forgot password</a>
                     <input name="password" id="loginPassord" type="password" class="auth-form__input" placeholder="Password" >
                   </div>
                   <div class="mb-3 forgot_password">
@@ -27,6 +33,13 @@
                   <button class="btn-control" id="loginToRegister" >Sign in</button>
                 </div>
                 <div class="auth-form__or login">
+                    <div>
+                        <hr style="color:blue;width:170px">
+                    </div>
+                    <div><span><i style="padding: 0 20px;" >OR</i></span></div>
+                    <div>
+                        <hr style="color:blue;width:170px">
+                    </div>
                     <div>
                         <hr style="color:blue;width:170px">
                     </div>

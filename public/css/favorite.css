@@ -1,0 +1,10 @@
+.title > #title-favorite-room{
+    color: #9EEAF7;
+    margin-top: 70px;
+    font-size: 80px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.card-favorite-room {
+    margin-bottom: 40px;
+}

@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Please fill in all the required fields.";
     }
 }
-// Call the function to create a new room
-        
+
 require(__DIR__ . "/../../../Views/admin/Room/Admin.Create.Room.php");
 ?>

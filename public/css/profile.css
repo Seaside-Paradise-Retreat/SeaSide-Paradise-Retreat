@@ -1,0 +1,137 @@
+:root {
+    --blue: #1e90ff;
+    --blue1:aqua;
+    --blue2:#99FFFF;
+    --blue3:#4cc9f3;
+    --white: #ffffff;
+    --black:#0000;
+    --red:#FF0000;
+  }
+.title-modal{
+    text-align: center;
+}
+.edit-avata-user {
+    display: none;
+}
+img .images{
+    width: 40px;
+}
+.contents{
+    margin: 18px;
+    margin-left: 200px;
+    margin-bottom: 80px;
+}
+.form-control{
+    border-color: var(--blue);
+}
+hr {
+    margin-top: 90px;
+    background-color: blue;
+  }
+.title{
+    font-size: 20px;
+    color: var(--blue);
+    margin-bottom: 0px;
+    padding: 20px;
+}
+.content_profile-usernames-about{
+    margin-top: 30px;
+    border:1px solid var(--blue);
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blue3);
+    border-radius: 10px;
+    height: 700px;
+}
+.edit-avata-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content_profile-username-email-password{
+    display: grid;
+}
+.profile-back-edit {
+   margin-top: 70px;
+}
+#profile-back{
+    margin-bottom: 200px;
+    background-color:var(--blue3);
+}
+.modal-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.modal-save {
+    color: black;
+    background-color: var(--blue);
+    font-weight: bold;
+}
+.modal-save:hover {
+    background-color: var(--blue2);
+}
+#avata-user{
+    margin-top: 10px;
+    width: 200px;
+    border-radius: 100%;
+}
+.tilte-form{
+    margin-top: 80px;
+    margin-left: 400px;
+    color: var(--blue);
+    font-weight: bold;
+}
+#profile-date{
+    margin-left: 470px;
+    margin-bottom: 30px;
+    color: var(--blue);
+}
+
+#modal-edit{
+    text-align: center;
+}
+#profile-edit-avata{
+    width: 130px ;
+    border-radius: 10px;
+}
+.form-input-profile{
+    border-radius: 10px;
+    height: 50px;
+    border: 1px solid var(--blue);
+}
+.form-input-profile:hover{
+    border-color:var(--blue);
+}
+.link-back {
+    border: none;
+
+    color: #333;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-right: 274px;
+  }
+  
+  .link-back:hover {
+    background-color: #ddd;
+  }
+  
+  .link-back:focus {
+    outline: none;
+  }
+  a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+  }

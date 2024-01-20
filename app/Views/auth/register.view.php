@@ -25,6 +25,7 @@
                   <div class="auth-form__group date-gender">
                     <div class="auth-form__date">
                       <input type="date" name="date" id="auth-form__date" class="auth-form__input " placeholder="Date of birth"required>
+                      <small class="form-text text-danger"> <?php echo $date_error; ?></small>
                     </div>
                     <select name="gender" id="auth-form__gender" class="auth-form__input">
                       <option disabled >Gender</option>

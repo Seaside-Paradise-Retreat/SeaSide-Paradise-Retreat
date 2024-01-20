@@ -1,21 +1,23 @@
 <?php
 require(__DIR__ . '/../../../Databases/database.php');
 require(__DIR__. '/../../../Models/admin.model.php');
+$price_error = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (
-        !empty($_POST['name']) &&
-        !empty($_POST['type']) &&
-        !empty($_POST['price']) &&
-        !empty($_POST['availability']) &&
-        !empty($_POST['description'])
-    ) {
-        // Call the function to create a new room
+    $name = $_POST['name'];
+    $type = $_POST['type'];
+    $price = $_POST['price'];
+    $availability = $_POST['availability'];
+    $description = $_POST['description'];
+    if (!validatePrice($price)){
+        $price_error = "Please enter price greater than 0";
+    }
+    if (!$price_error){
         $result = createRoom(
-            $_POST['name'],
-            $_POST['type'],
-            $_POST['price'],
-            $_POST['availability'],
-            $_POST['description'],
+            $name,
+            $type,
+            $price,
+            $availability,
+            $description,
             $_POST['image_url'],
             $_POST['convenient']
         );
@@ -30,5 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Please fill in all the required fields.";
     }
 }
+
 require(__DIR__ . "/../../../Views/admin/Room/Admin.Create.Room.php");
 ?>

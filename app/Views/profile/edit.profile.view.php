@@ -38,13 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     ':name' => $_POST['name'],
                     ':email' => $_POST['email'],
                     ':phone' => $_POST['phone'],
-                    ':avatar' => $file_name,
+                    ':avatar' => "public/images/".$file_name,
                     ':id' => $_POST['id'],
                 ]);
                 $_SESSION['name'] = $_POST['name'];
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['phone'] = $_POST['phone'];
-                $_SESSION['avatar'] = "public/images/" . $_FILES['fileToUpload']['name'];
+                $_SESSION['avatar'] = "public/images/". $_FILES['fileToUpload']['name'];
                 var_dump($name, $email, $phone, $_SESSION['avatar']);
                 header('Location: /profile');
                 exit;

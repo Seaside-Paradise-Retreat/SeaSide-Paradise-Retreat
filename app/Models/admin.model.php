@@ -91,6 +91,16 @@ function validateGender($gender){
     return true;
 }
 
+function validatePrice($price){
+    if (empty($price)){
+        return false;
+    }
+    elseif (!is_numeric($price) || $price < 0){
+        return false;
+    }
+    return true;
+}
+
 function createNewUser($name, $password, $phone, $email, $age, $gender,$availability){
     global $connection;
     try{
@@ -427,3 +437,4 @@ function selectCountBill(){
     $count = $result['bill_count'];
     return (int) $count;
 }
+

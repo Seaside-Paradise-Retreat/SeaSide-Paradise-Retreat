@@ -67,7 +67,6 @@
                             <th>ID</th>
                             <th style="width: 100px;">Name</th>
                             <th>Avatar</th>
-                            <th>Password</th>
                             <th>Phone Number</th>
                             <th>Email</th>
                             <th>Age</th>
@@ -87,8 +86,7 @@
                                 <tr>
                                     <td><?php echo $user['id']; ?></td>
                                     <td style="width: 100px; white-space: nowrap;"> <?php echo $user['name']; ?></td>
-                                    <td><img style="height:100px; width:100px" src="../../<?php echo $user['avatar']; ?>" alt="User Avatar"></td>
-                                    <td class="ellipsis" onclick="showFullText(this)"><?php echo password_hash($user['password'], PASSWORD_DEFAULT); ?></td>
+                                    <td><img style="height:100px; width:100px" src="<?php echo 'http://' . $_SERVER['HTTP_HOST'].'/'. $user['avatar']; ?>" alt="User Avatar"></td>
                                     <td><?php echo $user['phone']; ?></td>
                                     <td><?php echo $user['email']; ?></td>
                                     <td><?php echo $user['age']; ?></td>

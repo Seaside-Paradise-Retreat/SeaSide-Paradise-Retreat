@@ -12,11 +12,13 @@
                 <div class="mb-3">
                   <div class="auth-form__group login">
                     <input name="email" id="loginEmail" type="email" class="auth-form__input" placeholder="Email" required >
+                    <small class="form-text text-danger ml-1"> <?php echo $email_error_login; ?></small>
                   </div>
                 </div>
                 <div class="mb-3">
                   <div class="auth-form__group login">
                     <input name="password" id="loginPassord" type="password" class="auth-form__input" placeholder="Password"  required>
+                    <small class="form-text text-danger"> <?php echo $password_error_login; ?></small>
                   </div>
                   <div class="mb-3 forgot_password">
                     <button type="button" class="button_register" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</button>

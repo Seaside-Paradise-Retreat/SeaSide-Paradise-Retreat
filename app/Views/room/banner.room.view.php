@@ -1,4 +1,4 @@
-<div class="content-area">
+<div class="content-area mb-5">
     <div class="background-images"></div>
     <div class="content-text">
       <h1>SEA HOTEL</h1>

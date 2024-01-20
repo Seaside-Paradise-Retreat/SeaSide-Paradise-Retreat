@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback</title>
+    <title>Seaside Paradise Retreat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
 </head>
@@ -98,7 +98,7 @@
                     ?>
                                 <div class="review">
                                     <div class="User_infor">
-                                        <img id="avata1" class="avata__review" src="<?php echo $feedback['user_avatar'] ?>" alt="user_avatar">
+                                        <img id="avata1" class="avata__review" src="<?php echo 'http://' . $_SERVER['HTTP_HOST'].'/'. $feedback['user_avatar'] ?>" alt="user_avatar">
                                         <h5 style="font-size:25px"><?php echo ucwords($feedback['user_name']) ?></h5>
                                     </div>
                                     <div class="rating">

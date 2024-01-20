@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit_Room</title>
+    <title>Seaside Paradise Retreat</title>
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
@@ -44,16 +44,13 @@
             }
         }
     }
-
     include(__DIR__ . "/.././../layouts/admin.navbar.php");
     $id = $_GET["id"] ?? null;
-
     if (isset($id)) :
         $statement = $connection->prepare('SELECT * FROM rooms WHERE id = :id');
         $statement->execute([':id' => $id]);
         $room = $statement->fetch();
     ?>
-
         <div class="container">
             <div class="main_menu_left">
                 <div class="item">
@@ -103,30 +100,10 @@
                         <label for="type">Type:</label>
                         <input type="text" id="type" class="form-control" placeholder="Type" name="type" value="<?= $room['type']; ?>">
                     </div>
-                    <?php
-                    // require_once(__DIR__ . '/../../../Models/admin.model.php');
-                    // $result = selectRoom();
-                    // if (is_array($result) && !empty($result)) {
-                    //     $rooms = $result;
-                    // }
-                    // if (!empty($rooms)) {
-                    //     echo '<div class="form-group">';
-                    //     echo '<label for="type">Room:</label>';
-                    //     echo '<select class="form-control" id="type" name="type">';
-                    //     foreach ($rooms as $room) {
-                    //         $roomId = $room['id'];
-                    //         $roomType = $room['type'];
-                    //         echo "<option value='{$room['type']}'>$roomType</option>";
-                    //     }
-                    //     echo '</select>';
-                    //     echo '</div>';
-                    // }
-                    ?>
                     <div class="form-group">
                         <label for="price">Price:</label>
                         <input type="number" id="price" class="form-control" placeholder="Price" name="price" value="<?= $room['price']; ?>">
                     </div>
-
                     <div class="form-group">
                         <label for="availability">Availability:</label>
                         <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability" value="<?= $room['availability']; ?>" min="0" max="1">

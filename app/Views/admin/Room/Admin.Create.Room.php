@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Room</title>
+    <title>Seaside Paradise Retreat</title>
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
@@ -65,6 +65,7 @@
                 <div class="form-group">
                     <label for="price">Price:</label>
                     <input type="number" id="price" class="form-control" placeholder="Price" name="price" required>
+                    <span class="error"><?php echo $price_error; ?></span>
                 </div>
 
                 <div class="form-group">

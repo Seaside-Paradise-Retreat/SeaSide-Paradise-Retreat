@@ -91,8 +91,7 @@ function validateGender($gender){
     return true;
 }
 
-<<<<<<< HEAD
-=======
+
 function validatePrice($price){
     if (empty($price)){
         return false;
@@ -103,7 +102,6 @@ function validatePrice($price){
     return true;
 }
 
->>>>>>> 4cb2870f1d33e95e379edd347b7fa13f827cbb0f
 function createNewUser($name, $password, $phone, $email, $age, $gender,$availability){
     global $connection;
     try{
@@ -439,9 +437,6 @@ function selectCountBill(){
     $result = $statement->fetch(PDO::FETCH_ASSOC);
     $count = $result['bill_count'];
     return (int) $count;
-<<<<<<< HEAD
-}
-=======
+
 }
 
->>>>>>> 4cb2870f1d33e95e379edd347b7fa13f827cbb0f

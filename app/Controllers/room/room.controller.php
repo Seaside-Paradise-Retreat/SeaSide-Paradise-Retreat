@@ -24,6 +24,8 @@ $rooms= getRooms();
     $terms_error = "";
     $confirmpassword_error = "";
     $registersuccessfull  = "";
+    $password_error_login = "";
+    $email_error_login ="";
 // Register
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["name"])) {
@@ -91,6 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
     $email = $_POST['email'];
     $password = $_POST['password'];
     $dataUser = getUser($email);
+    if (empty($dataUser)) {
+        $email_error_login = "Email not found!";
+    } else {
     if ($dataUser) {
         if (password_verify($password, $dataUser['password'])) {
             if ($dataUser['role'] == 'user') {
@@ -108,9 +113,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
             }
         }
         else{
-            echo '<script>alert("Error");</script>';
+            $password_error_login = "Password incorrect!";
         }
     }
+}
 }
 }
 ?>

@@ -27,10 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!validateAge($age)) {
         $age_error = "Please enter a valid age as a positive numeric value.";
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 4cb2870f1d33e95e379edd347b7fa13f827cbb0f
     // Add gender validation if needed
     if (!validateGender($gender)){
         $gender_error = "Please enter a valid gender as a positive numeric value.";

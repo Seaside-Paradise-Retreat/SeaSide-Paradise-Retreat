@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit_Booking</title>
+    <title>Seaside Paradise Retreat</title>
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-
 <body>
     <?php
-
     require(__DIR__ . '/../../../Databases/database.php');
     require(__DIR__ . '/../../../Models/admin.model.php');
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (
             !empty($_POST['id_room']) &&
@@ -41,7 +37,6 @@
             }
         }
     }
-
     include(__DIR__ . "/.././../layouts/admin.navbar.php");
     $id = $_GET["id"] ?? null; // Use the null coalescing operator for default value
     if ($id) :
@@ -49,7 +44,6 @@
         $statement->execute([':id' => $id]);
         $book = $statement->fetch();
     ?>
-
         <div class="container">
             <div class="main_menu_left">
                 <div class="item">

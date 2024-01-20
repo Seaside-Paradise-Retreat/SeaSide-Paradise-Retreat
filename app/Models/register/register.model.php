@@ -12,7 +12,7 @@ function validateUsername($userName)
     if (strlen($userName) < 4 || strlen($userName) > 25) {
         return "Your name must be at least 4 characters";
     }
-<<<<<<< HEAD
+
     $query = "SELECT name FROM users WHERE name = :username";
     $statament = $connection->prepare($query);
     $statament->bindParam(":username", $userName);
@@ -21,8 +21,8 @@ function validateUsername($userName)
     if (!empty($user)) {
         return "Username already exist";
     }
-=======
->>>>>>> 4cb2870f1d33e95e379edd347b7fa13f827cbb0f
+
+
     return;
 }
 
@@ -93,17 +93,8 @@ function registerUser($userName, $password, $phone, $email, $date, $gender)
     }
 }
 
-<<<<<<< HEAD
-function validateDay($date_of_birth)
-{
-    $currentDateTime = new DateTime('now');
-    $currentDate = $currentDateTime->format('Y-m-d H:i');
-    if($date_of_birth > $currentDate){
-        return  "You cannot choose a date in the future";
-    }
-    return;
-}
-=======
+
+
     function validateDay($date_of_birth)
     {
         $currentDateTime = new DateTime('now');
@@ -113,5 +104,7 @@ function validateDay($date_of_birth)
         }
         return;
     }
->>>>>>> 4cb2870f1d33e95e379edd347b7fa13f827cbb0f
+
+   
+
 ?>

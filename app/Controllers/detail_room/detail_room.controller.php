@@ -28,6 +28,8 @@
     $terms_error = "";
     $confirmpassword_error = "";
     $registersuccessfull  = "";
+    $password_error_login = "";
+    $email_error_login ="";
 // Register
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["name"])) {
@@ -94,6 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
     $email = $_POST['email'];
     $password = $_POST['password'];
     $dataUser = getUser($email);
+    if (empty($dataUser)) {
+        $email_error_login = "Email not found!";
+    } else {
     if ($dataUser) {
         if (password_verify($password, $dataUser['password'])) {
             if ($dataUser['role'] == 'user') {
@@ -120,9 +125,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
             }
         }
         else{
-            echo '<script>alert("Error");</script>';
+            $password_error_login = "Password incorrect!";
         }
     }
+}
 }
 }
 ?>
@@ -131,7 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_
 <?php
 if (isset($_GET['id_room'])) {
     $roomID = $_GET['id_room']; // ID Room hiện tại
-    echo "<script>console.log(" . $_GET['id_room'] . ")</script>";
     $user_id_to_check = $_SESSION['id']; // ID user hiện tại
     $isBooking = isBooking($roomID, $user_id_to_check);
     if ($isBooking) {
@@ -141,7 +146,7 @@ if (isset($_GET['id_room'])) {
                 $star_rating = $_POST['star_rating'];
                 $feedback = $_POST['feedback'];
                 $currentDateTime = date('Y-m-d H:i:s');
-                $addFeedback = saveFeedbackToDatabase($id_room, $user_id_to_check, $star_rating, $feedback, $currentDateTime);
+                $addFeedback = saveFeedbackToDatabase($id_room, $user_id_to_check, $star_rating, $feedback);
             } else {
                 echo "Vui lòng điền đầy đủ thông tin trong form.";
             }

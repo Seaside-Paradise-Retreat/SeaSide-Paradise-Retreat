@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST['image_url'],
             $_POST['convenient']
         );
-
         if ($result) {
             echo "<script>alert(Create new room record successful!)</script>";
             header('Location: /admin/Room/view'); 
@@ -31,6 +30,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Please fill in all the required fields.";
     }
 }
-
 require(__DIR__ . "/../../../Views/admin/Room/Admin.Create.Room.php");
 ?>

@@ -1,51 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit_User</title>
+    <title>Seaside Paradise Retreat</title>
     <link rel="stylesheet" href="../../../../public/css/Adminpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-
 <body>
     <?php
     require(__DIR__ . '/../../../Models/admin.model.php');
     $user_error = $phone_error = $availability_error = $email_error = $age_error = $gender_error = "";
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') :
-        $name = $_POST['name'];
-        $availability = $_POST['availability'];
-        $phone = $_POST['phone'];
-        $email = $_POST['email'];
-        $age = $_POST['age'];
-        $gender = $_POST['gender'];
-        !empty($_GET["id"]);
-        if (!validateUsernames($name)) {
-            $user_error = "Please enter a valid username (4-25 characters).";
-        }
-        if (!validateAvailabilitys($availability)) {
-            $availability_error = "Please enter a valid availability (0 or 1).";
-        }
-        if (!validatePhones($phone)) {
-            $phone_error = "Please enter a valid 10-digit phone number.";
-        }
-        if (!validateEmails($email, $connection)) {
-            $email_error = "Please enter a valid email address without spaces and '@'.";
-        }
-        if (!validateAge($age)) {
-            $age_error = "Please enter a valid age as a positive numeric value.";
-        }
-
-        // Add gender validation if needed
-        if (!validateGender($gender)) {
-            $gender_error = "Please enter a valid gender as a positive numeric value.";
-        }
-        // Check if any error occurred
-        if ($user_error || $availability_error || $phone_error || $email_error || $age_error || $gender_error) {
-            echo "Invalid input. Please check your form data.";
-        } else {
-            // All input fields are valid, proceed to create a new user
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $name = $_POST['name'];
         $availability = $_POST['availability'];
         $phone = $_POST['phone'];
@@ -186,5 +152,5 @@
         </div>
     <?php endif ?>
 </body>
-<?php endif ?>
+
 </html>

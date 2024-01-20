@@ -115,7 +115,12 @@ if (isset($_GET['id_room'])) {
                                     <div class="row">
                                         <p><?php echo $feedback['feedback_content']; ?></p>
                                     </div>
-                                    <p><?php echo $currentDateTime = date('Y-m-d H:i:s'); ?></p>
+                                    <p><?php if (isset($feedback['feedback_date'])) {                               
+                                            echo "<p>" . $feedback['feedback_date'] . "</p>";
+                                        } else {
+                                            echo "<p>Ngày không khả dụng</p>";
+                                        } ?>
+                                        </p>
                                 </div>
                             </div>
                         </div>

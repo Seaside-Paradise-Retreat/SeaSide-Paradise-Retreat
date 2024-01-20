@@ -16,6 +16,7 @@ $rooms= getRooms();
     $gender = "";
     $password = "";
     $confirmpassword = "";
+    $date_error ="";
     $user_error ="";
     $email_error = "";
     $date_error = "";
@@ -70,10 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!isset($_POST["checkboxaccep"])) {
         $terms_error = "You must accept the Terms of Service";
     }
-
-    if (empty($user_error) && empty($email_error) && empty($phone_error) && empty($date_error) 
-    && empty($confirmpassword_error) && empty($terms_error)) {
-        $result = registerUser($userName, $hashedPassword, $phone, $email, $date, $gender);
+    if (empty($user_error) && empty($email_error) && empty($date_error) && empty($phone_error) && empty($confirmpassword_error) && empty($terms_error)) {
+        $result = registerUser($userName, $hashedPassword, $phone, $email, $age, $gender);
         if (!empty($result)) {
             echo '<script>alert("Register Successful and you need to log in again");</script>';
             $registersuccessfull = true;
@@ -82,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-
 ?>
 
 <?php

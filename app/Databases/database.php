@@ -2,7 +2,7 @@
 $hostname = "localhost";
 $database = "Seaside_paradise_retreat";
 $username = "root";
-$password = "";
+$password = "mysql";
 
 $dsn = "mysql:host=$hostname;dbname=$database;charset=utf8mb4"; //$dsn: Database source name
 try {

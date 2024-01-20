@@ -86,5 +86,13 @@ require ("./app/Databases/database.php");
         }
     }
 
-
+    function validateDay($date_of_birth)
+    {
+        $currentDateTime = new DateTime('now');
+        $currentDate = $currentDateTime->format('Y-m-d H:i');
+        if($date_of_birth > $currentDate){
+            return  "You cannot choose a date in the future";
+        }
+        return;
+    }
 ?>

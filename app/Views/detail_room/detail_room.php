@@ -118,9 +118,11 @@ if (isset($_GET['id_room'])) {
                                     <p><?php echo $currentDateTime = date('Y-m-d H:i:s'); ?></p>
                                 </div>
                             </div>
-                <?php
+                        </div>
+            <?php
                     }
                 }
             } ?>
-            <?php } ?>
-                        </div>
+        <?php } ?>
+        </div>
+</div>

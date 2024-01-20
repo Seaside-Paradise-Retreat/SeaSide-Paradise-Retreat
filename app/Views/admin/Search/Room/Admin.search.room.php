@@ -16,7 +16,7 @@
     ?>
     <div class="container">
         <div class="main_menu_left">
-        <div class="item">
+            <div class="item">
                 <a class="redirect" href="/admin/User/view">
                     <button class="tablinks" data-tab="userTab">
                         <i class="fas fa-user" style="padding-right:30px"></i>
@@ -107,3 +107,8 @@
             </div>
         </div>
     </div>
+    <script>
+        function showFullText(element) {
+            element.classList.toggle('full-text');
+        }
+    </script>

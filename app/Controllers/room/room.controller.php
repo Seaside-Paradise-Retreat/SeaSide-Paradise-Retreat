@@ -18,6 +18,7 @@ $rooms= getRooms();
     $confirmpassword = "";
     $user_error ="";
     $email_error = "";
+    $date_error = "";
     $phone_error = "";
     $terms_error = "";
     $confirmpassword_error = "";
@@ -45,10 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['phone'] = $phone;
         }
     }
-    if (!empty($_POST["date"])) {
-        $date = $_POST["date"];
-        $age = getAge($date);
-        $_SESSION['age'] = $age;
+    if (isset($_POST["date"])) {
+        $date_error = validateDay($_POST["date"]);
+        if (empty($day_error)) {
+            $date = $_POST["date"];
+            $age = getAge($date);
+            $_SESSION['age'] = $age;
+        }
     }
     if (!empty($_POST["gender"])) {
         $gender = $_POST["gender"];
@@ -67,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $terms_error = "You must accept the Terms of Service";
     }
 
-    if (empty($user_error) && empty($email_error) && empty($phone_error) 
+    if (empty($user_error) && empty($email_error) && empty($phone_error) && empty($date_error) 
     && empty($confirmpassword_error) && empty($terms_error)) {
         $result = registerUser($userName, $hashedPassword, $phone, $email, $date, $gender);
         if (!empty($result)) {

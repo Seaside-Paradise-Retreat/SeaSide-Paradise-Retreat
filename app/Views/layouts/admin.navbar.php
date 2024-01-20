@@ -25,7 +25,7 @@
         </a>
         
         <div class="profile_user">
-            <a href="/profile"><button id="profile"><img id="nav-avatar" src="../../<?php echo $avatar; ?>" alt="avatar" ></button></a>
+            <a href="/profile"><button id="profile"><img id="nav-avatar" src="<?php echo $avatar; ?>" alt="avatar" ></button></a>
             <a href="/logout"><button id="logout"><i class="fas fa-sign-out-alt" style="font-size: 30px;"></i></button></a>
         </div>
     </div>

@@ -23,7 +23,7 @@
             <p><?php echo $room['description'] ?></p>
             <p></p>
         </div>
-        <div class="col-md-1" id="ratingContainer"><i class="fa-solid fa-star" style="color:yellow; font-size:22px"></i><?php echo round($rating = selectAVGRatingRoom($room['id']),1);?></div>
+        <div class="col-md-1" id="ratingContainer"><i class="fa-solid fa-star" style="color:yellow; font-size:22px"></i><?php echo round($rating = selectAVGRatingRoom($room['room_id']),1);?></div>
         <div class="d-flex mb-3">
             <small class="border-end me-3 pe-3"><i class="fa fa-bed text-secondary me-2">
                 </i>Bed</small> 

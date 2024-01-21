@@ -4,6 +4,7 @@
     require "app/Models/home/detailroom.model.php";
     require "app/Models/booking_history/booking_history.model.php";
     require "app/Models/booking_history/cancel.model.php";
+    require "app/Models/admin.model.php";
     echo "<script>console.log(".$_SESSION['id'] . " )</script>"; 
     $booked_rooms_information = get_user_booking_info($_SESSION['id'] );
     // echo "Rooms: " . count( $booked_rooms_information) . " rows<br>";

@@ -1,7 +1,9 @@
 <?php
+
 if (isset($_GET['id_room'])) {
     $roomId = $_GET['id_room']; // Lấy ID phòng từ tham số trong URL
     $roomfeedback = getFeedback($roomId);
+
 }
 ?>
 <link rel="stylesheet" href="public/css/detail_room.css">
@@ -83,7 +85,12 @@ if (isset($_GET['id_room'])) {
                 <?php endif ?>
                 <!-- </div> -->
             </form>
-            <h2 class="m-4 font-weight-bold">Reviews</h2>
+            <div class="review">
+                    <h4 style="margin-right: 10%; ">Reviews</h4>
+                    <div>
+                        <h4> <i class="fa-solid fa-star" style="color:yellow; font-size:22px"></i><?php echo round($rating = selectAVGRatingRoom($roomId), 1); ?></h4>
+                    </div>
+                </div>
             <?php
 
             if (!empty($roomfeedback)) {

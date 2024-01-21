@@ -52,7 +52,7 @@
             <form class="form_action" action="#" method="post">
                 <div class="form_title">
                     <h4 id="title">CREATE ROOM</h4>
-                    <a href="/admin"><i class="fas fa-times"></i></a>
+                    <a href="/admin/Room/view"><i class="fas fa-times"></i></a>
                 </div>
                 <div class="form-group">
                     <label for="name">Name:</label>

@@ -58,9 +58,11 @@ function validatePhone($phoneNumber)
     if (!empty($phonedata)) {
         return "Phone does exist";
     }
+    if(strlen($phone) !== 10){
+        return "Invalid phone number!";
+    }
     return;
 }
-
 function getAge($date)
 {
     $currentDate = new DateTime();

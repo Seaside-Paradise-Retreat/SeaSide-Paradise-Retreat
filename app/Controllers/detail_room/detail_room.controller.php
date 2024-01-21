@@ -1,33 +1,34 @@
-<?php session_start()?>
+<?php session_start() ?>
 <?php
-    require ("app/Models/home/card.model.php");
-    require ("app/Models/home/detailroom.model.php");
-    require ("app/Models/detail/detail.model.php");
-    require ("app/Models/register/register.model.php");
-    require ("app/Models/login/login.model.php");
-    require "app/Models/admin.model.php";
-    require ("app/Models/booking_history/booking_history.model.php") ;
-    require ("app/Models/feedback/feedback.model.php") ;
-    if (isset($_GET['id_room'])) {
-        $roomId = $_GET['id_room'];
-        $images = getRoomImages($roomId);
-        $rooms = getRoomId($roomId);
-        // $room = $rooms[$roomId];
-    }?>
+require("app/Models/home/card.model.php");
+require("app/Models/home/detailroom.model.php");
+require("app/Models/detail/detail.model.php");
+require("app/Models/register/register.model.php");
+require("app/Models/login/login.model.php");
+require "app/Models/admin.model.php";
+require("app/Models/booking_history/booking_history.model.php");
+require("app/Models/feedback/feedback.model.php");
+if (isset($_GET['id_room'])) {
+    $roomId = $_GET['id_room'];
+    $images = getRoomImages($roomId);
+    $rooms = getRoomId($roomId);
+} ?>
 <?php
-    $userName = "";
-    $phone = "";    
-    $email = "";
-    $date ="";
-    $gender = "";
-    $password = "";
-    $confirmpassword = "";
-    $user_error ="";
-    $email_error = "";
-    $phone_error = "";
-    $terms_error = "";
-    $confirmpassword_error = "";
-    $registersuccessfull  = "";
+$userName = "";
+$phone = "";
+$email = "";
+$date = "";
+$gender = "";
+$password = "";
+$confirmpassword = "";
+$user_error = "";
+$email_error = "";
+$phone_error = "";
+$terms_error = "";
+$confirmpassword_error = "";
+$registersuccessfull  = "";
+$password_error_login = "";
+$email_error_login = "";
 // Register
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["name"])) {
@@ -72,7 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!isset($_POST["checkboxaccep"])) {
         $terms_error = "You must accept the Terms of Service";
     }
-
     if (empty($user_error) && empty($email_error) && empty($phone_error) && empty($confirmpassword_error) && empty($terms_error)) {
         $result = registerUser($userName, $hashedPassword, $phone, $email, $date, $gender);
         if (!empty($result)) {
@@ -83,55 +83,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-
 ?>
-
 <?php
 //Login
-
-if(!$registersuccessfull){
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $dataUser = getUser($email);
-    if ($dataUser) {
-        if (password_verify($password, $dataUser['password'])) {
-            if ($dataUser['role'] == 'user') {
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
-                $_SESSION['id'] = $dataUser['id'];
-                $_SESSION['name'] = $dataUser['name'];
-                $_SESSION['avatar'] = $dataUser['avatar'];
-                $_SESSION['phone'] = $dataUser['phone'];
-                $_SESSION['role'] = $dataUser['role'];
-                $_SESSION['isLogin'] = true;    
-                echo '<script>alert("Login Successful");</script>';
-            } else if ($dataUser['role']  == 'admin') {
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
-                $_SESSION['id'] = $dataUser['id'];
-                $_SESSION['name'] = $dataUser['name'];
-                $_SESSION['avatar'] = $dataUser['avatar'];
-                $_SESSION['phone'] = $dataUser['phone'];
-                $_SESSION['role'] = $dataUser['role'];
-                $_SESSION['isLogin'] = true;  
-                echo '<script>alert("Login Successful");</script>';
-                header("Location: /admin");
+if (!$registersuccessfull) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $dataUser = getUser($email);
+        if (empty($dataUser)) {
+            $email_error_login = "Email not found!";
+        } else {
+            if ($dataUser) {
+                if (password_verify($password, $dataUser['password'])) {
+                    if ($dataUser['role'] == 'user') {
+                        $_SESSION['email'] = $email;
+                        $_SESSION['password'] = $password;
+                        $_SESSION['id'] = $dataUser['id'];
+                        $_SESSION['name'] = $dataUser['name'];
+                        $_SESSION['avatar'] = $dataUser['avatar'];
+                        $_SESSION['phone'] = $dataUser['phone'];
+                        $_SESSION['role'] = $dataUser['role'];
+                        $_SESSION['isLogin'] = true;
+                        echo '<script>alert("Login Successful");</script>';
+                    } else if ($dataUser['role']  == 'admin') {
+                        $_SESSION['email'] = $email;
+                        $_SESSION['password'] = $password;
+                        $_SESSION['id'] = $dataUser['id'];
+                        $_SESSION['name'] = $dataUser['name'];
+                        $_SESSION['avatar'] = $dataUser['avatar'];
+                        $_SESSION['phone'] = $dataUser['phone'];
+                        $_SESSION['role'] = $dataUser['role'];
+                        $_SESSION['isLogin'] = true;
+                        echo '<script>alert("Login Successful");</script>';
+                        header("Location: /admin");
+                    }
+                } else {
+                    $password_error_login = "Password incorrect!";
+                }
             }
-        }
-        else{
-            echo '<script>alert("Error");</script>';
         }
     }
 }
-}
 ?>
-
-
 <?php
 if (isset($_GET['id_room'])) {
     $roomID = $_GET['id_room']; // ID Room hiện tại
-    echo "<script>console.log(" . $_GET['id_room'] . ")</script>";
     $user_id_to_check = $_SESSION['id']; // ID user hiện tại
     $isBooking = isBooking($roomID, $user_id_to_check);
     if ($isBooking) {
@@ -141,17 +138,16 @@ if (isset($_GET['id_room'])) {
                 $star_rating = $_POST['star_rating'];
                 $feedback = $_POST['feedback'];
                 $currentDateTime = date('Y-m-d H:i:s');
-                $addFeedback = saveFeedbackToDatabase($id_room, $user_id_to_check, $star_rating, $feedback, $currentDateTime);
+                $addFeedback = saveFeedbackToDatabase($id_room, $user_id_to_check, $star_rating, $feedback);
             } else {
                 echo "Vui lòng điền đầy đủ thông tin trong form.";
             }
         }
     } else {
-        //echo "<script>alert('Phòng bạn chưa được đ');</script>";
     }
 }
 // header("Location:/detail_room?id_room=$roomID");
 ?>
-<?php 
-    require "app/Views/detail_room/index.php";
+<?php
+require "app/Views/detail_room/index.php";
 ?>

@@ -1,29 +1,31 @@
-<?php  session_start() ?>
+<?php session_start() ?>
 <?php
-require ("./app/Models/home/card.model.php");
-require ("./app/Models/home/detailroom.model.php");
-require ("./app/Models/register/register.model.php");
-require ("./app/Models/login/login.model.php");
-require ("app/Models/favorite/favorite.model.php");
-$rooms= getRooms();
+require("./app/Models/home/card.model.php");
+require("./app/Models/home/detailroom.model.php");
+require("./app/Models/register/register.model.php");
+require("./app/Models/login/login.model.php");
+require("app/Models/favorite/favorite.model.php");
+$rooms = getRooms();
 ?>
 
 <?php
-    $userName = "";
-    $phone = "";    
-    $email = "";
-    $date ="";
-    $gender = "";
-    $password = "";
-    $confirmpassword = "";
-    $date_error ="";
-    $user_error ="";
-    $email_error = "";
-    $date_error = "";
-    $phone_error = "";
-    $terms_error = "";
-    $confirmpassword_error = "";
-    $registersuccessfull  = "";
+$userName = "";
+$phone = "";
+$email = "";
+$date = "";
+$gender = "";
+$password = "";
+$confirmpassword = "";
+$date_error = "";
+$user_error = "";
+$email_error = "";
+$date_error = "";
+$phone_error = "";
+$terms_error = "";
+$confirmpassword_error = "";
+$registersuccessfull  = "";
+$password_error_login = "";
+$email_error_login = "";
 // Register
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["name"])) {
@@ -86,35 +88,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php
 //Login
 
-if(!$registersuccessfull){
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $dataUser = getUser($email);
-    if ($dataUser) {
-        if (password_verify($password, $dataUser['password'])) {
-            if ($dataUser['role'] == 'user') {
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
-                $_SESSION['id'] = $dataUser['id'];
-                $_SESSION['name'] = $dataUser['name'];
-                $_SESSION['avatar'] = $dataUser['avatar'];
-                $_SESSION['phone'] = $dataUser['phone'];
-                $_SESSION['isLogin'] = true;    
-                echo '<script>alert("Login Successful");</script>';
-            } else if ($dataUser['role']  == 'admin') {
-                echo '<script>alert("Login Successful");</script>';
-                header("Location: /admin");
+if (!$registersuccessfull) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['email']) && !empty($_POST['password'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $dataUser = getUser($email);
+        if (empty($dataUser)) {
+            $email_error_login = "Email not found!";
+        } else {
+            if ($dataUser) {
+                if (password_verify($password, $dataUser['password'])) {
+                    if ($dataUser['role'] == 'user') {
+                        $_SESSION['email'] = $email;
+                        $_SESSION['password'] = $password;
+                        $_SESSION['id'] = $dataUser['id'];
+                        $_SESSION['name'] = $dataUser['name'];
+                        $_SESSION['avatar'] = $dataUser['avatar'];
+                        $_SESSION['phone'] = $dataUser['phone'];
+                        $_SESSION['isLogin'] = true;
+                        echo '<script>alert("Login Successful");</script>';
+                    } else if ($dataUser['role']  == 'admin') {
+                        echo '<script>alert("Login Successful");</script>';
+                        header("Location: /admin");
+                    }
+                } else {
+                    $password_error_login = "Password incorrect!";
+                }
             }
-        }
-        else{
-            echo '<script>alert("Error");</script>';
         }
     }
 }
-}
 ?>
 
-<?php 
-    require ("app/Views/room/room.view.php") ;
+<?php
+require("app/Views/room/room.view.php");
 ?>

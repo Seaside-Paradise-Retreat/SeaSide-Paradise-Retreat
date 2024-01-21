@@ -21,7 +21,6 @@
         $statement = $connection->prepare('SELECT * FROM rooms WHERE id = :id');
         $statement->execute([':id' => $id]);
         $room = $statement->fetch();
-
     ?>
         <div class="container">
             <div class="main_menu_left">
@@ -58,7 +57,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="main_menu">
                 <div class="feedback">
                     <h1 class="animate-character">SEASIDE PARADISE RETREAT</h1>
@@ -98,7 +97,7 @@
                     ?>
                                 <div class="review">
                                     <div class="User_infor">
-                                        <img id="avata1" class="avata__review" src="<?php echo $feedback['user_avatar'] ?>" alt="user_avatar">
+                                        <img id="avata1" class="avata__review" src="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/' . $feedback['user_avatar'] ?>" alt="user_avatar">
                                         <h5 style="font-size:25px"><?php echo ucwords($feedback['user_name']) ?></h5>
                                     </div>
                                     <div class="rating">
@@ -108,7 +107,6 @@
                                         <h4 style="font-size:20px;"><?php echo $feedback['feedback_content'] ?></h4>
                                     </div>
                                 </div>
-
                     <?php
                             }
                         }
@@ -116,8 +114,6 @@
                     <div class="back-button">
                         <a href="/admin/Room/view"><button class="Back">Back</button></a>
                     </div>
-
-
                 </div>
             </div>
 </body>

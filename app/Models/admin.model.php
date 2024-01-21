@@ -114,7 +114,6 @@ function createNewUser($name, $password, $phone, $email, $age, $gender,$availabi
         $stt -> bindParam(':availability', $availability);
         $stt -> execute();
         echo "Create new user record successfull!";
-
     } catch(PDOException $e){
         echo "Error: " .$e ->getMessage();
     }
@@ -163,11 +162,9 @@ function selectRoom(){
     }
 }
 
-
 function createRoom($name, $type, $price, $availability, $description, $imageUrls, $convenient)
 {
     global $connection;
-
     try {
         $insertRoomStatement = $connection->prepare("INSERT INTO rooms (name, type, price, availability, description) VALUES (:name, :type, :price, :availability, :description)");
         $insertRoomStatement->execute([
@@ -177,24 +174,19 @@ function createRoom($name, $type, $price, $availability, $description, $imageUrl
             ':availability' => $availability,
             ':description' => $description,
         ]);
-
         $statement = $connection->prepare("SELECT id FROM rooms ORDER BY id DESC LIMIT 1");
         $statement->execute();
         $newlyInsertedRoom = $statement->fetch(PDO::FETCH_ASSOC);
-
         if ($newlyInsertedRoom) {
             $roomId = $newlyInsertedRoom['id'];
-
             if (!empty($roomId)) {
                 if (!empty($imageUrls)) {
                     $imageUrls = explode(" ", $imageUrls);
                     $imageUrls = array_map('trim', $imageUrls);
-
                     foreach ($imageUrls as $imageUrl) {
                         insertIntoDetailRoom($roomId, $imageUrl);
                     }
                 }
-
                 if (!empty($convenient)) {
                     $statement = $connection->prepare("INSERT INTO convenients(id_room, convenient) VALUES (:roomId, :convenient)");
                     $statement->execute([
@@ -202,7 +194,6 @@ function createRoom($name, $type, $price, $availability, $description, $imageUrl
                         ':convenient' => $convenient
                     ]);
                 }
-
                 return true; // Room creation successful
             } else {
                 return false; // Unable to retrieve newly inserted room ID
@@ -214,7 +205,6 @@ function createRoom($name, $type, $price, $availability, $description, $imageUrl
     }
 }
 
-
 function insertIntoDetailRoom($roomId, $imageUrl)
 {
     global $connection;
@@ -224,8 +214,7 @@ function insertIntoDetailRoom($roomId, $imageUrl)
             ':roomId' => $roomId,
             ':imageUrl' => $imageUrl,
         ]);
-    } catch (PDOException $e) {
-        // Log or handle the exception as needed
+    } catch (PDOException $e) {        // Log or handle the exception as needed
         error_log("Error inserting into detail_room: " . $e->getMessage());
     }
     header('location: /admin');
@@ -260,7 +249,6 @@ function findRoomById($roomId) {
             return $room;
         }
     }
-
     return null; // Return null if room not found
 }
 function findUserById($userId){
@@ -272,7 +260,6 @@ function findUserById($userId){
             }
         }
     }
-    
     return null;
 }
 function selectBookingRoom(){
@@ -319,7 +306,6 @@ function selectAVGRatingForRoom($roomId)
     $stt->bindParam(':roomId', $roomId, PDO::PARAM_INT);
     $stt->execute();
     $result = $stt->fetchAll(PDO::FETCH_ASSOC);
-
     return $result;
 }
 
@@ -348,17 +334,13 @@ function selectBill(){
     $stt -> execute();
     return $stt -> fetchAll(PDO::FETCH_ASSOC);
 }
-
-
 function selectTotalPrice(){
     global $connection;
     $stt = $connection->prepare("SELECT SUM(total_price) as total_price FROM bill");
     $stt->execute();
     $result = $stt->fetch(PDO::FETCH_ASSOC);
-
     return $result['total_price'];
 }
-
 
 function searchRoom($searchTerm) {
     global $connection;

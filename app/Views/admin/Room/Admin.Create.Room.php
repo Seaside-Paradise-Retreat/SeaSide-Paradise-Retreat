@@ -52,7 +52,7 @@
             <form class="form_action" action="#" method="post">
                 <div class="form_title">
                     <h4 id="title">CREATE ROOM</h4>
-                    <a href="/admin"><i class="fas fa-times"></i></a>
+                    <a href="/admin/Room/view"><i class="fas fa-times"></i></a>
                 </div>
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -70,7 +70,8 @@
 
                 <div class="form-group">
                     <label for="availability">Availability:</label>
-                    <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability" min="0" max="1" required>
+                    <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability"  required>
+                    <span class="error"><?php echo $availability_error; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>

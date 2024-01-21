@@ -22,6 +22,8 @@ $phone_error = "";
 $terms_error = "";
 $confirmpassword_error = "";
 $registersuccessfull  = "";
+$password_error_login = "";
+$email_error_login ="";
 // Register
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["name"])) {
@@ -88,6 +90,9 @@ if (!$registersuccessfull) {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $dataUser = getUser($email);
+        if (empty($dataUser)) {
+            $email_error_login = "Email not found!";
+        } else {
         if ($dataUser) {
             if (password_verify($password, $dataUser['password'])) {
                 if ($dataUser['role'] == 'user') {
@@ -104,12 +109,12 @@ if (!$registersuccessfull) {
                     header("Location: /admin");
                 }
             } else {
-                echo '<script>alert("Error");</script>';
+                $password_error_login = "Password incorrect!";
             }
         }
     }
 }
-
+}
 $countusers = countUser();
 $countrooms = countRooms();
 ?>

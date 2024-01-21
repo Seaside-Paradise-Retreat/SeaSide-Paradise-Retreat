@@ -1,17 +1,15 @@
 <?php 
-function saveFeedbackToDatabase($id_room, $id_user, $star_rating, $feedback, $currentDateTime) {
+function saveFeedbackToDatabase($id_room, $id_user, $star_rating, $feedback) {
     global $connection;
-    $query = "INSERT INTO feedback (id_room, id_user, rating, content, date) VALUES (:id_room, :id_user, :star_rating, :feedback, :currentDateTime)";
+    $query = "INSERT INTO feedback (id_room, id_user, rating, content, date) VALUES (:id_room, :id_user, :star_rating, :feedback, NOW())";
     $statement = $connection->prepare($query);
     $params = array(
         ':id_room' => $id_room,
         ':id_user' => $id_user,
         ':star_rating' => $star_rating,
         ':feedback' => $feedback,
-        ':currentDateTime' => $currentDateTime
     );
     $statement->execute($params);
-
 }
 
 function getFeedback($roomId){
@@ -40,8 +38,6 @@ function getFeedback($roomId){
     return $roomWithFeedback;
 }
 
-
-
 function isBooking($id_room, $id_user) :bool
 {
     $isBooking = false;
@@ -55,5 +51,4 @@ function isBooking($id_room, $id_user) :bool
     }
     return $isBooking;
 }
-
 ?>

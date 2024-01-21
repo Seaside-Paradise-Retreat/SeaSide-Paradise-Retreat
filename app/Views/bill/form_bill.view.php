@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-6">
                 <p><strong class="scan_the_code_to_pay">Scan the code to pay</strong></p>
-                <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=2|99||Duong Thi Hong Lam||0|0|10000000|Payment_room|transfer_myqr|88314077&choe=UTF-8" title="Link to Payment" />
+                <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=2|99||Duong Thi Hong Lam||0|0|<?php echo  $bill_information['total_price'] ?>|Payment_room|transfer_myqr|88314077&choe=UTF-8" title="Link to Payment" />
             </div>
         </div>
         <table>

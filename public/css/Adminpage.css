@@ -301,7 +301,7 @@
     line-height: 50px;
     margin: auto auto;
 }
-.animate-charcter {
+.animate-character {
     text-align: center;
     font-size: 50px;
     animation: myAnimation 5s infinite;

@@ -10,37 +10,43 @@
 </head>
 
 <body>
-    <?php
-
-    require(__DIR__ . '/../../../Databases/database.php'); // Ensure this line is uncommented and provides the correct path to the database connection file
+<?php
+    require(__DIR__ . '/../../../Databases/database.php');
     require(__DIR__ . '/../../../Models/admin.model.php');
-
+    $price_error = $availability_error = '';
+    $result = false;
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (
-            !empty($_POST['name']) &&
-            !empty($_POST['type']) &&
-            !empty($_POST['price']) &&
-            isset($_POST['availability']) &&
-            !empty($_POST['description']) &&
-            !empty($_GET["id"])
-        ) {
+        $name = $_POST['name'];
+        $type = $_POST['type'];
+        $price = $_POST['price'];
+        $availability = $_POST['availability'];
+        $description = $_POST['description'];
+        $id = isset($_GET["id"]) ? $_GET["id"] : null;
+        if (!validateAvailabilitys($availability)) {
+            $availability_error = "Please enter a valid availability (0 or 1).";
+        }
+        if (!validatePrice($price)) {
+            $price_error = "Please enter a price greater than 0";
+        }
+        if ($availability_error || $price_error) {
+            echo "Invalid input. Please check your form data.";
+        } else {
             $result = updateRoom(
-                $_POST['name'],
-                $_POST['type'],
-                $_POST['price'],
-                $_POST['availability'],
-                $_POST['description'],
-                $_GET["id"]
+                $name,
+                $type,
+                $price,
+                $availability,
+                $description,
+                $id
             );
             if ($result) {
                 echo "<script> 
-                        alert('Update room record successful!') ;
-                        window.location.href='/admin/Room/view';
-                    </script>";
-                // header('Location: /admin');
+                    alert('Update room record successful!') ;
+                    window.location.href='/admin/Room/view';
+                  </script>";
                 exit();
             } else {
-                echo "Error.";
+                echo "Error during room update.";
             }
         }
     }
@@ -90,7 +96,7 @@
                 <form class="form_action" action="#" method="post">
                     <div class="form_title">
                         <h4 id="title">EDIT ROOM</h4>
-                        <a href="/admin"><i class="fas fa-times"></i></a>
+                        <a href="/admin/Room/view"><i class="fas fa-times"></i></a>
                     </div>
                     <div class="form-group">
                         <label for="name">Name:</label>
@@ -103,10 +109,12 @@
                     <div class="form-group">
                         <label for="price">Price:</label>
                         <input type="number" id="price" class="form-control" placeholder="Price" name="price" value="<?= $room['price']; ?>">
+                        <span class="error"><?php echo $price_error; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="availability">Availability:</label>
-                        <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability" value="<?= $room['availability']; ?>" min="0" max="1">
+                        <input type="number" id="availability" class="form-control" placeholder="Availability" name="availability" value="<?= $room['availability']; ?>">
+                        <span class="error"><?php echo $availability_error; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="description">Description:</label>
@@ -120,4 +128,5 @@
         </div>
     <?php endif ?>
 </body>
+
 </html>

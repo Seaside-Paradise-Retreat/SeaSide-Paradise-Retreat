@@ -54,7 +54,7 @@
                 <h1 class="animate-character">SEASIDE PARADISE RETREAT</h1>
                 <div class="ItemBooking">
                     <div class="searchAdmin">
-                        <form action="/admin/Search/Booking" method="POST">
+                        <form action="/admin/Search/User" method="POST">
                             <input type="text" id="search" name="search" placeholder="Search">
                             <button type="submit" id="buttonsearch"><i id="iconsearch" class="fas fa-search"></i></button>
                         </form>
@@ -68,7 +68,6 @@
                             <th>ID</th>
                             <th style="width: 100px;">Name</th>
                             <th>Avatar</th>
-                            <th>Password</th>
                             <th>Phone Number</th>
                             <th>Email</th>
                             <th>Age</th>
@@ -88,8 +87,7 @@
                                     <tr>
                                         <td><?php echo $searchUser['id']; ?></td>
                                         <td style="width: 100px; white-space: nowrap;"> <?php echo $searchUser['name']; ?></td>
-                                        <td><img style="height:100px; width:100px" src="../../<?php echo $searchUser['avatar']; ?>" alt="User Avatar"></td>
-                                        <td class="ellipsis" onclick="showFullText(this)"><?php echo password_hash($searchUser['password'], PASSWORD_DEFAULT); ?></td>
+                                        <td><img style="height:100px; width:100px" src="<?php echo 'http://' . $_SERVER['HTTP_HOST'].'/'. $searchUser['avatar']; ?>" alt="User Avatar"></td>
                                         <td><?php echo $searchUser['phone']; ?></td>
                                         <td><?php echo $searchUser['email']; ?></td>
                                         <td><?php echo $searchUser['age']; ?></td>
@@ -111,8 +109,3 @@
                 </table>
             </div>
         </div>
-        <script>
-            function showFullText(element) {
-                element.classList.toggle('full-text');
-            }
-        </script>

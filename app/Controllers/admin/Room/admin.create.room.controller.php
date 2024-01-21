@@ -1,17 +1,20 @@
 <?php
 require(__DIR__ . '/../../../Databases/database.php');
 require(__DIR__. '/../../../Models/admin.model.php');
-$price_error = '';
+$price_error = $availability_error = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $type = $_POST['type'];
     $price = $_POST['price'];
     $availability = $_POST['availability'];
     $description = $_POST['description'];
+    if (!validateAvailabilitys($availability)) {
+        $availability_error = "Please enter a valid availability (0 or 1).";
+    }
     if (!validatePrice($price)){
         $price_error = "Please enter price greater than 0";
     }
-    if (!$price_error){
+    if (!$price_error && !$availability_error ){
         $result = createRoom(
             $name,
             $type,
@@ -32,6 +35,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Please fill in all the required fields.";
     }
 }
-
 require(__DIR__ . "/../../../Views/admin/Room/Admin.Create.Room.php");
-?>

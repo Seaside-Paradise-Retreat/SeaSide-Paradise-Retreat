@@ -62,13 +62,7 @@ function validatePhones($phoneNumber) {
     return true; // Valid phone number
 }
 function validateAvailabilitys($availability) {
-    if (empty($availability)) {
-        return false; // Please enter availability
-    } elseif (preg_match('/^[01]$/', $availability)) {
-        return true; // Valid availability
-    } else {
-        return false; // Availability should be either '0' or '1'
-    }
+    return $availability === '0' || $availability === '1';
 }
 
 function validateAge($age){
@@ -324,7 +318,7 @@ function selectBill(){
     global $connection;
     $stt = $connection -> prepare("SELECT bill.id, users.name as username, users.phone, users.email, rooms.name, bill.total_price, bill.date
         FROM
-            booking
+            booking 
         JOIN
             users ON booking.id_user = users.id
         JOIN

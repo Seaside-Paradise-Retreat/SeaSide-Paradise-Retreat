@@ -28,19 +28,15 @@
         if (!validatePhones($phone)) {
             $phone_error = "Please enter a valid 10-digit phone number.";
         }
-        if (!validateEmails($email, $connection)) {
-            $email_error = "Please enter a valid email address without spaces and '@'.";
-        }
         if (!validateAge($age)) {
             $age_error = "Please enter a valid age as a positive numeric value.";
         }
-
         // Add gender validation if needed
         if (!validateGender($gender)) {
             $gender_error = "Please enter a valid gender as a positive numeric value.";
         }
         // Check if any error occurred
-        if ($user_error || $availability_error || $phone_error || $email_error || $age_error || $gender_error) {
+        if ($user_error || $availability_error || $phone_error || $age_error || $gender_error) {
             echo "Invalid input. Please check your form data.";
         } else {
             // All input fields are valid, proceed to create a new user
@@ -50,7 +46,7 @@
                 $email,
                 $age,
                 $gender,
-                $availability,
+                intval($availability),
                 $_GET["id"]
             );
             if ($result) {

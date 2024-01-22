@@ -1,13 +1,13 @@
 <?php 
 session_start();
 require 'app/Views/layouts/header.php';
-if (isset($_SESSION['id'], $_SESSION['email'], $_SESSION['name'], $_SESSION['phone'], $_SESSION['password'])) {
+if (isset($_SESSION['id'], $_SESSION['email'], $_SESSION['name'], $_SESSION['phone'], $_SESSION['password'], $_SESSION['avatar'])) {
     $id = $_SESSION['id'];
     $email = $_SESSION['email'];
     $name = $_SESSION['name'];
     $phone = $_SESSION['phone'];
     $password = $_SESSION['password'];
-    // $avatar = $_SESSION['avatar'];
+    $avatar = $_SESSION['avatar'];
 }
 ?>
 

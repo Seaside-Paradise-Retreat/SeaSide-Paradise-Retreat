@@ -27,36 +27,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $file_size = $_FILES['fileToUpload']['size'];
             $file_tmp = $_FILES['fileToUpload']['tmp_name'];
             $allowed_ext = array('jpg', 'jpeg', 'png', 'gif');
-            if (in_array($file_ext, $allowed_ext) === false) {
-                echo 'Extension not allowed';
-            } elseif ($file_size > 2097152) {
-                echo 'File size must be under 2mb';
-            } elseif (move_uploaded_file($file_tmp, 'public/images/' . $file_name)) {
-                echo 'File uploaded';
+            if (in_array($file_ext, $allowed_ext) === false) { echo 'Extension not allowed';
+            } elseif ($file_size > 2097152) { echo 'File size must be under 2mb';
+            } elseif (move_uploaded_file($file_tmp, 'public/images/' . $file_name)) { echo 'File uploaded';
                 $statement = $connection->prepare("UPDATE users SET name = :name, email = :email, phone = :phone, avatar = :avatar WHERE id = :id");
                 $statement->execute([
                     ':name' => $_POST['name'],
                     ':email' => $_POST['email'],
                     ':phone' => $_POST['phone'],
-                    ':avatar' => "public/images/".$file_name,
-                    ':id' => $_POST['id'],
-                ]);
+                    ':avatar' =>  "public/images/". $file_name,
+                    ':id' => $_POST['id'],]);
                 $_SESSION['name'] = $_POST['name'];
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['phone'] = $_POST['phone'];
-                $_SESSION['avatar'] = "public/images/". $_FILES['fileToUpload']['name'];
+                $_SESSION['avatar'] = "public/images/" .$_FILES['fileToUpload']['name'];
                 var_dump($name, $email, $phone, $_SESSION['avatar']);
                 header('Location: /profile');
                 exit;
-            } else {
-                echo 'File upload failed. Error: ' . $_FILES['fileToUpload']['error'];
-            }
-        } else {
-            echo 'Please choose a file to upload.';
+            } else { echo 'File upload failed. Error: ' . $_FILES['fileToUpload']['error'];}
+        } else { echo 'Please choose a file to upload.';
         }
-    } else {
-        echo 'Form submission error.';
-    }
+    } else { echo 'Form submission error.';}
 }
 ?>
 <link rel="stylesheet" href="../../../public/css/edit.profile.css">

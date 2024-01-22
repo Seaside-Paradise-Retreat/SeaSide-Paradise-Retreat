@@ -62,10 +62,11 @@
                         <tr>
                             <th>ID</th>
                             <th>Room</th>
-                            <th>Name Customer</th>
+                            <th style="width:150px">Name Customer</th>
+                            <th>Email</th>
                             <th>Phone Number</th>
-                            <th>Check in</th>
-                            <th>Check out</th>
+                            <th style="width:200px">Check in</th>
+                            <th style="width:200px">Check out</th>
                             <th>Price</th>
                             <th>Availability</th>
                             <th>Option</th>
@@ -99,6 +100,17 @@
                                         $user = findUserById($userId);
                                         if ($user) {
                                             echo $user['name'];
+                                        } else {
+                                            echo "User not found";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $userId = $book['id_user'];
+                                        $user = findUserById($userId);
+                                        if ($user) {
+                                            echo $user['email'];
                                         } else {
                                             echo "User not found";
                                         }
